@@ -1,16 +1,27 @@
 html, body {
   font-family: montserrat;
   font-size: 1.1em;
+  background: linear-gradient(124deg, #384aba 0%, #645dc4 49%, #a1fffa 100%) no-repeat;
+  min-height: 100%;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li a {
+  color: #fafafb;
 }
 
 .nav-wrapper {
-  background: url(../images/dnabg.png) no-repeat, linear-gradient(124deg, #2d5ab8 0%, #7d70db 72%, #a1fffa 100%);
-  padding-bottom: 7%;
+  padding-bottom: 0;
 }
 
 .navbar {
-  background-color: rgba(255, 255, 255, 0) !important;
-  padding: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  padding-top: 20px;
+  padding-left: 40px;
 }
 
 .navbar img {
@@ -22,6 +33,28 @@ html, body {
 }
 
 .vertical-nav-wrapper {
-  background-color: #140b27;
+  background-color: rgba(31, 36, 50, 0.7);
+  padding-bottom: 100%;
+}
+
+.vertical-nav-wrapper li {
+  padding-top: 10px;
+}
+
+.col-2 {
+  padding: 0;
+}
+
+.col {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  background-color: white;
+  padding: 20px;
+  margin-left: 2%;
+  margin-right: 3%;
+  border-radius: 6px;
 }
 /*# sourceMappingURL=style.css.map */
