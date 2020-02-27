@@ -1,16 +1,16 @@
 @font-face{
     font-family: MontserratRegular;
-    src: url(../fonts/Montserrat-Regular.ttf);
+    src: url(../webfonts/Montserrat-Regular.ttf);
 }
 
 @font-face{
     font-family: MontserratLight;
-    src: url(../fonts/Montserrat-Light.ttf);
+    src: url(../webfonts/Montserrat-Light.ttf);
 }
 
 @font-face{
     font-family: MontserratSemiBold;
-    src: url(../fonts/Montserrat-SemiBold.ttf);
+    src: url(../webfonts/Montserrat-SemiBold.ttf);
 }
 $navbarColour : linear-gradient(124deg, rgba(56,74,186,1) 0%, rgba(100,93,196,1) 49%, rgba(161,255,250,1) 100%);
 $formColour : #EEECF1;
@@ -80,6 +80,8 @@ body{
     .btn{
         background-color: rgb(67, 61, 142);
         border: 0;
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
     }
 }
 
