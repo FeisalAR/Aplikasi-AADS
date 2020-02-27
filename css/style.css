@@ -1,1 +1,27 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+html, body {
+  font-family: montserrat;
+  font-size: 1.1em;
+}
+
+.nav-wrapper {
+  background: url(../images/dnabg.png) no-repeat, linear-gradient(124deg, #2d5ab8 0%, #7d70db 72%, #a1fffa 100%);
+  padding-bottom: 7%;
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0) !important;
+  padding: 20px;
+}
+
+.navbar img {
+  width: 150px;
+}
+
+.navbar .nav-item {
+  padding-right: 35px;
+}
+
+.vertical-nav-wrapper {
+  background-color: #140b27;
+}
+/*# sourceMappingURL=style.css.map */

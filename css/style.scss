@@ -1,18 +1,30 @@
-$headerColour : #26478A;
-$contentColour : #EEECF1;
-html body{
+$navbarColour : linear-gradient(124deg, rgba(45,90,184,1) 0%, rgba(125,112,219,1) 72%, rgba(161,255,250,1) 100%);
+$formColour : #EEECF1;
+
+html, body{
+    font-family: montserrat;
+    font-size: 1.1em;
+}
+
+.nav-wrapper{
+    background: url(../images/dnabg.png) no-repeat, $navbarColour;
+    padding-bottom: 7%;
 
 }
 
-header{
 
+.navbar{
+    background-color: rgba(#fff, 0) !important;
+    padding: 20px;
+    img{
+        width:150px;
+    }
+
+    .nav-item{
+        padding-right: 35px;
+    }
 }
 
-aside{
-
-}
-    
-
-main{
-    
+.vertical-nav-wrapper{
+    background-color: rgb(20, 11, 39);
 }
