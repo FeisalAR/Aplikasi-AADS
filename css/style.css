@@ -1,15 +1,38 @@
+@font-face {
+  font-family: MontserratRegular;
+  src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: MontserratLight;
+  src: url(../fonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+  font-family: MontserratSemiBold;
+  src: url(../fonts/Montserrat-SemiBold.ttf);
+}
+
 html {
   height: 100%;
 }
 
 body {
-  font-family: montserrat;
+  font-family: MontserratLight;
   font-size: 1.1em;
   background: linear-gradient(124deg, #384aba 0%, #645dc4 49%, #a1fffa 100%) no-repeat;
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  overflow: hidden;
+}
+
+.dnapic {
+  position: fixed;
+  z-index: -1;
+  width: 30%;
+  min-width: 400px;
 }
 
 .container-fluid {
@@ -39,9 +62,29 @@ body {
   padding-right: 35px;
 }
 
+.navbar .guestlogin {
+  padding-left: 40px;
+}
+
+.navbar .mr-sm-2, .navbar .mx-sm-2 {
+  margin: 0 !important;
+}
+
+.navbar .form-control {
+  font-style: italic;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+
+.navbar .btn {
+  background-color: #433d8e;
+  border: 0;
+}
+
 .vertical-nav-wrapper {
   background-color: rgba(31, 36, 50, 0.7);
   padding-bottom: 100%;
+  border-radius: 6px;
 }
 
 .vertical-nav-wrapper li {
@@ -59,16 +102,18 @@ body {
 
 main {
   background-color: white;
-  padding: 30px;
-  padding-top: 15px;
+  padding: 50px;
+  padding-top: 20px;
   margin-right: 3%;
   margin-left: 1%;
   border-radius: 6px;
-  font-variant-caps: all-petite-caps;
 }
 
 main h1 {
   font-size: 1.6em;
   font-weight: 800;
+  font-variant-caps: all-petite-caps;
+  font-family: MontserratSemiBold;
+  color: #57398a;
 }
 /*# sourceMappingURL=style.css.map */
