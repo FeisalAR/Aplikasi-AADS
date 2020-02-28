@@ -33,7 +33,7 @@ body{
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .dnapic{
@@ -87,6 +87,7 @@ body{
         font-style: italic;
         border-top-right-radius: 1px;
         border-bottom-right-radius: 1px;
+        background-color: $formColour;
     }
 
     .btn{
@@ -149,4 +150,22 @@ main{
         color: $h2Colour;
     }
 
+}
+
+.card{
+    float: left;
+    max-width: 33%;
+    font-size: 0.9em;
+
+    .card-body{
+        padding-bottom: 0;
+    }
+    
+    .btn{
+        background-color: $btnColour;
+    }
+
+    img{
+        max-height: 30%;
+    }
 }

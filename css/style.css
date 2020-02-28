@@ -25,7 +25,7 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .dnapic {
@@ -78,6 +78,7 @@ body {
   font-style: italic;
   border-top-right-radius: 1px;
   border-bottom-right-radius: 1px;
+  background-color: #EEECF1;
 }
 
 .navbar .btn {
@@ -133,5 +134,23 @@ main h2 {
   font-variant-caps: all-petite-caps;
   font-family: MontserratSemiBold;
   color: #695a85;
+}
+
+.card {
+  float: left;
+  max-width: 33%;
+  font-size: 0.9em;
+}
+
+.card .card-body {
+  padding-bottom: 0;
+}
+
+.card .btn {
+  background-color: #44337b;
+}
+
+.card img {
+  max-height: 30%;
 }
 /*# sourceMappingURL=style.css.map */
