@@ -26,6 +26,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
+  text-decoration: none;
 }
 
 .dnapic {
@@ -137,13 +138,12 @@ main h2 {
 }
 
 .card {
-  float: left;
-  max-width: 33%;
   font-size: 0.9em;
+  border-bottom: none;
 }
 
 .card .card-body {
-  padding-bottom: 0;
+  padding-bottom: 20px;
 }
 
 .card .btn {
@@ -152,5 +152,21 @@ main h2 {
 
 .card img {
   max-height: 30%;
+}
+
+.arsiptitle {
+  margin-top: 10px;
+}
+
+.arsip {
+  background-color: #fff;
+  border-radius: 6px;
+  font-size: 0.8em;
+}
+
+.arsip a {
+  display: block;
+  padding: 10px;
+  padding-left: 20px;
 }
 /*# sourceMappingURL=style.css.map */
