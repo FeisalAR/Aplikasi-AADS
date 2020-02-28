@@ -58,6 +58,10 @@ body {
   width: 150px;
 }
 
+.navbar .usermenu {
+  margin-left: 6%;
+}
+
 .navbar .nav-item {
   padding-right: 35px;
 }
@@ -77,10 +81,14 @@ body {
 }
 
 .navbar .btn {
-  background-color: #504aa2;
+  background-color: #44337b;
   border: 0;
   border-top-left-radius: 1px;
   border-bottom-left-radius: 1px;
+}
+
+.navbar .icon {
+  margin-right: 7px;
 }
 
 .vertical-nav-wrapper {
@@ -103,7 +111,7 @@ body {
 }
 
 main {
-  background-color: white;
+  background-color: #EEECF1;
   padding: 50px;
   padding-top: 20px;
   margin-right: 3%;
@@ -116,6 +124,14 @@ main h1 {
   font-weight: 800;
   font-variant-caps: all-petite-caps;
   font-family: MontserratSemiBold;
-  color: #57398a;
+  color: #46326f;
+}
+
+main h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  font-variant-caps: all-petite-caps;
+  font-family: MontserratSemiBold;
+  color: #695a85;
 }
 /*# sourceMappingURL=style.css.map */

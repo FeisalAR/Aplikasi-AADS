@@ -12,8 +12,14 @@
     font-family: MontserratSemiBold;
     src: url(../webfonts/Montserrat-SemiBold.ttf);
 }
+
 $navbarColour : linear-gradient(124deg, rgba(56,74,186,1) 0%, rgba(100,93,196,1) 49%, rgba(161,255,250,1) 100%);
+$verticalNavColour: rgba(31, 36, 50, 0.7);
 $formColour : #EEECF1;
+$btnColour: rgb(68, 51, 123);
+$h1Colour: rgb(70, 50, 111);
+$h2Colour: rgb(105, 90, 133);
+
 
 html{
     height: 100%;
@@ -42,6 +48,7 @@ body{
     padding:0;
 }
 
+// ----------------Horizontal Navigation Bar------------------------
 .navbar li a{
     color: rgb(250, 250, 251);
 }
@@ -51,12 +58,17 @@ body{
 
 }
 
+
 .navbar{
     background-color: rgba(#fff, 0);
     padding-top: 20px;
     padding-left: 40px;
     img{
-        width:150px;
+        width:150px;        
+    }
+
+    .usermenu{
+        margin-left: 6%;
     }
 
     .nav-item{
@@ -78,15 +90,21 @@ body{
     }
 
     .btn{
-        background-color: rgb(80, 74, 162);
+        background-color: $btnColour;
         border: 0;
         border-top-left-radius: 1px;
         border-bottom-left-radius: 1px;
     }
+
+    .icon{
+        margin-right: 7px;
+    }
 }
 
+
+// ----------------Vertical Navigation Bar------------------------
 .vertical-nav-wrapper{
-    background-color: rgba(31, 36, 50, 0.7);
+    background-color: $verticalNavColour;
     padding-bottom: 100%;
     border-radius: 6px;;
 
@@ -99,13 +117,15 @@ body{
     padding:0;
 }
 
+// ----------------Main Content----------------------------------
+
 .col{
     padding: 0;
     margin: 0;
 }
 
 main{
-    background-color: white;
+    background-color: $formColour;
     padding: 50px;
     padding-top: 20px;;
     margin-right: 3%;
@@ -118,8 +138,15 @@ main{
         font-weight: 800;
         font-variant-caps: all-petite-caps;
         font-family: MontserratSemiBold;
-        color: rgb(87, 57, 138);
+        color: $h1Colour;
+    }
 
+    h2{
+        font-size: 1.2em;
+        font-weight: 400;
+        font-variant-caps: all-petite-caps;
+        font-family: MontserratSemiBold;
+        color: $h2Colour;
     }
 
 }
