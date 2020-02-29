@@ -29,6 +29,12 @@ body {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 0.9em;
+  }
+}
+
 .dnapic {
   position: fixed;
   z-index: -1;
@@ -49,6 +55,23 @@ body {
   padding-bottom: 0;
 }
 
+.nav-wrapper i {
+  color: white;
+}
+
+.togglebutton i {
+  padding-top: 5px !important;
+  font-size: 1.3em;
+}
+
+.navbar-nav {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .navbar {
   background-color: rgba(255, 255, 255, 0);
   padding-top: 20px;
@@ -59,7 +82,7 @@ body {
   width: 150px;
 }
 
-.navbar .usermenu {
+.navbar .userHmenu, .navbar .guestHmenu {
   margin-left: 6%;
 }
 
@@ -69,6 +92,9 @@ body {
 
 .navbar .guestlogin {
   padding-left: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .navbar .mr-sm-2, .navbar .mx-sm-2 {
@@ -82,14 +108,18 @@ body {
   background-color: #EEECF1;
 }
 
-.navbar .btn {
+.navbar .mr-3, .navbar .mx-3 {
+  margin-right: 0 !important;
+}
+
+.navbar .mr-3 .btn, .navbar .mx-3 .btn {
   background-color: #44337b;
   border: 0;
   border-top-left-radius: 1px;
   border-bottom-left-radius: 1px;
 }
 
-.navbar .icon {
+.navbar .mr-3 .icon, .navbar .mx-3 .icon {
   margin-right: 7px;
 }
 
@@ -97,6 +127,7 @@ body {
   background-color: rgba(31, 36, 50, 0.7);
   padding-bottom: 100%;
   border-radius: 6px;
+  position: fixed;
 }
 
 .vertical-nav-wrapper li {
@@ -112,16 +143,7 @@ body {
   margin: 0;
 }
 
-main {
-  background-color: #EEECF1;
-  padding: 50px;
-  padding-top: 20px;
-  margin-right: 3%;
-  margin-left: 1%;
-  border-radius: 6px;
-}
-
-main h1 {
+h1 {
   font-size: 1.6em;
   font-weight: 800;
   font-variant-caps: all-petite-caps;
@@ -129,12 +151,21 @@ main h1 {
   color: #46326f;
 }
 
-main h2 {
-  font-size: 1.2em;
-  font-weight: 400;
+h2, form label {
+  font-size: 1.1em;
+  font-weight: 300;
   font-variant-caps: all-petite-caps;
   font-family: MontserratSemiBold;
   color: #695a85;
+}
+
+main {
+  background-color: #EEECF1;
+  padding: 50px;
+  padding-top: 20px;
+  margin-right: 3%;
+  margin-left: 1%;
+  border-radius: 6px;
 }
 
 .card {
@@ -168,5 +199,29 @@ main h2 {
   display: block;
   padding: 10px;
   padding-left: 20px;
+}
+
+form .form-group {
+  margin-bottom: 1.3em;
+}
+
+#tanggallahir {
+  width: 18%;
+}
+
+@media only screen and (max-width: 600px) {
+  #tanggallahir {
+    width: 100%;
+  }
+}
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 /*# sourceMappingURL=style.css.map */

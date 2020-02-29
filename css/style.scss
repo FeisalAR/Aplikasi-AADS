@@ -35,6 +35,10 @@ body{
     background-attachment: fixed;
     overflow-x: hidden;
     text-decoration: none;
+
+    @media only screen and (max-width: 600px) {
+            font-size: 0.9em;
+        }
 }
 
 .dnapic{
@@ -56,10 +60,21 @@ body{
 
 .nav-wrapper{    
     padding-bottom: 0;
-
+    i{
+        color: white;
+    }
 }
 
+.togglebutton i{
+    padding-top: 5px !important;
+    font-size: 1.3em;
+}
 
+.navbar-nav{
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+}
 .navbar{
     background-color: rgba(#fff, 0);
     padding-top: 20px;
@@ -68,7 +83,7 @@ body{
         width:150px;        
     }
 
-    .usermenu{
+    .userHmenu, .guestHmenu{
         margin-left: 6%;
     }
 
@@ -78,11 +93,12 @@ body{
 
     .guestlogin{
         padding-left: 40px;
+        align-items: center;
     }
 
     .mr-sm-2, .mx-sm-2{
         margin: 0 !important;
-    }
+    }   
 
     .form-control{
         font-style: italic;
@@ -90,6 +106,8 @@ body{
         border-bottom-right-radius: 1px;
         background-color: $formColour;
     }
+    .mr-3, .mx-3 {
+    margin-right: 0 !important;
 
     .btn{
         background-color: $btnColour;
@@ -102,6 +120,7 @@ body{
         margin-right: 7px;
     }
 }
+}
 
 
 // ----------------Vertical Navigation Bar------------------------
@@ -109,6 +128,7 @@ body{
     background-color: $verticalNavColour;
     padding-bottom: 100%;
     border-radius: 6px;;
+    position: fixed;
 
     li{
         padding-top: 10px;
@@ -126,15 +146,6 @@ body{
     margin: 0;
 }
 
-main{
-    background-color: $formColour;
-    padding: 50px;
-    padding-top: 20px;;
-    margin-right: 3%;
-    margin-left: 1%;
-    border-radius: 6px;
-    
-
     h1{
         font-size: 1.6em;
         font-weight: 800;
@@ -144,13 +155,20 @@ main{
     }
 
     h2{
-        font-size: 1.2em;
-        font-weight: 400;
+        font-size: 1.1em;
+        font-weight: 300;
         font-variant-caps: all-petite-caps;
         font-family: MontserratSemiBold;
         color: $h2Colour;
     }
 
+main{
+    background-color: $formColour;
+    padding: 50px;
+    padding-top: 20px;;
+    margin-right: 3%;
+    margin-left: 1%;
+    border-radius: 6px; 
 }
 
 .card{
@@ -184,3 +202,30 @@ main{
             padding-left: 20px;
         } 
     }
+
+form{
+    label{
+        @extend h2;
+    }
+    .form-group{
+        margin-bottom: 1.3em;
+    }
+}
+
+    #tanggallahir{
+        width: 18%;
+
+        @media only screen and (max-width: 600px) {
+            width: 100%;
+        }
+    }
+
+    input[type=date]::-webkit-inner-spin-button, 
+    input[type=date]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

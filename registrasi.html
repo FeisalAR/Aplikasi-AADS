@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/popper.js"></script>
+    <link rel="stylesheet" type="text/css" href='css/bootstrap.css' />
+    <link rel="stylesheet" type="text/css" href='css/style.css' />
+    <link rel="stylesheet" href='css/all.css' />
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi - Aplikasi AADS</title>
+</head>
+
+<body>
+
+    <img class="dnapic" src="images/dnabg.png" alt="dnapic">
+    <div class="container-fluid">
+        <!-- Horizontal Navbar -->
+        <div class="nav-wrapper">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-md">
+                <div class="row buttonlogo">
+                    <div class="col togglebutton">
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            data-target="#HnavbarToggler">
+                            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <!-- Brand -->
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="#">
+                            <img src="images/logo.png" alt="Logo">
+                        </a>
+                    </div>
+
+
+                </div>
+
+
+                <div class="collapse navbar-collapse" id="HnavbarToggler">
+                    <!-- Links -->
+                    <ul class="userHmenu navbar-nav d-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-home"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-tasks"></i>Kelola Program</a>
+                        </li>
+                    </ul>
+
+                    <ul class="guestHmenu navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-home"></i>Home</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search form -->
+                    <form class="form-inline ml-auto navbar-nav navbar-collapse">
+                        <div class="input-group md-form form-sm form-2 pl-0">
+                            <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search"
+                                aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit"><i class="fas fa-search text-grey"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul class="guestlogin navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="icon fas fa-user-plus"></i>Registrasi</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </nav>
+        </div>
+
+        <!-- End of Horizontal Navbar -->
+    </div>
+
+    <div class="vnavcontent row">
+        <div class="col-2">
+            <!-- Vertical navbar -->
+            <div class="vertical-nav-wrapper">
+                <nav class="navbar">
+                    <ul class="userVmenu navbar-nav d-none">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon fas fa-list"></i>Listing ADS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon fas fa-plus"></i>Tambah ADS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon fas fa-user-edit"></i>Edit ADS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon far fa-address-card"></i>Profil ADS
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="guestVmenu navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon fas fa-list"></i>Listing ADS
+                            </a>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon far fa-address-card"></i>Profil ADS
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End of vertical navbar -->
+        </div>
+
+        <!-- Main content container -->
+        <div class="col">
+            <div class="container-fluid">
+                <main>
+                    <div class="row">
+                        <!-- Form Title -->
+                        <div class="col">
+                            <h1>Form Registrasi</h1>
+                        </div>
+                    </div>
+                    <!-- Form fields -->
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <label for="namaads">Nama ADS:</label>
+                            <input type="text" class="form-control" id="namaads" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" class="form-control" id="email" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="konfirmasipassword">Konfirmasi Password:</label>
+                            <input type="password" class="form-control" id="konfirmasipassword" required
+                                aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tanggallahir">Tanggal Lahir:</label>
+                            <input type="date" class="form-control" id="tanggallahir" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jeniskelamin">Jenis Kelamin:</label>
+                            <select class="form-control" id="jeniskelamin">
+                                <option>Laki-laki</option>
+                                <option>Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="namaortu">Nama Orang Tua:</label>
+                            <input type="text" class="form-control" id="namaortu" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notelepon">No. Telepon / Handphone:</label>
+                            <input type="number" class="form-control" id="notelepon" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat">Alamat:</label>
+                            <textarea class="form-control" id="alamat" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kecamatan">Kecamatan:</label>
+                            <input type="text" class="form-control" id="kecamatan">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kodepos">Kode Pos:</label>
+                            <input type="number" class="form-control" id="kodepos">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+            </div> <!-- Main Container end -->
+
+            </main>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>
