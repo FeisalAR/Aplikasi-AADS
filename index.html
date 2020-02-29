@@ -2,15 +2,18 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href='css/bootstrap.css'>
-    <link rel="stylesheet" type="text/css" href='css/style.css'>
-    <link rel="stylesheet" href='css/all.css'>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/popper.js"></script>
+    <link rel="stylesheet" type="text/css" href='css/bootstrap.css' />
+    <link rel="stylesheet" type="text/css" href='css/style.css' />
+    <link rel="stylesheet" href='css/all.css' />
+
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Aplikasi AADS</title>
+    <title>Beranda - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -19,43 +22,67 @@
     <div class="container-fluid">
         <!-- Horizontal Navbar -->
         <div class="nav-wrapper">
-            <nav class="navbar navbar-expand-sm">
-                <!-- Brand -->
-                <a class="navbar-brand" href="#">
-                    <img src="images/logo.png" alt="Logo">
-                </a>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-md">
+                <div class="row buttonlogo">
+                    <div class="col togglebutton">
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            data-target="#HnavbarToggler">
+                            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <!-- Brand -->
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="#">
+                            <img src="images/logo.png" alt="Logo">
+                        </a>
+                    </div>
 
-                <!-- Links -->
-                <ul class="usermenu navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon fas fa-home"></i>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon fas fa-child"></i>Kelola ADS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon fas fa-tasks"></i>Kelola Program</a>
-                    </li>
-                </ul>
 
-                <ul class="guest navbar-nav d-none">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon fas fa-home"></i>Home</a>
-                    </li>
-                </ul>
+                </div>
 
-                <form class="form-inline" action="/action_page.php">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Cari ADS...">
-                    <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <ul class="guestlogin navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon fas fa-user-plus"></i>Registrasi</a>
-                    </li>
-                </ul>
+
+                <div class="collapse navbar-collapse" id="HnavbarToggler">
+                    <!-- Links -->
+                    <ul class="userHmenu navbar-nav d-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-home"></i>Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-tasks"></i>Kelola Program</a>
+                        </li>
+                    </ul>
+
+                    <ul class="guestHmenu navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-home"></i>Home</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search form -->
+                    <form class="form-inline ml-auto navbar-nav navbar-collapse">
+                        <div class="input-group md-form form-sm form-2 pl-0">
+                            <input class="form-control my-0 py-1 red-border" type="text" placeholder="Cari ADS..."
+                                aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit"><i class="fas fa-search text-grey"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul class="guestlogin navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="icon fas fa-user-plus"></i>Registrasi</a>
+                        </li>
+                    </ul>
+                </div>
+
+
             </nav>
         </div>
 
@@ -67,7 +94,7 @@
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="navbar-nav">
+                    <ul class="userVmenu navbar-nav d-none">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="icon fas fa-list"></i>Listing ADS
@@ -86,6 +113,19 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="icon far fa-address-card"></i>Profil ADS
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="guestVmenu navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon fas fa-list"></i>
+                                <span class="vmenutext">Listing ADS</span>
+                            </a>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
                             </a>
                         </li>
                     </ul>
