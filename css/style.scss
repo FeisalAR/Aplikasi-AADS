@@ -22,20 +22,21 @@ $h2Colour: rgb(105, 90, 133);
 
 
 html{
-    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
 }
 
 body{
     font-family: MontserratLight;
     font-size: 1.1em;
     background: $navbarColour no-repeat;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
     text-decoration: none;
-
+    
     @media only screen and (max-width: 576px) {
             font-size: 0.9em;
         }
@@ -73,6 +74,10 @@ body{
     i{
         color: white;
     }
+    .nav-item{
+        padding-right: 35px;
+    }
+
 }
 
 .togglebutton i{
@@ -82,16 +87,15 @@ body{
 
 .togglebutton{
     @media only screen and (min-width: 800px) {
-            display: none;
-            visibility: hidden;            
-        }
+        display: none;
+        visibility: hidden;            
+    }
 }
 
 .navbar-nav{
-    align-items: center;
-    text-align: center;
     vertical-align: middle;
 }
+
 .navbar{
     background-color: rgba(#fff, 0);
     padding-top: 20px;
@@ -103,11 +107,7 @@ body{
     .userHmenu, .guestHmenu{
         margin-left: 6%;
     }
-
-    .nav-item{
-        padding-right: 35px;
-    }
-
+    
     .guestlogin{
         padding-left: 40px;
         align-items: center;
@@ -143,32 +143,56 @@ body{
 // ----------------Vertical Navigation Bar------------------------
 .vertical-nav-wrapper{
     background-color: $verticalNavColour;
-    padding-bottom: 100%;
     border-radius: 6px;
 
     li{
         padding-top: 10px;
         @media only screen and (max-width: 576px) {
-            font-size: 1.3em;         
+            font-size: 1.3em;
+            align-items: center;
+            text-align: center;        
         }
     }
 
     .navbar{
         @media only screen and (max-width: 576px) {
-            padding:30px;       
+            padding:10px;       
             padding-top: 5px;  
         }
     }
+
+    .navbar-nav{
+        @media only screen and (max-width: 576px) {
+        padding: 5px;
+        }
+    }
+
+    .nav-item{
+        @media only screen and (max-width: 576px) {
+        padding-left: 2px;
+        }
+    }
 }
+
 
 .col-2{
     padding:0;
 }
 
 .vmenutext{
+    white-space: nowrap; 
+
+    @media only screen and (max-width: 1280px) {
+    font-size: 0.8em;            
+    }
+
+    @media only screen and (max-width: 1024px) {
+    font-size: 0.6em;            
+    }
+
     @media only screen and (max-width: 576px) {
-            visibility: hidden;
-            display: none;            
+    font-size: 0.3em;   
+    display: block;              
     }
 }
 

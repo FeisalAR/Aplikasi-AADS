@@ -14,14 +14,15 @@
 }
 
 html {
-  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: MontserratLight;
   font-size: 1.1em;
   background: linear-gradient(124deg, #384aba 0%, #645dc4 49%, #a1fffa 100%) no-repeat;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -68,6 +69,10 @@ i {
   color: white;
 }
 
+.nav-wrapper .nav-item {
+  padding-right: 35px;
+}
+
 .togglebutton i {
   padding-top: 5px !important;
   font-size: 1.3em;
@@ -81,10 +86,6 @@ i {
 }
 
 .navbar-nav {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
   vertical-align: middle;
 }
 
@@ -100,10 +101,6 @@ i {
 
 .navbar .userHmenu, .navbar .guestHmenu {
   margin-left: 6%;
-}
-
-.navbar .nav-item {
-  padding-right: 35px;
 }
 
 .navbar .guestlogin {
@@ -141,7 +138,6 @@ i {
 
 .vertical-nav-wrapper {
   background-color: rgba(31, 36, 50, 0.7);
-  padding-bottom: 100%;
   border-radius: 6px;
 }
 
@@ -152,13 +148,29 @@ i {
 @media only screen and (max-width: 576px) {
   .vertical-nav-wrapper li {
     font-size: 1.3em;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .vertical-nav-wrapper .navbar {
-    padding: 30px;
+    padding: 10px;
     padding-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .vertical-nav-wrapper .navbar-nav {
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .vertical-nav-wrapper .nav-item {
+    padding-left: 2px;
   }
 }
 
@@ -166,10 +178,26 @@ i {
   padding: 0;
 }
 
+.vmenutext {
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 1280px) {
+  .vmenutext {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .vmenutext {
+    font-size: 0.6em;
+  }
+}
+
 @media only screen and (max-width: 576px) {
   .vmenutext {
-    visibility: hidden;
-    display: none;
+    font-size: 0.3em;
+    display: block;
   }
 }
 

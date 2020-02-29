@@ -22,7 +22,7 @@
     <div class="container-fluid">
         <!-- Horizontal Navbar -->
         <div class="nav-wrapper">
-            <nav class="navbar navbar-expand-sm navbar-toggleable-md">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-md hnavbar">
                 <div class="row buttonlogo">
                     <div class="col togglebutton">
                         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -95,30 +95,46 @@
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav d-none">
+                    <ul class="userVmenu navbar-nav ">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="icon fas fa-list"></i>Listing ADS
+                                <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="icon fas fa-plus"></i>Tambah ADS
+                                <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah ADS</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="icon fas fa-user-edit"></i>Edit ADS
+                                <i class="icon fas fa-user-edit"></i><span class="vmenutext">Edit ADS</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="icon far fa-address-card"></i>Profil ADS
+                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon far fa-address-book"></i><span class="vmenutext">Program
+                                    Individu</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon far fa-calendar-check"></i><span class="vmenutext">Catatan Harian</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="icon fas fa-chart-line"></i><span class="vmenutext">Laporan Capaian</span>
                             </a>
                         </li>
                     </ul>
 
-                    <ul class="guestVmenu navbar-nav">
+                    <ul class="guestVmenu navbar-nav d-none">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="icon fas fa-list"></i>
