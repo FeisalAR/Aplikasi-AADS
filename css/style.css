@@ -30,6 +30,12 @@ body {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 1024px) {
+  body {
+    font-size: 1em;
+  }
+}
+
 @media only screen and (max-width: 576px) {
   body {
     font-size: 0.9em;
@@ -78,7 +84,7 @@ i {
   font-size: 1.3em;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   .togglebutton {
     display: none;
     visibility: hidden;
@@ -145,13 +151,21 @@ i {
   padding-top: 10px;
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
   .vertical-nav-wrapper li {
     font-size: 1.3em;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     text-align: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .vertical-nav-wrapper .navbar {
+    padding: 10px;
+    padding-top: 5px;
+    padding-left: 15px;
   }
 }
 
@@ -191,6 +205,13 @@ i {
 @media only screen and (max-width: 1024px) {
   .vmenutext {
     font-size: 0.6em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .vmenutext {
+    font-size: 0.5em;
+    display: block;
   }
 }
 

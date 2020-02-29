@@ -36,7 +36,11 @@ body{
     background-attachment: fixed;
     overflow-x: hidden;
     text-decoration: none;
-    
+
+    @media only screen and (max-width: 1024px) {
+            font-size:  1em;
+        }
+
     @media only screen and (max-width: 576px) {
             font-size: 0.9em;
         }
@@ -86,7 +90,7 @@ body{
 }
 
 .togglebutton{
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 768px) {
         display: none;
         visibility: hidden;            
     }
@@ -147,7 +151,8 @@ body{
 
     li{
         padding-top: 10px;
-        @media only screen and (max-width: 576px) {
+
+        @media only screen and (max-width: 768px) {
             font-size: 1.3em;
             align-items: center;
             text-align: center;        
@@ -155,6 +160,11 @@ body{
     }
 
     .navbar{
+        @media only screen and (max-width: 768px) {
+            padding:10px;       
+            padding-top: 5px;
+            padding-left: 15px;  
+        }
         @media only screen and (max-width: 576px) {
             padding:10px;       
             padding-top: 5px;  
@@ -189,6 +199,12 @@ body{
     @media only screen and (max-width: 1024px) {
     font-size: 0.6em;            
     }
+
+    @media only screen and (max-width: 768px) {
+    font-size: 0.5em;   
+    display: block;              
+    }
+
 
     @media only screen and (max-width: 576px) {
     font-size: 0.3em;   
