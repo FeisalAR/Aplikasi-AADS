@@ -29,10 +29,19 @@ body {
   text-decoration: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 576px) {
   body {
     font-size: 0.9em;
   }
+}
+
+.btn {
+  background-color: #44337b;
+  border: none;
+}
+
+i {
+  margin-right: 5px;
 }
 
 .dnapic {
@@ -62,6 +71,13 @@ body {
 .togglebutton i {
   padding-top: 5px !important;
   font-size: 1.3em;
+}
+
+@media only screen and (min-width: 800px) {
+  .togglebutton {
+    display: none;
+    visibility: hidden;
+  }
 }
 
 .navbar-nav {
@@ -127,15 +143,34 @@ body {
   background-color: rgba(31, 36, 50, 0.7);
   padding-bottom: 100%;
   border-radius: 6px;
-  position: fixed;
 }
 
 .vertical-nav-wrapper li {
   padding-top: 10px;
 }
 
+@media only screen and (max-width: 576px) {
+  .vertical-nav-wrapper li {
+    font-size: 1.3em;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .vertical-nav-wrapper .navbar {
+    padding: 30px;
+    padding-top: 5px;
+  }
+}
+
 .col-2 {
   padding: 0;
+}
+
+@media only screen and (max-width: 576px) {
+  .vmenutext {
+    visibility: hidden;
+    display: none;
+  }
 }
 
 .col {
@@ -166,6 +201,12 @@ main {
   margin-right: 3%;
   margin-left: 1%;
   border-radius: 6px;
+}
+
+@media only screen and (max-width: 576px) {
+  main {
+    padding: 30px;
+  }
 }
 
 .card {

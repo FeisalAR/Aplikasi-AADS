@@ -36,10 +36,20 @@ body{
     overflow-x: hidden;
     text-decoration: none;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 576px) {
             font-size: 0.9em;
         }
 }
+
+
+    .btn{
+        background-color: $btnColour;
+        border: none;
+    }
+
+    i{
+        margin-right: 5px;
+    }
 
 .dnapic{
     position: fixed;
@@ -67,7 +77,14 @@ body{
 
 .togglebutton i{
     padding-top: 5px !important;
-    font-size: 1.3em;
+    font-size: 1.3em;    
+}
+
+.togglebutton{
+    @media only screen and (min-width: 800px) {
+            display: none;
+            visibility: hidden;            
+        }
 }
 
 .navbar-nav{
@@ -116,10 +133,10 @@ body{
         border-bottom-left-radius: 1px;
     }
 
-    .icon{
-        margin-right: 7px;
+        .icon{
+            margin-right: 7px;
+        }
     }
-}
 }
 
 
@@ -127,16 +144,32 @@ body{
 .vertical-nav-wrapper{
     background-color: $verticalNavColour;
     padding-bottom: 100%;
-    border-radius: 6px;;
-    position: fixed;
+    border-radius: 6px;
 
     li{
         padding-top: 10px;
+        @media only screen and (max-width: 576px) {
+            font-size: 1.3em;         
+        }
+    }
+
+    .navbar{
+        @media only screen and (max-width: 576px) {
+            padding:30px;       
+            padding-top: 5px;  
+        }
     }
 }
 
 .col-2{
     padding:0;
+}
+
+.vmenutext{
+    @media only screen and (max-width: 576px) {
+            visibility: hidden;
+            display: none;            
+    }
 }
 
 // ----------------Main Content----------------------------------
@@ -169,6 +202,10 @@ main{
     margin-right: 3%;
     margin-left: 1%;
     border-radius: 6px; 
+
+    @media only screen and (max-width: 576px) {
+            padding: 30px;          
+        }
 }
 
 .card{
