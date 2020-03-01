@@ -107,6 +107,7 @@ i {
 
 .navbar .userHmenu, .navbar .guestHmenu {
   margin-left: 6%;
+  text-align: center;
 }
 
 .navbar .guestlogin {
@@ -295,12 +296,12 @@ form .form-group {
   margin-bottom: 1.3em;
 }
 
-#tanggallahir {
+.tanggal {
   width: 18%;
 }
 
 @media only screen and (max-width: 600px) {
-  #tanggallahir {
+  .tanggal {
     width: 100%;
   }
 }
@@ -313,5 +314,14 @@ input[type=number]::-webkit-outer-spin-button {
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+.kategori {
+  margin-top: 20px;
+}
+
+.kategori .form-check-label {
+  font-size: 0.9em;
+  font-family: MontserratRegular;
 }
 /*# sourceMappingURL=style.css.map */

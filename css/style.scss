@@ -110,6 +110,7 @@ body{
 
     .userHmenu, .guestHmenu{
         margin-left: 6%;
+        text-align: center;
     }
     
     .guestlogin{
@@ -289,7 +290,7 @@ form{
     }
 }
 
-    #tanggallahir{
+    .tanggal{
         width: 18%;
 
         @media only screen and (max-width: 600px) {
@@ -306,3 +307,14 @@ form{
     appearance: none;
     margin: 0; 
 }
+
+//--------Custom checkbox----------
+.kategori{
+        margin-top: 20px;
+        .form-check-label{
+            font-size: 0.9em;
+            font-family: MontserratRegular;
+    }
+}
+
+//End custom checkbox
