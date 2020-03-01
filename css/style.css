@@ -36,12 +36,6 @@ body {
   }
 }
 
-@media only screen and (max-width: 576px) {
-  body {
-    font-size: 0.9em;
-  }
-}
-
 .btn {
   background-color: #44337b;
   border: none;
@@ -180,7 +174,7 @@ i {
 
 @media only screen and (max-width: 768px) {
   .vertical-nav-wrapper li {
-    font-size: 1.0em;
+    font-size: 1.3em;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -234,27 +228,27 @@ i {
 
 @media only screen and (max-width: 1280px) {
   .vmenutext {
-    font-size: 0.8em;
+    font-size: 1.1em;
   }
 }
 
 @media only screen and (max-width: 1024px) {
   .vmenutext {
-    font-size: 0.6em;
+    font-size: 0.7em;
   }
 }
 
 @media only screen and (max-width: 768px) {
   .vmenutext {
     white-space: nowrap;
-    font-size: 0.5em;
+    font-size: 0.9em;
     display: block;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .vmenutext {
-    font-size: 0.3em;
+    font-size: 0.5em;
     display: block;
   }
 }
