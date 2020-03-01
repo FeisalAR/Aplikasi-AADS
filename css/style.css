@@ -76,7 +76,7 @@ i {
 }
 
 .nav-wrapper .nav-item {
-  padding-right: 35px;
+  padding-right: 15px;
 }
 
 .togglebutton i {
@@ -97,12 +97,29 @@ i {
 
 .navbar {
   background-color: rgba(255, 255, 255, 0);
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 40px;
 }
 
 .navbar img {
   width: 150px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .navbar {
+    font-size: 0.9em;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  .navbar {
+    font-size: 0.8em;
+  }
+}
+
+.navbar .hactive {
+  border-bottom: 5px solid #dcd0f3;
+  font-weight: 800;
 }
 
 .navbar .userHmenu, .navbar .guestHmenu {
@@ -146,15 +163,24 @@ i {
 .vertical-nav-wrapper {
   background-color: rgba(31, 36, 50, 0.7);
   border-radius: 6px;
+  font-size: 0.8em;
 }
 
-.vertical-nav-wrapper li {
-  padding-top: 10px;
+@media only screen and (max-width: 1280px) {
+  .vertical-nav-wrapper li {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .vertical-nav-wrapper li {
+    font-size: 2em;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .vertical-nav-wrapper li {
-    font-size: 1.3em;
+    font-size: 1.0em;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -162,31 +188,40 @@ i {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .vertical-nav-wrapper .navbar {
-    padding: 10px;
+.vertical-nav-wrapper .vactive {
+  border-right: 5px solid #dcd0f3;
+  font-weight: 800;
+  background-color: rgba(16, 19, 27, 0.7);
+}
+
+.vertical-nav-wrapper .navbar {
+  padding: 0;
+}
+
+.vertical-nav-wrapper .nav-link {
+  padding: 20px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .vertical-nav-wrapper .nav-link {
+    padding-left: 40px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .vertical-nav-wrapper .nav-link {
     padding-top: 5px;
-    padding-left: 15px;
+    padding-bottom: 10px;
+  }
+  .vertical-nav-wrapper .nav-link i {
+    font-size: 2em;
+    text-align: center;
+    padding-left: 10px;
   }
 }
 
-@media only screen and (max-width: 576px) {
-  .vertical-nav-wrapper .navbar {
-    padding: 10px;
-    padding-top: 5px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .vertical-nav-wrapper .navbar-nav {
-    padding: 5px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .vertical-nav-wrapper .nav-item {
-    padding-left: 2px;
-  }
+.vertical-nav-wrapper .navbar-nav {
+  width: 100%;
 }
 
 .col-2 {
@@ -194,7 +229,7 @@ i {
 }
 
 .vmenutext {
-  white-space: nowrap;
+  font-size: 1.2em;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -211,6 +246,7 @@ i {
 
 @media only screen and (max-width: 768px) {
   .vmenutext {
+    white-space: nowrap;
     font-size: 0.5em;
     display: block;
   }

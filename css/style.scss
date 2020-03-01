@@ -19,7 +19,7 @@ $formColour : #EEECF1;
 $btnColour: rgb(68, 51, 123);
 $h1Colour: rgb(70, 50, 111);
 $h2Colour: rgb(105, 90, 133);
-
+$activelinkcolour: rgb(220, 208, 243);
 
 html{
     min-height: 100%;
@@ -79,7 +79,7 @@ body{
         color: white;
     }
     .nav-item{
-        padding-right: 35px;
+        padding-right: 15px;
     }
 
 }
@@ -102,10 +102,23 @@ body{
 
 .navbar{
     background-color: rgba(#fff, 0);
-    padding-top: 20px;
+    padding-top: 10px;
     padding-left: 40px;
     img{
         width:150px;        
+    }
+
+    @media only screen and (max-width: 1200px) {
+            font-size:  0.9em;
+        }
+
+    @media only screen and (max-width: 1080px) {
+            font-size:  0.8em;
+        }
+
+    .hactive{
+        border-bottom: 5px solid $activelinkcolour;
+        font-weight: 800;
     }
 
     .userHmenu, .guestHmenu{
@@ -149,40 +162,54 @@ body{
 .vertical-nav-wrapper{
     background-color: $verticalNavColour;
     border-radius: 6px;
+    font-size: 0.8em;
 
     li{
-        padding-top: 10px;
-
+        @media only screen and (max-width: 1280px) {
+            font-size: 1.2em;
+        }
+        @media only screen and (max-width: 1024px) {
+            font-size: 2em;
+        }
         @media only screen and (max-width: 768px) {
-            font-size: 1.3em;
+            font-size: 1.0em;
             align-items: center;
             text-align: center;        
         }
     }
 
+    .vactive{
+        border-right: 5px solid $activelinkcolour;
+        font-weight: 800;
+        background-color: rgba(16, 19, 27, 0.7);
+    }
+
     .navbar{
-        @media only screen and (max-width: 768px) {
-            padding:10px;       
-            padding-top: 5px;
-            padding-left: 15px;  
+        padding:0;
+    }
+
+    .nav-link{
+        padding: 20px;
+        @media only screen and (min-width: 1024px) {
+            padding-left: 40px;
         }
+
         @media only screen and (max-width: 576px) {
-            padding:10px;       
-            padding-top: 5px;  
+            padding-top: 5px;
+            padding-bottom: 10px;
+
+            i{
+                font-size: 2em;
+                text-align: center;
+                padding-left: 10px;
+            }
         }
     }
 
     .navbar-nav{
-        @media only screen and (max-width: 576px) {
-        padding: 5px;
-        }
+        width: 100%;
     }
 
-    .nav-item{
-        @media only screen and (max-width: 576px) {
-        padding-left: 2px;
-        }
-    }
 }
 
 
@@ -190,9 +217,8 @@ body{
     padding:0;
 }
 
-.vmenutext{
-    white-space: nowrap; 
-
+.vmenutext{  
+    font-size: 1.2em;
     @media only screen and (max-width: 1280px) {
     font-size: 0.8em;            
     }
@@ -202,6 +228,7 @@ body{
     }
 
     @media only screen and (max-width: 768px) {
+    white-space: nowrap; 
     font-size: 0.5em;   
     display: block;              
     }
