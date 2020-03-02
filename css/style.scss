@@ -246,12 +246,10 @@ body{
     }
 
     @media only screen and (max-width: 768px) {
-    //white-space: nowrap; 
     font-size: 1em;                 
     }
 
     @media only screen and (max-width: 640px) {
-    //white-space: nowrap; 
     display: block;                 
     }
 
@@ -288,7 +286,7 @@ body{
 main{
     background-color: $formColour;
     padding: 50px;
-    padding-top: 20px;;
+    padding-top: 20px;
     margin-right: 3%;
     margin-left: 1%;
     border-radius: 6px; 
@@ -298,7 +296,7 @@ main{
         }
 }
 
-.card{
+.artikelcard{
     font-size: 0.9em;
     border-bottom: none;
     .card-body{
@@ -320,7 +318,6 @@ main{
     }
 
     img{
-        width: 100%;
         height: 10vw;
         object-fit: cover;
         @media only screen and (max-width: 950px) {
@@ -335,6 +332,41 @@ main{
         }
     }
 }
+
+#listingcards{
+    .card{
+        background-color: rgba( #fff, 0);
+        border: none;
+    }
+    .list-group-item{
+        padding: 5px 20px;
+    }
+    .list-group-item:hover{
+        background: #f1f1f1;
+    }
+    .user-img img{
+        height: 70px;
+        width: 70px;
+    }
+    .card-header h4{
+        display: inline-block;
+        padding: 12px 15px 8px 15px;
+    }
+    .card-header ul{
+        list-style: none;
+    }
+    .search-div{
+        display: none;
+    }
+    .user-detail{
+        font-size: 0.6em;
+    }
+    h5{
+        font-size: 0.8em;
+    }
+}
+
+
 
 .arsiptitle{
     margin-top: 10px;
@@ -402,4 +434,8 @@ form{
 .suggestdaftar{
     margin: 20px;
     margin-left: 0;
+
+    a{
+        color: lighten($btnColour, 20%);
+    }
 }

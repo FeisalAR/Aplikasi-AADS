@@ -321,61 +321,99 @@ main {
   }
 }
 
-.card {
+.artikelcard {
   font-size: 0.9em;
   border-bottom: none;
 }
 
-.card .card-body {
+.artikelcard .card-body {
   padding-bottom: 20px;
 }
 
-.card .btn {
+.artikelcard .btn {
   background-color: #44337b;
   font-size: 0.9em;
 }
 
 @media only screen and (max-width: 700px) {
-  .card .btn {
+  .artikelcard .btn {
     font-size: 0.8em;
   }
 }
 
 @media only screen and (max-width: 649px) {
-  .card .btn {
+  .artikelcard .btn {
     font-size: 0.7em;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .card .btn {
+  .artikelcard .btn {
     font-size: 1em;
   }
 }
 
-.card img {
-  width: 100%;
+.artikelcard img {
   height: 10vw;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
 @media only screen and (max-width: 950px) {
-  .card img {
+  .artikelcard img {
     height: 10vw;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .card img {
+  .artikelcard img {
     height: 8vw;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .card img {
+  .artikelcard img {
     height: 40vw;
   }
+}
+
+#listingcards .card {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+#listingcards .list-group-item {
+  padding: 5px 20px;
+}
+
+#listingcards .list-group-item:hover {
+  background: #f1f1f1;
+}
+
+#listingcards .user-img img {
+  height: 70px;
+  width: 70px;
+}
+
+#listingcards .card-header h4 {
+  display: inline-block;
+  padding: 12px 15px 8px 15px;
+}
+
+#listingcards .card-header ul {
+  list-style: none;
+}
+
+#listingcards .search-div {
+  display: none;
+}
+
+#listingcards .user-detail {
+  font-size: 0.6em;
+}
+
+#listingcards h5 {
+  font-size: 0.8em;
 }
 
 .arsiptitle {
@@ -439,5 +477,9 @@ input[type=number]::-webkit-outer-spin-button {
 .suggestdaftar {
   margin: 20px;
   margin-left: 0;
+}
+
+.suggestdaftar a {
+  color: #705aba;
 }
 /*# sourceMappingURL=style.css.map */
