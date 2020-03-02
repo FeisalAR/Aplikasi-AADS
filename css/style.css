@@ -121,11 +121,23 @@ i {
   text-align: center;
 }
 
+@media only screen and (max-width: 576px) {
+  .navbar .userHmenu, .navbar .guestHmenu {
+    margin-left: 0;
+  }
+}
+
 .navbar .guestlogin {
   padding-left: 40px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .navbar .guestlogin {
+    padding-left: 0;
+  }
 }
 
 .navbar .mr-sm-2, .navbar .mx-sm-2 {
@@ -204,13 +216,16 @@ i {
 
 @media only screen and (max-width: 576px) {
   .vertical-nav-wrapper .nav-link {
+    padding: 0;
+    padding-left: 14px;
     padding-top: 5px;
     padding-bottom: 10px;
+    margin-top: 10px;
   }
   .vertical-nav-wrapper .nav-link i {
-    font-size: 2em;
+    font-size: 1.8em;
     text-align: center;
-    padding-left: 10px;
+    padding-left: 5px;
   }
 }
 
@@ -223,7 +238,13 @@ i {
 }
 
 .vmenutext {
-  font-size: 1.2em;
+  font-size: 1.3em;
+}
+
+@media only screen and (max-width: 1440px) {
+  .vmenutext {
+    font-size: 1.2em;
+  }
 }
 
 @media only screen and (max-width: 1280px) {
@@ -240,8 +261,12 @@ i {
 
 @media only screen and (max-width: 768px) {
   .vmenutext {
-    white-space: nowrap;
-    font-size: 0.9em;
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .vmenutext {
     display: block;
   }
 }
@@ -347,11 +372,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .kategori {
-  margin-top: 20px;
+  background-color: #fafafa;
+  border-radius: 6px;
+  border: 1px #d6d6d6 solid;
+  padding: 20px;
 }
 
 .kategori .form-check-label {
   font-size: 0.9em;
   font-family: MontserratRegular;
+}
+
+@media only screen and (max-width: 576px) {
+  .kategori .form-check-inline {
+    display: block;
+  }
 }
 /*# sourceMappingURL=style.css.map */
