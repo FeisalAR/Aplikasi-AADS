@@ -435,4 +435,9 @@ input[type=number]::-webkit-outer-spin-button {
     display: block;
   }
 }
+
+.suggestdaftar {
+  margin: 20px;
+  margin-left: 0;
+}
 /*# sourceMappingURL=style.css.map */
