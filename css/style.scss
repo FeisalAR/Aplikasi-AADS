@@ -200,6 +200,12 @@ body{
             padding-left: 40px;
         }
 
+        @media only screen and (max-width: 950px) {
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+
         @media only screen and (max-width: 576px) {
             padding: 0;
             padding-left: 14px;
@@ -301,10 +307,32 @@ main{
     
     .btn{
         background-color: $btnColour;
+        font-size: 0.9em;
+        @media only screen and (max-width: 700px) {
+            font-size: 0.8em;          
+        }
+        @media only screen and (max-width: 649px) {
+            font-size: 0.7em;          
+        }
+        @media only screen and (max-width: 576px) {
+            font-size: 1em;          
+        }
     }
 
     img{
-        max-height: 30%;
+        width: 100%;
+        height: 10vw;
+        object-fit: cover;
+        @media only screen and (max-width: 950px) {
+            height: 10vw;          
+        }
+
+        @media only screen and (max-width: 768px) {
+            height: 8vw;          
+        }
+        @media only screen and (max-width: 600px) {
+            height: 40vw;          
+        }
     }
 }
 
