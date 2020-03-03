@@ -44,23 +44,23 @@
 
                 <div class="collapse navbar-collapse" id="HnavbarToggler">
                     <!-- Links -->
-                    <ul class="userHmenu navbar-nav d-none">
+                    <ul class="userHmenu navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="#"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                            <a class="nav-link" href="#"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link hactive" href="#"><i class="icon fas fa-tasks"></i>Kelola Program</a>
                         </li>
                     </ul>
 
-                    <ul class="guestHmenu navbar-nav navbar-collapse">
+                    <!-- <ul class="guestHmenu navbar-nav navbar-collapse">
                         <li class="nav-item">
                             <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
-                    </ul>
+                    </ul> -->
 
                     <!-- Search form -->
                     <form class="form-inline ml-auto navbar-nav navbar-collapse">
@@ -74,7 +74,7 @@
                         </div>
                     </form>
 
-                    <ul class="userlogin navbar-nav navbar-collapse">
+                    <!-- <ul class="userlogin navbar-nav navbar-collapse">
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
                         </li>
@@ -82,7 +82,7 @@
                             <a class="nav-link" href="registrasi.html"><i
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
                         </li>
-                    </ul>
+                    </ul> -->
                     <ul class="userlogout navbar-nav navbar-collapse">
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
@@ -142,7 +142,7 @@
                         </li>
                     </ul>
 
-                    <ul class="guestVmenu navbar-nav">
+                    <ul class="guestVmenu navbar-nav d-none">
                         <li class="nav-item">
                             <a href="#" class="nav-link vactive">
                                 <i class="icon fas fa-list"></i>
@@ -155,14 +155,14 @@
                         </li>
                     </ul>
 
-                    <ul class="programVmenu navbar-nav d-none">
+                    <ul class="programVmenu navbar-nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link vactive">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
                         <li class="nav-item">
-                            <a href="tambah_program.html" class="nav-link vactive">
+                            <a href="tambah_program.html" class="nav-link">
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
@@ -184,7 +184,7 @@
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
-                            <h1>Listing ADS</h1>
+                            <h1>Listing Program</h1>
                         </div>
                     </div>
 
@@ -208,46 +208,134 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="search-input">
                                                             <input type="text" class="form-control rounded-0"
-                                                                placeholder="&#xF002;   Cari Nama atau Kode ADS..."
+                                                                placeholder="&#xF002;   Cari Kode Program atau Nama ADS..."
                                                                 aria-label="Recipient's username"
                                                                 style="font-family: Montserrat, FontAwesome;"
-                                                                aria-describedby="basic-addon2" id="user-list-search">
+                                                                aria-describedby="basic-addon2"
+                                                                id="program-list-search">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <ul class="list-group" id="user-list">
+                                                <ul class="list-group" id="program-list">
                                                     <li class="list-group-item">
                                                         <div class="row">
                                                             <div class="col-md-12 col-12">
                                                                 <div class="row">
-                                                                    <div
-                                                                        class="col-md-4 col-4 user-img text-center pt-1">
-                                                                        <img src="http://nicesnippets.com/demo/cs-image2.png"
-                                                                            alt="Seth Frazier"
-                                                                            class="img-responsive img-circle rounded-circle" />
-                                                                    </div>
-                                                                    <div class="col-md-8 col-8">
-                                                                        <h5 class="font-weight-bold mb-1 namaads">Nick
-                                                                            Daniel
+
+                                                                    <div class="col-md-12 col-12">
+                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
+                                                                            Mengenal Warna
                                                                         </h5>
                                                                         <div class="user-detail">
-                                                                            <p class="m-0  bdads"><i
-                                                                                    class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i> 10/03/2019
-                                                                            </p>
-                                                                            <p class="m-0"><i class="fas fa-mars mr-1"
+                                                                            <p class="m-0 text-warning status"><i
+                                                                                    class="fas fa-hourglass-half"
                                                                                     aria-hidden="true"></i>
-                                                                                Laki-laki</p>
+                                                                                <b>Pending</b>
+                                                                            </p>
+                                                                            <p class="m-0  targetdate"><i
+                                                                                    class="fas fa-calendar mr-1"
+                                                                                    aria-hidden="true"></i> 11/06/2020
+                                                                            </p>
+                                                                            <p class="m-0  namaads"><i
+                                                                                    class="fas fa-user mr-1"
+                                                                                    aria-hidden="true"></i>
+                                                                                Nick Daniel | ADS001</p>
                                                                             <p class="m-0"><i
-                                                                                    class="fa fa-user-friends mr-1 ortuads"></i>Nama
-                                                                                Orang Tua</p>
-                                                                            <p class="m-0  kodeads"><i
-                                                                                    class="fas fa-key mr-1"></i>ADS001
+                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
+                                                                                mengenal berbagai warna dalam lingkungan
+                                                                                sekitar</p>
+
+                                                                            <p class="m-0 kodeprogram"><i
+                                                                                    class="fas fa-key mr-1"></i>P001
                                                                             </p>
                                                                             <p class="m-0"><i
-                                                                                    class="far fa-address-card mr-1"
+                                                                                    class="fas fa-external-link-square-alt mr-1"
                                                                                     aria-hidden="true"></i>
-                                                                                Lihat Profil</p>
+                                                                                Lihat Detail</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="list-group-item">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-12">
+                                                                <div class="row">
+
+                                                                    <div class="col-md-12 col-12">
+                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
+                                                                            Mengenal Angka
+                                                                        </h5>
+                                                                        <div class="user-detail">
+                                                                            <p class="m-0 text-success status"><i
+                                                                                    class="fas fa-check"
+                                                                                    aria-hidden="true"></i>
+                                                                                <b>Selesai</b>
+                                                                            </p>
+                                                                            <p class="m-0  targetdate"><i
+                                                                                    class="fas fa-calendar mr-1"
+                                                                                    aria-hidden="true"></i> 11/06/2020
+                                                                            </p>
+                                                                            <p class="m-0 namaads"><i
+                                                                                    class="fas fa-user mr-1"
+                                                                                    aria-hidden="true"></i>
+                                                                                Glenda Favier | ADS004</p>
+                                                                            <p class="m-0"><i
+                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
+                                                                                mengenal berbagai angka dalam lingkungan
+                                                                                sekitar</p>
+
+                                                                            <p class="m-0 kodeprogram"><i
+                                                                                    class="fas fa-key mr-1"></i>P002
+                                                                            </p>
+                                                                            <p class="m-0"><i
+                                                                                    class="fas fa-external-link-square-alt mr-1"
+                                                                                    aria-hidden="true"></i>
+                                                                                Lihat Detail</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="list-group-item">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-12">
+                                                                <div class="row">
+
+                                                                    <div class="col-md-12 col-12">
+                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
+                                                                            Mengenal Huruf
+                                                                        </h5>
+                                                                        <div class="user-detail">
+                                                                            <p class="m-0 text-warning status"><i
+                                                                                    class="fas fa-hourglass-half"
+                                                                                    aria-hidden="true"></i>
+                                                                                <b>Pending</b>
+                                                                            </p>
+                                                                            <p class="m-0  targetdate"><i
+                                                                                    class="fas fa-calendar mr-1"
+                                                                                    aria-hidden="true"></i> 11/06/2020
+                                                                            </p>
+                                                                            <p class="m-0  namaads"><i
+                                                                                    class="fas fa-user mr-1"
+                                                                                    aria-hidden="true"></i>
+                                                                                Debbie Scoomin | ADS002</p>
+                                                                            <p class="m-0"><i
+                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
+                                                                                mengenal berbagai huruf dalam lingkungan
+                                                                                sekitar</p>
+
+                                                                            <p class="m-0 kodeprogram"><i
+                                                                                    class="fas fa-key mr-1"></i>P003
+                                                                            </p>
+                                                                            <p class="m-0"><i
+                                                                                    class="fas fa-external-link-square-alt mr-1"
+                                                                                    aria-hidden="true"></i>
+                                                                                Lihat Detail</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -256,124 +344,7 @@
                                                     </li>
 
 
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-                                                                    <div
-                                                                        class="col-md-4 col-4 user-img text-center pt-1">
-                                                                        <img src="http://nicesnippets.com/demo/cs-image6.jpg"
-                                                                            alt="Debbie Schmidt"
-                                                                            class="img-responsive img-circle rounded-circle" />
-                                                                    </div>
-                                                                    <div class="col-md-8 col-8">
-                                                                        <h5 class="font-weight-bold mb-1 namaads">Debbie
-                                                                            Scoomin
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <p class="m-0  bdads"><i
-                                                                                    class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i> 23/08/2017
-                                                                            </p>
-                                                                            <p class="m-0"><i class="fas fa-venus mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Perempuan</p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-user-friends mr-1  ortuads"></i>Maximillian
-                                                                                Scoomin</p>
-                                                                            <p class="m-0 kodeads"><i
-                                                                                    class="fas fa-key mr-1"></i>ADS002
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="far fa-address-card mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Lihat Profil</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
 
-
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-                                                                    <div
-                                                                        class="col-md-4 col-4 user-img text-center pt-1">
-                                                                        <img src="http://nicesnippets.com/demo/cs-image3.jpg"
-                                                                            alt="Debbie Schmidt"
-                                                                            class="img-responsive img-circle rounded-circle" />
-                                                                    </div>
-                                                                    <div class="col-md-8 col-8">
-                                                                        <h5 class="font-weight-bold mb-1 namaads">John
-                                                                            Tokio
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <p class="m-0 bdads"><i
-                                                                                    class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i> 23/08/2017
-                                                                            </p>
-                                                                            <p class="m-0"><i class="fas fa-venus mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Perempuan</p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-user-friends mr-1  ortuads"></i>Kioto
-                                                                                Tokio</p>
-                                                                            <p class="m-0  kodeads"><i
-                                                                                    class="fas fa-key mr-1"></i>ADS003
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="far fa-address-card mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Lihat Profil</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-                                                                    <div
-                                                                        class="col-md-4 col-4 user-img text-center pt-1">
-                                                                        <img src="http://nicesnippets.com/demo/cs-image7.jpg"
-                                                                            alt="Debbie Schmidt"
-                                                                            class="img-responsive img-circle rounded-circle" />
-                                                                    </div>
-                                                                    <div class="col-md-8 col-8">
-                                                                        <h5 class="font-weight-bold mb-1 namaads">Glenda
-                                                                            Favier
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <p class="m-0 bdads"><i
-                                                                                    class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i> 23/08/2017
-                                                                            </p>
-                                                                            <p class="m-0"><i class="fas fa-venus mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Perempuan</p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-user-friends mr-1  ortuads"></i>Limmy
-                                                                                Favier</p>
-                                                                            <p class="m-0  kodeads"><i
-                                                                                    class="fas fa-key mr-1"></i>ADS004
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="far fa-address-card mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Lihat Profil</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
 
                                                 </ul>
                                             </div>
@@ -391,6 +362,5 @@
     </div>
     </div>
 </body>
-
 
 </html>

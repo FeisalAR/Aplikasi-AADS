@@ -366,6 +366,20 @@ main{
     }
 }
 
+.search-div{
+    display: block;
+    ::placeholder{
+        font-style: italic;
+    }    
+}
+
+#user-list{
+    i{
+        color: $btnColour;
+        margin-right: 8px !important;
+    }
+}
+
 
 
 .arsiptitle{
