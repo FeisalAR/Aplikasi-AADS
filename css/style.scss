@@ -268,11 +268,15 @@ body{
 }
 
     h1{
-        font-size: 1.6em;
+        font-size: 1.4em;
         font-weight: 800;
         font-variant-caps: all-petite-caps;
         font-family: MontserratSemiBold;
         color: $h1Colour;
+        @media only screen and (max-width: 640px) {
+            text-align: center;
+            font-size: 1.2em;      
+        }
     }
 
     h2{
@@ -345,8 +349,13 @@ main{
         background: #f1f1f1;
     }
     .user-img img{
-        height: 70px;
-        width: 70px;
+        height: 120px;
+        width: 120px;
+        @media only screen and (max-width: 640px) {
+            height: 90px;  
+            width: 90px; 
+            margin-bottom: 10px;       
+        }
     }
     .card-header h4{
         display: inline-block;
@@ -362,13 +371,39 @@ main{
         font-size: 0.6em;
     }
     h5{
-        font-size: 0.8em;
+        font-size: 0.9em;        
     }
+    #user-list-profile{
+        @media only screen and (max-width: 600px) {
+            text-align: center;       
+        }
+        p{
+            padding: 3px;
+        }
+        @media only screen and (min-width: 768px) {
+            font-size: 1.3em;
+        }
+    }
+    
+    #program-list{
+        .list-group-item{
+            @media only screen and (max-width: 640px) {
+            padding: 15px;
+            }
+        }
+        
+    }
+
+    //id wide mq
+    // @media only screen and (max-width: 600px) {
+    //         text-align: center;       
+    //     }
 }
 
 .search-div{
     display: block;
     ::placeholder{
+        font-size: 0.9em;
         font-style: italic;
     }    
 }
@@ -379,6 +414,7 @@ main{
         margin-right: 8px !important;
     }
 }
+
 
 
 
