@@ -86,7 +86,7 @@ body{
 }
 
 .togglebutton{
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 992px) {
         display: none;
         visibility: hidden;            
     }
@@ -201,7 +201,7 @@ body{
         }
 
         @media only screen and (max-width: 950px) {
-            text-align: center;
+            //text-align: center;
             font-size: 0.9em;
         }
 
@@ -285,6 +285,10 @@ body{
         font-variant-caps: all-petite-caps;
         font-family: MontserratSemiBold;
         color: $h2Colour;
+        @media only screen and (max-width: 640px) {
+            text-align: center;
+            font-size: 1.0em; 
+        }
     }
 
 main{
@@ -300,11 +304,20 @@ main{
         }
 }
 
+.card-group {
+    @media only screen and (max-width: 812px){
+        flex-flow: column !important;
+    }    
+}
+
 .artikelcard{
     font-size: 0.9em;
     border-bottom: none;
     .card-body{
         padding-bottom: 20px;
+        @media only screen and (max-width: 640px) {
+            text-align: center;          
+        }
     }
     
     .btn{
@@ -328,11 +341,11 @@ main{
             height: 10vw;          
         }
 
-        @media only screen and (max-width: 768px) {
-            height: 8vw;          
+        @media only screen and (max-width: 812px) {
+            height: 12vw;          
         }
         @media only screen and (max-width: 600px) {
-            height: 40vw;          
+            height: 30vw;          
         }
     }
 }
@@ -444,9 +457,21 @@ form{
 }
 
     .tanggal{
-        width: 18%;
+        width: 25%;
 
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: 950px) {
+            width: 30%;
+        }
+        @media only screen and (max-width: 790px) {
+            width: 50%;
+        }
+        @media only screen and (max-width: 576px) {
+            width: 60%;
+        }
+        @media only screen and (max-width: 450px) {
+            width: 80%;
+        }
+        @media only screen and (max-width: 320px) {
             width: 100%;
         }
     }
@@ -480,6 +505,69 @@ form{
 }
 
 //End custom checkbox
+
+
+//---Custom Radio field---
+.status{
+    background-color: rgb(250, 250, 250);
+    border-radius: 6px;
+    border: 1px rgb(214, 214, 214) solid;
+    padding: 5px;
+    width: 25%; 
+    @media only screen and (max-width: 812px) { 
+        width: 100%;              
+        }
+    .radio-inline{
+        font-size: 0.9em;
+        font-family: MontserratRegular;
+        margin-left: 15px;
+        &::first-child{
+            @media only screen and (max-width: 576px) { 
+            margin-left: 0;                          
+            }
+        }
+        
+    }
+}
+
+.tanggalselesaitoggle{
+    display: none;
+}
+//---End of Custom Radio field---
+
+#fotoprofil{
+    padding: 20px;
+    background-color: rgb(250, 250, 250);
+    border-radius: 6px;
+    border: 1px rgb(214, 214, 214) solid;
+    ol {
+        padding-left: 0;
+    }
+
+    li, div > p {
+        margin-bottom: 10px;
+        list-style-type: none;
+    }
+
+    img {
+        height: 64px;
+    }
+
+    p {
+        padding-left: 10px;
+    }
+
+    label, button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        background-color: $btnColour;
+        color: #fff;
+    }
+}
+
+
+
 
 .suggestdaftar{
     margin: 20px;

@@ -78,7 +78,7 @@ i {
   font-size: 1.3em;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .togglebutton {
     display: none;
     visibility: hidden;
@@ -216,7 +216,6 @@ i {
 
 @media only screen and (max-width: 950px) {
   .vertical-nav-wrapper .nav-link {
-    text-align: center;
     font-size: 0.9em;
   }
 }
@@ -313,6 +312,13 @@ h2, form label {
   color: #695a85;
 }
 
+@media only screen and (max-width: 640px) {
+  h2, form label {
+    text-align: center;
+    font-size: 1.0em;
+  }
+}
+
 main {
   background-color: #EEECF1;
   padding: 50px;
@@ -328,6 +334,15 @@ main {
   }
 }
 
+@media only screen and (max-width: 812px) {
+  .card-group {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-flow: column !important;
+            flex-flow: column !important;
+  }
+}
+
 .artikelcard {
   font-size: 0.9em;
   border-bottom: none;
@@ -335,6 +350,12 @@ main {
 
 .artikelcard .card-body {
   padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 640px) {
+  .artikelcard .card-body {
+    text-align: center;
+  }
 }
 
 .artikelcard .btn {
@@ -372,15 +393,15 @@ main {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 812px) {
   .artikelcard img {
-    height: 8vw;
+    height: 12vw;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .artikelcard img {
-    height: 40vw;
+    height: 30vw;
   }
 }
 
@@ -503,10 +524,34 @@ form .form-group {
 }
 
 .tanggal {
-  width: 18%;
+  width: 25%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 950px) {
+  .tanggal {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .tanggal {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .tanggal {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .tanggal {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
   .tanggal {
     width: 100%;
   }
@@ -538,6 +583,68 @@ input[type=number]::-webkit-outer-spin-button {
   .kategori .form-check-inline {
     display: block;
   }
+}
+
+.status {
+  background-color: #fafafa;
+  border-radius: 6px;
+  border: 1px #d6d6d6 solid;
+  padding: 5px;
+  width: 25%;
+}
+
+@media only screen and (max-width: 812px) {
+  .status {
+    width: 100%;
+  }
+}
+
+.status .radio-inline {
+  font-size: 0.9em;
+  font-family: MontserratRegular;
+  margin-left: 15px;
+}
+
+@media only screen and (max-width: 576px) {
+  .status .radio-inline::first-child {
+    margin-left: 0;
+  }
+}
+
+.tanggalselesaitoggle {
+  display: none;
+}
+
+#fotoprofil {
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 6px;
+  border: 1px #d6d6d6 solid;
+}
+
+#fotoprofil ol {
+  padding-left: 0;
+}
+
+#fotoprofil li, #fotoprofil div > p {
+  margin-bottom: 10px;
+  list-style-type: none;
+}
+
+#fotoprofil img {
+  height: 64px;
+}
+
+#fotoprofil p {
+  padding-left: 10px;
+}
+
+#fotoprofil label, #fotoprofil button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  background-color: #44337b;
+  color: #fff;
 }
 
 .suggestdaftar {
