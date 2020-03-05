@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    //ADS Listing function
     $("#user-list-search").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $(".list-group-item").filter(function () {
@@ -8,7 +10,7 @@ $(document).ready(function () {
 
 
 
-    // Program List Function
+    // Program Listing Function
 
     $("#program-list-search").on("keyup", function () {
         var value = $(this).val().toLowerCase();
@@ -19,11 +21,37 @@ $(document).ready(function () {
 
     //-------------------------------------
 
+    // ,,MY'' Program Listing Function
 
-    //Program status toggle
+    $("#program-list-search").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $(".list-group-item").filter(function () {
+            $(this).toggle($(this).find('.namaprogram, .kodeprogram').text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+
     $(function () {
         $('input[name=radiostatus]').change(function () {
             $('.tanggalselesaitoggle').slideToggle();
+        });
+    });
+
+    //-------------------------------------
+
+
+    //Program status toggle radio button
+    $(function () {
+        $('input[name=radiofilterstatus]').change(function () {
+            var value = $(this).val();
+            if ($(this).val() != "Semua") {
+                $(".list-group-item").filter(function () {
+                    $(this).toggle($(this).find('.status').text().indexOf(value) > -1)
+                });
+            }
+            else {
+                $(".list-group-item").show();
+            }
         });
     });
     //--------------------------------------
@@ -45,7 +73,7 @@ $(document).ready(function () {
         const curFiles = input.files;
         if (curFiles.length === 0) {
             const para = document.createElement('p');
-            para.textContent = 'No files currently selected for upload';
+            para.textContent = 'File belum dipilih';
             preview.appendChild(para);
         } else {
             const list = document.createElement('ol');
@@ -56,7 +84,7 @@ $(document).ready(function () {
                 const para = document.createElement('p');
 
                 if (validFileType(file)) {
-                    para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+                    para.textContent = `Nama file : ${file.name}, Ukuran file : ${returnFileSize(file.size)}.`;
                     const image = document.createElement('img');
                     image.src = URL.createObjectURL(file);
 

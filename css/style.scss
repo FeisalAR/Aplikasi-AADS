@@ -387,7 +387,7 @@ main{
         font-size: 0.9em;        
     }
     #user-list-profile{
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: 640px) {
             text-align: center;       
         }
         p{
@@ -407,10 +407,13 @@ main{
         
     }
 
-    //id wide mq
-    // @media only screen and (max-width: 600px) {
-    //         text-align: center;       
-    //     }
+
+}
+
+.programfilters{
+    @media only screen and (max-width: 640px) {
+        text-align: center;
+    }
 }
 
 .search-div{
@@ -508,7 +511,7 @@ form{
 
 
 //---Custom Radio field---
-.status{
+.statusprogram{
     background-color: rgb(250, 250, 250);
     border-radius: 6px;
     border: 1px rgb(214, 214, 214) solid;
