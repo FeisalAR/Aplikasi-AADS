@@ -315,9 +315,12 @@ main{
     border-bottom: none;
     .card-body{
         padding-bottom: 20px;
-        @media only screen and (max-width: 640px) {
-            text-align: center;          
+        h2{
+            text-align: left;
         }
+        // @media only screen and (max-width: 640px) {
+        //     text-align: center;          
+        // }
     }
     
     .btn{
@@ -431,7 +434,32 @@ main{
     }
 }
 
+#detailprogram{
+    h5{
+        padding: 15px;
+        font-size: 0.9em;
+        font-family: montserratsemibold;
+    }
+    font-size: 1.4em;
+    p{
+        margin-bottom: 8px;
+    }    
+    .list-group-item:hover{
+        background-color: #fff;
+    }
 
+    .detailcollapser{
+        margin-bottom: 5px;
+        border: 1px solid #cfcfcf;
+        border-radius: 6px;
+        background-color:  rgb(227, 225, 255);
+    }
+    .contentp{
+        margin-top: 5px;
+        margin-bottom: 30px;
+    }
+    
+}
 
 
 .arsiptitle{

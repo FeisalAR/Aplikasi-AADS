@@ -352,10 +352,8 @@ main {
   padding-bottom: 20px;
 }
 
-@media only screen and (max-width: 640px) {
-  .artikelcard .card-body {
-    text-align: center;
-  }
+.artikelcard .card-body h2, .artikelcard .card-body form label, form .artikelcard .card-body label {
+  text-align: left;
 }
 
 .artikelcard .btn {
@@ -507,6 +505,36 @@ main {
 #user-list i {
   color: #44337b;
   margin-right: 8px !important;
+}
+
+#detailprogram {
+  font-size: 1.4em;
+}
+
+#detailprogram h5 {
+  padding: 15px;
+  font-size: 0.9em;
+  font-family: montserratsemibold;
+}
+
+#detailprogram p {
+  margin-bottom: 8px;
+}
+
+#detailprogram .list-group-item:hover {
+  background-color: #fff;
+}
+
+#detailprogram .detailcollapser {
+  margin-bottom: 5px;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  background-color: #e3e1ff;
+}
+
+#detailprogram .contentp {
+  margin-top: 5px;
+  margin-bottom: 30px;
 }
 
 .arsiptitle {

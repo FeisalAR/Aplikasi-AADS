@@ -31,6 +31,7 @@ $(document).ready(function () {
     });
 
 
+    //----Edit Program toggle tanggal selesai radio
     $(function () {
         $('input[name=radiostatus]').change(function () {
             $('.tanggalselesaitoggle').slideToggle();
@@ -121,6 +122,9 @@ $(document).ready(function () {
     }
     //-----------------------------------------
 
+    $(".detailcollapser").click(function () {
+        $(this).find(".rotate").toggleClass(".rotate.down");
+    })
 
 
 
@@ -128,6 +132,5 @@ $(document).ready(function () {
 
 
 
-
-});
+}); //---jQuery END -----
 
