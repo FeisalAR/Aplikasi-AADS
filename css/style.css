@@ -478,6 +478,10 @@ main {
   }
 }
 
+.programfilters .btn {
+  font-size: 0.8em;
+}
+
 .search-div {
   display: block;
 }
@@ -507,34 +511,52 @@ main {
   margin-right: 8px !important;
 }
 
-#detailprogram {
+#detailprogram, #catatanharian {
   font-size: 1.4em;
 }
 
-#detailprogram h5 {
+#detailprogram h5, #catatanharian h5 {
   padding: 15px;
   font-size: 0.9em;
   font-family: montserratsemibold;
 }
 
-#detailprogram p {
+#detailprogram p, #catatanharian p {
   margin-bottom: 8px;
 }
 
-#detailprogram .list-group-item:hover {
+#detailprogram .fielddetail, #catatanharian .fielddetail {
+  margin: 8px;
+}
+
+#detailprogram .list-group-item:hover, #catatanharian .list-group-item:hover {
   background-color: #fff;
 }
 
-#detailprogram .detailcollapser {
+#detailprogram .detailcollapser, #catatanharian .detailcollapser {
   margin-bottom: 5px;
-  border: 1px solid #cfcfcf;
   border-radius: 6px;
-  background-color: #e3e1ff;
+  background-color: #e6e6ff;
 }
 
-#detailprogram .contentp {
+#detailprogram .contentp, #catatanharian .contentp {
   margin-top: 5px;
   margin-bottom: 30px;
+}
+
+#detailprogram .editlink, #catatanharian .editlink {
+  padding: 15px;
+}
+
+#detailprogram .editlink .editbutton, #catatanharian .editlink .editbutton {
+  font-size: 0.5em;
+  color: #fff;
+}
+
+#catatanharian .catatanentry {
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .arsiptitle {
@@ -558,13 +580,7 @@ form .form-group {
 }
 
 .tanggal {
-  width: 25%;
-}
-
-@media only screen and (max-width: 950px) {
-  .tanggal {
-    width: 30%;
-  }
+  width: 40%;
 }
 
 @media only screen and (max-width: 790px) {

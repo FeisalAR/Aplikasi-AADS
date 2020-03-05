@@ -417,6 +417,9 @@ main{
     @media only screen and (max-width: 640px) {
         text-align: center;
     }
+    .btn{
+        font-size: 0.8em;
+    }
 }
 
 .search-div{
@@ -444,21 +447,41 @@ main{
     p{
         margin-bottom: 8px;
     }    
+    .fielddetail{
+        margin: 8px;
+    }
     .list-group-item:hover{
         background-color: #fff;
     }
 
     .detailcollapser{
         margin-bottom: 5px;
-        border: 1px solid #cfcfcf;
         border-radius: 6px;
-        background-color:  rgb(227, 225, 255);
+        background-color:  rgb(230, 230, 255);
     }
     .contentp{
         margin-top: 5px;
         margin-bottom: 30px;
     }
+
+    .editlink{
+        padding: 15px;
+        .editbutton{
+            font-size: 0.5em;
+            color: #fff;
+        }
+    }
     
+    
+}
+
+#catatanharian{
+    @extend #detailprogram;
+    .catatanentry{
+        border: 1px solid rgb(214, 214, 214);
+        border-radius: 5px;
+        padding: 5px;
+    }
 }
 
 
@@ -488,11 +511,7 @@ form{
 }
 
     .tanggal{
-        width: 25%;
-
-        @media only screen and (max-width: 950px) {
-            width: 30%;
-        }
+        width: 40%;
         @media only screen and (max-width: 790px) {
             width: 50%;
         }

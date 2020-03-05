@@ -128,8 +128,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="icon far fa-calendar-check"></i><span class="vmenutext">Catatan Harian</span>
+                            <a href="detail_program_individu.html" class="nav-link">
+                                <i class="icon far fa-calendar-check"></i><span class="vmenutext">Detail Program &
+                                    Catatan Harian</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -207,6 +208,11 @@
                                                                             <p class="m-0"><i
                                                                                     class="fa fa-user-friends mr-1 ortuads"></i>Nama
                                                                                 Orang Tua</p>
+                                                                            <p hidden class="m-0 text-warning status"><i
+                                                                                    class="fas fa-hourglass-half"
+                                                                                    aria-hidden="true"></i>
+                                                                                <b>PendingSelesai</b>
+                                                                            </p>
                                                                         </div>
                                                                     </div>
 
@@ -234,8 +240,10 @@
 
                     <div class="row programfilters">
                         <div class="col btntambahprogram mb-2">
-                            <button type="submit" class="btn btn-primary mt-3 mb-2"><i class="fas fa-plus"></i>Tambah
-                                Program Individu</button>
+                            <a href="#"><button type="submit" data-toggle="modal" data-target="#tambahprogrammodal"
+                                    data-backdrop="static" class="btn btn-primary mt-3 mb-2"><i
+                                        class="fas fa-plus"></i>Tambah
+                                    Program Individu</button></a>
                         </div>
 
                         <div class="col-md-8">
@@ -398,6 +406,93 @@
                     </div>
 
 
+                    <div class="modal fade" id="tambahprogrammodal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Program Individu</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/action_page.php">
+                                        <div class="form-group">
+                                            <label for="namaprogram">Nama Program Individu:</label>
+                                            <input type="text" class="form-control" id="namaprogram" required
+                                                aria-required="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="tujuanprogram">Tujuan:</label>
+                                            <textarea class="form-control" id="tujuanprogram" rows="3"
+                                                required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="keadaansekarang">Keadaan Sekarang:</label>
+                                            <textarea class="form-control" id="keadaansekarang" rows="3"
+                                                required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sasaranprogram">Sasaran:</label>
+                                            <textarea class="form-control" id="sasaranprogram" rows="3"
+                                                required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sumberprogram">Sumber Materi / Alat Peraga:</label>
+                                            <textarea class="form-control" id="sumberprogram" rows="3"
+                                                required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pelaksanaanprogram">Cara Pelaksanaan:</label>
+                                            <textarea class="form-control" id="pelaksanaanprogram" rows="3"
+                                                required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tanggaltarget">Tanggal Target:</label>
+                                            <input type="date" class="form-control tanggal" id="tanggaltarget" required
+                                                aria-required="true">
+                                        </div>
+
+                                        <label>Kategori (Pilih minimal Satu):</label><br>
+                                        <div class="form-group kategori">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                                    value="option1" checked>
+                                                <label class="form-check-label" for="inlineCheckbox1">Kognitif</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                                    value="option2">
+                                                <label class="form-check-label" for="inlineCheckbox2">Motorik</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                                    value="option3">
+                                                <label class="form-check-label" for="inlineCheckbox3">Sensorik</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                                    value="option3">
+                                                <label class="form-check-label"
+                                                    for="inlineCheckbox3">Kemandirian</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                                    value="option3">
+                                                <label class="form-check-label"
+                                                    for="inlineCheckbox3">Sosial-Emosional</label>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary mr-3">Submit</button><button
+                                            type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
