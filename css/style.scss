@@ -422,6 +422,16 @@ main{
     }
 }
 
+.btndetail{
+    font-size: 0.8em;
+    color: #fff;
+    padding: 4px;    
+}
+
+.btndetail:hover{
+    color: #fff; 
+}
+
 .statusfilterlabel{
     font-size: 0.9em;
 }
@@ -436,7 +446,6 @@ main{
 
 #user-list{
     i{
-        color: $btnColour;
         margin-right: 8px !important;
     }
 }
@@ -557,9 +566,26 @@ form{
         }
 }
 
+.capaianlabel{
+    font-weight: bold;
+}
+
+.catatanentrycontainer{
+    // border-radius: 6px;
+    // border: 1px rgb(214, 214, 214) solid;
+    margin-left: 20px;
+}
+
+.catatanentry{    
+    p{
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+}
+
 //--------Custom checkbox----------
 .kategori{
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(255, 254, 254);
     border-radius: 6px;
     border: 1px rgb(214, 214, 214) solid;
     padding: 20px;
@@ -649,6 +675,9 @@ form{
     }
 }
 
+
+
+//--------------Print formatting--------
 @media print{
     body{
         margin:0;
@@ -671,5 +700,12 @@ form{
         .tanggal{
             width: 25%;
         }        
+    }
+    .collapse{
+        display: block !important;
+    }
+
+    .list-group-item{
+        margin-bottom: 10px;
     }
 }

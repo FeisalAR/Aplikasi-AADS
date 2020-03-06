@@ -482,6 +482,16 @@ main {
   font-size: 0.8em;
 }
 
+.btndetail {
+  font-size: 0.8em;
+  color: #fff;
+  padding: 4px;
+}
+
+.btndetail:hover {
+  color: #fff;
+}
+
 .statusfilterlabel {
   font-size: 0.9em;
 }
@@ -511,7 +521,6 @@ main {
 }
 
 #user-list i {
-  color: #44337b;
   margin-right: 8px !important;
 }
 
@@ -642,8 +651,21 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 
+.capaianlabel {
+  font-weight: bold;
+}
+
+.catatanentrycontainer {
+  margin-left: 20px;
+}
+
+.catatanentry p {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
 .kategori {
-  background-color: #fafafa;
+  background-color: #fffefe;
   border-radius: 6px;
   border: 1px #d6d6d6 solid;
   padding: 20px;
@@ -754,6 +776,12 @@ input[type=number]::-webkit-outer-spin-button {
   }
   .periodefilter .tanggal {
     width: 25%;
+  }
+  .collapse {
+    display: block !important;
+  }
+  .list-group-item {
+    margin-bottom: 10px;
   }
 }
 /*# sourceMappingURL=style.css.map */

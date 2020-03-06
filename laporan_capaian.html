@@ -113,21 +113,22 @@
                         </li>
                         <li class="nav-item">
                             <a href="profil_ads.html" class="nav-link">
-                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil Saya</span>
+                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil & Program
+                                    Individu Saya</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="program_individu.html" class="nav-link">
                                 <i class="icon far fa-address-book"></i><span class="vmenutext">Program
                                     Individu Saya</span>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a href="detail_program_individu.html" class="nav-link">
                                 <i class="icon far fa-calendar-check"></i><span class="vmenutext">Detail Program &
                                     Catatan Harian</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="laporan_capaian.html" class="nav-link vactive">
                                 <i class="icon fas fa-chart-line"></i><span class="vmenutext">Laporan Capaian</span>
@@ -311,27 +312,154 @@
                                                                             Mengenal Warna
                                                                         </h5>
                                                                         <div class="user-detail">
-                                                                            <p class="m-0 text-warning status"><i
-                                                                                    class="fas fa-hourglass-half"
-                                                                                    aria-hidden="true"></i>
-                                                                                <b>Pending</b>
-                                                                            </p>
-                                                                            <p class="m-0  targetdate"><i
-                                                                                    class="fas fa-calendar mr-1"
-                                                                                    aria-hidden="true"></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
-                                                                                mengenal berbagai warna dalam lingkungan
-                                                                                sekitar</p>
+                                                                            <div class="row statuscapaianrow">
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-2 statuscapaian">
+                                                                                    <label class="capaianlabel">Status :
+                                                                                    </label>
+                                                                                    <span class="text-warning status"
+                                                                                        id="statuscapaian">
+                                                                                        <i class="fas fa-hourglass-half"
+                                                                                            aria-hidden="true"></i>
+                                                                                        <b>Pending</b>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 tanggalcapaian">
+                                                                                    <label class="capaianlabel">Tanggal
+                                                                                        Target :
+                                                                                    </label><span
+                                                                                        id="tanggaltargetcapaian">
+                                                                                        10/11/2020</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 selesaicapaian">
+                                                                                    <label class="capaianlabel">Tanggal
+                                                                                        Selesai:</label><span
+                                                                                        id="selesaicapaian"> -</span>
+                                                                                </div>
 
-                                                                            <p class="m-0 kodeprogram"><i
-                                                                                    class="fas fa-key mr-1"></i>P001
-                                                                            </p>
-                                                                            <p class="m-0 detailbtn"><i
-                                                                                    class="fas fa-external-link-square-alt mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Lihat Detail</p>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 kategoricapaian">
+                                                                                    <label class="capaianlabel">Kategori
+                                                                                        : </label><span
+                                                                                        id="kategoricapaian"> Kognitif,
+                                                                                        Sensorik</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row sasarancapaianrow">
+                                                                                <div class="col-sm-12 col-md-2 label">
+                                                                                    <label
+                                                                                        class="capaianlabel">Sasaran:</label>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-9 content">
+                                                                                    <span id="sasarancontent"> Lorem,
+                                                                                        ipsum dolor sit amet consectetur
+                                                                                        adipisicing elit.</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row kondisicapaianrow">
+                                                                                <div class="col-sm-12 col-md-2 label">
+                                                                                    <label class="capaianlabel">Kondisi
+                                                                                        Sekarang : </label>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-9 content">
+                                                                                    <span id="kondisicontent"> Lorem,
+                                                                                        ipsum dolor sit amet consectetur
+                                                                                        adipisicing elit. Eligendi
+                                                                                        asperiores doloremque et ab
+                                                                                        error est, ullam veniam facilis,
+                                                                                        totam vero impedit debitis
+                                                                                        maiores. Dolores obcaecati vitae
+                                                                                        explicabo laudantium neque
+                                                                                        consequatur.</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row catatancapaianrow"
+                                                                                data-toggle="collapse"
+                                                                                data-target=".catatancontentwarna">
+                                                                                <label class="capaianlabel px-3"><i
+                                                                                        class="icon fas fa-chevron-down"></i>Catatan
+                                                                                    Harian</label>
+                                                                            </div>
+
+                                                                            <div
+                                                                                class="row collapse catatancontentwarna ">
+                                                                                <div class="col catatanentrycontainer">
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                01/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna primer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                11/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna sekunder
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                20/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna tersier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                28/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna pentier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                04/04/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna hextier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                15/04/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna septier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -339,75 +467,329 @@
                                                         </div>
                                                     </li>
 
+
                                                     <li class="list-group-item">
                                                         <div class="row">
                                                             <div class="col-md-12 col-12">
                                                                 <div class="row">
-
                                                                     <div class="col-md-12 col-12">
                                                                         <h5 class="font-weight-bold mb-1 namaprogram">
                                                                             Mengenal Angka
                                                                         </h5>
                                                                         <div class="user-detail">
-                                                                            <p class="m-0 text-success status"><i
-                                                                                    class="fas fa-check"
-                                                                                    aria-hidden="true"></i>
-                                                                                <b>Selesai</b>
-                                                                            </p>
-                                                                            <p class="m-0  targetdate"><i
-                                                                                    class="fas fa-calendar mr-1"
-                                                                                    aria-hidden="true"></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
-                                                                                mengenal berbagai angka dalam lingkungan
-                                                                                sekitar</p>
+                                                                            <div class="row statuscapaianrow">
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-2 statuscapaian">
+                                                                                    <label class="capaianlabel">Status :
+                                                                                    </label>
+                                                                                    <span class="text-success status"
+                                                                                        id="statuscapaian">
+                                                                                        <i class="fas fa-check"
+                                                                                            aria-hidden="true"></i>
+                                                                                        <b> Selesai</b>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 tanggalcapaian">
+                                                                                    <label class="capaianlabel">Tanggal
+                                                                                        Target :
+                                                                                    </label><span
+                                                                                        id="tanggaltargetcapaian">
+                                                                                        10/11/2020</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 selesaicapaian">
+                                                                                    <label class="capaianlabel">Tanggal
+                                                                                        Selesai:</label><span
+                                                                                        id="selesaicapaian">03/10/2020</span>
+                                                                                </div>
 
-                                                                            <p class="m-0 kodeprogram"><i
-                                                                                    class="fas fa-key mr-1"></i>P002
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fas fa-external-link-square-alt mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Lihat Detail</p>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 kategoricapaian">
+                                                                                    <label class="capaianlabel">Kategori
+                                                                                        : </label><span
+                                                                                        id="kategoricapaian"> Kognitif
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row sasarancapaianrow">
+                                                                                <div class="col-sm-12 col-md-2 label">
+                                                                                    <label
+                                                                                        class="capaianlabel">Sasaran:</label>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-9 content">
+                                                                                    <span id="sasarancontent"> Lorem,
+                                                                                        ipsum dolor sit amet consectetur
+                                                                                        adipisicing elit.</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row kondisicapaianrow">
+                                                                                <div class="col-sm-12 col-md-2 label">
+                                                                                    <label class="capaianlabel">Kondisi
+                                                                                        Sekarang : </label>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-9 content">
+                                                                                    <span id="kondisicontent"> Lorem,
+                                                                                        ipsum dolor sit amet consectetur
+                                                                                        adipisicing elit. Eligendi
+                                                                                        asperiores doloremque et ab
+                                                                                        error est, ullam veniam facilis,
+                                                                                        totam vero impedit debitis
+                                                                                        maiores. Dolores obcaecati vitae
+                                                                                        explicabo laudantium neque
+                                                                                        consequatur.</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row catatancapaianrow"
+                                                                                data-toggle="collapse"
+                                                                                data-target=".catatancontentangka">
+                                                                                <label class="capaianlabel px-3"><i
+                                                                                        class="icon fas fa-chevron-down"></i>Catatan
+                                                                                    Harian</label>
+                                                                            </div>
+
+                                                                            <div
+                                                                                class="row collapse catatancontentangka">
+                                                                                <div class="col catatanentrycontainer">
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                01/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna primer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                11/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna sekunder
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                20/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna tersier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                28/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna pentier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                04/04/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna hextier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                15/04/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna septier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </li>
+
 
                                                     <li class="list-group-item">
                                                         <div class="row">
                                                             <div class="col-md-12 col-12">
                                                                 <div class="row">
-
                                                                     <div class="col-md-12 col-12">
                                                                         <h5 class="font-weight-bold mb-1 namaprogram">
                                                                             Mengenal Huruf
                                                                         </h5>
                                                                         <div class="user-detail">
-                                                                            <p class="m-0 text-warning status"><i
-                                                                                    class="fas fa-hourglass-half"
-                                                                                    aria-hidden="true"></i>
-                                                                                <b>Pending</b>
-                                                                            </p>
-                                                                            <p class="m-0  targetdate"><i
-                                                                                    class="fas fa-calendar mr-1"
-                                                                                    aria-hidden="true"></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
-                                                                                mengenal berbagai huruf dalam lingkungan
-                                                                                sekitar</p>
+                                                                            <div class="row statuscapaianrow">
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-2 statuscapaian">
+                                                                                    <label class="capaianlabel">Status :
+                                                                                    </label>
+                                                                                    <span class="text-warning status"
+                                                                                        id="statuscapaian">
+                                                                                        <i class="fas fa-hourglass-half"
+                                                                                            aria-hidden="true"></i>
+                                                                                        <b>Pending</b>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 tanggalcapaian">
+                                                                                    <label class="capaianlabel">Tanggal
+                                                                                        Target :
+                                                                                    </label><span
+                                                                                        id="tanggaltargetcapaian">
+                                                                                        10/11/2020</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 selesaicapaian">
+                                                                                    <label class="capaianlabel">Tanggal
+                                                                                        Selesai:</label><span
+                                                                                        id="selesaicapaian"> -</span>
+                                                                                </div>
 
-                                                                            <p class="m-0 kodeprogram"><i
-                                                                                    class="fas fa-key mr-1"></i>P003
-                                                                            </p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fas fa-external-link-square-alt mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Lihat Detail</p>
+                                                                                <div
+                                                                                    class="col-sm-12 col-md-3 kategoricapaian">
+                                                                                    <label class="capaianlabel">Kategori
+                                                                                        : </label><span
+                                                                                        id="kategoricapaian"> Kognitif,
+                                                                                        Sensorik</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row sasarancapaianrow">
+                                                                                <div class="col-sm-12 col-md-2 label">
+                                                                                    <label
+                                                                                        class="capaianlabel">Sasaran:</label>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-9 content">
+                                                                                    <span id="sasarancontent"> Lorem,
+                                                                                        ipsum dolor sit amet consectetur
+                                                                                        adipisicing elit.</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row kondisicapaianrow">
+                                                                                <div class="col-sm-12 col-md-2 label">
+                                                                                    <label class="capaianlabel">Kondisi
+                                                                                        Sekarang : </label>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-9 content">
+                                                                                    <span id="kondisicontent"> Lorem,
+                                                                                        ipsum dolor sit amet consectetur
+                                                                                        adipisicing elit. Eligendi
+                                                                                        asperiores doloremque et ab
+                                                                                        error est, ullam veniam facilis,
+                                                                                        totam vero impedit debitis
+                                                                                        maiores. Dolores obcaecati vitae
+                                                                                        explicabo laudantium neque
+                                                                                        consequatur.</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row catatancapaianrow"
+                                                                                data-toggle="collapse"
+                                                                                data-target=".catatancontenthuruf">
+                                                                                <label class="capaianlabel px-3"><i
+                                                                                        class="icon fas fa-chevron-down"></i>Catatan
+                                                                                    Harian</label>
+                                                                            </div>
+
+                                                                            <div
+                                                                                class="row collapse catatancontenthuruf ">
+                                                                                <div class="col catatanentrycontainer">
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                01/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna primer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                11/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna sekunder
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                20/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna tersier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                28/03/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna pentier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                04/04/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna hextier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row  m-0 catatanentry">
+                                                                                        <div class="col-sm-12 col-md-2">
+                                                                                            <p class="font-weight-bold">
+                                                                                                15/04/2020</p>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col-sm-12 col-md-10 content">
+                                                                                            <p>
+                                                                                                Mengenal warna septier
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -416,25 +798,26 @@
                                                     </li>
 
 
-
-
                                                 </ul>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
-
-                    <!-- Main Container end -->
-
-                </main>
             </div>
+
         </div>
+
+
+
+        <!-- Main Container end -->
+
+        </main>
+    </div>
+    </div>
     </div>
     </div>
 </body>
