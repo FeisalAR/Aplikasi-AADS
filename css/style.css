@@ -524,6 +524,10 @@ main {
   margin-right: 8px !important;
 }
 
+.backtoprofile {
+  font-size: 0.6em;
+}
+
 #detailprogram, #catatanharian {
   font-size: 1.4em;
 }
