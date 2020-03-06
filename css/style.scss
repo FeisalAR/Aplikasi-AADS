@@ -422,6 +422,10 @@ main{
     }
 }
 
+.statusfilterlabel{
+    font-size: 0.9em;
+}
+
 .search-div{
     display: block;
     ::placeholder{
@@ -512,8 +516,8 @@ form{
 
     .tanggal{
         width: 40%;
-        @media only screen and (max-width: 790px) {
-            width: 50%;
+        @media only screen and (max-width: 812px) {
+            width: 40%;
         }
         @media only screen and (max-width: 576px) {
             width: 60%;
@@ -534,6 +538,23 @@ form{
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
+}
+
+.periodefilter{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .form-control{
+        display: inline;
+    }
+}
+
+.cetaklaporanbtn{
+    font-size: 1.0em !important;
+    float: right;
+    @media only screen and (max-width: 812px) {
+            float: initial;
+            font-size: 0.8em !important;
+        }
 }
 
 //--------Custom checkbox----------
@@ -625,5 +646,30 @@ form{
 
     a{
         color: lighten($btnColour, 20%);
+    }
+}
+
+@media print{
+    body{
+        margin:0;
+        font-size: 1.5em;
+    }
+    main{
+        margin: 0;
+    }
+    .col-2{
+        flex: none;
+        max-width: 100%;
+    }
+
+    .periodefilter{
+        display: inline;
+        .form-control{
+            display: inline;
+            border: none;
+        }
+        .tanggal{
+            width: 25%;
+        }        
     }
 }

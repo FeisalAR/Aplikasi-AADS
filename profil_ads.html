@@ -113,12 +113,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="profil_ads.html" class="nav-link vactive">
-                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="edit_profil.html" class="nav-link">
-                                <i class="icon fas fa-user-edit"></i><span class="vmenutext">Edit Profil Saya</span>
+                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil Saya</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -134,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="laporan_capaian.html" class="nav-link">
                                 <i class="icon fas fa-chart-line"></i><span class="vmenutext">Laporan Capaian</span>
                             </a>
                         </li>
@@ -166,11 +161,15 @@
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
-                            <h1>Profil ADS</h1>
+                            <h1>Profil Saya</h1>
                         </div>
                     </div>
 
-
+                    <div class="col btntambahprogram mb-2">
+                        <a href="#"><button type="submit" data-toggle="modal" data-target="#editprofilmodal"
+                                data-backdrop="static" class="btn btn-primary mt-3 mb-2"><i
+                                    class="fas fa-pencil-alt"></i>Edit Profil</button></a>
+                    </div>
                     <!-- Form fields -->
                     <div class="row">
                         <div class="col">
@@ -390,6 +389,89 @@
                     </div>
 
 
+                    <div class="modal fade" id="editprofilmodal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Profil</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/action_page.php">
+                                        <div class="form-group">
+                                            <label for="namaads">Nama:</label>
+                                            <input type="text" class="form-control" id="namaads" required
+                                                aria-required="true">
+                                        </div>
+
+                                        <label>Foto Profil</label>
+                                        <div class="form-group" id="fotoprofil">
+                                            <div>
+                                                <label for="image_uploads">Pilih Foto</label>
+                                                <input type="file" class="form-control" id="image_uploads"
+                                                    name="image_uploads" accept=".jpg, .jpeg, .png">
+                                            </div>
+                                            <div class="preview">
+                                                <p>Tidak ada file yang dipilih</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="tanggallahir">Tanggal Lahir:</label>
+                                            <input type="date" class="form-control tanggal" id="tanggallahir" required
+                                                aria-required="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="jeniskelamin">Jenis Kelamin:</label>
+                                            <select class="form-control" id="jeniskelamin">
+                                                <option>Laki-laki</option>
+                                                <option>Perempuan</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="namaortu">Nama Orang Tua:</label>
+                                            <input type="text" class="form-control" id="namaortu" required
+                                                aria-required="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email">E-mail:</label>
+                                            <input type="email" class="form-control" id="email" required
+                                                aria-required="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="notelepon">No. Telepon / Handphone:</label>
+                                            <input type="number" class="form-control" id="notelepon" required
+                                                aria-required="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alamat">Alamat:</label>
+                                            <textarea class="form-control" id="alamat" rows="3"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="kecamatan">Kecamatan:</label>
+                                            <input type="text" class="form-control" id="kecamatan">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="kodepos">Kode Pos:</label>
+                                            <input type="number" class="form-control" id="kodepos">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
