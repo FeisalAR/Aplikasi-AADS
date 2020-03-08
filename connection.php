@@ -1,13 +1,11 @@
 <?php
-$db_host     = "localhost"; //localhost server
+$host        = "localhost"; //localhost server
 $db_user     = "root"; //database username
 $db_password = ""; //database password
 $db_name     = "aplikasi_aads"; //database name
 
-try
-{
-    $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOEXCEPTION $e) {
-    $e->getMessage();
-}
+$dsn = 'mysql:host=' . $host . ';dbname=' . $db_name;
+
+$pdo = new PDO($dsn, $db_user, $db_password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);

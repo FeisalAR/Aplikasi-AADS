@@ -1,3 +1,40 @@
+<?php
+include 'connection.php';
+
+if (isset($_POST['submit'])) {
+ $nama         = $_POST['tbnama'];
+ $email        = $_POST['tbemail'];
+ $username     = $_POST['tbusername'];
+ $pwd          = password_hash($_POST['tbpwd'], PASSWORD_DEFAULT);
+ $tanggallahir = $_POST['tanggallahir'];
+ $jk           = $_POST['optjk'];
+ $ortu         = $_POST['tbortu'];
+ $telepon      = $_POST['tbtelepon'];
+ $nama         = $_POST['tbnama'];
+ $alamat       = $_POST['txtalamat'];
+ $kecamatan    = $_POST['tbkecamatan'];
+ $kota         = $_POST['tbkota'];
+ $kodepos      = $_POST['tbkodepos'];
+
+ $sql = 'INSERT INTO tabel_user (username, pwd, email, nama_user, tanggal_lahir, jenis_kelamin, nama_orang_tua, nomor_telepon, alamat, kecamatan, kota, kode_pos)
+VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :nama_orang_tua, :nomor_telepon, :alamat, :kecamatan, :kota, :kode_pos)';
+
+ $stmt = $pdo->prepare($sql);
+ $stmt->execute(['username' => $username, 'pwd' => $pwd, 'email' => $email, 'nama_user' => $nama, 'tanggal_lahir' => $tanggallahir, 'jenis_kelamin' => $jk, 'nama_orang_tua' => $ortu, 'nomor_telepon' => $telepon, 'alamat' => $alamat, 'kecamatan' => $kecamatan, 'kota' => $kota, 'kode_pos' => $kodepos]);
+
+ $affectedrows = $stmt->rowCount();
+ if ($affectedrows == '0') {
+  echo "Failed !";
+ } else {
+  header('Location: login.php?status=regsuccess');
+ }
+
+} else {
+ echo '';
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +69,7 @@
                     </div>
                     <div class="col-6">
                         <!-- Brand -->
-                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.html">
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
                             <img src="images/logo.png" alt="Logo">
                         </a>
                     </div>
@@ -45,20 +82,20 @@
                     <!-- Links -->
                     <ul class="userHmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listing_ads.html"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                            <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listing_program.html"><i class="icon fas fa-tasks"></i>Kelola
+                            <a class="nav-link" href="listing_program.php"><i class="icon fas fa-tasks"></i>Kelola
                                 Program</a>
                         </li>
                     </ul>
 
                     <ul class="guestHmenu navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                     </ul>
 
@@ -75,10 +112,10 @@
                     </form>
                     <ul class="guestlogin navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
+                            <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="registrasi.html"><i
+                            <a class="nav-link hactive" href="registrasi.php"><i
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
                         </li>
                     </ul>
@@ -97,12 +134,12 @@
                 <nav class="navbar">
                     <ul class="userVmenu navbar-nav ">
                         <li class="nav-item">
-                            <a href="listing_ads.html" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list-ul"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="listing_program.html" class="nav-link">
+                            <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list-ol"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
@@ -111,12 +148,12 @@
 
                     <ul class="guestVmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a href="listing_ads.html" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing ADS</span>
                             </a>
                         <li class="nav-item">
-                            <a href="profil_ads.html" class="nav-link">
+                            <a href="profil_ads.php" class="nav-link">
                                 <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
                             </a>
                         </li>
@@ -137,42 +174,42 @@
                         </div>
                     </div>
                     <!-- Form fields -->
-                    <form action="/action_page.php">
+                    <form method="POST" action="registrasi.php">
                         <div class="form-group">
                             <label for="namaads">Nama ADS:</label>
-                            <input type="text" class="form-control" id="namaads" required aria-required="true">
+                            <input type="text" class="form-control" id="namaads" name="tbnama" required aria-required="true">
                         </div>
 
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="email" class="form-control" id="email" required aria-required="true">
+                            <input type="email" class="form-control" id="email" name="tbemail" required aria-required="true">
                         </div>
 
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" required aria-required="true">
+                            <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true">
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="password" required aria-required="true">
+                            <input type="password" class="form-control" id="password" name="tbpwd"  required aria-required="true">
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="konfirmasipassword">Konfirmasi Password:</label>
-                            <input type="password" class="form-control" id="konfirmasipassword" required
+                            <input type="password" class="form-control" id="konfirmasipassword" name="tbkonfirmpwd"  required
                                 aria-required="true">
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="tanggallahir">Tanggal Lahir:</label>
-                            <input type="date" class="form-control tanggal" id="tanggallahir" required
+                            <input type="date" class="form-control tanggal" id="tanggallahir"  name="tanggallahir"  required
                                 aria-required="true">
                         </div>
 
                         <div class="form-group">
                             <label for="jeniskelamin">Jenis Kelamin:</label>
-                            <select class="form-control" id="jeniskelamin">
+                            <select class="form-control" id="jeniskelamin"  name="optjk" >
                                 <option>Laki-laki</option>
                                 <option>Perempuan</option>
                             </select>
@@ -180,30 +217,36 @@
 
                         <div class="form-group">
                             <label for="namaortu">Nama Orang Tua:</label>
-                            <input type="text" class="form-control" id="namaortu" required aria-required="true">
+                            <input type="text" class="form-control" id="namaortu" name="tbortu"  required aria-required="true">
                         </div>
 
                         <div class="form-group">
                             <label for="notelepon">No. Telepon / Handphone:</label>
-                            <input type="number" class="form-control" id="notelepon" required aria-required="true">
+                            <input type="number" class="form-control" id="notelepon" name="tbtelepon"  required aria-required="true">
                         </div>
 
                         <div class="form-group">
                             <label for="alamat">Alamat:</label>
-                            <textarea class="form-control" id="alamat" rows="3"></textarea>
+                            <textarea class="form-control" id="alamat" name="txtalamat"  rows="3"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="kecamatan">Kecamatan:</label>
-                            <input type="text" class="form-control" id="kecamatan">
+                            <input type="text" class="form-control" id="kecamatan" name="tbkecamatan" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kota">Kota:</label>
+                            <input type="text" class="form-control" id="kota" name="tbkota" >
                         </div>
 
                         <div class="form-group">
                             <label for="kodepos">Kode Pos:</label>
-                            <input type="number" class="form-control" id="kodepos">
+                            <input type="number" class="form-control" id="kodepos" name="tbkodepos" >
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <!-- <button type="submit" name="submit" class="btn btn-primary">Submit</button> -->
+                        <input type="submit" class="btn btn-primary" name="submit" value="Daftar">
                     </form>
 
             </div> <!-- Main Container end -->
@@ -214,5 +257,6 @@
     </div>
     </div>
 </body>
+
 
 </html>

@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-6">
                         <!-- Brand -->
-                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.html">
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
                             <img src="images/logo.png" alt="Logo">
                         </a>
                     </div>
@@ -46,20 +46,20 @@
                     <!-- Links -->
                     <ul class="userHmenu navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link hactive" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listing_ads.html"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                            <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listing_program.html"><i class="icon fas fa-tasks"></i>Kelola
+                            <a class="nav-link" href="listing_program.php"><i class="icon fas fa-tasks"></i>Kelola
                                 Program</a>
                         </li>
                     </ul>
-                    <!-- 
+                    <!--
                     <ul class="guestHmenu navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link hactive" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                     </ul> -->
 
@@ -76,10 +76,10 @@
                     </form>
                     <ul class="guestlogin navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
+                            <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="registrasi.html"><i
+                            <a class="nav-link" href="registrasi.php"><i
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
                         </li>
                     </ul>
@@ -98,12 +98,12 @@
                 <nav class="navbar">
                     <ul class="userVmenu navbar-nav ">
                         <li class="nav-item">
-                            <a href="listing_ads.html" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list-ul"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="listing_program.html" class="nav-link">
+                            <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list-ol"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>

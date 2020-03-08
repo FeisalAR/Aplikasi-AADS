@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-6">
                         <!-- Brand -->
-                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.html">
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
                             <img src="images/logo.png" alt="Logo">
                         </a>
                     </div>
@@ -46,20 +46,20 @@
                     <!-- Links -->
                     <ul class="userHmenu navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listing_ads.html"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                            <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="listing_program.html"><i
+                            <a class="nav-link hactive" href="listing_program.php"><i
                                     class="icon fas fa-tasks"></i>Kelola Program</a>
                         </li>
                     </ul>
 
                     <!-- <ul class="guestHmenu navbar-nav navbar-collapse d-none">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                     </ul> -->
 
@@ -96,28 +96,28 @@
                 <nav class="navbar">
                     <ul class="userVmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a href="listing_ads.html" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="profil_ads.html" class="nav-link">
+                            <a href="profil_ads.php" class="nav-link">
                                 <i class="icon far fa-address-card"></i><span class="vmenutext">Profil Saya</span>
                             </a>
                         </li>
                         <!-- <li class="nav-item">
-                            <a href="edit_profil.html" class="nav-link">
+                            <a href="edit_profil.php" class="nav-link">
                                 <i class="icon fas fa-user-edit"></i><span class="vmenutext">Edit Profil Saya</span>
                             </a>
                         </li> -->
                         <li class="nav-item">
-                            <a href="program_individu.html" class="nav-link">
+                            <a href="program_individu.php" class="nav-link">
                                 <i class="icon far fa-address-book"></i><span class="vmenutext">Program
                                     Individu Saya</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="detail_program_individu.html" class="nav-link">
+                            <a href="detail_program_individu.php" class="nav-link">
                                 <i class="icon far fa-calendar-check"></i><span class="vmenutext">Detail Program &
                                     Catatan Harian</span>
                             </a>
@@ -131,12 +131,12 @@
 
                     <ul class="guestVmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a href="listing_ads.html" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing ADS</span>
                             </a>
                             <!-- <li class="nav-item">
-                            <a href="profil_ads.html" class="nav-link">
+                            <a href="profil_ads.php" class="nav-link">
                                 <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
                             </a>
                         </li> -->
@@ -144,19 +144,19 @@
 
                     <ul class="programVmenu navbar-nav">
                         <li class="nav-item">
-                            <a href="listing_program.html" class="nav-link">
+                            <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
 
                         <li class="nav-item">
-                            <a href="tambah_program.html" class="nav-link">
+                            <a href="tambah_program.php" class="nav-link">
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="edit_program.html" class="nav-link vactive">
+                            <a href="edit_program.php" class="nav-link vactive">
                                 <i class="icon far fa-edit"></i><span class="vmenutext">Edit Program</span>
                             </a>
                         </li>

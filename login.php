@@ -1,3 +1,46 @@
+<?php
+include 'connection.php';
+session_start();
+
+$msg = '';
+if (isset($_GET['status'])) {
+ if ($_GET['status'] == 'regsuccess') {
+  $msg = "<div class='alert alert-success' role='alert'>
+        <strong>Registrasi berhasil.</strong> Silahkan Log in.
+        </div>";
+ }
+}
+
+if (isset($_POST['submit'])) {
+ $username = $_POST['tbusername'];
+ $pwd      = $_POST['tbpwd'];
+
+ $sql  = 'SELECT username, pwd, id_user FROM tabel_user WHERE username = :username';
+ $stmt = $pdo->prepare($sql);
+ $stmt->execute(['username' => $username]);
+ $row = $stmt->fetch();
+
+ if (!empty($row)) { // checks if the user actually exists(true/false returned)
+  if (password_verify($pwd, $row->pwd)) {
+   $_SESSION['id_user'] = $row->id_user;
+   header('Location: profil_ads.php');
+
+   // password_verify success!
+  } else {
+   $msg = "<div class='alert alert-warning' role='alert'>
+        <strong>Username atau Password salah.</strong>
+        </div>";
+
+  }
+ } else {
+  $msg = "<div class='alert alert-warning' role='alert'>
+        <strong>Username tidak terdaftar.</strong>
+        </div>";
+  //email entered does not match any in DB
+ }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +75,7 @@
                     </div>
                     <div class="col-6">
                         <!-- Brand -->
-                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.html">
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
                             <img src="images/logo.png" alt="Logo">
                         </a>
                     </div>
@@ -45,20 +88,20 @@
                     <!-- Links -->
                     <ul class="userHmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listing_ads.html"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                            <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="listing_program.html"><i
+                            <a class="nav-link hactive" href="listing_program.php"><i
                                     class="icon fas fa-tasks"></i>Kelola Program</a>
                         </li>
                     </ul>
 
                     <ul class="guestHmenu navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                     </ul>
 
@@ -76,11 +119,11 @@
 
                     <ul class="userlogin navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="login.html"><i class="icon fas fa-sign-in-alt"></i>Log
+                            <a class="nav-link hactive" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log
                                 In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="registrasi.html"><i
+                            <a class="nav-link" href="registrasi.php"><i
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
                         </li>
                     </ul>
@@ -106,7 +149,7 @@
                 <nav class="navbar">
                     <ul class="userVmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a href="listing_ads.html" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
@@ -114,12 +157,12 @@
 
                     <ul class="guestVmenu navbar-nav">
                         <li class="nav-item">
-                            <a href="listing_ads.html" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list-ul"></i>
                                 <span class="vmenutext">Listing ADS</span>
                             </a>
                         <li class="nav-item">
-                            <a href="listing_program.html" class="nav-link">
+                            <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list-ol"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
@@ -128,17 +171,17 @@
 
                     <!-- <ul class="programVmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a href="listing_program.html" class="nav-link">
+                            <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
                         <li class="nav-item">
-                            <a href="tambah_program.html" class="nav-link vactive">
+                            <a href="tambah_program.php" class="nav-link vactive">
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="edit_program.html" class="nav-link">
+                            <a href="edit_program.php" class="nav-link">
                                 <i class="icon far fa-edit"></i><span class="vmenutext">Edit Program</span>
                             </a>
                         </li>
@@ -152,6 +195,9 @@
         <div class="col">
             <div class="container-fluid">
                 <main>
+<?php
+echo $msg;
+?>
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
@@ -159,15 +205,15 @@
                         </div>
                     </div>
                     <!-- Form fields -->
-                    <form action="/action_page.php">
+                    <form method="POST" action="login.php">
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" required aria-required="true">
+                            <input type="text" class="form-control" id="username" name="tbusername" required aria-required="true">
                         </div>
 
                         <div class="form-group">
                             <label for="namaprogram">Password:</label>
-                            <input type="text" class="form-control" id="namaprogram" required aria-required="true">
+                            <input type="password" class="form-control" id="password" name="tbpwd" required aria-required="true">
                         </div>
 
                         <div class="form-group">
@@ -178,10 +224,10 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Log In</button>
-
+                        <!-- <button type="submit" class="btn btn-primary">Log In</button> -->
+                        <input type="submit" class="btn btn-primary" name="submit" value="Log In">
                         <div class="suggestdaftar">
-                            <a href="registrasi.html">Belum punya akun? Klik disini.</a>
+                            <a href="registrasi.php">Belum punya akun? Klik disini.</a>
                         </div>
                     </form>
 
