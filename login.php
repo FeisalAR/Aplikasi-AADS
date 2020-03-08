@@ -15,14 +15,15 @@ if (isset($_POST['submit'])) {
  $username = $_POST['tbusername'];
  $pwd      = $_POST['tbpwd'];
 
- $sql  = 'SELECT username, pwd, id_user FROM tabel_user WHERE username = :username';
+ $sql  = 'SELECT username, pwd, id_user, nomor_user FROM tabel_user WHERE username = :username';
  $stmt = $pdo->prepare($sql);
  $stmt->execute(['username' => $username]);
  $row = $stmt->fetch();
 
  if (!empty($row)) { // checks if the user actually exists(true/false returned)
   if (password_verify($pwd, $row->pwd)) {
-   $_SESSION['id_user'] = $row->id_user;
+   $_SESSION['id_user']    = $row->id_user;
+   $_SESSION['nomor_user'] = $row->nomor_user;
    header('Location: profil_ads.php');
 
    // password_verify success!

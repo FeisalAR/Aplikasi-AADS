@@ -1,7 +1,21 @@
 <?php
 include 'connection.php';
 session_start();
-$id_user = $_SESSION['id_user'];
+$id_user    = $_SESSION['id_user'];
+$nomor_user = $_SESSION['nomor_user'];
+$msg        = "";
+
+if (isset($_GET['status'])) {
+ if ($_GET['status'] == 'editsuccess') {
+  $msg = "<div class='alert alert-success' role='alert'>
+        <strong>Edit Profil Berhasil.</strong>
+        </div>";
+ } else if ($_GET['status'] == 'addsuccess') {
+  $msg = "<div class='alert alert-success' role='alert'>
+        <strong>Tambah Program Individu Berhasil.</strong>
+        </div>";
+ }
+}
 
 $sql = 'SELECT * FROM tabel_user
 INNER JOIN tabel_program ON tabel_user.nomor_user = tabel_program.nomor_user
@@ -10,6 +24,68 @@ WHERE tabel_user.id_user = :id_user';
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['id_user' => $id_user]);
 $row = $stmt->fetchAll();
+
+?>
+
+<?php
+if (isset($_POST['submit'])) {
+ if ($_POST['submit'] == 'Tambah Program') {
+  $namaprogram        = $_POST['namaprogram'];
+  $tujuanprogram      = $_POST['tujuanprogram'];
+  $keadaansekarang    = $_POST['keadaansekarang'];
+  $sasaranprogram     = $_POST['sasaranprogram'];
+  $sumbermateri       = $_POST['sumbermateri'];
+  $pelaksanaanprogram = $_POST['pelaksanaanprogram'];
+  $tanggaltarget      = $_POST['tanggaltarget'];
+  $kategoricheck      = implode(" ", $_POST['kategoricheck']);
+
+  $sql3 = "INSERT INTO tabel_program
+                (nomor_user, nama_program, tujuan_program, keadaan_sekarang, sasaran_program, sumber_materi, cara_pelaksanaan, tanggal_target, kategori_program)
+                VALUES (:nu, :np, :tp, :ks, :sp, :sm, :cp, :tt, :kp)";
+
+  $stmt = $pdo->prepare($sql3);
+  $stmt->execute(['nu' => $nomor_user, 'np' => $namaprogram, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sp' => $sasaranprogram, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck]);
+
+  $affectedrows = $stmt->rowCount();
+  if ($affectedrows == '0') {
+   echo "HAHAHAAHA INSERT FAILED !";
+  } else {
+   echo "HAHAHAAHA GREAT SUCCESSS !";
+   header("Location: profil_ads.php?status=addsuccess");
+  }
+
+ } else if ($_POST['submit'] == 'Simpan') {
+  $nama_user     = $_POST['nama_user'];
+  $tanggal_lahir = $_POST['tanggal_lahir'];
+  $jk            = $_POST['jenis_kelamin'];
+  $nama_ortu     = $_POST['namaortu'];
+  $email         = $_POST['email'];
+  $notelepon     = $_POST['notelepon'];
+  $alamat        = $_POST['alamat'];
+  $kecamatan     = $_POST['kecamatan'];
+  $kota          = $_POST['kota'];
+  $kodepos       = $_POST['kodepos'];
+  $nama_user     = $_POST['nama_user'];
+
+  $sql4 = "UPDATE `tabel_user`
+SET `email` = :email, `nama_user` = :nama, `tanggal_lahir` = :tlahir, `jenis_kelamin` = :jk, `nama_orang_tua` = :ortu, `nomor_telepon` = :notelp, `alamat` = :alamat, `kecamatan` = :kecamatan, `kota` = :kota, `kode_pos` = :kodepos
+WHERE `tabel_user`.`nomor_user` = :nomor_user";
+
+  $stmt = $pdo->prepare($sql4);
+  $stmt->execute(['nomor_user' => $nomor_user, 'email' => $email, 'nama' => $nama_user, 'tlahir' => $tanggal_lahir, 'jk' => $jk, 'ortu' => $nama_ortu, 'notelp' => $notelepon, 'alamat' => $alamat, 'kecamatan' => $kecamatan, 'kota' => $kota, 'kodepos' => $kodepos]);
+  $affectedrows = $stmt->rowCount();
+  if ($affectedrows == '0') {
+   echo "HAHAHAAHA UPDATE FAILED !";
+  } else {
+   echo "HAHAHAAHA GREAT SUCCESSS !";
+   header("Location: profil_ads.php?status=editsuccess");
+  }
+
+ }
+
+} else {
+ echo "";
+}
 
 ?>
 
@@ -177,6 +253,9 @@ $row = $stmt->fetchAll();
         <div class='col'>
             <div class='container-fluid'>
                 <main>
+<?php
+echo $msg;
+?>
                     <div class='row'>
                         <!-- Form Title -->
                         <div class='col'>
@@ -204,30 +283,30 @@ $row = $stmt->fetchAll();
                                                                 <div class='row'>
                                                                     <div
                                                                         class='col-sm-12 col-md-3 user-img text-center pt-1'>
-                                                                        <img src='<?php echo $row->foto_profil ?>'
+                                                                        <img src='<?php echo $row[0]->foto_profil ?>'
                                                                             alt='Seth Frazier'
                                                                             class='img-responsive img-circle rounded-circle' />
                                                                     </div>
                                                                     <div class='col-sm-6 col-md-4'>
                                                                         <h5 class='font-weight-bold mb-1 namaads'>
-                                                                            <?php echo $row->nama_user; ?>
+                                                                            <?php echo $row[0]->nama_user; ?>
                                                                         </h5>
                                                                         <div class='user-detail'>
                                                                             <p class='m-0  kodeads'><i
-                                                                                    class='fas fa-key mr-1'></i><?php echo $row->id_user; ?>
+                                                                                    class='fas fa-key mr-1'></i><?php echo $row[0]->id_user; ?>
 
                                                                             </p>
                                                                             <p class='m-0  bdads'><i
                                                                                     class='fas fa-birthday-cake mr-1'
-                                                                                    aria-hidden='true'></i> <?php echo $row->tanggal_lahir; ?>
+                                                                                    aria-hidden='true'></i> <?php echo $row[0]->tanggal_lahir; ?>
 
                                                                             </p>
                                                                             <p class='m-0'><i class='fas fa-mars mr-1'
                                                                                     aria-hidden='true'></i>
-                                                                                <?php echo $row->jenis_kelamin; ?>
+                                                                                <?php echo $row[0]->jenis_kelamin; ?>
 </p>
                                                                             <p class='m-0'><i
-                                                                                    class='fa fa-user-friends mr-1 ortuads'></i><?php echo $row->nama_orang_tua; ?>
+                                                                                    class='fa fa-user-friends mr-1 ortuads'></i><?php echo $row[0]->nama_orang_tua; ?>
 </p>
                                                                             <p hidden class='m-0 text-warning status'><i
                                                                                     class='fas fa-hourglass-half'
@@ -241,23 +320,23 @@ $row = $stmt->fetchAll();
                                                                     <div class='col-sm-6 col-md-4'>
                                                                         <div class='user-detail'>
                                                                             <p class='m-0  alamatads'><i
-                                                                                    class='fas fa-home mr-1'></i><?php echo $row->alamat; ?>
+                                                                                    class='fas fa-home mr-1'></i><?php echo $row[0]->alamat; ?>
 
                                                                             </p>
                                                                             <p class='m-0  kecamatan'><i
-                                                                                    class='fas fa-landmark mr-1'></i><?php echo $row->kecamatan . ', ' . $row->kota; ?>
+                                                                                    class='fas fa-landmark mr-1'></i><?php echo $row[0]->kecamatan . ', ' . $row[0]->kota; ?>
 
                                                                             </p>
                                                                             <p class='m-0  kodepos'><i
-                                                                                    class='fas fa-envelope mr-1'></i><?php echo $row->kode_pos; ?>
+                                                                                    class='fas fa-envelope mr-1'></i><?php echo $row[0]->kode_pos; ?>
 
                                                                             </p>
                                                                             <p class='m-0  emailads'><i
-                                                                                    class='fas fa-at mr-1'></i><?php echo $row->email; ?>
+                                                                                    class='fas fa-at mr-1'></i><?php echo $row[0]->email; ?>
 
                                                                             </p>
                                                                             <p class='m-0  teleponads'><i
-                                                                                    class='fas fa-phone mr-1'></i><?php echo $row->nomor_telepon; ?>
+                                                                                    class='fas fa-phone mr-1'></i><?php echo $row[0]->nomor_telepon; ?>
 
                                                                             </p>
                                                                         </div>
@@ -326,37 +405,45 @@ $row = $stmt->fetchAll();
                                                 </div>
                                                 <ul class='list-group' id='program-list'>
 
-                                                <?php
-
+<?php
 foreach ($row as $rowitems) {
+ $statusicon;
+ $statusclass;
+ if ($rowitems->status_program == 'Pending') {
+  $statusicon  = 'fas fa-hourglass-half';
+  $statusclass = 'text-warning';
+ } else {
+  $statusicon  = 'fas fa-check';
+  $statusclass = 'text-success';
+ }
 
- echo " <li class='list-group-item'>
+ echo "<li class='list-group-item'>
                                                     <div class='row'>
                                                         <div class='col-md-12 col-12'>
                                                             <div class='row'>
 
                                                                 <div class='col-md-12 col-12'>
                                                                     <h5 class='font-weight-bold mb-1 namaprogram'>
-                                                                        '. $rowitems->nama_program .'
+                                                                        $rowitems->nama_program
                                                                     </h5>
                                                                     <div class='user-detail'>
-                                                                        <p class='m-0 text-success status'><i
-                                                                                class='fas fa-check'
+                                                                        <p class='m-0 $statusclass status'><i
+                                                                                class='fas $statusicon
                                                                                 aria-hidden='true'></i>
-                                                                            <b>'. $rowitems->status_program .'</b>
+                                                                            <b>$rowitems->status_program</b>
                                                                         </p>
                                                                         <p class='m-0  targetdate'><i
                                                                                 class='fas fa-calendar mr-1'
-                                                                                aria-hidden='true'></i> '. $rowitems->tanggal_target .'
+                                                                                aria-hidden='true'></i>$rowitems->tanggal_target
                                                                         </p>
                                                                         <p class='m-0'><i
-                                                                                class='fa fa-bullseye mr-1 sasaran'></i>'. $rowitems->sasaran_program .'</p>
+                                                                                class='fa fa-bullseye mr-1 sasaran'></i>$rowitems->sasaran_program</p>
 
                                                                         <p class='m-0 kodeprogram'><i
-                                                                                class='fas fa-key mr-1'></i>'. $rowitems->id_program .'
+                                                                                class='fas fa-key mr-1'></i>$rowitems->id_program
                                                                         </p>
                                                                         <a
-                                                                            href='detail_program_individu.php?id_program='. $rowitems->id_program .'>
+                                                                            href='detail_program_individu.php?id_program=$rowitems->id_program'>
                                                                             <button class='btn btndetail'>
                                                                                 <i class='fas fa-external-link-square-alt mr-1'
                                                                                     aria-hidden='true'></i>
@@ -372,136 +459,6 @@ foreach ($row as $rowitems) {
 }
 ?>
 
-                                                    <!-- <li class='list-group-item'>
-                                                        <div class='row'>
-                                                            <div class='col-md-12 col-12'>
-                                                                <div class='row'>
-                                                                    <div class='col-md-12 col-12'>
-                                                                        <h5 class='font-weight-bold mb-1 namaprogram'>
-                                                                            <?php echo $row->nama_program; ?>
-
-                                                                        </h5>
-                                                                        <div class='user-detail'>
-                                                                            <p class='m-0 text-warning status'><i
-                                                                                    class='fas fa-hourglass-half'
-                                                                                    aria-hidden='true'></i>
-                                                                                <b><?php echo $row->status_program; ?>
-</b>
-                                                                            </p>
-                                                                            <p class='m-0  targetdate'><i
-                                                                                    class='fas fa-calendar mr-1'
-                                                                                    aria-hidden='true'></i> <?php echo $row->tanggal_target; ?>
-
-                                                                            </p>
-                                                                            <p class='m-0'><i
-                                                                                    class='fa fa-bullseye mr-1 sasaran'></i><?php echo $row->sasaran_program; ?></p>
-
-                                                                            <p class='m-0 kodeprogram'><i
-                                                                                    class='fas fa-key mr-1'></i><?php echo $row->id_program;
-?>
-                                                                            </p>
-                                                                            <a
-                                                                                href='detail_program_individu.php?id_program=<?php echo $row->id_program;
-?>'>
-                                                                                <button class='btn btndetail'>
-                                                                                    <i class='fas fa-external-link-square-alt mr-1'
-                                                                                        aria-hidden='true'></i>
-                                                                                    Lihat Detail
-                                                                                </button></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class='list-group-item'>
-                                                        <div class='row'>
-                                                            <div class='col-md-12 col-12'>
-                                                                <div class='row'>
-
-                                                                    <div class='col-md-12 col-12'>
-                                                                        <h5 class='font-weight-bold mb-1 namaprogram'>
-                                                                            Mengenal Angka
-                                                                        </h5>
-                                                                        <div class='user-detail'>
-                                                                            <p class='m-0 text-success status'><i
-                                                                                    class='fas fa-check'
-                                                                                    aria-hidden='true'></i>
-                                                                                <b>Selesai</b>
-                                                                            </p>
-                                                                            <p class='m-0  targetdate'><i
-                                                                                    class='fas fa-calendar mr-1'
-                                                                                    aria-hidden='true'></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class='m-0'><i
-                                                                                    class='fa fa-bullseye mr-1 sasaran'></i>Dapat
-                                                                                mengenal berbagai angka dalam lingkungan
-                                                                                sekitar</p>
-
-                                                                            <p class='m-0 kodeprogram'><i
-                                                                                    class='fas fa-key mr-1'></i>P002
-                                                                            </p>
-                                                                            <a
-                                                                                href='detail_program_individu.php?id_program=P002'>
-                                                                                <button class='btn btndetail'>
-                                                                                    <i class='fas fa-external-link-square-alt mr-1'
-                                                                                        aria-hidden='true'></i>
-                                                                                    Lihat Detail
-                                                                                </button></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class='list-group-item'>
-                                                        <div class='row'>
-                                                            <div class='col-md-12 col-12'>
-                                                                <div class='row'>
-
-                                                                    <div class='col-md-12 col-12'>
-                                                                        <h5 class='font-weight-bold mb-1 namaprogram'>
-                                                                            Mengenal Huruf
-                                                                        </h5>
-                                                                        <div class='user-detail'>
-                                                                            <p class='m-0 text-warning status'><i
-                                                                                    class='fas fa-hourglass-half'
-                                                                                    aria-hidden='true'></i>
-                                                                                <b>Pending</b>
-                                                                            </p>
-                                                                            <p class='m-0  targetdate'><i
-                                                                                    class='fas fa-calendar mr-1'
-                                                                                    aria-hidden='true'></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class='m-0'><i
-                                                                                    class='fa fa-bullseye mr-1 sasaran'></i>Dapat
-                                                                                mengenal berbagai huruf dalam lingkungan
-                                                                                sekitar</p>
-
-                                                                            <p class='m-0 kodeprogram'><i
-                                                                                    class='fas fa-key mr-1'></i>P003
-                                                                            </p>
-
-                                                                            <a
-                                                                                href='detail_program_individu.php?id_program=P003'>
-                                                                                <button class='btn btndetail'>
-                                                                                    <i class='fas fa-external-link-square-alt mr-1'
-                                                                                        aria-hidden='true'></i>
-                                                                                    Lihat Detail
-                                                                                </button></a>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li> -->
-
-
-
-
                                                 </ul>
                                             </div>
                                         </div>
@@ -511,6 +468,9 @@ foreach ($row as $rowitems) {
                         </div>
 
                     </div>
+
+
+
 
 
                     <div class='modal fade' id='tambahprogrammodal' tabindex='-1' role='dialog'
@@ -524,82 +484,84 @@ foreach ($row as $rowitems) {
                                     </button>
                                 </div>
                                 <div class='modal-body'>
-                                    <form action='/action_page.php'>
+                                    <form method="POST" action='profil_ads.php'>
                                         <div class='form-group'>
                                             <label for='namaprogram'>Nama Program Individu:</label>
-                                            <input type='text' class='form-control' id='namaprogram' required
+                                            <input type='text' class='form-control' id='namaprogram' name='namaprogram' required
                                                 aria-required='true'>
                                         </div>
 
                                         <div class='form-group'>
                                             <label for='tujuanprogram'>Tujuan:</label>
-                                            <textarea class='form-control' id='tujuanprogram' rows='3'
+                                            <textarea class='form-control' id='tujuanprogram' name='tujuanprogram' rows='3'
                                                 required></textarea>
                                         </div>
                                         <div class='form-group'>
                                             <label for='keadaansekarang'>Keadaan Sekarang:</label>
-                                            <textarea class='form-control' id='keadaansekarang' rows='3'
+                                            <textarea class='form-control' id='keadaansekarang' name='keadaansekarang' rows='3'
                                                 required></textarea>
                                         </div>
                                         <div class='form-group'>
                                             <label for='sasaranprogram'>Sasaran:</label>
-                                            <textarea class='form-control' id='sasaranprogram' rows='3'
+                                            <textarea class='form-control' id='sasaranprogram' name='sasaranprogram' rows='3'
                                                 required></textarea>
                                         </div>
                                         <div class='form-group'>
-                                            <label for='sumberprogram'>Sumber Materi / Alat Peraga:</label>
-                                            <textarea class='form-control' id='sumberprogram' rows='3'
+                                            <label for='sumbermateri'>Sumber Materi / Alat Peraga:</label>
+                                            <textarea class='form-control' id='sumbermateri' name='sumbermateri' rows='3'
                                                 required></textarea>
                                         </div>
                                         <div class='form-group'>
                                             <label for='pelaksanaanprogram'>Cara Pelaksanaan:</label>
-                                            <textarea class='form-control' id='pelaksanaanprogram' rows='3'
+                                            <textarea class='form-control' id='pelaksanaanprogram' name='pelaksanaanprogram' rows='3'
                                                 required></textarea>
                                         </div>
                                         <div class='form-group'>
                                             <label for='tanggaltarget'>Tanggal Target:</label>
-                                            <input type='date' class='form-control tanggal' id='tanggaltarget' required
+                                            <input type='date' class='form-control tanggal' id='tanggaltarget' name='tanggaltarget' required
                                                 aria-required='true'>
                                         </div>
 
                                         <label>Kategori (Pilih minimal Satu):</label><br>
                                         <div class='form-group kategori'>
                                             <div class='form-check form-check-inline'>
-                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox1'
-                                                    value='option1' checked>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox1' name='kategoricheck[]'
+                                                    value='Kognitif' checked>
                                                 <label class='form-check-label' for='inlineCheckbox1'>Kognitif</label>
                                             </div>
                                             <div class='form-check form-check-inline'>
-                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox2'
-                                                    value='option2'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox2' name='kategoricheck[]'
+                                                    value='Motorik'>
                                                 <label class='form-check-label' for='inlineCheckbox2'>Motorik</label>
                                             </div>
                                             <div class='form-check form-check-inline'>
-                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3'
-                                                    value='option3'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3' name='kategoricheck[]'
+                                                    value='Sensorik'>
                                                 <label class='form-check-label' for='inlineCheckbox3'>Sensorik</label>
                                             </div>
                                             <div class='form-check form-check-inline'>
-                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3'
-                                                    value='option3'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3'name='kategoricheck[]'
+                                                    value='Kemandirian'>
                                                 <label class='form-check-label'
                                                     for='inlineCheckbox3'>Kemandirian</label>
                                             </div>
                                             <div class='form-check form-check-inline'>
-                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3'
-                                                    value='option3'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3'name='kategoricheck[]'
+                                                    value='Sosial-Emosional'>
                                                 <label class='form-check-label'
                                                     for='inlineCheckbox3'>Sosial-Emosional</label>
                                             </div>
                                         </div>
 
-                                        <button type='submit' class='btn btn-primary mr-3'>Submit</button><button
-                                            type='button' class='btn btn-secondary' data-dismiss='modal'>Batal</button>
+                                        <input type="submit" class="btn btn-primary" name="submit" value="Tambah Program">
+                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Batal</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
 
 
                     <div class='modal fade' id='editprofilmodal' tabindex='-1' role='dialog'
@@ -613,18 +575,18 @@ foreach ($row as $rowitems) {
                                     </button>
                                 </div>
                                 <div class='modal-body'>
-                                    <form action='/action_page.php'>
+                                    <form method="POST" action='profil_ads.php'>
                                         <div class='form-group'>
                                             <label for='namaads'>Nama:</label>
-                                            <input type='text' class='form-control' id='namaads' required
-                                                aria-required='true'>
+                                            <input type='text' class='form-control' id='nama_user' name='nama_user' required
+                                                aria-required='true' value="<?php echo $row[0]->nama_user ?>">
                                         </div>
 
                                         <label>Foto Profil</label>
                                         <div class='form-group' id='fotoprofil'>
                                             <div>
                                                 <label for='image_uploads'>Pilih Foto</label>
-                                                <input type='file' class='form-control' id='image_uploads'
+                                                <input type='file' class='form-control' id='image_uploads' name='foto_profil'
                                                     name='image_uploads' accept='.jpg, .jpeg, .png'>
                                             </div>
                                             <div class='preview'>
@@ -634,13 +596,13 @@ foreach ($row as $rowitems) {
 
                                         <div class='form-group'>
                                             <label for='tanggallahir'>Tanggal Lahir:</label>
-                                            <input type='date' class='form-control tanggal' id='tanggallahir' required
-                                                aria-required='true'>
+                                            <input type='date' class='form-control tanggal' id='tanggallahir' name='tanggal_lahir' required
+                                                aria-required='true' value="<?php echo $row[0]->tanggal_lahir ?>">
                                         </div>
 
                                         <div class='form-group'>
                                             <label for='jeniskelamin'>Jenis Kelamin:</label>
-                                            <select class='form-control' id='jeniskelamin'>
+                                            <select class='form-control' id='jeniskelamin' name='jenis_kelamin' value="<?php echo $row[0]->jenis_kelamin ?>">
                                                 <option>Laki-laki</option>
                                                 <option>Perempuan</option>
                                             </select>
@@ -648,44 +610,45 @@ foreach ($row as $rowitems) {
 
                                         <div class='form-group'>
                                             <label for='namaortu'>Nama Orang Tua:</label>
-                                            <input type='text' class='form-control' id='namaortu' required
-                                                aria-required='true'>
+                                            <input type='text' class='form-control' id='namaortu' name='namaortu' required
+                                                aria-required='true' value="<?php echo $row[0]->nama_orang_tua ?>">
                                         </div>
-                                        <div class='form-group'>
-                                            <p hidden class='m-0 text-warning status'><i class='fas fa-hourglass-half'
-                                                    aria-hidden='true'></i>
-                                                <b>PendingSelesai</b>
-                                        </div>
-
-
                                         <div class='form-group'>
                                             <label for='email'>E-mail:</label>
-                                            <input type='email' class='form-control' id='email' required
-                                                aria-required='true'>
+                                            <input type='email' class='form-control' id='email' name='email' required
+                                                aria-required='true' value="<?php echo $row[0]->email ?>">
                                         </div>
 
                                         <div class='form-group'>
                                             <label for='notelepon'>No. Telepon / Handphone:</label>
-                                            <input type='number' class='form-control' id='notelepon' required
-                                                aria-required='true'>
+                                            <input type='number' class='form-control' id='notelepon' name='notelepon' required
+                                                aria-required='true' value="<?php echo $row[0]->nomor_telepon ?>">
                                         </div>
 
                                         <div class='form-group'>
                                             <label for='alamat'>Alamat:</label>
-                                            <textarea class='form-control' id='alamat' rows='3'></textarea>
+                                            <textarea class='form-control' id='alamat' rows='3' name='alamat'><?php echo $row[0]->alamat ?>
+</textarea>
                                         </div>
 
                                         <div class='form-group'>
                                             <label for='kecamatan'>Kecamatan:</label>
-                                            <input type='text' class='form-control' id='kecamatan'>
+                                            <input type='text' class='form-control' id='kecamatan' name='kecamatan' value="<?php echo $row[0]->kecamatan ?>">
+                                        </div>
+
+                                        <div class='form-group'>
+                                            <label for='kota'>Kecamatan:</label>
+                                            <input type='text' class='form-control' id='kota' name='kota' value="<?php echo $row[0]->kota ?>">
                                         </div>
 
                                         <div class='form-group'>
                                             <label for='kodepos'>Kode Pos:</label>
-                                            <input type='number' class='form-control' id='kodepos'>
+                                            <input type='number' class='form-control' id='kodepos' name='kodepos' value="<?php echo $row[0]->kode_pos ?>">
                                         </div>
 
-                                        <button type='submit' class='btn btn-primary'>Submit</button>
+                                        <input type="submit" class="btn btn-primary" name="submit" value="Simpan">
+                                        <button
+                                            type='button' class='btn btn-secondary' data-dismiss='modal'>Batal</button>
                                     </form>
                                 </div>
                             </div>
