@@ -19,7 +19,7 @@ if (isset($_GET['status'])) {
 
 $sql = 'SELECT * FROM tabel_user
 INNER JOIN tabel_program ON tabel_user.nomor_user = tabel_program.nomor_user
-WHERE tabel_user.id_user = :id_user';
+WHERE tabel_user.id_user = :id_user ORDER BY tanggal_target DESC';
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['id_user' => $id_user]);
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
   $sumbermateri       = $_POST['sumbermateri'];
   $pelaksanaanprogram = $_POST['pelaksanaanprogram'];
   $tanggaltarget      = $_POST['tanggaltarget'];
-  $kategoricheck      = implode(" ", $_POST['kategoricheck']);
+  $kategoricheck      = implode(", ", $_POST['kategoricheck']);
 
   $sql3 = "INSERT INTO tabel_program
                 (nomor_user, nama_program, tujuan_program, keadaan_sekarang, sasaran_program, sumber_materi, cara_pelaksanaan, tanggal_target, kategori_program)
