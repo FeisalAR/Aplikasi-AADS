@@ -436,7 +436,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div
                                                                                     class="col-12 contentsasaran  collapse contentall">
-                                                                                    <p class="contentp"><?php echo $row[0]->tujuan_program ?></p>
+                                                                                    <p class="contentp"><?php echo $row[0]->sasaran_program ?></p>
                                                                                 </div>
                                                                             </div>
 
