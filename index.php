@@ -1,3 +1,8 @@
+<?php include 'connection.php';
+session_start();
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,20 +53,20 @@
                         <li class="nav-item">
                             <a class="nav-link hactive" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a class="nav-link" href="listing_program.php"><i class="icon fas fa-tasks"></i>Kelola
                                 Program</a>
                         </li>
                     </ul>
-                    <!--
-                    <ul class="guestHmenu navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link hactive" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
-                        </li>
-                    </ul> -->
 
                     <!-- Search form -->
                     <form class="form-inline ml-auto navbar-nav navbar-collapse">
@@ -74,13 +79,25 @@
                             </div>
                         </div>
                     </form>
-                    <ul class="guestlogin navbar-nav navbar-collapse">
+                    <ul class="guestlogin navbar-nav navbar-collapse" <?php if ($isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="registrasi.php"><i
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
+                        </li>
+                    </ul>
+
+                    <ul class="userlogout navbar-nav navbar-collapse"<?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
                     </ul>
                 </div>

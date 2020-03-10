@@ -1,38 +1,46 @@
 <?php
 include 'connection.php';
+session_start();
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
 
-if (isset($_POST['submit'])) {
- $nama         = $_POST['tbnama'];
- $email        = $_POST['tbemail'];
- $username     = $_POST['tbusername'];
- $pwd          = password_hash($_POST['tbpwd'], PASSWORD_DEFAULT);
- $tanggallahir = $_POST['tanggallahir'];
- $jk           = $_POST['optjk'];
- $ortu         = $_POST['tbortu'];
- $telepon      = $_POST['tbtelepon'];
- $nama         = $_POST['tbnama'];
- $alamat       = $_POST['txtalamat'];
- $kecamatan    = $_POST['tbkecamatan'];
- $kota         = $_POST['tbkota'];
- $kodepos      = $_POST['tbkodepos'];
+if ($isLoggedIn) {
+ header("Location: profil_ads.php");
+} else {
+ if (isset($_POST['submit'])) {
+  $nama         = $_POST['tbnama'];
+  $email        = $_POST['tbemail'];
+  $username     = $_POST['tbusername'];
+  $pwd          = password_hash($_POST['tbpwd'], PASSWORD_DEFAULT);
+  $tanggallahir = $_POST['tanggallahir'];
+  $jk           = $_POST['optjk'];
+  $ortu         = $_POST['tbortu'];
+  $telepon      = $_POST['tbtelepon'];
+  $nama         = $_POST['tbnama'];
+  $alamat       = $_POST['txtalamat'];
+  $kecamatan    = $_POST['tbkecamatan'];
+  $kota         = $_POST['tbkota'];
+  $kodepos      = $_POST['tbkodepos'];
 
- $sql = 'INSERT INTO tabel_user (username, pwd, email, nama_user, tanggal_lahir, jenis_kelamin, nama_orang_tua, nomor_telepon, alamat, kecamatan, kota, kode_pos)
+  $sql = 'INSERT INTO tabel_user (username, pwd, email, nama_user, tanggal_lahir, jenis_kelamin, nama_orang_tua, nomor_telepon, alamat, kecamatan, kota, kode_pos)
 VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :nama_orang_tua, :nomor_telepon, :alamat, :kecamatan, :kota, :kode_pos)';
 
- $stmt = $pdo->prepare($sql);
- $stmt->execute(['username' => $username, 'pwd' => $pwd, 'email' => $email, 'nama_user' => $nama, 'tanggal_lahir' => $tanggallahir, 'jenis_kelamin' => $jk, 'nama_orang_tua' => $ortu, 'nomor_telepon' => $telepon, 'alamat' => $alamat, 'kecamatan' => $kecamatan, 'kota' => $kota, 'kode_pos' => $kodepos]);
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(['username' => $username, 'pwd' => $pwd, 'email' => $email, 'nama_user' => $nama, 'tanggal_lahir' => $tanggallahir, 'jenis_kelamin' => $jk, 'nama_orang_tua' => $ortu, 'nomor_telepon' => $telepon, 'alamat' => $alamat, 'kecamatan' => $kecamatan, 'kota' => $kota, 'kode_pos' => $kodepos]);
 
- $affectedrows = $stmt->rowCount();
- if ($affectedrows == '0') {
-  echo "Failed !";
+  $affectedrows = $stmt->rowCount();
+  if ($affectedrows == '0') {
+   echo "Failed !";
+  } else {
+   header('Location: login.php?status=regsuccess');
+  }
+
  } else {
-  header('Location: login.php?status=regsuccess');
+  echo '';
+
  }
 
-} else {
- echo '';
-
 }
+
 ?>
 
 <!DOCTYPE html>

@@ -1,3 +1,37 @@
+<?php
+include 'connection.php';
+session_start();
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+
+if (!$isLoggedIn) {
+ header("Location: login.php");
+} else {
+ $id_user    = $_SESSION['id_user'];
+ $nomor_user = $_SESSION['nomor_user'];
+ $msg        = "";
+
+ $sqluser = 'SELECT * FROM tabel_user
+WHERE id_user = :id_user';
+
+ $stmt = $pdo->prepare($sqluser);
+ $stmt->execute(['id_user' => $id_user]);
+ $rowuser = $stmt->fetch();
+
+//User & Program data query
+ $sql = 'SELECT * FROM tabel_user
+INNER JOIN tabel_program ON tabel_user.nomor_user = tabel_program.nomor_user
+WHERE tabel_user.id_user = :id_user';
+
+ $stmt = $pdo->prepare($sql);
+ $stmt->execute(['id_user' => $id_user]);
+ $row = $stmt->fetchAll();
+
+//-------User & Program data query end
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +110,10 @@
                         </div>
                     </form>
 
-                    <ul class="userlogin navbar-nav navbar-collapse">
+                    <ul class="userlogin navbar-nav navbar-collapse" <?php if ($isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
                         </li>
@@ -85,11 +122,14 @@
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
                         </li>
                     </ul>
-                    <!-- <ul class="userlogout navbar-nav navbar-collapse">
+                    <ul class="userlogout navbar-nav navbar-collapse" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
-                    </ul> -->
+                    </ul>
 
 
                 </div>
@@ -176,34 +216,41 @@
                                         <div class="col col-12">
                                             <div class="card">
                                                 <ul class="list-group" id="user-list-profile">
+
                                                     <li class="list-group-item">
                                                         <div class="row">
                                                             <div class="col-md-12 col-12">
                                                                 <div class="row">
                                                                     <div
                                                                         class="col-sm-12 col-md-3 user-img text-center pt-1">
-                                                                        <img src="http://nicesnippets.com/demo/cs-image2.png"
+                                                                        <img src="<?php echo $rowuser->foto_profil ?>"
                                                                             alt="Seth Frazier"
                                                                             class="img-responsive img-circle rounded-circle" />
                                                                     </div>
                                                                     <div class="col-sm-6 col-md-4">
-                                                                        <h5 class="font-weight-bold mb-1 namaads">Nick
-                                                                            Daniel
+                                                                        <h5 class="font-weight-bold mb-1 namaads">
+                                                                            <?php echo $rowuser->nama_user ?>
                                                                         </h5>
                                                                         <div class="user-detail">
                                                                             <p class="m-0  kodeads"><i
-                                                                                    class="fas fa-key mr-1"></i>ADS001
+                                                                                    class="fas fa-key mr-1"></i>
+                                                                                    <?php echo $rowuser->id_user ?>
+
                                                                             </p>
                                                                             <p class="m-0  bdads"><i
                                                                                     class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i> 10/03/2019
+                                                                                    aria-hidden="true"></i>
+                                                                                    <?php echo $rowuser->tanggal_lahir ?>
+
                                                                             </p>
                                                                             <p class="m-0"><i class="fas fa-mars mr-1"
                                                                                     aria-hidden="true"></i>
-                                                                                Laki-laki</p>
+                                                                                <?php echo $rowuser->jenis_kelamin ?>
+                                                                                </p>
                                                                             <p class="m-0"><i
-                                                                                    class="fa fa-user-friends mr-1 ortuads"></i>Nama
-                                                                                Orang Tua</p>
+                                                                                    class="fa fa-user-friends mr-1 ortuads"></i>
+                                                                                    <?php echo $rowuser->nama_orang_tua ?>
+                                                                                </p>
                                                                             <p hidden class="m-0 text-warning status"><i
                                                                                     class="fas fa-hourglass-half"
                                                                                     aria-hidden="true"></i>
@@ -216,20 +263,24 @@
                                                                     <div class="col-sm-6 col-md-4">
                                                                         <div class="user-detail">
                                                                             <p class="m-0  alamatads"><i
-                                                                                    class="fas fa-home mr-1"></i>Perum.
-                                                                                Contoh, Gg. Sample, Blok P No. 4
+                                                                                    class="fas fa-home mr-1"></i><?php echo $rowuser->alamat ?>
+
                                                                             </p>
                                                                             <p class="m-0  kecamatan"><i
-                                                                                    class="fas fa-landmark mr-1"></i>Cicendo
+                                                                                    class="fas fa-landmark mr-1"></i><?php echo $rowuser->kecamatan . ', ' . $rowuser->kota ?>
+
                                                                             </p>
                                                                             <p class="m-0  kodepos"><i
-                                                                                    class="fas fa-envelope mr-1"></i>40174
+                                                                                    class="fas fa-envelope mr-1"></i><?php echo $rowuser->kode_pos ?>
+
                                                                             </p>
                                                                             <p class="m-0  emailads"><i
-                                                                                    class="fas fa-at mr-1"></i>alamat@email.co.id
+                                                                                    class="fas fa-at mr-1"></i><?php echo $rowuser->email ?>
+
                                                                             </p>
                                                                             <p class="m-0  teleponads"><i
-                                                                                    class="fas fa-phone mr-1"></i>02212932229
+                                                                                    class="fas fa-phone mr-1"></i><?php echo $rowuser->nomor_telepon ?>
+
                                                                             </p>
                                                                         </div>
                                                                     </div>
@@ -253,7 +304,7 @@
 
                         <div class="col-sm-12 col-md-12 periodefilter mb-2">
                             <label for="tanggaltarget" class="font-weight-bold">Periode:</label>
-                            <input type="date" class="form-control tanggal" id="tanggalawal" required
+                            <input type="date" class="form-control tanggal" id="tanggalawal" name="tanggalrange" required
                                 aria-required="true">
                             <input type="date" class="form-control tanggal" id="tanggalakhir" required
                                 aria-required="true">
@@ -303,499 +354,134 @@
                                                     </div>
                                                 </div>
                                                 <ul class="list-group" id="program-list">
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-12 col-12">
-                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
-                                                                            Mengenal Warna
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <div class="row statuscapaianrow">
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-2 statuscapaian">
-                                                                                    <label class="capaianlabel">Status :
-                                                                                    </label>
-                                                                                    <span class="text-warning status"
-                                                                                        id="statuscapaian">
-                                                                                        <i class="fas fa-hourglass-half"
-                                                                                            aria-hidden="true"></i>
-                                                                                        <b>Pending</b>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 tanggalcapaian">
-                                                                                    <label class="capaianlabel">Tanggal
-                                                                                        Target :
-                                                                                    </label><span
-                                                                                        id="tanggaltargetcapaian">
-                                                                                        10/11/2020</span>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 selesaicapaian">
-                                                                                    <label class="capaianlabel">Tanggal
-                                                                                        Selesai:</label><span
-                                                                                        id="selesaicapaian"> -</span>
-                                                                                </div>
+
+<?php
+
+foreach ($row as $rowitem) {
+ //Catatan harian query
+
+ $sqlCatatan = 'SELECT * FROM tabel_catatan_harian WHERE id_program = :id_program ORDER BY tanggal_catatan DESC';
+
+ $stmt = $pdo->prepare($sqlCatatan);
+ $stmt->execute(['id_program' => $rowitem->id_program]);
+ $rowCatatan = $stmt->fetchAll();
+
+//-----Catatan harian query end
+
+ $statusicon  = "";
+ $statusclass = "";
+ if ($rowitem->status_program == 'Pending') {
+  $statusicon  = 'fas fa-hourglass-half';
+  $statusclass = 'text-warning';
+ } else {
+  $statusicon  = 'fas fa-check';
+  $statusclass = 'text-success';
+ }
+
+ echo '<li class="list-group-item">
+                                                         <div class="row">
+                                                             <div class="col-md-12 col-12">
+                                                                 <div class="row">
+                                                                     <div class="col-md-12 col-12">
+                                                                         <h5 class="font-weight-bold mb-1 namaprogram">
+                                                                             ' . $rowitem->nama_program . '
+                                                                         </h5>
+                                                                         <div class="user-detail">
+                                                                             <div class="row statuscapaianrow">
+                                                                                 <div
+                                                                                     class="col-sm-12 col-md-2 statuscapaian">
+                                                                                     <label class="capaianlabel">Status :
+                                                                                     </label>
+                                                                                     <span class="' . $statusclass . ' status"
+                                                                                         id="statuscapaian">
+                                                                                         <i class="' . $statusicon . '"
+                                                                                             aria-hidden="true"></i>
+                                                                                         <b>' . $rowitem->status_program . '</b>
+                                                                                     </span>
+                                                                                 </div>
+                                                                                 <div
+                                                                                     class="col-sm-12 col-md-3 tanggalcapaian">
+                                                                                     <label class="capaianlabel">Tanggal
+                                                                                         Target :
+                                                                                     </label><span
+                                                                                         id="tanggaltargetcapaian">
+                                                                                         ' . $rowitem->tanggal_target . '</span>
+                                                                                 </div>
+                                                                                 <div
+                                                                                     class="col-sm-12 col-md-3 selesaicapaian">
+                                                                                     <label class="capaianlabel">Tanggal
+                                                                                         Selesai : </label><span
+                                                                                         id="selesaicapaian">' . $rowitem->tanggal_selesai . '</span>
+                                                                                 </div>
 
                                                                                 <div
-                                                                                    class="col-sm-12 col-md-3 kategoricapaian">
-                                                                                    <label class="capaianlabel">Kategori
-                                                                                        : </label><span
-                                                                                        id="kategoricapaian"> Kognitif,
-                                                                                        Sensorik</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row sasarancapaianrow">
-                                                                                <div class="col-sm-12 col-md-2 label">
-                                                                                    <label
-                                                                                        class="capaianlabel">Sasaran:</label>
-                                                                                </div>
-                                                                                <div class="col-sm-12 col-md-9 content">
-                                                                                    <span id="sasarancontent"> Lorem,
-                                                                                        ipsum dolor sit amet consectetur
-                                                                                        adipisicing elit.</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row kondisicapaianrow">
-                                                                                <div class="col-sm-12 col-md-2 label">
-                                                                                    <label class="capaianlabel">Kondisi
-                                                                                        Sekarang : </label>
-                                                                                </div>
-                                                                                <div class="col-sm-12 col-md-9 content">
-                                                                                    <span id="kondisicontent"> Lorem,
-                                                                                        ipsum dolor sit amet consectetur
-                                                                                        adipisicing elit. Eligendi
-                                                                                        asperiores doloremque et ab
-                                                                                        error est, ullam veniam facilis,
-                                                                                        totam vero impedit debitis
-                                                                                        maiores. Dolores obcaecati vitae
-                                                                                        explicabo laudantium neque
-                                                                                        consequatur.</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row catatancapaianrow"
-                                                                                data-toggle="collapse"
-                                                                                data-target=".catatancontentwarna">
-                                                                                <label class="capaianlabel px-3"><i
-                                                                                        class="icon fas fa-chevron-down"></i>Catatan
-                                                                                    Harian</label>
-                                                                            </div>
+                                                                                     class="col-sm-12 col-md-3 kategoricapaian">
+                                                                                     <label class="capaianlabel">Kategori
+                                                                                         : </label><span
+                                                                                         id="kategoricapaian"> ' . $rowitem->kategori_program . '</span>
+                                                                                 </div>
+                                                                             </div>
+                                                                             <div class="row sasarancapaianrow">
+                                                                                 <div class="col-sm-12 col-md-2 label">
+                                                                                     <label
+                                                                                         class="capaianlabel">Sasaran:</label>
+                                                                                 </div>
+                                                                                 <div class="col-sm-12 col-md-9 content">
+                                                                                     <span id="sasarancontent"> ' . $rowitem->sasaran_program . '</span>
+                                                                                 </div>
+                                                                             </div>
+                                                                             <div class="row kondisicapaianrow">
+                                                                                 <div class="col-sm-12 col-md-2 label">
+                                                                                     <label class="capaianlabel">Keadaan
+                                                                                         Sekarang : </label>
+                                                                                 </div>
+                                                                                 <div class="col-sm-12 col-md-9 content">
+                                                                                     <span id="kondisicontent"> ' . $rowitem->keadaan_sekarang . '</span>
+                                                                                 </div>
+                                                                             </div>
+                                                                             <div class="row catatancapaianrow"
+                                                                                 data-toggle="collapse"
+                                                                                 data-target=".catatancontent' . $rowitem->id_program . '">
+                                                                                 <label class="capaianlabel px-3"><i
+                                                                                         class="icon fas fa-chevron-down"></i>Catatan
+                                                                                     Harian</label>
+                                                                             </div>
 
-                                                                            <div
-                                                                                class="row collapse catatancontentwarna ">
-                                                                                <div class="col catatanentrycontainer">
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                01/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna primer
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                11/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna sekunder
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                20/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna tersier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                28/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna pentier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                04/04/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna hextier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                15/04/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna septier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
+                                                                    ';
+ foreach ($rowCatatan as $catatan) {
+  echo '<div
+                                                                                 class="row collapse catatanrowentry catatancontent' . $rowitem->id_program . ' ">
+                                                                                 <div class="col catatanentrycontainer"><div class="row  m-0 catatanentry">
+                                                                                         <div class="col-sm-12 col-md-2">
+                                                                                             <p class="font-weight-bold">
+                                                                                                 ' . $catatan->tanggal_catatan . '</p>
+                                                                                         </div>
+                                                                                         <div
+                                                                                             class="col-sm-12 col-md-10 content">
+                                                                                             <p>
+                                                                                                 ' . $catatan->kegiatan . '
+                                                                                             </p>
+                                                                                         </div>
+
+                                                                                     </div>
+                                                                                     </div>
+                                                                             </div>
+
+';
+ }
+ echo '</div>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </li>';
+
+}
+
+?>
 
 
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-12 col-12">
-                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
-                                                                            Mengenal Angka
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <div class="row statuscapaianrow">
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-2 statuscapaian">
-                                                                                    <label class="capaianlabel">Status :
-                                                                                    </label>
-                                                                                    <span class="text-success status"
-                                                                                        id="statuscapaian">
-                                                                                        <i class="fas fa-check"
-                                                                                            aria-hidden="true"></i>
-                                                                                        <b> Selesai</b>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 tanggalcapaian">
-                                                                                    <label class="capaianlabel">Tanggal
-                                                                                        Target :
-                                                                                    </label><span
-                                                                                        id="tanggaltargetcapaian">
-                                                                                        10/11/2020</span>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 selesaicapaian">
-                                                                                    <label class="capaianlabel">Tanggal
-                                                                                        Selesai:</label><span
-                                                                                        id="selesaicapaian">03/10/2020</span>
-                                                                                </div>
-
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 kategoricapaian">
-                                                                                    <label class="capaianlabel">Kategori
-                                                                                        : </label><span
-                                                                                        id="kategoricapaian"> Kognitif
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row sasarancapaianrow">
-                                                                                <div class="col-sm-12 col-md-2 label">
-                                                                                    <label
-                                                                                        class="capaianlabel">Sasaran:</label>
-                                                                                </div>
-                                                                                <div class="col-sm-12 col-md-9 content">
-                                                                                    <span id="sasarancontent"> Lorem,
-                                                                                        ipsum dolor sit amet consectetur
-                                                                                        adipisicing elit.</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row kondisicapaianrow">
-                                                                                <div class="col-sm-12 col-md-2 label">
-                                                                                    <label class="capaianlabel">Kondisi
-                                                                                        Sekarang : </label>
-                                                                                </div>
-                                                                                <div class="col-sm-12 col-md-9 content">
-                                                                                    <span id="kondisicontent"> Lorem,
-                                                                                        ipsum dolor sit amet consectetur
-                                                                                        adipisicing elit. Eligendi
-                                                                                        asperiores doloremque et ab
-                                                                                        error est, ullam veniam facilis,
-                                                                                        totam vero impedit debitis
-                                                                                        maiores. Dolores obcaecati vitae
-                                                                                        explicabo laudantium neque
-                                                                                        consequatur.</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row catatancapaianrow"
-                                                                                data-toggle="collapse"
-                                                                                data-target=".catatancontentangka">
-                                                                                <label class="capaianlabel px-3"><i
-                                                                                        class="icon fas fa-chevron-down"></i>Catatan
-                                                                                    Harian</label>
-                                                                            </div>
-
-                                                                            <div
-                                                                                class="row collapse catatancontentangka">
-                                                                                <div class="col catatanentrycontainer">
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                01/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna primer
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                11/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna sekunder
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                20/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna tersier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                28/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna pentier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                04/04/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna hextier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                15/04/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna septier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
 
 
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-12 col-12">
-                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
-                                                                            Mengenal Huruf
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <div class="row statuscapaianrow">
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-2 statuscapaian">
-                                                                                    <label class="capaianlabel">Status :
-                                                                                    </label>
-                                                                                    <span class="text-warning status"
-                                                                                        id="statuscapaian">
-                                                                                        <i class="fas fa-hourglass-half"
-                                                                                            aria-hidden="true"></i>
-                                                                                        <b>Pending</b>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 tanggalcapaian">
-                                                                                    <label class="capaianlabel">Tanggal
-                                                                                        Target :
-                                                                                    </label><span
-                                                                                        id="tanggaltargetcapaian">
-                                                                                        10/11/2020</span>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 selesaicapaian">
-                                                                                    <label class="capaianlabel">Tanggal
-                                                                                        Selesai:</label><span
-                                                                                        id="selesaicapaian"> -</span>
-                                                                                </div>
-
-                                                                                <div
-                                                                                    class="col-sm-12 col-md-3 kategoricapaian">
-                                                                                    <label class="capaianlabel">Kategori
-                                                                                        : </label><span
-                                                                                        id="kategoricapaian"> Kognitif,
-                                                                                        Sensorik</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row sasarancapaianrow">
-                                                                                <div class="col-sm-12 col-md-2 label">
-                                                                                    <label
-                                                                                        class="capaianlabel">Sasaran:</label>
-                                                                                </div>
-                                                                                <div class="col-sm-12 col-md-9 content">
-                                                                                    <span id="sasarancontent"> Lorem,
-                                                                                        ipsum dolor sit amet consectetur
-                                                                                        adipisicing elit.</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row kondisicapaianrow">
-                                                                                <div class="col-sm-12 col-md-2 label">
-                                                                                    <label class="capaianlabel">Kondisi
-                                                                                        Sekarang : </label>
-                                                                                </div>
-                                                                                <div class="col-sm-12 col-md-9 content">
-                                                                                    <span id="kondisicontent"> Lorem,
-                                                                                        ipsum dolor sit amet consectetur
-                                                                                        adipisicing elit. Eligendi
-                                                                                        asperiores doloremque et ab
-                                                                                        error est, ullam veniam facilis,
-                                                                                        totam vero impedit debitis
-                                                                                        maiores. Dolores obcaecati vitae
-                                                                                        explicabo laudantium neque
-                                                                                        consequatur.</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row catatancapaianrow"
-                                                                                data-toggle="collapse"
-                                                                                data-target=".catatancontenthuruf">
-                                                                                <label class="capaianlabel px-3"><i
-                                                                                        class="icon fas fa-chevron-down"></i>Catatan
-                                                                                    Harian</label>
-                                                                            </div>
-
-                                                                            <div
-                                                                                class="row collapse catatancontenthuruf ">
-                                                                                <div class="col catatanentrycontainer">
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                01/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna primer
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                11/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna sekunder
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                20/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna tersier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                28/03/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna pentier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                04/04/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna hextier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row  m-0 catatanentry">
-                                                                                        <div class="col-sm-12 col-md-2">
-                                                                                            <p class="font-weight-bold">
-                                                                                                15/04/2020</p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-sm-12 col-md-10 content">
-                                                                                            <p>
-                                                                                                Mengenal warna septier
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
 
 
                                                 </ul>

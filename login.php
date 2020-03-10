@@ -1,45 +1,55 @@
 <?php
 include 'connection.php';
 session_start();
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
 
-$msg = '';
-if (isset($_GET['status'])) {
- if ($_GET['status'] == 'regsuccess') {
-  $msg = "<div class='alert alert-success' role='alert'>
+if ($isLoggedIn) {
+ header("Location: profil_ads.php");
+} else {
+ $msg = '';
+ if (isset($_GET['status'])) {
+  if ($_GET['status'] == 'regsuccess') {
+   $msg = "<div class='alert alert-success' role='alert'>
         <strong>Registrasi berhasil.</strong> Silahkan Log in.
         </div>";
+  }
  }
-}
 
-if (isset($_POST['submit'])) {
- $username = $_POST['tbusername'];
- $pwd      = $_POST['tbpwd'];
+ if (isset($_POST['submit'])) {
+  $username = $_POST['tbusername'];
+  $pwd      = $_POST['tbpwd'];
 
- $sql  = 'SELECT username, pwd, id_user, nomor_user FROM tabel_user WHERE username = :username';
- $stmt = $pdo->prepare($sql);
- $stmt->execute(['username' => $username]);
- $row = $stmt->fetch();
+  $sql  = 'SELECT username, pwd, id_user, nomor_user FROM tabel_user WHERE username = :username';
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(['username' => $username]);
+  $row = $stmt->fetch();
 
- if (!empty($row)) { // checks if the user actually exists(true/false returned)
-  if (password_verify($pwd, $row->pwd)) {
-   $_SESSION['id_user']    = $row->id_user;
-   $_SESSION['nomor_user'] = $row->nomor_user;
-   header('Location: profil_ads.php');
+  if (!empty($row)) { // checks if the user actually exists(true/false returned)
+   if (password_verify($pwd, $row->pwd)) {
+    $_SESSION['my_id_user'] = $row->id_user;
+    $_SESSION['id_user']    = $row->id_user;
+    $_SESSION['nomor_user'] = $row->nomor_user;
+    $_SESSION['jabatan']    = $row->jabatan;
 
-   // password_verify success!
-  } else {
-   $msg = "<div class='alert alert-warning' role='alert'>
+    header('Location: profil_ads.php');
+
+    // password_verify success!
+   } else {
+    $msg = "<div class='alert alert-warning' role='alert'>
         <strong>Username atau Password salah.</strong>
         </div>";
 
-  }
- } else {
-  $msg = "<div class='alert alert-warning' role='alert'>
+   }
+  } else {
+   $msg = "<div class='alert alert-warning' role='alert'>
         <strong>Username tidak terdaftar.</strong>
         </div>";
-  //email entered does not match any in DB
+   //email entered does not match any in DB
+  }
  }
+
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -128,12 +138,6 @@ if (isset($_POST['submit'])) {
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
                         </li>
                     </ul>
-                    <!-- <ul class="userlogout navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
-                        </li>
-                    </ul> -->
-
 
                 </div>
 
