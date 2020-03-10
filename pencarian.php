@@ -214,6 +214,12 @@ $row = $stmt->fetchAll();
 
 <?php
 foreach ($row as $rowitem) {
+     if($rowitem->jenis_kelamin == "Laki-laki"){
+     $jkicon = "mars";
+ }
+  else{
+    $jkicon = "venus";
+  }
  echo '<li class="list-group-item">
                                                         <div class="row">
                                                             <div class="col-md-12 col-12">
@@ -232,9 +238,9 @@ foreach ($row as $rowitem) {
                                                                                     class="fas fa-birthday-cake mr-1"
                                                                                     aria-hidden="true"></i> ' . $rowitem->tanggal_lahir . '
                                                                             </p>
-                                                                            <p class="m-0"><i class="fas fa-mars mr-1"
+                                                                            <p class="m-0"><i class="fas fa-'.$jkicon.' mr-1"
                                                                                     aria-hidden="true"></i>
-                                                                                Laki-laki</p>
+                                                                                '. $rowitem->jenis_kelamin.'</p>
                                                                             <p class="m-0"><i
                                                                                     class="fa fa-user-friends mr-1 ortuads"></i>' . $rowitem->nama_orang_tua . '</p>
                                                                             <p class="m-0  kodeads"><i

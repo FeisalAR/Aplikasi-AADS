@@ -239,7 +239,15 @@ WHERE tabel_user.id_user = :id_user';
                                                                                     <?php echo $rowuser->tanggal_lahir ?>
 
                                                                             </p>
-                                                                            <p class="m-0"><i class="fas fa-mars mr-1"
+                                                                            <?php
+                                                                                if($rowuser->jenis_kelamin == "Laki-laki"){
+                                                                                    $jkicon = "mars";
+                                                                                }
+                                                                                else{
+                                                                                    $jkicon = "venus";
+                                                                                }
+                                                                            ?>
+                                                                            <p class="m-0"><i class="fas fa-<?php echo $jkicon?> mr-1"
                                                                                     aria-hidden="true"></i>
                                                                                 <?php echo $rowuser->jenis_kelamin ?>
                                                                                 </p>
