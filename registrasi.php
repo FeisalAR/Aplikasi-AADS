@@ -146,7 +146,10 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                                 <i class="icon fas fa-list-ul"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list-ol"></i>
                                 <span class="vmenutext">Listing Program</span>
@@ -185,7 +188,7 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                     <form method="POST" action="registrasi.php">
                         <div class="form-group">
                             <label for="namaads">Nama ADS:</label>
-                            <input type="text" class="form-control" id="namaads" name="tbnama" required aria-required="true" pattern="/^[a-z ,.'-]+$/i" autofocus>
+                            <input type="text" class="form-control" id="namaads" name="tbnama" required aria-required="true" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z.]*)*$" autofocus>
                         </div>
 
                         <div class="form-group">
@@ -195,7 +198,7 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
 
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true" pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
+                            <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true" pattern="^(?=.{4,60}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" title="Minimum 4 karakter">
                         </div>
 
                         <div class="form-group">

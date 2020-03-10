@@ -18,7 +18,18 @@ WHERE id_user = :id_user';
  $rowuser = $stmt->fetch();
 
 //User & Program data query
- $sql = 'SELECT * FROM tabel_user
+if(isset($_GET['tanggal_awal'])){
+$sql = 'SELECT * FROM tabel_user
+INNER JOIN tabel_program ON tabel_user.nomor_user = tabel_program.nomor_user
+WHERE tabel_user.id_user = :id_user AND tanggal_target BETWEEN :tanggal_awal AND :tanggal_akhir';
+
+ $stmt = $pdo->prepare($sql);
+ $stmt->execute(['id_user' => $id_user, 'tanggal_awal' => $_GET['tanggal_awal'], 'tanggal_akhir' => $_GET['tanggal_akhir']]);
+ $row = $stmt->fetchAll();
+
+}
+else{
+    $sql = 'SELECT * FROM tabel_user
 INNER JOIN tabel_program ON tabel_user.nomor_user = tabel_program.nomor_user
 WHERE tabel_user.id_user = :id_user';
 
@@ -26,6 +37,8 @@ WHERE tabel_user.id_user = :id_user';
  $stmt->execute(['id_user' => $id_user]);
  $row = $stmt->fetchAll();
 
+}
+ 
 //-------User & Program data query end
 
 }
@@ -284,14 +297,19 @@ WHERE tabel_user.id_user = :id_user';
 
 
                     <div class="row programfilters">
+                        <form method="GET" action="">
+                            <div class="col-sm-12 col-md-12 periodefilter mb-2">
+                                <label for="tanggaltarget" class="font-weight-bold">Periode:</label>
+                                <input type="date" class="form-control tanggal" id="tanggalawal" name="tanggal_awal" required
+                                aria-required="true">
+                                <input type="date" class="form-control tanggal" id="tanggalakhir" name="tanggal_akhir" required
+                                aria-required="true">
+                                <input type="submit" class="btn btn-primary d-print-none" name="submit" value="Terapkan Filter">
+                            </div>
+                            <a class="mx-3 d-print-none" href="laporan_capaian.php">Reset filter</a>
 
-                        <div class="col-sm-12 col-md-12 periodefilter mb-2">
-                            <label for="tanggaltarget" class="font-weight-bold">Periode:</label>
-                            <input type="date" class="form-control tanggal" id="tanggalawal" name="tanggalrange" required
-                                aria-required="true">
-                            <input type="date" class="form-control tanggal" id="tanggalakhir" required
-                                aria-required="true">
-                        </div>
+                        </form>
+                        
 
                         <div class="col-sm-12 col-md-6 statusfilterlabel mb-2 mt-2 d-print-none">
                             <label class="font-weight-bold">Status:</label>

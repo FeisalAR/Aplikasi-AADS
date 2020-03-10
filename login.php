@@ -174,7 +174,10 @@ if ($isLoggedIn) {
                                 <i class="icon fas fa-list-ul"></i>
                                 <span class="vmenutext">Listing ADS</span>
                             </a>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list-ol"></i>
                                 <span class="vmenutext">Listing Program</span>
@@ -204,7 +207,7 @@ echo $msg;
                     <form method="POST" action="login.php">
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" name="tbusername" required aria-required="true" pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" autofocus>
+                            <input type="text" class="form-control" id="username" name="tbusername" required aria-required="true" pattern="^(?=.{4,60}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" title="Minimum 4 karakter" autofocus>
                         </div>
 
                         <div class="form-group">

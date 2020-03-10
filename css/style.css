@@ -762,6 +762,9 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
     font-size: 1.5em;
   }
+  form {
+    width: 100% !important;
+  }
   main {
     margin: 0;
   }
@@ -779,7 +782,7 @@ input[type=number]::-webkit-outer-spin-button {
     border: none;
   }
   .periodefilter .tanggal {
-    width: 25%;
+    width: 19% !important;
   }
   .collapse {
     display: block !important;

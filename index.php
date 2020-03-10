@@ -119,24 +119,15 @@ $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
                                 <i class="icon fas fa-list-ul"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list-ol"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
                         </li>
-                        <ul class="guestVmenu navbar-nav d-none">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon fas fa-list-ul"></i>
-                                    <span class="vmenutext">Listing ADS</span>
-                                </a>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
-                                </a>
-                            </li>
-                        </ul>
                 </nav>
             </div>
             <!-- End of vertical navbar -->

@@ -687,6 +687,9 @@ form{
         margin:0;
         font-size: 1.5em;
     }
+    form{
+        width: 100% !important;
+    }
     main{
         margin: 0;
     }
@@ -702,7 +705,7 @@ form{
             border: none;
         }
         .tanggal{
-            width: 25%;
+            width: 19% !important;
         }        
     }
     .collapse{
