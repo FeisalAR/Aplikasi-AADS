@@ -102,10 +102,10 @@ if (isset($_POST['submit'])) {
                     </ul>
 
                     <!-- Search form -->
-                    <form class="form-inline ml-auto navbar-nav navbar-collapse">
+                    <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
                         <div class="input-group md-form form-sm form-2 pl-0">
                             <input class="form-control my-0 py-1 red-border" type="text" placeholder="Cari ADS..."
-                                aria-label="Search">
+                                aria-label="Search" name="query" required>
                             <div class="input-group-append">
                                 <button class="btn btn-success" type="submit"><i class="fas fa-search text-grey"
                                         aria-hidden="true"></i></button>
@@ -144,11 +144,11 @@ if (isset($_POST['submit'])) {
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="edit_program.php" class="nav-link">
                                 <i class="icon far fa-edit"></i><span class="vmenutext">Edit Program</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>

@@ -1,3 +1,58 @@
+<?php
+include 'connection.php';
+session_start();
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+
+if ($isLoggedIn) {
+ $id_user    = $_SESSION['id_user'];
+ $nomor_user = $_SESSION['nomor_user'];
+} else {
+ header('Location: listing_ads.php');
+}
+
+$id_program = $_GET['id_program'];
+
+//User & Program data query
+$sql = 'SELECT * FROM tabel_program
+WHERE id_program = :id_program';
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['id_program' => $id_program]);
+$row = $stmt->fetch();
+
+//-------User & Program data query end
+
+//Edit Program query
+if (isset($_POST['submit'])) {
+ if ($_POST['submit'] == 'Simpan') {
+  $namaprogram     = $_POST['nama_program'];
+  $status_program  = $_POST['radiostatus'];
+  $tanggal_selesai = $_POST['tanggal_selesai'];
+  if ($status_program == 'Pending') {
+   $tanggal_selesai = null;
+  }
+
+  $tujuanprogram      = $_POST['tujuan_program'];
+  $keadaansekarang    = $_POST['keadaan_sekarang'];
+  $sasaranprogram     = $_POST['sasaran_program'];
+  $sumbermateri       = $_POST['sumber_materi'];
+  $pelaksanaanprogram = $_POST['cara_pelaksanaan'];
+  $tanggaltarget      = $_POST['tanggal_target'];
+  $kategoricheck      = implode(", ", $_POST['kategoricheck']);
+
+  $sql3 = "UPDATE tabel_program
+            SET nama_program = :np, status_program = :stp, tanggal_selesai = :ts, tujuan_program = :tp, keadaan_sekarang = :ks, sasaran_program = :sp, sumber_materi = :sm, cara_pelaksanaan = :cp, tanggal_target = :tt, kategori_program = :kp
+            WHERE id_program = :id_program";
+
+  $stmt = $pdo->prepare($sql3);
+  $stmt->execute(['np' => $namaprogram, 'stp' => $status_program, 'ts' => $tanggal_selesai, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sp' => $sasaranprogram, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck, 'id_program' => $id_program]);
+  header("Location: listing_program.php?status=updatesuccess");
+ }
+}
+
+//-----Edit Program end
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,10 +119,10 @@
                     </ul> -->
 
                     <!-- Search form -->
-                    <form class="form-inline ml-auto navbar-nav navbar-collapse">
+                    <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
                         <div class="input-group md-form form-sm form-2 pl-0">
                             <input class="form-control my-0 py-1 red-border" type="text" placeholder="Cari ADS..."
-                                aria-label="Search">
+                                aria-label="Search" name="query" required>
                             <div class="input-group-append">
                                 <button class="btn btn-success" type="submit"><i class="fas fa-search text-grey"
                                         aria-hidden="true"></i></button>
@@ -76,7 +131,7 @@
                     </form>
                     <ul class="userlogout navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
                     </ul>
 
@@ -177,84 +232,126 @@
                         </div>
                     </div>
                     <!-- Form fields -->
-                    <form action="/action_page.php">
-                        <!-- <div class="form-group">
-                            <label for="namaads">Nama ADS:</label>
-                            <input type="text" class="form-control" id="namaads" required aria-required="true">
-                        </div> -->
+                    <form method="POST" action="">
 
-                        <div class="form-group">
-                            <label for="namaprogram">Nama Program Individu:</label>
-                            <input type="text" class="form-control" id="namaprogram" required aria-required="true">
-                        </div>
+                                        <div class="form-group">
+                                            <label for="namaprogram">Nama Program Individu:</label>
+                                            <input type="text" class="form-control" id="namaprogram" name="nama_program" required
+                                                aria-required="true" value="<?php echo $row->nama_program ?>">
+                                        </div>
 
-                        <label>Status:</label>
-                        <div class="form-group statusprogram">
-                            <label class="radio-inline"><input type="radio" name="radiostatus" value="Pending"
-                                    checked>Pending</label>
-                            <label class="radio-inline"><input type="radio" name="radiostatus"
-                                    value="Selesai">Selesai</label>
-                        </div>
+                                        <label>Status:</label>
+                                        <div class="form-group statusprogram" name="status_program">
+                                            <label class="radio-inline"><input type="radio" name="radiostatus"
+                                                    value="Pending" <?php if ($row->status_program == 'Pending') {
+ echo 'checked';
+}
+?>>Pending</label>
+                                            <label class="radio-inline"><input type="radio" name="radiostatus"
+                                                    value="Selesai" <?php if ($row->status_program == 'Selesai') {
+ echo 'checked';
+}
+?>
+>Selesai</label>
+                                        </div>
 
-                        <div class="form-group tanggalselesaitoggle">
-                            <label for="tanggalselesai">Tanggal Selesai:</label>
-                            <input type="date" class="form-control tanggal" id="tanggalselesai" required
-                                aria-required="true">
-                        </div>
+                                        <div class="form-group tanggalselesaitoggle" <?php if ($row->status_program == 'Selesai') {
+ echo 'style="display:block"';
+}
+?>>
+                                            <label for="tanggalselesai">Tanggal Selesai:</label>
+                                            <input type="date" class="form-control tanggal" id="tanggalselesai" name="tanggal_selesai"
+                                                value="<?php echo $row->tanggal_selesai ?>">
+                                        </div>
 
-                        <div class="form-group">
-                            <label for="tujuanprogram">Tujuan:</label>
-                            <textarea class="form-control" id="tujuanprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="keadaansekarang">Keadaan Sekarang:</label>
-                            <textarea class="form-control" id="keadaansekarang" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="sasaranprogram">Sasaran:</label>
-                            <textarea class="form-control" id="sasaranprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="sumberprogram">Sumber Materi / Alat Peraga:</label>
-                            <textarea class="form-control" id="sumberprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="pelaksanaanprogram">Cara Pelaksanaan:</label>
-                            <textarea class="form-control" id="pelaksanaanprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggaltarget">Tanggal Target:</label>
-                            <input type="date" class="form-control tanggal" id="tanggaltarget" required
-                                aria-required="true">
-                        </div>
+                                        <div class="form-group">
+                                            <label for="tujuanprogram">Tujuan:</label>
+                                            <textarea class="form-control" id="tujuanprogram" rows="3" name="tujuan_program"
+                                                required><?php echo $row->tujuan_program ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="keadaansekarang">Keadaan Sekarang:</label>
+                                            <textarea class="form-control" id="keadaansekarang" rows="3" name="keadaan_sekarang"
+                                                required><?php echo $row->keadaan_sekarang ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sasaranprogram">Sasaran:</label>
+                                            <textarea class="form-control" id="sasaranprogram" rows="3" name="sasaran_program"
+                                                required><?php echo $row->sasaran_program ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sumberprogram">Sumber Materi / Alat Peraga:</label>
+                                            <textarea class="form-control" id="sumbermateri" rows="3" name="sumber_materi"
+                                                required><?php echo $row->sumber_materi ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pelaksanaanprogram">Cara Pelaksanaan:</label>
+                                            <textarea class="form-control" id="pelaksanaanprogram" rows="3" name="cara_pelaksanaan"
+                                                required><?php echo $row->cara_pelaksanaan ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tanggaltarget">Tanggal Target:</label>
+                                            <input type="date" class="form-control tanggal" id="tanggaltarget" name="tanggal_target" required
+                                                aria-required="true" value="<?php echo $row->tanggal_target ?>">
+                                        </div>
 
-                        <label>Kategori (Pilih minimal Satu):</label><br>
-                        <div class="form-group kategori">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"
-                                    checked>
-                                <label class="form-check-label" for="inlineCheckbox1">Kognitif</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Motorik</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Sensorik</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Kemandirian</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Sosial-Emosional</label>
-                            </div>
-                        </div>
+                                        <label>Kategori (Pilih minimal Satu):</label><br>
+                                        <div class="form-group kategori">
+<?php
+$kognitifcheck    = "";
+$motorikcheck     = "";
+$sensorikcheck    = "";
+$kemandiriancheck = "";
+$sosialcheck      = "";
+if (strpos($row->kategori_program, "Kognitif") > -1) {
+ $kognitifcheck = "checked";
+}
+if (strpos($row->kategori_program, "Motorik") > -1) {
+ $motorikcheck = "checked";
+}
+if (strpos($row->kategori_program, "Sensorik") > -1) {
+ $sensorikcheck = "checked";
+}
+if (strpos($row->kategori_program, "Kemandirian") > -1) {
+ $kemandiriancheck = "checked";
+}
+if (strpos($row->kategori_program, "Sosial-Emosional") > -1) {
+ $sosialcheck = "checked";
+}
+?>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='kategoricheck[]'
+                                                    value="Kognitif" <?php echo $kognitifcheck ?>>
+                                                <label class="form-check-label" for="inlineCheckbox1">Kognitif</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name='kategoricheck[]'
+                                                    value="Motorik" <?php echo $motorikcheck ?>>
+                                                <label class="form-check-label" for="inlineCheckbox2">Motorik</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name='kategoricheck[]'
+                                                    value="Sensorik" <?php echo $sensorikcheck ?>>
+                                                <label class="form-check-label" for="inlineCheckbox3">Sensorik</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name='kategoricheck[]'
+                                                    value="Kemandirian" <?php echo $kemandiriancheck ?>>
+                                                <label class="form-check-label"
+                                                    for="inlineCheckbox3">Kemandirian</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name='kategoricheck[]'
+                                                    value="Sosial-Emosional" <?php echo $sosialcheck ?>>
+                                                <label class="form-check-label"
+                                                    for="inlineCheckbox3">Sosial-Emosional</label>
+                                            </div>
+                                        </div>
+
+                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Simpan"> <button
+                                            type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    </form>
 
             </div> <!-- Main Container end -->
 

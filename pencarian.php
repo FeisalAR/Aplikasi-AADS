@@ -2,16 +2,21 @@
 include 'connection.php';
 session_start();
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
-if ($isLoggedIn) {
- $id_user    = $_SESSION['id_user'];
- $nomor_user = $_SESSION['nomor_user'];
+
+if (isset($_GET['query'])) {
+ $query = $_GET['query'];
+} else {
+ $query = "Kata kunci tidak ada";
 }
 
+$querywithpercent = "%$query%";
+
 //User & Program data query
-$sql = 'SELECT nama_user, jenis_kelamin, nama_orang_tua, id_user, foto_profil, tanggal_lahir FROM tabel_user';
+$sql = 'SELECT nama_user, jenis_kelamin, nama_orang_tua, id_user, foto_profil, tanggal_lahir FROM tabel_user
+        WHERE nama_user LIKE ? OR id_user LIKE ?';
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute();
+$stmt->execute([$querywithpercent, $querywithpercent]);
 $row = $stmt->fetchAll();
 ?>
 
@@ -31,7 +36,7 @@ $row = $stmt->fetchAll();
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listing ADS - Aplikasi AADS</title>
+    <title>Pencarian ADS - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -175,10 +180,9 @@ $row = $stmt->fetchAll();
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
-                            <h1>Listing ADS</h1>
+                            <h1>Pencarian ADS</h1>
                         </div>
                     </div>
-
 
                     <!-- Form fields -->
                     <div class="row">
@@ -191,7 +195,7 @@ $row = $stmt->fetchAll();
                                                 <div class="card-header p-0">
                                                     <ul class="pull-right m-0">
                                                         <li class="mt-2">
-
+                                                            <h2>Kata kunci : <?php echo $query ?></h2>
                                                         </li>
                                                     </ul>
                                                 </div>
