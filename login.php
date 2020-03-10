@@ -48,6 +48,14 @@ if ($isLoggedIn) {
   }
  }
 
+ if (isset($_GET['status'])) {
+  if ($_GET['status'] == 'thankyou') {
+   $msg = "<div class='alert alert-success' role='alert'>
+        <strong>Anda telah log out.</strong> Terima kasih telah menggunakan aplikasi AADS.
+        </div>";
+  }
+ }
+
 }
 
 ?>
@@ -174,23 +182,6 @@ if ($isLoggedIn) {
                         </li>
                     </ul>
 
-                    <!-- <ul class="programVmenu navbar-nav d-none">
-                        <li class="nav-item">
-                            <a href="listing_program.php" class="nav-link">
-                                <i class="icon fas fa-list"></i>
-                                <span class="vmenutext">Listing Program</span>
-                            </a>
-                        <li class="nav-item">
-                            <a href="tambah_program.php" class="nav-link vactive">
-                                <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="edit_program.php" class="nav-link">
-                                <i class="icon far fa-edit"></i><span class="vmenutext">Edit Program</span>
-                            </a>
-                        </li>
-                    </ul> -->
                 </nav>
             </div>
             <!-- End of vertical navbar -->
@@ -213,7 +204,7 @@ echo $msg;
                     <form method="POST" action="login.php">
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" name="tbusername" required aria-required="true">
+                            <input type="text" class="form-control" id="username" name="tbusername" required aria-required="true" pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" autofocus>
                         </div>
 
                         <div class="form-group">

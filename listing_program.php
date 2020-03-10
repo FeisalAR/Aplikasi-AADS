@@ -1,3 +1,37 @@
+<?php
+include 'connection.php';
+session_start();
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+
+if (!$isLoggedIn) {
+ header('Location: login.php');
+}
+
+//Get program data
+
+$sqlprogram = 'SELECT * FROM tabel_user
+INNER JOIN tabel_program ON tabel_user.nomor_user = tabel_program.nomor_user
+ORDER BY nomor_program DESC';
+
+$stmt = $pdo->prepare($sqlprogram);
+$stmt->execute();
+$row = $stmt->fetchAll();
+
+//-------End get program data
+
+$msg = "";
+
+if (isset($_GET['status'])) {
+ if ($_GET['status'] == 'addsuccess') {
+  $msg = "<div class='alert alert-success' role='alert'>
+        <strong>Tambah Program Individu Berhasil.</strong>
+        </div>";
+ }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,7 +120,7 @@
                     </ul> -->
                     <ul class="userlogout navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
                     </ul>
 
@@ -133,6 +167,7 @@
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
+                            <?php echo $msg ?>
                             <h1>Listing Program</h1>
                         </div>
                     </div>
@@ -183,143 +218,60 @@
                                                     </div>
                                                 </div>
                                                 <ul class="list-group" id="program-list">
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
+                                                    <?php
+foreach ($row as $rowitems) {
+ $statusicon;
+ $statusclass;
+ if ($rowitems->status_program == 'Pending') {
+  $statusicon  = 'fas fa-hourglass-half';
+  $statusclass = 'text-warning';
+ } else {
+  $statusicon  = 'fas fa-check';
+  $statusclass = 'text-success';
+ }
 
-                                                                    <div class="col-md-12 col-12">
-                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
-                                                                            Mengenal Warna
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <p class="m-0 text-warning status"><i
-                                                                                    class="fas fa-hourglass-half"
-                                                                                    aria-hidden="true"></i>
-                                                                                <b>Pending</b>
-                                                                            </p>
-                                                                            <p class="m-0  targetdate"><i
-                                                                                    class="fas fa-calendar mr-1"
-                                                                                    aria-hidden="true"></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class="m-0 namaads"><i
-                                                                                    class="fas fa-user mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Nick Daniel | ADS001</p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
-                                                                                mengenal berbagai warna dalam lingkungan
-                                                                                sekitar</p>
+ echo "<li class='list-group-item'>
+                                                    <div class='row'>
+                                                        <div class='col-md-12 col-12'>
+                                                            <div class='row'>
 
-                                                                            <p class="m-0 kodeprogram"><i
-                                                                                    class="fas fa-key mr-1"></i>P001
-                                                                            </p>
-                                                                            <a
-                                                                                href="detail_program_individu.php?id_program=P001">
-                                                                                <button class="btn btndetail">
-                                                                                    <i class="fas fa-external-link-square-alt mr-1"
-                                                                                        aria-hidden="true"></i>
-                                                                                    Lihat Detail
-                                                                                </button></a>
-                                                                        </div>
+                                                                <div class='col-md-12 col-12'>
+                                                                    <h5 class='font-weight-bold mb-1 namaprogram'>
+                                                                        $rowitems->nama_program
+                                                                    </h5>
+                                                                    <div class='user-detail'>
+                                                                    <p class='m-0 kodeprogram'><i
+                                                                                class='fas fa-key mr-1'></i>$rowitems->id_program
+                                                                        </p>
+                                                                        <p class='m-0 $statusclass status'><i
+                                                                                class='fas $statusicon
+                                                                                aria-hidden='true'></i>
+                                                                            <b>$rowitems->status_program</b>
+                                                                        </p>
+                                                                        <p class='m-0'><i
+                                                                                class='fas fa-user mr-1 sasaran'></i>$rowitems->nama_user | $rowitems->id_user</p>
+                                                                        <p class='m-0  targetdate'><i
+                                                                                class='fas fa-calendar mr-1'
+                                                                                aria-hidden='true'></i>$rowitems->tanggal_target
+                                                                        </p>
+                                                                        <p class='m-0'><i
+                                                                                class='fa fa-bullseye mr-1 sasaran'></i>$rowitems->sasaran_program</p>
+                                                                        <a
+                                                                            href='lihat_detail_program_individu.php?id_program=$rowitems->id_program&id_user=$rowitems->id_user'>
+                                                                            <button class='btn btndetail'>
+                                                                                <i class='fas fa-external-link-square-alt mr-1'
+                                                                                    aria-hidden='true'></i>
+                                                                                Lihat Detail
+                                                                            </button></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                    </div>
+                                                </li>";
 
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-
-                                                                    <div class="col-md-12 col-12">
-                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
-                                                                            Mengenal Angka
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <p class="m-0 text-success status"><i
-                                                                                    class="fas fa-check"
-                                                                                    aria-hidden="true"></i>
-                                                                                <b>Selesai</b>
-                                                                            </p>
-                                                                            <p class="m-0  targetdate"><i
-                                                                                    class="fas fa-calendar mr-1"
-                                                                                    aria-hidden="true"></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class="m-0 namaads"><i
-                                                                                    class="fas fa-user mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Glenda Favier | ADS004</p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
-                                                                                mengenal berbagai angka dalam lingkungan
-                                                                                sekitar</p>
-
-                                                                            <p class="m-0 kodeprogram"><i
-                                                                                    class="fas fa-key mr-1"></i>P002
-                                                                            </p>
-                                                                            <a
-                                                                                href="detail_program_individu.php?id_program=P001">
-                                                                                <button class="btn btndetail">
-                                                                                    <i class="fas fa-external-link-square-alt mr-1"
-                                                                                        aria-hidden="true"></i>
-                                                                                    Lihat Detail
-                                                                                </button></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-12">
-                                                                <div class="row">
-
-                                                                    <div class="col-md-12 col-12">
-                                                                        <h5 class="font-weight-bold mb-1 namaprogram">
-                                                                            Mengenal Huruf
-                                                                        </h5>
-                                                                        <div class="user-detail">
-                                                                            <p class="m-0 text-warning status"><i
-                                                                                    class="fas fa-hourglass-half"
-                                                                                    aria-hidden="true"></i>
-                                                                                <b>Pending</b>
-                                                                            </p>
-                                                                            <p class="m-0  targetdate"><i
-                                                                                    class="fas fa-calendar mr-1"
-                                                                                    aria-hidden="true"></i> 11/06/2020
-                                                                            </p>
-                                                                            <p class="m-0  namaads"><i
-                                                                                    class="fas fa-user mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                Debbie Scoomin | ADS002</p>
-                                                                            <p class="m-0"><i
-                                                                                    class="fa fa-bullseye mr-1 sasaran"></i>Dapat
-                                                                                mengenal berbagai huruf dalam lingkungan
-                                                                                sekitar</p>
-
-                                                                            <p class="m-0 kodeprogram"><i
-                                                                                    class="fas fa-key mr-1"></i>P003
-                                                                            </p>
-                                                                            <a
-                                                                                href="detail_program_individu.php?id_program=P001">
-                                                                                <button class="btn btndetail">
-                                                                                    <i class="fas fa-external-link-square-alt mr-1"
-                                                                                        aria-hidden="true"></i>
-                                                                                    Lihat Detail
-                                                                                </button></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-
-
+}
+?>
 
                                                 </ul>
                                             </div>

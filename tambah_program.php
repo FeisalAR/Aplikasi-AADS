@@ -1,3 +1,48 @@
+<?php
+include 'connection.php';
+session_start();
+
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+
+if (!$isLoggedIn) {
+ header('Location: login.php');
+}
+
+if (isset($_POST['submit'])) {
+ if ($_POST['submit'] == 'Tambah Program') {
+  $id_user         = $_POST['id_user'];
+  $sqlgetnomoruser = "SELECT nomor_user FROM tabel_user WHERE id_user = :id_user";
+
+  $stmt2 = $pdo->prepare($sqlgetnomoruser);
+  $stmt2->execute(['id_user' => $id_user]);
+  $rownomor = $stmt2->fetch();
+
+  $namaprogram        = $_POST['namaprogram'];
+  $tujuanprogram      = $_POST['tujuanprogram'];
+  $keadaansekarang    = $_POST['keadaansekarang'];
+  $sasaranprogram     = $_POST['sasaranprogram'];
+  $sumbermateri       = $_POST['sumbermateri'];
+  $pelaksanaanprogram = $_POST['pelaksanaanprogram'];
+  $tanggaltarget      = $_POST['tanggaltarget'];
+  $kategoricheck      = implode(", ", $_POST['kategoricheck']);
+
+  $sql3 = "INSERT INTO tabel_program
+                (id_user, nomor_user,  nama_program, tujuan_program, keadaan_sekarang, sasaran_program, sumber_materi, cara_pelaksanaan, tanggal_target, kategori_program)
+                VALUES (:iu, :nu, :np, :tp, :ks, :sp, :sm, :cp, :tt, :kp)";
+
+  $stmt = $pdo->prepare($sql3);
+  $stmt->execute(['iu' => $id_user, 'nu' => $rownomor->nomor_user, 'np' => $namaprogram, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sp' => $sasaranprogram, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck]);
+
+  $affectedrows = $stmt->rowCount();
+  if ($affectedrows == '0') {
+   echo "HAHAHAAHA INSERT FAILED !";
+  } else {
+   echo "HAHAHAAHA GREAT SUCCESSS !";
+   header("Location: listing_program.php?status=addsuccess");
+  }
+ }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,12 +101,6 @@
                         </li>
                     </ul>
 
-                    <!-- <ul class="guestHmenu navbar-nav navbar-collapse d-none">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
-                        </li>
-                    </ul> -->
-
                     <!-- Search form -->
                     <form class="form-inline ml-auto navbar-nav navbar-collapse">
                         <div class="input-group md-form form-sm form-2 pl-0">
@@ -75,7 +114,7 @@
                     </form>
                     <ul class="userlogout navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
                     </ul>
 
@@ -127,70 +166,84 @@
                         </div>
                     </div>
                     <!-- Form fields -->
-                    <form action="/action_page.php">
-                        <div class="form-group">
-                            <label for="namaads">Nama ADS:</label>
-                            <input type="text" class="form-control" id="namaads" required aria-required="true">
-                        </div>
+                    <form method="POST" action='tambah_program.php'>
+                                        <div class='form-group'>
+                                            <label for='id_user'>Kode ADS:</label>
+                                            <input type='text' class='form-control' id='id_user' name='id_user' required
+                                                aria-required='true' placeholder="format kode: ADSxxxx" pattern="ADS00[0-9]+$" title="Format salah. Format Kode: ADSxxxx">
+                                        </div>
 
-                        <div class="form-group">
-                            <label for="namaprogram">Nama Program Individu:</label>
-                            <input type="text" class="form-control" id="namaprogram" required aria-required="true">
-                        </div>
+                                        <div class='form-group'>
+                                            <label for='namaprogram'>Nama Program Individu:</label>
+                                            <input type='text' class='form-control' id='namaprogram' name='namaprogram' required
+                                                aria-required='true'>
+                                        </div>
 
-                        <div class="form-group">
-                            <label for="tujuanprogram">Tujuan:</label>
-                            <textarea class="form-control" id="tujuanprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="keadaansekarang">Keadaan Sekarang:</label>
-                            <textarea class="form-control" id="keadaansekarang" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="sasaranprogram">Sasaran:</label>
-                            <textarea class="form-control" id="sasaranprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="sumberprogram">Sumber Materi / Alat Peraga:</label>
-                            <textarea class="form-control" id="sumberprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="pelaksanaanprogram">Cara Pelaksanaan:</label>
-                            <textarea class="form-control" id="pelaksanaanprogram" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggaltarget">Tanggal Target:</label>
-                            <input type="date" class="form-control tanggal" id="tanggaltarget" required
-                                aria-required="true">
-                        </div>
+                                        <div class='form-group'>
+                                            <label for='tujuanprogram'>Tujuan:</label>
+                                            <textarea class='form-control' id='tujuanprogram' name='tujuanprogram' rows='3'
+                                                required></textarea>
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='keadaansekarang'>Keadaan Sekarang:</label>
+                                            <textarea class='form-control' id='keadaansekarang' name='keadaansekarang' rows='3'
+                                                required></textarea>
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='sasaranprogram'>Sasaran:</label>
+                                            <textarea class='form-control' id='sasaranprogram' name='sasaranprogram' rows='3'
+                                                required></textarea>
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='sumbermateri'>Sumber Materi / Alat Peraga:</label>
+                                            <textarea class='form-control' id='sumbermateri' name='sumbermateri' rows='3'
+                                                required></textarea>
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='pelaksanaanprogram'>Cara Pelaksanaan:</label>
+                                            <textarea class='form-control' id='pelaksanaanprogram' name='pelaksanaanprogram' rows='3'
+                                                required></textarea>
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='tanggaltarget'>Tanggal Target:</label>
+                                            <input type='date' class='form-control tanggal' id='tanggaltarget' name='tanggaltarget' required
+                                                aria-required='true'>
+                                        </div>
 
-                        <label>Kategori (Pilih minimal Satu):</label><br>
-                        <div class="form-group kategori">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"
-                                    checked>
-                                <label class="form-check-label" for="inlineCheckbox1">Kognitif</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Motorik</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Sensorik</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Kemandirian</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Sosial-Emosional</label>
-                            </div>
-                        </div>
+                                        <label>Kategori (Pilih minimal Satu):</label><br>
+                                        <div class='form-group kategori'>
+                                            <div class='form-check form-check-inline'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox1' name='kategoricheck[]'
+                                                    value='Kognitif' checked>
+                                                <label class='form-check-label' for='inlineCheckbox1'>Kognitif</label>
+                                            </div>
+                                            <div class='form-check form-check-inline'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox2' name='kategoricheck[]'
+                                                    value='Motorik'>
+                                                <label class='form-check-label' for='inlineCheckbox2'>Motorik</label>
+                                            </div>
+                                            <div class='form-check form-check-inline'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3' name='kategoricheck[]'
+                                                    value='Sensorik'>
+                                                <label class='form-check-label' for='inlineCheckbox3'>Sensorik</label>
+                                            </div>
+                                            <div class='form-check form-check-inline'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3'name='kategoricheck[]'
+                                                    value='Kemandirian'>
+                                                <label class='form-check-label'
+                                                    for='inlineCheckbox3'>Kemandirian</label>
+                                            </div>
+                                            <div class='form-check form-check-inline'>
+                                                <input class='form-check-input' type='checkbox' id='inlineCheckbox3'name='kategoricheck[]'
+                                                    value='Sosial-Emosional'>
+                                                <label class='form-check-label'
+                                                    for='inlineCheckbox3'>Sosial-Emosional</label>
+                                            </div>
+                                        </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                                        <input type="submit" class="btn btn-primary" name="submit" value="Tambah Program">
+                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Batal</button>
+                                    </form>
 
             </div> <!-- Main Container end -->
 

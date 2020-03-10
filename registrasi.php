@@ -185,29 +185,23 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                     <form method="POST" action="registrasi.php">
                         <div class="form-group">
                             <label for="namaads">Nama ADS:</label>
-                            <input type="text" class="form-control" id="namaads" name="tbnama" required aria-required="true">
+                            <input type="text" class="form-control" id="namaads" name="tbnama" required aria-required="true" pattern="/^[a-z ,.'-]+$/i" autofocus>
                         </div>
 
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="email" class="form-control" id="email" name="tbemail" required aria-required="true">
+                            <input type="email" class="form-control" id="email" name="tbemail" required aria-required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                         </div>
 
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true">
+                            <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true" pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" name="tbpwd"  required aria-required="true">
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="konfirmasipassword">Konfirmasi Password:</label>
-                            <input type="password" class="form-control" id="konfirmasipassword" name="tbkonfirmpwd"  required
-                                aria-required="true">
-                        </div> -->
 
                         <div class="form-group">
                             <label for="tanggallahir">Tanggal Lahir:</label>
@@ -225,7 +219,7 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
 
                         <div class="form-group">
                             <label for="namaortu">Nama Orang Tua:</label>
-                            <input type="text" class="form-control" id="namaortu" name="tbortu"  required aria-required="true">
+                            <input type="text" class="form-control" id="namaortu" name="tbortu"  required aria-required="true" pattern="/^[a-z ,.'-]+$/i">
                         </div>
 
                         <div class="form-group">
@@ -235,17 +229,17 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
 
                         <div class="form-group">
                             <label for="alamat">Alamat:</label>
-                            <textarea class="form-control" id="alamat" name="txtalamat"  rows="3"></textarea>
+                            <textarea class="form-control" id="alamat" name="txtalamat" rows="3"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="kecamatan">Kecamatan:</label>
-                            <input type="text" class="form-control" id="kecamatan" name="tbkecamatan" >
+                            <input type="text" class="form-control" id="kecamatan" name="tbkecamatan" pattern="/^[a-z ,.'-]+$/i">
                         </div>
 
                         <div class="form-group">
                             <label for="kota">Kota:</label>
-                            <input type="text" class="form-control" id="kota" name="tbkota" >
+                            <input type="text" class="form-control" id="kota" name="tbkota" pattern="/^[a-z ,.'-]+$/i">
                         </div>
 
                         <div class="form-group">

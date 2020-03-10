@@ -49,7 +49,7 @@ $row = $stmt->fetchAll();
 
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Profil & Program Individu - Aplikasi AADS</title>
+    <title>Lihat Profil & Program Individu - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -162,9 +162,9 @@ $row = $stmt->fetchAll();
  echo 'style="display: none !important"';
 }
 ?>>
-                            <a href='profil_ads.php' class='nav-link vactive'>
-                                <i class='icon far fa-address-card'></i><span class='vmenutext'>Profil & Program
-                                    Individu Saya</span>
+                            <a href='profil_ads.php' class='nav-link'>
+                                <i class='icon far fa-address-card'></i><span class='vmenutext'>Lihat Profil & Program
+                                    Individu ADS</span>
                             </a>
 
                         <li class='nav-item' <?php if (!$isLoggedIn) {

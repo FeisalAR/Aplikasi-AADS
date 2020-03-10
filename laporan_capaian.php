@@ -92,12 +92,6 @@ WHERE tabel_user.id_user = :id_user';
                         </li>
                     </ul>
 
-                    <!-- <ul class="guestHmenu navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
-                        </li>
-                    </ul> -->
-
                     <!-- Search form -->
                     <form class="form-inline ml-auto navbar-nav navbar-collapse">
                         <div class="input-group md-form form-sm form-2 pl-0">
@@ -157,18 +151,7 @@ WHERE tabel_user.id_user = :id_user';
                                     Individu Saya</span>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="program_individu.php" class="nav-link">
-                                <i class="icon far fa-address-book"></i><span class="vmenutext">Program
-                                    Individu Saya</span>
-                            </a>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a href="detail_program_individu.php" class="nav-link">
-                                <i class="icon far fa-calendar-check"></i><span class="vmenutext">Detail Program &
-                                    Catatan Harian</span>
-                            </a>
-                        </li> -->
+
                         <li class="nav-item">
                             <a href="laporan_capaian.php" class="nav-link vactive">
                                 <i class="icon fas fa-chart-line"></i><span class="vmenutext">Laporan Capaian</span>
@@ -478,11 +461,6 @@ foreach ($row as $rowitem) {
 }
 
 ?>
-
-
-
-
-
 
                                                 </ul>
                                             </div>

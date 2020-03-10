@@ -134,25 +134,20 @@ $row = $stmt->fetchAll();
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a href="profil_ads.php" class="nav-link">
                                 <i class="icon far fa-address-card"></i><span class="vmenutext">Profil & Program
                                     Individu Saya</span>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="program_individu.php" class="nav-link">
-                                <i class="icon far fa-address-book"></i><span class="vmenutext">Program
-                                    Individu Saya</span>
-                            </a>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a href="detail_program_individu.php" class="nav-link">
-                                <i class="icon far fa-calendar-check"></i><span class="vmenutext">Detail Program &
-                                    Catatan Harian</span>
-                            </a>
-                        </li> -->
-                        <li class="nav-item">
+
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a href="laporan_capaian.php" class="nav-link">
                                 <i class="icon fas fa-chart-line"></i><span class="vmenutext">Laporan Capaian</span>
                             </a>
@@ -165,11 +160,6 @@ $row = $stmt->fetchAll();
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing ADS</span>
                             </a>
-                            <!-- <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
-                            </a>
-                        </li> -->
                     </ul>
 
 

@@ -72,7 +72,7 @@ $rowCatatan = $stmt->fetchAll();
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Program Individu - Aplikasi AADS</title>
+    <title>Lihat Detail Program Individu - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -206,7 +206,7 @@ $rowCatatan = $stmt->fetchAll();
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
-                            <h1>Detail Program Individu & Catatan Harian</h1>
+                            <h1>Lihat Detail Program Individu & Catatan Harian</h1>
                         </div>
                     </div>
 
