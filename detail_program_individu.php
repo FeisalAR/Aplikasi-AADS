@@ -366,7 +366,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div class="col-12 content">
                                                                                     <p>
-                                                                                        <?php echo $row[0]->tanggal_target ?>
+                                                                                        <?php echo date("j F Y",strtotime($row[0]->tanggal_target)) ?>
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
@@ -382,7 +382,7 @@ if (isset($_POST['submit'])) {
                                                                                     <p><?php if ($row[0]->tanggal_selesai == null) {
  echo " - ";
 } else {
- echo $row[0]->tanggal_selesai;
+ echo date("j F Y",strtotime($row[0]->tanggal_selesai)) ;
 }
 ?></p>
                                                                                 </div>
@@ -543,11 +543,12 @@ if (isset($_POST['submit'])) {
 
                                                                         <?php
 foreach ($rowCatatan as $rowitems) {
+$tanggal_catatanf = date("j F Y",strtotime($rowitems->tanggal_catatan));
  echo "
                                                                         <div class='row  m-0 catatanentry'>
                                                                                 <div class='col-sm-12 col-md-3'>
                                                                                     <p class='font-weight-bold'>
-                                                                                        $rowitems->tanggal_catatan</p>
+                                                                                        $tanggal_catatanf</p>
                                                                                 </div>
                                                                                 <div class='col-sm-12 col-md-6 content'>
                                                                                     <p>

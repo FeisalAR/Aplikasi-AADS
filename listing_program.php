@@ -59,7 +59,7 @@ if (isset($_GET['status'])) {
 <body>
 
     <img class="dnapic" src="images/dnabg.png" alt="dnapic">
-    <div class="container-fluid">
+    <div class="container-fluid listingprogrampage">
         <!-- Horizontal Navbar -->
         <div class="nav-wrapper">
             <nav class="navbar navbar-expand-lg navbar-toggleable-lg hnavbar">
@@ -218,7 +218,7 @@ if (isset($_GET['status'])) {
                                                                 aria-label="Recipient's username"
                                                                 style="font-family: Montserrat, FontAwesome;"
                                                                 aria-describedby="basic-addon2"
-                                                                id="program-list-search">
+                                                                id="program-list-search-listing">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -234,6 +234,7 @@ foreach ($row as $rowitems) {
   $statusicon  = 'fas fa-check';
   $statusclass = 'text-success';
  }
+ $tanggal_targetf = date("j F Y",strtotime($rowitems->tanggal_target));
 
  echo "<li class='list-group-item'>
                                                     <div class='row'>
@@ -253,11 +254,11 @@ foreach ($row as $rowitems) {
                                                                                 aria-hidden='true'></i>
                                                                             <b>$rowitems->status_program</b>
                                                                         </p>
-                                                                        <p class='m-0'><i
-                                                                                class='fas fa-user mr-1 sasaran'></i>$rowitems->nama_user | $rowitems->id_user</p>
+                                                                        <p class='m-0 namaads'><i
+                                                                                class='fas fa-user mr-1 '></i>$rowitems->nama_user | $rowitems->id_user</p>
                                                                         <p class='m-0  targetdate'><i
                                                                                 class='fas fa-calendar mr-1'
-                                                                                aria-hidden='true'></i>$rowitems->tanggal_target
+                                                                                aria-hidden='true'></i> $tanggal_targetf
                                                                         </p>
                                                                         <p class='m-0'><i
                                                                                 class='fa fa-bullseye mr-1 sasaran'></i>$rowitems->sasaran_program</p>

@@ -234,7 +234,7 @@ foreach ($row as $rowitem) {
                                                                         <div class="user-detail">
                                                                             <p class="m-0  bdads"><i
                                                                                     class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i> ' . $rowitem->tanggal_lahir . '
+                                                                                    aria-hidden="true"></i> ' . date("j F Y",strtotime($rowitem->tanggal_lahir)) . '
                                                                             </p>
                                                                             <p class="m-0"><i class="fas fa-'.$jkicon.' mr-1"
                                                                                     aria-hidden="true"></i>

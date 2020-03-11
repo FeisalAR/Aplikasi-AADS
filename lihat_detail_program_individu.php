@@ -270,15 +270,15 @@ $rowCatatan = $stmt->fetchAll();
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row  m-0">
-                                                                                <div class="col-12 tanggaltarget">
+                                                                                <div class="col-12 ">
                                                                                     <p class="font-weight-bold">
                                                                                         Tanggal
                                                                                         Target
                                                                                     </p>
                                                                                 </div>
-                                                                                <div class="col-12 content">
+                                                                                <div class="col-12 content targetdate">
                                                                                     <p>
-                                                                                        <?php echo $row[0]->tanggal_target ?>
+                                                                                        <?php echo date("j F Y",strtotime($row[0]->tanggal_target)) ?>
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
@@ -294,7 +294,7 @@ $rowCatatan = $stmt->fetchAll();
                                                                                     <p><?php if ($row[0]->tanggal_selesai == null) {
  echo " - ";
 } else {
- echo $row[0]->tanggal_selesai;
+ echo date("j F Y",strtotime($row[0]->tanggal_selesai));
 }
 ?></p>
                                                                                 </div>
@@ -449,11 +449,12 @@ $rowCatatan = $stmt->fetchAll();
 
                                                                         <?php
 foreach ($rowCatatan as $rowitems) {
+$tanggal_catatanf = date("j F Y",strtotime($rowitems->tanggal_catatan));
  echo "
                                                                         <div class='row  m-0 catatanentry'>
                                                                                 <div class='col-sm-12 col-md-3'>
                                                                                     <p class='font-weight-bold'>
-                                                                                        $rowitems->tanggal_catatan</p>
+                                                                                        $tanggal_catatanf</p>
                                                                                 </div>
                                                                                 <div class='col-sm-12 col-md-6 content'>
                                                                                     <p>

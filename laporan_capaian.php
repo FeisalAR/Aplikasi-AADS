@@ -236,7 +236,7 @@ WHERE tabel_user.id_user = :id_user';
                                                                             <p class="m-0  bdads"><i
                                                                                     class="fas fa-birthday-cake mr-1"
                                                                                     aria-hidden="true"></i>
-                                                                                    <?php echo $rowuser->tanggal_lahir ?>
+                                                                                    <?php echo date("j F Y",strtotime($rowuser->tanggal_lahir)) ?>
 
                                                                             </p>
                                                                             <?php
@@ -369,7 +369,7 @@ WHERE tabel_user.id_user = :id_user';
 foreach ($row as $rowitem) {
  //Catatan harian query
 
- $sqlCatatan = 'SELECT * FROM tabel_catatan_harian WHERE id_program = :id_program ORDER BY tanggal_catatan DESC';
+ $sqlCatatan = 'SELECT * FROM tabel_catatan_harian WHERE id_program = :id_program ORDER BY tanggal_catatan ASC';
 
  $stmt = $pdo->prepare($sqlCatatan);
  $stmt->execute(['id_program' => $rowitem->id_program]);
@@ -393,8 +393,8 @@ foreach ($row as $rowitem) {
                                                                  <div class="row">
                                                                      <div class="col-md-12 col-12">
                                                                          <h5 class="font-weight-bold mb-1 namaprogram">
-                                                                             ' . $rowitem->nama_program . '
-                                                                         </h5>
+                                                                             ' . $rowitem->nama_program . ' <small class="kodeprogram"> | ' . $rowitem->id_program  . '</small>
+                                                                         </h5>                                                                      
                                                                          <div class="user-detail">
                                                                              <div class="row statuscapaianrow">
                                                                                  <div
@@ -414,14 +414,14 @@ foreach ($row as $rowitem) {
                                                                                          Target :
                                                                                      </label><span
                                                                                          id="tanggaltargetcapaian">
-                                                                                         ' . $rowitem->tanggal_target . '</span>
+                                                                                         ' . date("j F Y", strtotime($rowitem->tanggal_target))  . '</span>
                                                                                  </div>
                                                                                  <div
                                                                                      class="col-sm-12 col-md-3 selesaicapaian">
                                                                                      <label class="capaianlabel">Tanggal
                                                                                          Selesai : </label><span
-                                                                                         id="selesaicapaian">' . $rowitem->tanggal_selesai . '</span>
-                                                                                 </div>
+                                                                                         id="selesaicapaian"> ' . date("j F Y", strtotime($rowitem->tanggal_selesai))  . '</span>
+                                                                                 </div>                                                                                 
 
                                                                                 <div
                                                                                      class="col-sm-12 col-md-3 kategoricapaian">
@@ -463,7 +463,7 @@ foreach ($row as $rowitem) {
                                                                                  <div class="col catatanentrycontainer"><div class="row  m-0 catatanentry">
                                                                                          <div class="col-sm-12 col-md-2">
                                                                                              <p class="font-weight-bold">
-                                                                                                 ' . $catatan->tanggal_catatan . '</p>
+                                                                                                 ' . date("j F Y", strtotime($catatan->tanggal_catatan))  . '</p>
                                                                                          </div>
                                                                                          <div
                                                                                              class="col-sm-12 col-md-10 content">

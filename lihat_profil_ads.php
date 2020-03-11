@@ -207,7 +207,7 @@ $row = $stmt->fetchAll();
                                         <div class='col col-12'>
                                             <div class='card'>
                                                 <ul class='list-group' id='user-list-profile'>
-                                                    <li class='list-group-item'>
+                                                    <li class='list-group-item' id="profilbox">
                                                         <div class='row'>
                                                             <div class='col-md-12 col-12'>
                                                                 <div class='row'>
@@ -228,7 +228,7 @@ $row = $stmt->fetchAll();
                                                                             </p>
                                                                             <p class='m-0  bdads'><i
                                                                                     class='fas fa-birthday-cake mr-1'
-                                                                                    aria-hidden='true'></i> <?php echo $rowuser->tanggal_lahir; ?>
+                                                                                    aria-hidden='true'></i> <?php echo date("j F Y",strtotime($rowuser->tanggal_lahir)); ?>
 
                                                                             </p>
                                                                             <?php
@@ -349,6 +349,8 @@ foreach ($row as $rowitems) {
   $statusclass = 'text-success';
  }
 
+$tanggal_targetf = date("j F Y",strtotime($rowitems->tanggal_target));
+
  echo "<li class='list-group-item'>
                                                     <div class='row'>
                                                         <div class='col-md-12 col-12'>
@@ -366,7 +368,7 @@ foreach ($row as $rowitems) {
                                                                         </p>
                                                                         <p class='m-0  targetdate'><i
                                                                                 class='fas fa-calendar mr-1'
-                                                                                aria-hidden='true'></i>$rowitems->tanggal_target
+                                                                                aria-hidden='true'></i>$tanggal_targetf
                                                                         </p>
                                                                         <p class='m-0'><i
                                                                                 class='fa fa-bullseye mr-1 sasaran'></i>$rowitems->sasaran_program</p>
