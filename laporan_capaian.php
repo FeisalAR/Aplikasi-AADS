@@ -233,10 +233,10 @@ WHERE tabel_user.id_user = :id_user';
                                                                                     <?php echo $rowuser->id_user ?>
 
                                                                             </p>
-                                                                            <p class="m-0  bdads"><i
+                                                                            <p class="m-0 "><i
                                                                                     class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i>
-                                                                                    <?php echo date("j F Y",strtotime($rowuser->tanggal_lahir)) ?>
+                                                                                    aria-hidden="true"></i><span class="bdads">
+                                                                                    <?php echo date("j F Y",strtotime($rowuser->tanggal_lahir)) ?></span>
 
                                                                             </p>
                                                                             <?php
@@ -409,17 +409,17 @@ foreach ($row as $rowitem) {
                                                                                      </span>
                                                                                  </div>
                                                                                  <div
-                                                                                     class="col-sm-12 col-md-3 tanggalcapaian">
+                                                                                     class="col-sm-12 col-md-3 ">
                                                                                      <label class="capaianlabel">Tanggal
                                                                                          Target :
-                                                                                     </label><span
+                                                                                     </label><span class="tanggalcapaian"
                                                                                          id="tanggaltargetcapaian">
                                                                                          ' . date("j F Y", strtotime($rowitem->tanggal_target))  . '</span>
                                                                                  </div>
                                                                                  <div
-                                                                                     class="col-sm-12 col-md-3 selesaicapaian">
+                                                                                     class="col-sm-12 col-md-3 ">
                                                                                      <label class="capaianlabel">Tanggal
-                                                                                         Selesai : </label><span
+                                                                                         Selesai : </label><span class="selesaicapaian"
                                                                                          id="selesaicapaian"> ' . date("j F Y", strtotime($rowitem->tanggal_selesai))  . '</span>
                                                                                  </div>                                                                                 
 
@@ -462,7 +462,7 @@ foreach ($row as $rowitem) {
                                                                                  class="row collapse catatanrowentry catatancontent' . $rowitem->id_program . ' ">
                                                                                  <div class="col catatanentrycontainer"><div class="row  m-0 catatanentry">
                                                                                          <div class="col-sm-12 col-md-2">
-                                                                                             <p class="font-weight-bold">
+                                                                                             <p class="font-weight-bold catatantanggal">
                                                                                                  ' . date("j F Y", strtotime($catatan->tanggal_catatan))  . '</p>
                                                                                          </div>
                                                                                          <div

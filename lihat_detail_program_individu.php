@@ -276,16 +276,16 @@ $rowCatatan = $stmt->fetchAll();
                                                                                         Target
                                                                                     </p>
                                                                                 </div>
-                                                                                <div class="col-12 content targetdate">
-                                                                                    <p>
+                                                                                <div class="col-12 content ">
+                                                                                    <p class="targetdate">
                                                                                         <?php echo date("j F Y",strtotime($row[0]->tanggal_target)) ?>
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="row  m-0">
-                                                                                <div class="col-12 tanggalselesai">
-                                                                                    <p class="font-weight-bold">
+                                                                                <div class="col-12 ">
+                                                                                    <p class="font-weight-bold tanggalselesai">
                                                                                         Tanggal
                                                                                         Selesai
                                                                                     </p>
@@ -453,7 +453,7 @@ $tanggal_catatanf = date("j F Y",strtotime($rowitems->tanggal_catatan));
  echo "
                                                                         <div class='row  m-0 catatanentry'>
                                                                                 <div class='col-sm-12 col-md-3'>
-                                                                                    <p class='font-weight-bold'>
+                                                                                    <p class='font-weight-bold catatantanggal'>
                                                                                         $tanggal_catatanf</p>
                                                                                 </div>
                                                                                 <div class='col-sm-12 col-md-6 content'>

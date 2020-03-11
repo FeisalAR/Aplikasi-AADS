@@ -66,46 +66,45 @@ $(document).ready(function () {
 
     //--------------Month translate
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('January', 'Januari'));
     });
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('February', 'Februari'));
     });
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('March', 'Maret'));
     });
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('May', 'Mei'));
     });
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('July', 'Juli'));
     });
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('August', 'Agustus'));
     });
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('October', 'Oktober'));
     });
 
-    $('.catatanentry, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian').each(function () {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai').each(function () {
         var text = $(this).text();
         $(this).text(text.replace('December', 'Desember'));
     });
-
 
 
 }); //---jQuery END -----

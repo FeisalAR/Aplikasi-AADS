@@ -358,28 +358,28 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row  m-0">
-                                                                                <div class="col-12 tanggaltarget">
+                                                                                <div class="col-12 font-weight-bold tanggaltarget">
                                                                                     <p class="font-weight-bold">
                                                                                         Tanggal
                                                                                         Target
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="col-12 content">
-                                                                                    <p>
+                                                                                    <p class="tanggaltarget">
                                                                                         <?php echo date("j F Y",strtotime($row[0]->tanggal_target)) ?>
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="row  m-0">
-                                                                                <div class="col-12 tanggalselesai">
+                                                                                <div class="col-12">
                                                                                     <p class="font-weight-bold">
                                                                                         Tanggal
                                                                                         Selesai
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="col-12 content">
-                                                                                    <p><?php if ($row[0]->tanggal_selesai == null) {
+                                                                                    <p class="tanggalselesai"><?php if ($row[0]->tanggal_selesai == null) {
  echo " - ";
 } else {
  echo date("j F Y",strtotime($row[0]->tanggal_selesai)) ;
@@ -546,8 +546,8 @@ foreach ($rowCatatan as $rowitems) {
 $tanggal_catatanf = date("j F Y",strtotime($rowitems->tanggal_catatan));
  echo "
                                                                         <div class='row  m-0 catatanentry'>
-                                                                                <div class='col-sm-12 col-md-3'>
-                                                                                    <p class='font-weight-bold'>
+                                                                                <div class='col-sm-12 col-md-3 font-weight-bold'>                                                                                    
+                                                                                    <p class='font-weight-bold catatantanggal'>
                                                                                         $tanggal_catatanf</p>
                                                                                 </div>
                                                                                 <div class='col-sm-12 col-md-6 content'>

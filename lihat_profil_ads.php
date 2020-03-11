@@ -226,11 +226,11 @@ $row = $stmt->fetchAll();
                                                                                     class='fas fa-key mr-1'></i><?php echo $rowuser->id_user; ?>
 
                                                                             </p>
-                                                                            <p class='m-0  bdads'><i
+                                                                            <p class='m-0 '><i
                                                                                     class='fas fa-birthday-cake mr-1'
-                                                                                    aria-hidden='true'></i> <?php echo date("j F Y",strtotime($rowuser->tanggal_lahir)); ?>
+                                                                                    aria-hidden='true'></i><span class="bdads"> <?php echo date("j F Y",strtotime($rowuser->tanggal_lahir)); ?>
 
-                                                                            </p>
+                                                                            </span></p>
                                                                             <?php
                                                                                 if($rowuser->jenis_kelamin == "Laki-laki"){
                                                                                     $jkicon = "mars";
@@ -366,10 +366,10 @@ $tanggal_targetf = date("j F Y",strtotime($rowitems->tanggal_target));
                                                                                 aria-hidden='true'></i>
                                                                             <b>$rowitems->status_program</b>
                                                                         </p>
-                                                                        <p class='m-0  targetdate'><i
+                                                                        <p class='m-0 '><i
                                                                                 class='fas fa-calendar mr-1'
-                                                                                aria-hidden='true'></i>$tanggal_targetf
-                                                                        </p>
+                                                                                aria-hidden='true'></i><span class='targetdate'>$tanggal_targetf
+                                                                        </span></p>
                                                                         <p class='m-0'><i
                                                                                 class='fa fa-bullseye mr-1 sasaran'></i>$rowitems->sasaran_program</p>
 

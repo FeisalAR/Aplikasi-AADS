@@ -757,6 +757,10 @@ input[type=number]::-webkit-outer-spin-button {
   color: #705aba;
 }
 
+.trumbowyg-editor {
+  background-color: white !important;
+}
+
 @media print {
   body {
     margin: 0;

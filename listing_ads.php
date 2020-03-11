@@ -232,10 +232,10 @@ foreach ($row as $rowitem) {
                                                                         <h5 class="font-weight-bold mb-1 namaads">' . $rowitem->nama_user . '
                                                                         </h5>
                                                                         <div class="user-detail">
-                                                                            <p class="m-0  bdads"><i
+                                                                            <p class="m-0"><i
                                                                                     class="fas fa-birthday-cake mr-1"
-                                                                                    aria-hidden="true"></i> ' . date("j F Y",strtotime($rowitem->tanggal_lahir)) . '
-                                                                            </p>
+                                                                                    aria-hidden="true"></i><span class="bdads"> ' . date("j F Y",strtotime($rowitem->tanggal_lahir)) . '
+                                                                            </span></p>
                                                                             <p class="m-0"><i class="fas fa-'.$jkicon.' mr-1"
                                                                                     aria-hidden="true"></i>
                                                                                 '. $rowitem->jenis_kelamin.'</p>
