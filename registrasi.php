@@ -222,7 +222,7 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
 
                         <div class="form-group">
                             <label for="namaortu">Nama Orang Tua:</label>
-                            <input type="text" class="form-control" id="namaortu" name="tbortu"  required aria-required="true" pattern="/^[a-z ,.'-]+$/i">
+                            <input type="text" class="form-control" id="namaortu" name="tbortu"  required aria-required="true" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z.]*)*$">
                         </div>
 
                         <div class="form-group">
@@ -237,12 +237,12 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
 
                         <div class="form-group">
                             <label for="kecamatan">Kecamatan:</label>
-                            <input type="text" class="form-control" id="kecamatan" name="tbkecamatan" pattern="/^[a-z ,.'-]+$/i">
+                            <input type="text" class="form-control" id="kecamatan" name="tbkecamatan" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z.]*)*$">
                         </div>
 
                         <div class="form-group">
                             <label for="kota">Kota:</label>
-                            <input type="text" class="form-control" id="kota" name="tbkota" pattern="/^[a-z ,.'-]+$/i">
+                            <input type="text" class="form-control" id="kota" name="tbkota" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z.]*)*$">
                         </div>
 
                         <div class="form-group">
