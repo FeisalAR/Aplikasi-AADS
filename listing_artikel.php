@@ -3,21 +3,14 @@ include 'connection.php';
 session_start();
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
 
-if (!$isLoggedIn) {
- header('Location: login.php');
-}
+//Artikel query
+$sqlartikel = 'SELECT * FROM tabel_artikel ORDER BY nomor_artikel DESC ';
 
-//Get program data
-
-$sqlprogram = 'SELECT * FROM tabel_user
-INNER JOIN tabel_program ON tabel_user.nomor_user = tabel_program.nomor_user
-ORDER BY nomor_program DESC';
-
-$stmt = $pdo->prepare($sqlprogram);
+$stmt = $pdo->prepare($sqlartikel);
 $stmt->execute();
-$row = $stmt->fetchAll();
+$rowartikel = $stmt->fetchAll();
 
-//-------End get program data
+//-------Artikel query end
 
 $msg = "";
 
@@ -53,7 +46,7 @@ if (isset($_GET['status'])) {
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listing Program - Aplikasi AADS</title>
+    <title>Listing Artikel - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -96,12 +89,6 @@ if (isset($_GET['status'])) {
                         </li>
                     </ul>
 
-                    <!-- <ul class="guestHmenu navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
-                        </li>
-                    </ul> -->
-
                     <!-- Search form -->
                     <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
                         <div class="input-group md-form form-sm form-2 pl-0">
@@ -114,15 +101,6 @@ if (isset($_GET['status'])) {
                         </div>
                     </form>
 
-                    <!-- <ul class="userlogin navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="registrasi.php"><i
-                                    class="icon fas fa-user-plus"></i>Registrasi</a>
-                        </li>
-                    </ul> -->
                     <ul class="userlogout navbar-nav navbar-collapse">
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
@@ -145,17 +123,18 @@ if (isset($_GET['status'])) {
                 <nav class="navbar">
                     <ul class="programVmenu navbar-nav">
                         <li class="nav-item">
-                            <a href="listing_program.php" class="nav-link vactive">
+                            <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
+                            </li>
                         <li class="nav-item">
                             <a href="tambah_program.php" class="nav-link">
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="listing_artikel.php" class="nav-link">
+                            <a href="listing_artikel.php" class="nav-link vactive">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Artikel</span>
                             </a>
@@ -179,7 +158,7 @@ if (isset($_GET['status'])) {
                         <!-- Form Title -->
                         <div class="col">
                             <?php echo $msg ?>
-                            <h1>Listing Program</h1>
+                            <h1>Listing Artikel</h1>
                         </div>
                     </div>
 
@@ -209,10 +188,10 @@ if (isset($_GET['status'])) {
                                                                     checked>Semua</label>
                                                             <label class="radio-inline mr-2"><input type="radio"
                                                                     name="radiofilterstatus"
-                                                                    value="Pending">Pending</label>
+                                                                    value="Published">Published</label>
                                                             <label class="radio-inline mr-2"><input type="radio"
                                                                     name="radiofilterstatus"
-                                                                    value="Selesai">Selesai</label>
+                                                                    value="Redacted">Redacted</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -230,18 +209,17 @@ if (isset($_GET['status'])) {
                                                 </div>
                                                 <ul class="list-group" id="program-list">
                                                     <?php
-foreach ($row as $rowitems) {
+foreach ($rowartikel as $artikel) {
  $statusicon;
  $statusclass;
- if ($rowitems->status_program == 'Pending') {
-  $statusicon  = 'fas fa-hourglass-half';
-  $statusclass = 'text-warning';
- } else {
+ if ($artikel->status_artikel == 'Published') {  
   $statusicon  = 'fas fa-check';
   $statusclass = 'text-success';
+ } else {
+  $statusicon  = 'fas fa-hourglass-half';
+  $statusclass = 'text-warning';
  }
- $tanggal_targetf = date("j F Y",strtotime($rowitems->tanggal_target));
-
+ $tanggal_targetf = date("j F Y",strtotime($artikel->tanggal_artikel));
  echo "<li class='list-group-item'>
                                                     <div class='row'>
                                                         <div class='col-md-12 col-12'>
@@ -249,37 +227,36 @@ foreach ($row as $rowitems) {
 
                                                                 <div class='col-md-12 col-12'>
                                                                     <h5 class='font-weight-bold mb-1 namaprogram'>
-                                                                        $rowitems->nama_program
+                                                                        $artikel->judul_artikel
                                                                     </h5>
                                                                     <div class='user-detail'>
                                                                     <p class='m-0 kodeprogram'><i
-                                                                                class='fas fa-key mr-1'></i>$rowitems->id_program
+                                                                                class='fas fa-key mr-1'></i>$artikel->id_artikel
                                                                         </p>
                                                                         <p class='m-0 $statusclass status'><i
                                                                                 class='fas $statusicon
                                                                                 aria-hidden='true'></i>
-                                                                            <b>$rowitems->status_program</b>
+                                                                            <b>$artikel->status_artikel</b>
                                                                         </p>
-                                                                        <p class='m-0 namaads'><i
-                                                                                class='fas fa-user mr-1 '></i>$rowitems->nama_user | $rowitems->id_user</p>
-                                                                        <p class='m-0'><i
+                                                                        <p class='m-0 namaads d-none'><i
+                                                                                class='fas fa-user mr-1 '></i>$artikel->id_user</p>
+                                                                        <p class='m-0  publishdate'><i
                                                                                 class='fas fa-calendar mr-1'
-                                                                                aria-hidden='true'></i><span class='targetdate'> $tanggal_targetf</span>
-                                                                        </p>
-                                                                        <p class='m-0'><i
-                                                                                class='fa fa-bullseye mr-1 sasaran'></i>$rowitems->sasaran_program</p>
+                                                                                aria-hidden='true'></i><span class='targetdate'> $tanggal_targetf
+                                                                        </span></p>                                                                        
                                                                         <a
-                                                                            href='lihat_detail_program_individu.php?id_program=$rowitems->id_program&id_user=$rowitems->id_user'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-external-link-square-alt mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Lihat Detail
-                                                                            </button></a><a
-                                                                            href='edit_program.php?id_program=$rowitems->id_program'>
+                                                                            href='edit_artikel.php?id_artikel=$artikel->id_artikel'>
                                                                             <button class='btn btndetail'>
                                                                                 <i class='fas fa-pencil-alt mr-1'
                                                                                     aria-hidden='true'></i>
-                                                                                Edit Program
+                                                                                Edit Artikel
+                                                                            </button></a>
+                                                                             <a
+                                                                            href='artikel.php?id_artikel=$artikel->id_artikel'>
+                                                                            <button class='btn btndetail'>
+                                                                                <i class='fas fa-external-link-square-alt'
+                                                                                    aria-hidden='true'></i>
+                                                                                Buka Artikel
                                                                             </button></a>
                                                                     </div>
                                                                 </div>

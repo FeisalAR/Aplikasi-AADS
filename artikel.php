@@ -3,14 +3,13 @@ include 'connection.php';
 session_start();
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
 
-//Artikel query
-$sqlartikel = 'SELECT * FROM tabel_artikel ORDER BY nomor_artikel DESC LIMIT 3 ';
+ $id_artikel = $_GET['id_artikel'];
+
+  $sqlartikel = 'SELECT * FROM tabel_artikel WHERE id_artikel = :id_artikel ';
 
 $stmt = $pdo->prepare($sqlartikel);
-$stmt->execute();
-$rowartikel = $stmt->fetchAll();
-
-//-------Artikel query end
+$stmt->execute(['id_artikel' => $id_artikel]);
+$rowartikel = $stmt->fetch();
 
 $sqlarsip = 'SELECT * FROM tabel_artikel ORDER BY nomor_artikel DESC LIMIT 8 ';
 
@@ -19,7 +18,6 @@ $stmt2->execute();
 $rowarsip = $stmt2->fetchAll();
 
 //-------Artikel Lain ^^^^^
-
 ?>
 
 <!DOCTYPE html>
@@ -35,10 +33,9 @@ $rowarsip = $stmt2->fetchAll();
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda - Aplikasi AADS</title>
+    <title><?php echo $rowartikel->judul_artikel?> - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -68,22 +65,22 @@ $rowarsip = $stmt2->fetchAll();
 
                 <div class="collapse navbar-collapse" id="HnavbarToggler">
                     <!-- Links -->
-                    <ul class="userHmenu navbar-nav">
+                    <ul class="userHmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a class="nav-link hactive" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
-                        <li class="nav-item" <?php if (!$isLoggedIn) {
- echo 'style="display: none !important"';
-}
-?>>
+                        <li class="nav-item">
                             <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
-                        <li class="nav-item" <?php if (!$isLoggedIn) {
- echo 'style="display: none !important"';
-}
-?>>
-                            <a class="nav-link" href="listing_program.php"><i class="icon fas fa-tasks"></i>Kelola
-                                Program</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="listing_program.php"><i
+                                    class="icon fas fa-tasks"></i>Kelola Program</a>
+                        </li>
+                    </ul>
+
+                    <ul class="guestHmenu navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                     </ul>
 
@@ -98,12 +95,11 @@ $rowarsip = $stmt2->fetchAll();
                             </div>
                         </div>
                     </form>
-                    <ul class="guestlogin navbar-nav navbar-collapse" <?php if ($isLoggedIn) {
- echo 'style="display: none !important"';
-}
-?>>
+
+                    <ul class="userlogin navbar-nav navbar-collapse">
                         <li class="nav-item">
-                            <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
+                            <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log
+                                In</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="registrasi.php"><i
@@ -111,14 +107,6 @@ $rowarsip = $stmt2->fetchAll();
                         </li>
                     </ul>
 
-                    <ul class="userlogout navbar-nav navbar-collapse"<?php if (!$isLoggedIn) {
- echo 'style="display: none !important"';
-}
-?>>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
-                        </li>
-                    </ul>
                 </div>
 
 
@@ -132,12 +120,20 @@ $rowarsip = $stmt2->fetchAll();
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav ">
+                    <ul class="userVmenu navbar-nav d-none">
                         <li class="nav-item">
                             <a href="listing_ads.php" class="nav-link">
-                                <i class="icon fas fa-list-ul"></i><span class="vmenutext">Listing ADS</span>
+                                <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
                             </a>
                         </li>
+                    </ul>
+
+                    <ul class="guestVmenu navbar-nav">
+                        <li class="nav-item">
+                            <a href="listing_ads.php" class="nav-link">
+                                <i class="icon fas fa-list-ul"></i>
+                                <span class="vmenutext">Listing ADS</span>
+                            </a>
                         <li class="nav-item" <?php if (!$isLoggedIn) {
  echo 'style="display: none !important"';
 }
@@ -147,6 +143,14 @@ $rowarsip = $stmt2->fetchAll();
                                 <span class="vmenutext">Listing Program</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="listing_artikel.php" class="nav-link vactive">
+                                <i class="icon fas fa-list"></i>
+                                <span class="vmenutext">Listing Artikel</span>
+                            </a>
+                            </li>
+                    </ul>
+
                 </nav>
             </div>
             <!-- End of vertical navbar -->
@@ -157,47 +161,37 @@ $rowarsip = $stmt2->fetchAll();
             <div class="container-fluid">
                 <main>
                     <div class="row">
-                        <!-- Content Title -->
+                        <!-- Form Title -->
                         <div class="col">
-                            <h1>Selamat datang di aplikasi aads</h1>
+                            <h1><?php echo $rowartikel->judul_artikel?></h1>
+                            <span class="tanggalartikel">Publikasi: <?php echo date("j F Y", strtotime($rowartikel->tanggal_artikel)) ?></span>
                         </div>
                     </div>
-                    <!-- Content Subtitle -->
-                    <div class="row">
-
-                        <div class="col">
-                            <h2>Seputar ADS</h2>
-                        </div>
-                    </div>
-
-                    <!-- Artikel Card -->
-                    <div class="row card-group" id="card-group-index">
-
-<?php
-
-foreach ($rowartikel as $artikel){
-
-    echo "
-    <div class='artikelcard card'>
-                            <img class='card-img-top' src='$artikel->gambar_artikel' alt='Card image' style='width:100%'>
-                            <div class='card-body'>
-                                <h2 class='card-title'>$artikel->judul_artikel</h2>
-                                <p class='card-text'>$artikel->ringkasan_artikel</p>
-                                <a href='artikel.php?id_artikel=$artikel->id_artikel' class='btn btn-primary stretched-link'>Selengkapnya</a>
+                    <!-- Form fields -->
+                    <div class='col btntambahprogram mb-2'>
+                    <!-- Form fields -->
+                    <div class='row'>
+                        <div class='col'>
+                            <div id='listingcards'>
+                                <div class='container-fluid'>
+                                    <div class='row'>
+                                        <div class='col col-12'>
+                                            <div class='card'>
+                                                <ul class='list-group' id='user-list-profile'>
+                                                    <li class='list-group-item' id="articlebox">
+                                                    <img src="<?php echo $rowartikel->gambar_artikel?>" class="articleimage mx-auto d-block">
+                                                      <?php echo $rowartikel->isi_artikel?>
+                                                              
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-    
-    ";
 
-
-}
-
-
-?>
-                        
                     </div>
-
-                    <!-- Artikel Card End -->
 
                     <!-- Artikel Archives Subtitle -->
                     <div class="row">
@@ -239,6 +233,7 @@ foreach ($rowarsip as $arsip){
 ?>
                         </div>
                     </div>
+
             </div> <!-- Main Container end -->
 
             </main>

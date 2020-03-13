@@ -1,32 +1,31 @@
-@font-face{
+@font-face {
     font-family: MontserratRegular;
     src: url(../webfonts/Montserrat-Regular.ttf);
 }
 
-@font-face{
+@font-face {
     font-family: MontserratLight;
     src: url(../webfonts/Montserrat-Light.ttf);
 }
 
-@font-face{
+@font-face {
     font-family: MontserratSemiBold;
     src: url(../webfonts/Montserrat-SemiBold.ttf);
 }
 
-$navbarColour : linear-gradient(124deg, rgba(56,74,186,1) 0%, rgba(100,93,196,1) 49%, rgba(161,255,250,1) 100%);
+$navbarColour: linear-gradient(124deg, rgba(56, 74, 186, 1) 0%, rgba(100, 93, 196, 1) 49%, rgba(161, 255, 250, 1) 100%);
 $verticalNavColour: rgba(31, 36, 50, 0.7);
-$formColour : #EEECF1;
+$formColour: #EEECF1;
 $btnColour: rgb(68, 51, 123);
 $h1Colour: rgb(70, 50, 111);
 $h2Colour: rgb(105, 90, 133);
 $activelinkcolour: rgb(220, 208, 243);
-
-html{
+html {
     min-height: 100%;
     overflow-x: hidden;
 }
 
-body{
+body {
     font-family: MontserratLight;
     font-size: 1.1em;
     background: $navbarColour no-repeat;
@@ -36,140 +35,126 @@ body{
     background-attachment: fixed;
     overflow-x: hidden;
     text-decoration: none;
-
     @media only screen and (max-width: 1024px) {
-            font-size:  1em;
-        }
+        font-size: 1em;
+    }
 }
 
+.btn {
+    background-color: $btnColour;
+    border: none;
+}
 
-    .btn{
-        background-color: $btnColour;
-        border: none;
-    }
+i {
+    margin-right: 5px;
+}
 
-    i{
-        margin-right: 5px;
-    }
-
-.dnapic{
+.dnapic {
     position: fixed;
     z-index: -1;
     width: 30%;
     min-width: 400px;
 }
 
-.container-fluid{
-    margin:0;
-    padding:0;
+.container-fluid {
+    margin: 0;
+    padding: 0;
 }
 
 // ----------------Horizontal Navigation Bar------------------------
-.navbar li a{
+.navbar li a {
     color: rgb(250, 250, 251);
 }
 
-.nav-wrapper{    
+.nav-wrapper {
     padding-bottom: 0;
-    i{
+    i {
         color: white;
     }
-    .nav-item{
+    .nav-item {
         padding-right: 15px;
     }
-
 }
 
-.togglebutton i{
+.togglebutton i {
     padding-top: 5px !important;
-    font-size: 1.3em;    
+    font-size: 1.3em;
 }
 
-.togglebutton{
+.togglebutton {
     @media only screen and (min-width: 992px) {
         display: none;
-        visibility: hidden;            
+        visibility: hidden;
     }
 }
 
-.navbar-nav{
+.navbar-nav {
     vertical-align: middle;
 }
 
-
-.navbar{
+.navbar {
     background-color: rgba(#fff, 0);
     padding-top: 10px;
     padding-left: 40px;
-    img{
-        width:150px;        
+    img {
+        width: 150px;
     }
-
     @media only screen and (max-width: 1200px) {
-            font-size:  0.9em;
-        }
-
+        font-size: 0.9em;
+    }
     @media only screen and (max-width: 1080px) {
-            font-size:  0.8em;
-        }
-
-    .hactive{
+        font-size: 0.8em;
+    }
+    .hactive {
         border-bottom: 5px solid $activelinkcolour;
         font-weight: 800;
     }
-
-    .userHmenu, .guestHmenu{
+    .userHmenu,
+    .guestHmenu {
         margin-left: 6%;
         text-align: center;
-
-        @media only screen and (max-width: 576px) { 
-            margin-left: 0;              
+        @media only screen and (max-width: 576px) {
+            margin-left: 0;
         }
     }
-    
-    .guestlogin{
+    .guestlogin {
         padding-left: 40px;
         align-items: center;
-
-        @media only screen and (max-width: 576px) { 
-            padding-left: 0;              
+        @media only screen and (max-width: 576px) {
+            padding-left: 0;
         }
     }
-
-    .mr-sm-2, .mx-sm-2{
+    .mr-sm-2,
+    .mx-sm-2 {
         margin: 0 !important;
-    }   
-
-    .form-control{
+    }
+    .form-control {
         font-style: italic;
         border-top-right-radius: 1px;
         border-bottom-right-radius: 1px;
         background-color: $formColour;
     }
-    .mr-3, .mx-3 {
-    margin-right: 0 !important;
-
-    .btn{
-        background-color: $btnColour;
-        border: 0;
-        border-top-left-radius: 1px;
-        border-bottom-left-radius: 1px;
-    }
-
-        .icon{
+    .mr-3,
+    .mx-3 {
+        margin-right: 0 !important;
+        .btn {
+            background-color: $btnColour;
+            border: 0;
+            border-top-left-radius: 1px;
+            border-bottom-left-radius: 1px;
+        }
+        .icon {
             margin-right: 7px;
         }
     }
 }
 
-
 // ----------------Vertical Navigation Bar------------------------
-.vertical-nav-wrapper{
+.vertical-nav-wrapper {
     background-color: $verticalNavColour;
     border-radius: 6px;
     font-size: 0.8em;
-
-    li{
+    li {
         @media only screen and (max-width: 1280px) {
             font-size: 1.2em;
         }
@@ -179,464 +164,429 @@ body{
         @media only screen and (max-width: 768px) {
             font-size: 1.3em;
             align-items: center;
-            text-align: center;        
+            text-align: center;
         }
     }
-
-    .vactive{
+    .vactive {
         border-right: 5px solid $activelinkcolour;
         font-weight: 800;
         background-color: rgba(16, 19, 27, 0.7);
     }
-
-    .navbar{
-        padding:0;
+    .navbar {
+        padding: 0;
     }
-
-    .nav-link{
+    .nav-link {
         padding: 20px;
-
         @media only screen and (min-width: 1024px) {
             padding-left: 40px;
         }
-
         @media only screen and (max-width: 950px) {
             //text-align: center;
             font-size: 0.9em;
         }
-
-
         @media only screen and (max-width: 576px) {
             padding: 0;
             padding-left: 14px;
             padding-top: 5px;
             padding-bottom: 10px;
             margin-top: 10px;
-
-            i{
+            i {
                 font-size: 1.8em;
                 text-align: center;
                 padding-left: 5px;
             }
         }
     }
-
-    .navbar-nav{
+    .navbar-nav {
         width: 100%;
     }
-
 }
 
-
-.col-2{
-    padding:0;
+.col-2 {
+    padding: 0;
 }
 
-.vmenutext{  
+.vmenutext {
     font-size: 1.3em;
     @media only screen and (max-width: 1440px) {
-    font-size: 1.2em;            
+        font-size: 1.2em;
     }
     @media only screen and (max-width: 1280px) {
-    font-size: 1.1em;            
+        font-size: 1.1em;
     }
-
     @media only screen and (max-width: 1024px) {
-    font-size: 0.7em;            
+        font-size: 0.7em;
     }
-
     @media only screen and (max-width: 768px) {
-    font-size: 1em;                 
+        font-size: 1em;
     }
-
     @media only screen and (max-width: 640px) {
-    display: block;                 
+        display: block;
     }
-
-
     @media only screen and (max-width: 576px) {
-    font-size: 0.5em;   
-    display: block;              
+        font-size: 0.5em;
+        display: block;
     }
 }
 
 // ----------------Main Content----------------------------------
-
-.col{
+.col {
     padding: 0;
     margin: 0;
 }
 
-    h1{
-        font-size: 1.4em;
-        font-weight: 800;
-        font-variant-caps: all-petite-caps;
-        font-family: MontserratSemiBold;
-        color: $h1Colour;
-        @media only screen and (max-width: 640px) {
-            text-align: center;
-            font-size: 1.2em;      
-        }
+h1 {
+    font-size: 1.4em;
+    font-weight: 800;
+    font-variant-caps: all-petite-caps;
+    font-family: MontserratSemiBold;
+    color: $h1Colour;
+    @media only screen and (max-width: 640px) {
+        text-align: center;
+        font-size: 1.2em;
     }
+}
 
-    h2{
-        font-size: 1.1em;
-        font-weight: 300;
-        font-variant-caps: all-petite-caps;
-        font-family: MontserratSemiBold;
-        color: $h2Colour;
-        @media only screen and (max-width: 640px) {
-            text-align: center;
-            font-size: 1.0em; 
-        }
+h2 {
+    font-size: 1.1em;
+    font-weight: 300;
+    font-variant-caps: all-petite-caps;
+    font-family: MontserratSemiBold;
+    color: $h2Colour;
+    @media only screen and (max-width: 640px) {
+        text-align: center;
+        font-size: 1.0em;
     }
+}
 
-main{
+main {
     background-color: $formColour;
     padding: 50px;
     padding-top: 20px;
     margin-right: 3%;
     margin-left: 1%;
-    border-radius: 6px; 
-
+    border-radius: 6px;
     @media only screen and (max-width: 576px) {
-            padding: 30px;          
-        }
+        padding: 30px;
+    }
 }
 
 .card-group {
-    @media only screen and (max-width: 812px){
+    @media only screen and (max-width: 812px) {
         flex-flow: column !important;
-    }    
+    }
 }
 
-.artikelcard{
+.artikelcard {
     font-size: 0.9em;
     border-bottom: none;
-    .card-body{
+    .card-body {
         padding-bottom: 20px;
-        h2{
+        h2 {
             text-align: left;
         }
         // @media only screen and (max-width: 640px) {
         //     text-align: center;          
         // }
     }
-    
-    .btn{
+    .btn {
         background-color: $btnColour;
         font-size: 0.9em;
         @media only screen and (max-width: 700px) {
-            font-size: 0.8em;          
+            font-size: 0.8em;
         }
         @media only screen and (max-width: 649px) {
-            font-size: 0.7em;          
+            font-size: 0.7em;
         }
         @media only screen and (max-width: 576px) {
-            font-size: 1em;          
+            font-size: 1em;
         }
     }
-
-    img{
+    img {
         height: 10vw;
         object-fit: cover;
         @media only screen and (max-width: 950px) {
-            height: 10vw;          
+            height: 10vw;
         }
-
         @media only screen and (max-width: 812px) {
-            height: 12vw;          
+            height: 12vw;
         }
         @media only screen and (max-width: 600px) {
-            height: 30vw;          
+            height: 30vw;
         }
     }
 }
 
-#listingcards{
-    .card{
+#listingcards {
+    .card {
         background-color: rgba( #fff, 0);
         border: none;
     }
-    .list-group-item{
+    .list-group-item {
         padding: 5px 20px;
     }
-    .list-group-item:hover{
+    .list-group-item:hover {
         background: #f1f1f1;
     }
-    .user-img img{
+    .user-img img {
         height: 120px;
         width: 120px;
         @media only screen and (max-width: 640px) {
-            height: 90px;  
-            width: 90px; 
-            margin-bottom: 10px;       
+            height: 90px;
+            width: 90px;
+            margin-bottom: 10px;
         }
     }
-    .card-header h4{
+    .card-header h4 {
         display: inline-block;
         padding: 12px 15px 8px 15px;
     }
-    .card-header ul{
+    .card-header ul {
         list-style: none;
     }
-    .search-div{
+    .search-div {
         display: none;
     }
-    .user-detail{
+    .user-detail {
         font-size: 0.6em;
     }
-    h5{
-        font-size: 0.9em;        
+    h5 {
+        font-size: 0.9em;
     }
-    #user-list-profile{
+    #user-list-profile {
         @media only screen and (max-width: 640px) {
-            text-align: center;       
+            text-align: center;
         }
-        p{
+        p {
             padding: 3px;
         }
         @media only screen and (min-width: 768px) {
             font-size: 1.3em;
         }
     }
-    
-    #program-list{
-        .list-group-item{
+    #program-list {
+        .list-group-item {
             @media only screen and (max-width: 640px) {
-            padding: 15px;
+                padding: 15px;
             }
         }
-        
     }
-
-
 }
 
-.programfilters{
+.programfilters {
     @media only screen and (max-width: 640px) {
         text-align: center;
     }
-    .btn{
+    .btn {
         font-size: 0.8em;
     }
 }
 
-.btndetail{
+.btndetail {
     font-size: 0.8em;
     color: #fff;
-    padding: 4px;    
+    padding: 4px;
 }
 
-.btndetail:hover{
-    color: #fff; 
+.btndetail:hover {
+    color: #fff;
 }
 
-.statusfilterlabel{
+.statusfilterlabel {
     font-size: 0.9em;
 }
 
-.search-div{
+.search-div {
     display: block;
-    ::placeholder{
+     ::placeholder {
         font-size: 0.9em;
         font-style: italic;
-    }    
+    }
 }
 
-#user-list{
-    i{
+#user-list {
+    i {
         margin-right: 8px !important;
     }
 }
 
-.backtoprofile{
+.backtoprofile {
     font-size: 0.6em;
 }
 
-#detailprogram{
-    h5{
+#detailprogram {
+    h5 {
         padding: 15px;
         font-size: 0.9em;
         font-family: montserratsemibold;
     }
     font-size: 1.4em;
-    p{
+    p {
         margin-bottom: 8px;
-    }    
-    .fielddetail{
+    }
+    .fielddetail {
         margin: 8px;
     }
-    .list-group-item:hover{
+    .list-group-item:hover {
         background-color: #fff;
     }
-
-    .detailcollapser{
+    .detailcollapser {
         margin-bottom: 5px;
         border-radius: 6px;
-        background-color:  rgb(230, 230, 255);
+        background-color: rgb(230, 230, 255);
     }
-    .contentp{
+    .contentp {
         margin-top: 5px;
         margin-bottom: 30px;
     }
-
-    .editlink{
+    .editlink {
         padding: 15px;
-        .editbutton{
+        .editbutton {
             font-size: 0.5em;
             color: #fff;
         }
     }
-    
-    
 }
 
-#catatanharian{
+#catatanharian {
     @extend #detailprogram;
-    .catatanentry{
+    .catatanentry {
         border: 1px solid rgb(214, 214, 214);
         border-radius: 5px;
         padding: 5px;
     }
 }
 
-
-.arsiptitle{
+.arsiptitle {
     margin-top: 10px;
+}
+
+.arsip {
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 0.8em;
+    a {
+        display: block;
+        padding: 10px;
+        padding-left: 20px;
     }
+}
 
-
-.arsip{
-        background-color: #fff;
-        border-radius: 6px;
-        font-size: 0.8em;
-        a{
-            display: block;
-            padding: 10px;
-            padding-left: 20px;
-        } 
-    }
-
-form{
-    label{
+form {
+    label {
         @extend h2;
     }
-    .form-group{
+    .form-group {
         margin-bottom: 1.3em;
     }
 }
 
-    .tanggal{
+.tanggal {
+    width: 40%;
+    @media only screen and (max-width: 812px) {
         width: 40%;
-        @media only screen and (max-width: 812px) {
-            width: 40%;
-        }
-        @media only screen and (max-width: 576px) {
-            width: 60%;
-        }
-        @media only screen and (max-width: 450px) {
-            width: 80%;
-        }
-        @media only screen and (max-width: 320px) {
-            width: 100%;
-        }
     }
+    @media only screen and (max-width: 576px) {
+        width: 60%;
+    }
+    @media only screen and (max-width: 450px) {
+        width: 80%;
+    }
+    @media only screen and (max-width: 320px) {
+        width: 100%;
+    }
+}
 
-    input[type=date]::-webkit-inner-spin-button, 
-    input[type=date]::-webkit-outer-spin-button,
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 0; 
+    margin: 0;
 }
 
-.periodefilter{
+.periodefilter {
     margin-top: 10px;
     margin-bottom: 10px;
-    .form-control{
+    .form-control {
         display: inline;
     }
 }
 
-.cetaklaporanbtn{
+.cetaklaporanbtn {
     font-size: 1.0em !important;
     float: right;
     @media only screen and (max-width: 812px) {
-            float: initial;
-            font-size: 0.8em !important;
-        }
+        float: initial;
+        font-size: 0.8em !important;
+    }
 }
 
-.capaianlabel{
+.capaianlabel {
     font-weight: bold;
 }
 
-.catatanentrycontainer{
+.catatanentrycontainer {
     // border-radius: 6px;
     // border: 1px rgb(214, 214, 214) solid;
     margin-left: 20px;
 }
 
-.catatanentry{    
-    p{
+.catatanentry {
+    p {
         margin-top: 1px;
         margin-bottom: 1px;
     }
 }
 
 //--------Custom checkbox----------
-.kategori{
+.kategori {
     background-color: rgb(255, 254, 254);
     border-radius: 6px;
     border: 1px rgb(214, 214, 214) solid;
     padding: 20px;
-    .form-check-label{
+    .form-check-label {
         font-size: 0.9em;
         font-family: MontserratRegular;
     }
-
-    .form-check-inline{
-        @media only screen and (max-width: 576px) { 
-        display: block;              
+    .form-check-inline {
+        @media only screen and (max-width: 576px) {
+            display: block;
         }
-    }    
+    }
 }
 
 //End custom checkbox
-
-
 //---Custom Radio field---
-.statusprogram{
+.statusprogram {
     background-color: rgb(250, 250, 250);
     border-radius: 6px;
     border: 1px rgb(214, 214, 214) solid;
     padding: 5px;
-    width: 25%; 
-    @media only screen and (max-width: 812px) { 
-        width: 100%;              
-        }
-    .radio-inline{
+    width: 25%;
+    @media only screen and (max-width: 812px) {
+        width: 100%;
+    }
+    .radio-inline {
         font-size: 0.9em;
         font-family: MontserratRegular;
         margin-left: 15px;
-        &::first-child{
-            @media only screen and (max-width: 576px) { 
-            margin-left: 0;                          
+        &::first-child {
+            @media only screen and (max-width: 576px) {
+                margin-left: 0;
             }
         }
-        
     }
 }
 
-.tanggalselesaitoggle{
+.tanggalselesaitoggle {
     display: none;
 }
-//---End of Custom Radio field---
 
-#fotoprofil{
+//---End of Custom Radio field---
+#fotoprofil {
     padding: 20px;
     background-color: rgb(250, 250, 250);
     border-radius: 6px;
@@ -644,21 +594,19 @@ form{
     ol {
         padding-left: 0;
     }
-
-    li, div > p {
+    li,
+    div>p {
         margin-bottom: 10px;
         list-style-type: none;
     }
-
     img {
         height: 64px;
     }
-
     p {
         padding-left: 10px;
     }
-
-    label, button {
+    label,
+    button {
         padding: 5px 10px;
         border-radius: 5px;
         font-size: 0.8rem;
@@ -667,56 +615,65 @@ form{
     }
 }
 
-
-
-
-.suggestdaftar{
+.suggestdaftar {
     margin: 20px;
     margin-left: 0;
-
-    a{
+    a {
         color: lighten($btnColour, 20%);
     }
 }
 
-.trumbowyg-editor{
+.trumbowyg-editor {
     background-color: white !important;
 }
 
+#articlebox {
+    font-size: 0.4em;
+    padding: 20px !important;
+    .articleimage {
+        margin: 10px;
+        height: 300px;
+    }
+}
 
+.list-group #articlebox:hover {
+    background-color: #fff;
+}
+
+.tanggalartikel {
+    font-size: 0.8em;
+}
 
 //--------------Print formatting--------
-@media print{
-    body{
-        margin:0;
+@media print {
+    body {
+        margin: 0;
         font-size: 1.5em;
     }
-    form{
+    form {
         width: 100% !important;
     }
-    main{
+    main {
         margin: 0;
     }
-    .col-2{
+    .col-2 {
         flex: none;
         max-width: 100%;
     }
-
-    .periodefilter{
+    .periodefilter {
         display: inline;
-        .form-control{
+        .form-control {
             display: inline;
             border: none;
         }
-        .tanggal{
+        .tanggal {
             width: 19% !important;
-        }        
+        }
     }
-    .collapse{
+    .collapse {
         display: block !important;
     }
-
-    .list-group-item{
+    .list-group-item {
         margin-bottom: 10px;
     }
 }

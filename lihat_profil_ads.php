@@ -28,6 +28,23 @@ $row = $stmt->fetchAll();
 
 //-------End get program data
 
+function ageCalculator($dob){
+        $birthdate = new DateTime($dob);
+        $today   = new DateTime('today');
+        $ag = $birthdate->diff($today)->y;
+        $mn = $birthdate->diff($today)->m;
+        $dy = $birthdate->diff($today)->d;
+        if ($ag == 0)
+        {
+            return "$mn Bulan";            
+        }
+        else
+        {
+            return "$ag Tahun $mn Bulan";
+        }
+        
+}
+
 ?>
 
 
@@ -231,6 +248,11 @@ $row = $stmt->fetchAll();
                                                                                     aria-hidden='true'></i><span class="bdads"> <?php echo date("j F Y",strtotime($rowuser->tanggal_lahir)); ?>
 
                                                                             </span></p>
+                                                                            <p class='m-0 '><i
+                                                                                    class='fas fa-user-clock mr-1'
+                                                                                    aria-hidden='true'></i><span class="umurads"> <?php echo ageCalculator($rowuser->tanggal_lahir) ?>
+                                                                            </span>
+                                                                            </p>
                                                                             <?php
                                                                                 if($rowuser->jenis_kelamin == "Laki-laki"){
                                                                                     $jkicon = "mars";

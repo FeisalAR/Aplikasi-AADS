@@ -1,3 +1,53 @@
+<?php
+include 'connection.php';
+session_start();
+
+$isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+
+if (!$isLoggedIn) {
+ header('Location: login.php');
+}
+else{
+
+if (isset($_POST['submit'])) {
+  $id_user         = $_SESSION['id_user'];
+  $judul_artikel        = $_POST['judul_artikel'];
+  $ringkasan_artikel      = $_POST['ringkasan_artikel'];
+  $isi_artikel    = $_POST['isi_artikel'];
+  $randomstring = substr(md5(rand()), 0, 7);
+
+      //Image upload
+ //if (isset($_FILES['image_uploads'])) {
+   $target_dir  = "images/uploads/";
+   $target_file = $target_dir .'ART_'.$id_user .'_'.$randomstring. '.jpg';
+   move_uploaded_file($_FILES["image_uploads"]["tmp_name"], $target_file);    
+ //}  
+ $sqlartikel = "INSERT INTO tabel_artikel
+                (id_user, judul_artikel, ringkasan_artikel, isi_artikel, gambar_artikel)
+                VALUES (:id_user, :judul_artikel, :ringkasan_artikel, :isi_artikel, :gambar_artikel)";
+
+  $stmt = $pdo->prepare($sqlartikel);
+  $stmt->execute(['id_user' => $id_user, 'judul_artikel' => $judul_artikel, 'ringkasan_artikel' => $ringkasan_artikel, 'isi_artikel' => $isi_artikel, 'gambar_artikel' => $target_file]);
+
+  $affectedrows = $stmt->rowCount();
+  if ($affectedrows == '0') {
+   echo "HAHAHAAHA INSERT FAILED !";
+  } else {
+   echo "HAHAHAAHA GREAT SUCCESSS !";
+   header("Location: tambah_artikel.php?status=addsuccess");
+  }
+ }
+
+
+
+
+  //---image upload end
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +69,6 @@
 </head>
 
 <body>
-
     <img class="dnapic" src="images/dnabg.png" alt="dnapic">
     <div class="container-fluid">
         <!-- Horizontal Navbar -->
@@ -109,6 +158,12 @@
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="listing_artikel.php" class="nav-link">
+                                <i class="icon fas fa-list"></i>
+                                <span class="vmenutext">Listing Artikel</span>
+                            </a>
+                            </li>
 
                         <li class="nav-item">
                             <a href="tambah_artikel.php" class="nav-link vactive">
@@ -132,21 +187,38 @@
                         </div>
                     </div>
                     <!-- Form fields -->
-                    <form method="GET" action="">
+                    <form method="POST" action="" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label for="namaprogram">Judul Artikel:</label>
-                                            <input type="text" class="form-control" id="namaprogram" name="nama_program" required
-                                                aria-required="true" value="">
+                                            <label for="judul_artikel">Judul Artikel:</label>
+                                            <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" required
+                                                aria-required="true">
                                         </div>
-
-                                        <textarea id="isi_artikel" name="isi_artikel"></textarea>
+                                        <div class="form-group">
+                                            <label for="ringkasan_artikel">Ringkasan Artikel:</label>
+                                            <input type="text" class="form-control" id="ringkasan_artikel" name="ringkasan_artikel" required
+                                                aria-required="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="isi_artikel">Isi Artikel:</label>
+                                            <textarea id="isi_artikel" name="isi_artikel"></textarea>
                                         <script>
                                                 $('#isi_artikel').trumbowyg();
                                         </script>
+                                        <label>Gambar Artikel</label>
+                                        <div class='form-group' id='fotoprofil'>
+                                            <div>
+                                                <label for='image_uploads'>Pilih Gambar</label>
+                                                <input type='file'  class='form-control' id='image_uploads'
+                                                    name='image_uploads' accept='.jpg, .jpeg, .png'>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        
+                                        
                                         
 
-                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Simpan">
+                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Tambah Artikel">
                                     </form>
 
             </div> <!-- Main Container end -->

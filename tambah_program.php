@@ -144,6 +144,17 @@ if (isset($_POST['submit'])) {
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="listing_artikel.php" class="nav-link">
+                                <i class="icon fas fa-list"></i>
+                                <span class="vmenutext">Listing Artikel</span>
+                            </a>
+                            </li>
+                        <li class="nav-item">
+                            <a href="tambah_artikel.php" class="nav-link">
+                                <i class="icon fas fa-pencil-alt"></i><span class="vmenutext">Tambah Artikel</span>
+                            </a>
+                        </li>
                         <!-- <li class="nav-item">
                             <a href="edit_program.php" class="nav-link">
                                 <i class="icon far fa-edit"></i><span class="vmenutext">Edit Program</span>
