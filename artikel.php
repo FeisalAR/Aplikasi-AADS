@@ -232,6 +232,10 @@ foreach ($rowarsip as $arsip){
 }
 ?>
                         </div>
+                        
+                    </div>
+                    <div class="row d-block">
+                        <a href='listing_artikel.php'>Listing Artikel></a>
                     </div>
 
             </div> <!-- Main Container end -->

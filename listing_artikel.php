@@ -17,11 +17,11 @@ $msg = "";
 if (isset($_GET['status'])) {
  if ($_GET['status'] == 'addsuccess') {
   $msg = "<div class='alert alert-success' role='alert'>
-        <strong>Tambah Program Individu Berhasil.</strong>
+        <strong>Tambah Artikel Berhasil.</strong>
         </div>";
  } else if ($_GET['status'] == 'updatesuccess') {
   $msg = "<div class='alert alert-success' role='alert'>
-        <strong>Edit Program Individu Berhasil.</strong>
+        <strong>Edit Artikel Berhasil.</strong>
         </div>";
  }
 
@@ -141,7 +141,7 @@ if (isset($_GET['status'])) {
                             </li>
                         <li class="nav-item">
                             <a href="tambah_artikel.php" class="nav-link">
-                                <i class="icon fas fa-pencil-alt"></i><span class="vmenutext">Tambah Artikel</span>
+                                <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
                             </a>
                         </li>
                     </ul>
@@ -199,11 +199,11 @@ if (isset($_GET['status'])) {
                                                     <div class="col-md-12 col-12">
                                                         <div class="search-input">
                                                             <input type="text" class="form-control rounded-0"
-                                                                placeholder="&#xF002;   Cari Kode Program atau Nama ADS..."
+                                                                placeholder="&#xF002;   Cari Kode Artikel atau Judul Artikel..."
                                                                 aria-label="Recipient's username"
                                                                 style="font-family: Montserrat, FontAwesome;"
                                                                 aria-describedby="basic-addon2"
-                                                                id="program-list-search-listing">
+                                                                id="program-list-search">
                                                         </div>
                                                     </div>
                                                 </div>

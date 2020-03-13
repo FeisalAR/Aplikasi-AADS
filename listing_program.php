@@ -162,7 +162,7 @@ if (isset($_GET['status'])) {
                             </li>
                         <li class="nav-item">
                             <a href="tambah_artikel.php" class="nav-link">
-                                <i class="icon fas fa-pencil-alt"></i><span class="vmenutext">Tambah Artikel</span>
+                                <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
                             </a>
                         </li>
                     </ul>

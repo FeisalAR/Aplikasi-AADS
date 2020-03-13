@@ -138,6 +138,8 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" type="text/css" href='css/style.css' />
     <link rel="stylesheet" href='css/all.css' />
     <script src="js/script.js"></script>
+    <link rel="stylesheet" href="trumbowyg/dist/ui/trumbowyg.min.css">
+    <script src="trumbowyg/dist/trumbowyg.min.js"></script>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
@@ -628,26 +630,56 @@ $tanggal_catatanf = date("j F Y",strtotime($rowitems->tanggal_catatan));
                                             <label for="tujuanprogram">Tujuan:</label>
                                             <textarea class="form-control" id="tujuanprogram" rows="3" name="tujuan_program"
                                                 required><?php echo $row[0]->tujuan_program ?></textarea>
+                                                <script>
+                                                $('#tujuanprogram').trumbowyg({
+                                                btns: [['bold', 'italic'], ['undo', 'redo'], ['unorderedList', 'orderedList'],
+                                                ['horizontalRule']]
+                                                });
+                                                </script>
                                         </div>
                                         <div class="form-group">
                                             <label for="keadaansekarang">Keadaan Sekarang:</label>
                                             <textarea class="form-control" id="keadaansekarang" rows="3" name="keadaan_sekarang"
                                                 required><?php echo $row[0]->keadaan_sekarang ?></textarea>
+                                                <script>
+                                                $('#keadaansekarang').trumbowyg({
+                                                btns: [['bold', 'italic'], ['undo', 'redo'], ['unorderedList', 'orderedList'],
+                                                ['horizontalRule']]
+                                                });
+                                                </script>
                                         </div>
                                         <div class="form-group">
                                             <label for="sasaranprogram">Sasaran:</label>
                                             <textarea class="form-control" id="sasaranprogram" rows="3" name="sasaran_program"
                                                 required><?php echo $row[0]->sasaran_program ?></textarea>
+                                                <script>
+                                                $('#sasaranprogram').trumbowyg({
+                                                btns: [['bold', 'italic'], ['undo', 'redo'], ['unorderedList', 'orderedList'],
+                                                ['horizontalRule']]
+                                                });
+                                                </script>
                                         </div>
                                         <div class="form-group">
                                             <label for="sumberprogram">Sumber Materi / Alat Peraga:</label>
                                             <textarea class="form-control" id="sumbermateri" rows="3" name="sumber_materi"
                                                 required><?php echo $row[0]->sumber_materi ?></textarea>
+                                                <script>
+                                                $('#sumbermateri').trumbowyg({
+                                                btns: [['bold', 'italic'], ['undo', 'redo'], ['unorderedList', 'orderedList'],
+                                                ['horizontalRule']]
+                                                });
+                                                </script>
                                         </div>
                                         <div class="form-group">
                                             <label for="pelaksanaanprogram">Cara Pelaksanaan:</label>
                                             <textarea class="form-control" id="pelaksanaanprogram" rows="3" name="cara_pelaksanaan"
                                                 required><?php echo $row[0]->cara_pelaksanaan ?></textarea>
+                                                <script>
+                                                $('#pelaksanaanprogram').trumbowyg({
+                                                btns: [['bold', 'italic'], ['undo', 'redo'], ['unorderedList', 'orderedList'],
+                                                ['horizontalRule']]
+                                                });
+                                                </script>
                                         </div>
                                         <div class="form-group">
                                             <label for="tanggaltarget">Tanggal Target:</label>

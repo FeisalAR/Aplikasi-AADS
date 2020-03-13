@@ -8,40 +8,45 @@ if (!$isLoggedIn) {
  header('Location: login.php');
 }
 else{
+$id_user         = $_SESSION['id_user'];
+$id_artikel = $_GET['id_artikel'];
+    //Artikel query
+$sqlartikel = 'SELECT * FROM tabel_artikel WHERE id_artikel = :id_artikel';
 
-if (isset($_POST['submit'])) {
-  $id_user         = $_SESSION['id_user'];
+$stmt = $pdo->prepare($sqlartikel);
+$stmt->execute(['id_artikel' => $id_artikel]);
+$rowartikel = $stmt->fetch();
+
+//-------Artikel query end
+
+
+if (isset($_POST['submit'])) {  
   $judul_artikel        = $_POST['judul_artikel'];
   $ringkasan_artikel      = $_POST['ringkasan_artikel'];
   $isi_artikel    = $_POST['isi_artikel'];
-  $randomstring = substr(md5(rand()), 0, 7);
+  $status_artikel = $_POST['status_artikel'];
+  //$randomstring = substr(md5(rand()), 0, 7);
 
       //Image upload
  //if (isset($_FILES['image_uploads'])) {
-   $target_dir  = "images/uploads/";
-   $target_file = $target_dir .'ART_'.$id_user .'_'.$randomstring. '.jpg';
-   move_uploaded_file($_FILES["image_uploads"]["tmp_name"], $target_file);    
+   move_uploaded_file($_FILES["image_uploads"]["tmp_name"], $rowartikel->gambar_artikel);
+     //---image upload end    
  //}  
- $sqlartikel = "INSERT INTO tabel_artikel
-                (id_user, judul_artikel, ringkasan_artikel, isi_artikel, gambar_artikel)
-                VALUES (:id_user, :judul_artikel, :ringkasan_artikel, :isi_artikel, :gambar_artikel)";
+ $sqlartikel = "UPDATE tabel_artikel
+                SET  status_artikel = :status_artikel, judul_artikel = :judul_artikel, ringkasan_artikel = :ringkasan_artikel, isi_artikel = :isi_artikel
+                WHERE id_artikel = :id_artikel";
 
   $stmt = $pdo->prepare($sqlartikel);
-  $stmt->execute(['id_user' => $id_user, 'judul_artikel' => $judul_artikel, 'ringkasan_artikel' => $ringkasan_artikel, 'isi_artikel' => $isi_artikel, 'gambar_artikel' => $target_file]);
+  $stmt->execute(['id_artikel' => $id_artikel, 'status_artikel' => $status_artikel, 'judul_artikel' => $judul_artikel, 'ringkasan_artikel' => $ringkasan_artikel, 'isi_artikel' => $isi_artikel]);
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
    echo "HAHAHAAHA INSERT FAILED !";
   } else {
    echo "HAHAHAAHA GREAT SUCCESSS !";
-   header("Location: listing_artikel.php?status=addsuccess");
+   header("Location: listing_artikel.php?status=updatesuccess");
   }
  }
-
-
-
-
-  //---image upload end
 
 }
 
@@ -65,7 +70,7 @@ if (isset($_POST['submit'])) {
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Artikel - Aplikasi AADS</title>
+    <title>Edit Artikel - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -188,20 +193,33 @@ if (isset($_POST['submit'])) {
                     </div>
                     <!-- Form fields -->
                     <form method="POST" action="" enctype="multipart/form-data">
+                                        <label>Status:</label>
+                                        <div class="form-group statusartikel" name="status_artikel">
+                                            <label class="radio-inline mr-3"><input type="radio" name="status_artikel"
+                                                    value="Published"<?php if ($rowartikel->status_artikel == 'Published') {
+ echo 'checked';
+} else if(!$rowartikel->status_artikel) {echo "checked";}
+?>>Published</label>
+                                            <label class="radio-inline"><input type="radio" name="status_artikel"
+                                                    value="Redacted" <?php if ($rowartikel->status_artikel == 'Redacted') {
+ echo 'checked';
+}
+?>>Redacted</label>
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="judul_artikel">Judul Artikel:</label>
                                             <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" required
-                                                aria-required="true">
+                                                aria-required="true" value=<?php echo $rowartikel->judul_artikel ?>>
                                         </div>
                                         <div class="form-group">
                                             <label for="ringkasan_artikel">Ringkasan Artikel:</label>
                                             <input type="text" class="form-control" id="ringkasan_artikel" name="ringkasan_artikel" required
-                                                aria-required="true">
+                                                aria-required="true" value=<?php echo $rowartikel->ringkasan_artikel ?>>
                                         </div>
                                         <div class="form-group">
                                             <label for="isi_artikel">Isi Artikel:</label>
-                                            <textarea id="isi_artikel" name="isi_artikel" required></textarea>
+                                            <textarea id="isi_artikel" name="isi_artikel"><?php echo $rowartikel->isi_artikel ?></textarea>
                                         <script>
                                                 $('#isi_artikel').trumbowyg();
                                         </script>
@@ -218,7 +236,7 @@ if (isset($_POST['submit'])) {
                                         
                                         
 
-                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Tambah Artikel">
+                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Simpan">
                                     </form>
 
             </div> <!-- Main Container end -->
