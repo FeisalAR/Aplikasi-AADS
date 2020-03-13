@@ -65,22 +65,22 @@ $rowarsip = $stmt2->fetchAll();
 
                 <div class="collapse navbar-collapse" id="HnavbarToggler">
                     <!-- Links -->
-                    <ul class="userHmenu navbar-nav d-none">
+                    <ul class="userHmenu navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                             <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>">
                             <a class="nav-link" href="listing_program.php"><i
                                     class="icon fas fa-tasks"></i>Kelola Program</a>
-                        </li>
-                    </ul>
-
-                    <ul class="guestHmenu navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                     </ul>
 
@@ -96,7 +96,10 @@ $rowarsip = $stmt2->fetchAll();
                         </div>
                     </form>
 
-                    <ul class="userlogin navbar-nav navbar-collapse">
+                    <ul class="userlogin navbar-nav navbar-collapse" <?php if ($isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log
                                 In</a>
@@ -104,6 +107,15 @@ $rowarsip = $stmt2->fetchAll();
                         <li class="nav-item">
                             <a class="nav-link" href="registrasi.php"><i
                                     class="icon fas fa-user-plus"></i>Registrasi</a>
+                        </li>
+                    </ul>
+
+                    <ul class="userlogout navbar-nav navbar-collapse"<?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
                     </ul>
 
@@ -144,7 +156,7 @@ $rowarsip = $stmt2->fetchAll();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="listing_artikel.php" class="nav-link vactive">
+                            <a href="listing_artikel.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Artikel</span>
                             </a>

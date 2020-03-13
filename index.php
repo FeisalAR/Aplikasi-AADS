@@ -147,6 +147,12 @@ $rowarsip = $stmt2->fetchAll();
                                 <span class="vmenutext">Listing Program</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="listing_artikel.php" class="nav-link">
+                                <i class="icon fas fa-list"></i>
+                                <span class="vmenutext">Listing Artikel</span>
+                            </a>
+                            </li>
                 </nav>
             </div>
             <!-- End of vertical navbar -->

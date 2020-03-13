@@ -155,20 +155,16 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                                 <span class="vmenutext">Listing Program</span>
                             </a>
                         </li>
-                    </ul>
-
-                    <ul class="guestVmenu navbar-nav d-none">
                         <li class="nav-item">
-                            <a href="listing_ads.php" class="nav-link">
+                            <a href="listing_artikel.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
-                                <span class="vmenutext">Listing ADS</span>
+                                <span class="vmenutext">Listing Artikel</span>
                             </a>
-                        <li class="nav-item">
-                            <a href="profil_ads.php" class="nav-link">
-                                <i class="icon far fa-address-card"></i><span class="vmenutext">Profil ADS</span>
-                            </a>
-                        </li>
+                            </li>
                     </ul>
+                    
+
+
                 </nav>
             </div>
             <!-- End of vertical navbar -->

@@ -171,7 +171,7 @@ if (isset($_POST['submit'])) {
                             </li>
 
                         <li class="nav-item">
-                            <a href="tambah_artikel.php" class="nav-link vactive">
+                            <a href="tambah_artikel.php" class="nav-link">
                                 <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
                             </a>
                         </li>
@@ -188,7 +188,7 @@ if (isset($_POST['submit'])) {
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
-                            <h1>Tambah Artikel</h1>
+                            <h1>Edit Artikel</h1>
                         </div>
                     </div>
                     <!-- Form fields -->
