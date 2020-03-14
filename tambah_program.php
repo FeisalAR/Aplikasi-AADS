@@ -3,7 +3,8 @@ include 'connection.php';
 session_start();
 
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
-
+$isPengurus = $_SESSION['jabatan'] == 2;
+$id_user = $_SESSION['id_user'];
 if (!$isLoggedIn) {
  header('Location: login.php');
 }
@@ -152,7 +153,7 @@ if (isset($_POST['submit'])) {
                                 <span class="vmenutext">Listing Artikel</span>
                             </a>
                             </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isPengurus)echo 'style="display:none"';?>>
                             <a href="tambah_artikel.php" class="nav-link">
                                 <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
                             </a>
@@ -182,7 +183,7 @@ if (isset($_POST['submit'])) {
                     <form method="POST" action='tambah_program.php'>
                                         <div class='form-group'>
                                             <label for='id_user'>Kode ADS:</label>
-                                            <input type='text' class='form-control' id='id_user' name='id_user' required
+                                            <input type='text' class='form-control' id='id_user' name='id_user' required <?php if(!$isPengurus) {echo "value='$id_user' disabled";} ?>
                                                 aria-required='true' placeholder="format kode: ADSxxxx" pattern="ADS00[0-9]+$" title="Format salah. Format Kode: ADSxxxx">
                                         </div>
                                 

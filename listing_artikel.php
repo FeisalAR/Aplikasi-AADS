@@ -3,6 +3,13 @@ include 'connection.php';
 session_start();
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
 
+if(isset($_SESSION['jabatan'])){
+    $isPengurus = $_SESSION['jabatan'] == 2;
+}
+else{
+    $isPengurus = false;
+}
+
 //Artikel query
 $sqlartikel = 'SELECT * FROM tabel_artikel ORDER BY nomor_artikel DESC ';
 
@@ -80,10 +87,10 @@ if (isset($_GET['status'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a class="nav-link hactive" href="listing_program.php"><i
                                     class="icon fas fa-tasks"></i>Kelola Program</a>
                         </li>
@@ -101,8 +108,19 @@ if (isset($_GET['status'])) {
                         </div>
                     </form>
 
+                    <ul class='userlogin navbar-nav navbar-collapse' <?php if ($isLoggedIn) {
+ echo 'style="display: none !important"';}?>>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='login.php'><i class='icon fas fa-sign-in-alt'></i>Log In</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='registrasi.php'><i
+                                    class='icon fas fa-user-plus'></i>Registrasi</a>
+                        </li>
+                    </ul>
+
                     <ul class="userlogout navbar-nav navbar-collapse">
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
                     </ul>
@@ -122,13 +140,13 @@ if (isset($_GET['status'])) {
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
                     <ul class="programVmenu navbar-nav">
-                        <li class="nav-item">
+                        <li class="nav-item"<?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
                             </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="tambah_program.php" class="nav-link">
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
@@ -139,7 +157,7 @@ if (isset($_GET['status'])) {
                                 <span class="vmenutext">Listing Artikel</span>
                             </a>
                             </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isPengurus || !$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="tambah_artikel.php" class="nav-link">
                                 <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
                             </a>
@@ -212,6 +230,7 @@ if (isset($_GET['status'])) {
 foreach ($rowartikel as $artikel) {
  $statusicon;
  $statusclass;
+ $jabatanCheck = 'style="display:none"';
  if ($artikel->status_artikel == 'Published') {  
   $statusicon  = 'fas fa-check';
   $statusclass = 'text-success';
@@ -244,7 +263,7 @@ foreach ($rowartikel as $artikel) {
                                                                                 class='fas fa-calendar mr-1'
                                                                                 aria-hidden='true'></i><span class='targetdate'> $tanggal_targetf
                                                                         </span></p>                                                                        
-                                                                        <a
+                                                                        <a $jabatanCheck
                                                                             href='edit_artikel.php?id_artikel=$artikel->id_artikel'>
                                                                             <button class='btn btndetail'>
                                                                                 <i class='fas fa-pencil-alt mr-1'

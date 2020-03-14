@@ -65,45 +65,52 @@ $(document).ready(function() {
 
     //--------------Month translate
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('January', 'Januari'));
     });
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('February', 'Februari'));
     });
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('March', 'Maret'));
     });
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('May', 'Mei'));
     });
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
+        var text = $(this).text();
+        $(this).text(text.replace('June', 'Juni'));
+    });
+
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('July', 'Juli'));
     });
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('August', 'Agustus'));
     });
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('October', 'Oktober'));
     });
 
-    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, .tanggalartikel').each(function() {
+    $('.catatantanggal, .targetdate, .bdads, .selesaicapaian, .tanggalcapaian, .tanggalselesai, .tanggaltarget, #tanggalartikel').each(function() {
         var text = $(this).text();
         $(this).text(text.replace('December', 'Desember'));
     });
+
+
 
 
 }); //---jQuery END -----

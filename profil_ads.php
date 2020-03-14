@@ -2,6 +2,7 @@
 include 'connection.php';
 session_start();
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+$isPengurus = $_SESSION['jabatan'] == 2;
 
 if ($isLoggedIn) {
  $id_user    = $_SESSION['id_user'];
@@ -312,7 +313,10 @@ echo $msg;
                     <div class='row'>
                         <!-- Form Title -->
                         <div class='col'>
-                            <h1>Profil Saya</h1>
+                            <h1>Profil Saya<?php if ($isPengurus) {
+ echo ' (Pengurus)';
+}
+?></h1>
                         </div>
                     </div>
 

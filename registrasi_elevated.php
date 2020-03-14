@@ -13,20 +13,18 @@ if ($isLoggedIn) {
   $pwd          = password_hash($_POST['tbpwd'], PASSWORD_DEFAULT);
   $tanggallahir = $_POST['tanggallahir'];
   $jk           = $_POST['optjk'];
-  $ortu         = $_POST['tbortu'];
   $telepon      = $_POST['tbtelepon'];
-  $nama         = $_POST['tbnama'];
   $alamat       = $_POST['txtalamat'];
   $kecamatan    = $_POST['tbkecamatan'];
   $kota         = $_POST['tbkota'];
   $kodepos      = $_POST['tbkodepos'];
-  $jabatan = 1;
+  $jabatan = 2;
 
-  $sql = 'INSERT INTO tabel_user (username, pwd, email, nama_user, tanggal_lahir, jenis_kelamin, nama_orang_tua, nomor_telepon, alamat, kecamatan, kota, kode_pos, jabatan)
-VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :nama_orang_tua, :nomor_telepon, :alamat, :kecamatan, :kota, :kode_pos, :jabatan)';
+  $sql = 'INSERT INTO tabel_user (username, pwd, email, nama_user, tanggal_lahir, jenis_kelamin, nomor_telepon, alamat, kecamatan, kota, kode_pos, jabatan)
+VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :nomor_telepon, :alamat, :kecamatan, :kota, :kode_pos, :jabatan)';
 
   $stmt = $pdo->prepare($sql);
-  $stmt->execute(['username' => $username, 'pwd' => $pwd, 'email' => $email, 'nama_user' => $nama, 'tanggal_lahir' => $tanggallahir, 'jenis_kelamin' => $jk, 'nama_orang_tua' => $ortu, 'nomor_telepon' => $telepon, 'alamat' => $alamat, 'kecamatan' => $kecamatan, 'kota' => $kota, 'kode_pos' => $kodepos, 'jabatan' => $jabatan]);
+  $stmt->execute(['username' => $username, 'pwd' => $pwd, 'email' => $email, 'nama_user' => $nama, 'tanggal_lahir' => $tanggallahir, 'jenis_kelamin' => $jk,  'nomor_telepon' => $telepon, 'alamat' => $alamat, 'kecamatan' => $kecamatan, 'kota' => $kota, 'kode_pos' => $kodepos, 'jabatan' => $jabatan]);
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
@@ -59,7 +57,7 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Registrasi - Aplikasi AADS</title>
+    <title>Registrasi Pengurus - Aplikasi AADS</title>
 </head>
 
 <body>
@@ -178,13 +176,13 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
-                            <h1>Form Registrasi</h1>
+                            <h1>Registrasi Pengurus</h1>
                         </div>
                     </div>
                     <!-- Form fields -->
-                    <form method="POST" action="registrasi.php">
+                    <form method="POST" action="">
                         <div class="form-group">
-                            <label for="namaads">Nama ADS:</label>
+                            <label for="namaads">Nama:</label>
                             <input type="text" class="form-control" id="namaads" name="tbnama" required aria-required="true" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z.]*)*$" autofocus>
                         </div>
 
@@ -215,11 +213,6 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                                 <option>Laki-laki</option>
                                 <option>Perempuan</option>
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="namaortu">Nama Orang Tua:</label>
-                            <input type="text" class="form-control" id="namaortu" name="tbortu"  required aria-required="true" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z.]*)*$">
                         </div>
 
                         <div class="form-group">

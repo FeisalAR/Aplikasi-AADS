@@ -3,12 +3,16 @@ include 'connection.php';
 session_start();
 
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+$isPengurus = $_SESSION['jabatan'] == 2;
+
 
 if (!$isLoggedIn) {
  header('Location: login.php');
 }
+else if (!$isPengurus) {
+ header('Location: profil_ads.php');
+}
 else{
-
 if (isset($_POST['submit'])) {
   $id_user         = $_SESSION['id_user'];
   $judul_artikel        = $_POST['judul_artikel'];

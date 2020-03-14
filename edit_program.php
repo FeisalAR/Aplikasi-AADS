@@ -2,15 +2,19 @@
 include 'connection.php';
 session_start();
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
+$isPengurus = $_SESSION['jabatan'] == 2;
 
 if ($isLoggedIn) {
  $id_user    = $_SESSION['id_user'];
  $nomor_user = $_SESSION['nomor_user'];
 } else {
- header('Location: listing_ads.php');
+ header('Location: listing_program.php');
 }
 
 $id_program = $_GET['id_program'];
+if(!$id_program){
+    header('Location: listing_program.php');
+}
 
 //User & Program data query
 $sql = 'SELECT * FROM tabel_program
@@ -213,17 +217,12 @@ if (isset($_POST['submit'])) {
                         </li>
 
                         <li class="nav-item">
-                            <a href="edit_program.php" class="nav-link vactive">
-                                <i class="icon far fa-edit"></i><span class="vmenutext">Edit Program</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="listing_artikel.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Artikel</span>
                             </a>
                             </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isPengurus) {echo 'style="display: none"';} ?>>
                             <a href="tambah_artikel.php" class="nav-link">
                                 <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
                             </a>

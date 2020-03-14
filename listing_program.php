@@ -3,9 +3,19 @@ include 'connection.php';
 session_start();
 $isLoggedIn = isset($_SESSION['id_user']) && !empty($_SESSION['id_user']);
 
-if (!$isLoggedIn) {
- header('Location: login.php');
+if(isset($_SESSION['jabatan'])){
+    $isPengurus = $_SESSION['jabatan'] == 2;
 }
+else{
+    $isPengurus = false;
+}
+
+if (isset($_SESSION['id_user']))
+{
+    $my_id_user = $_SESSION['id_user'];
+}
+$my_id_user = "guest";
+
 
 //Get program data
 
@@ -87,10 +97,10 @@ if (isset($_GET['status'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a class="nav-link hactive" href="listing_program.php"><i
                                     class="icon fas fa-tasks"></i>Kelola Program</a>
                         </li>
@@ -144,12 +154,12 @@ if (isset($_GET['status'])) {
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
                     <ul class="programVmenu navbar-nav">
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="listing_program.php" class="nav-link vactive">
                                 <i class="icon fas fa-list"></i>
                                 <span class="vmenutext">Listing Program</span>
                             </a>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="tambah_program.php" class="nav-link">
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
@@ -160,7 +170,7 @@ if (isset($_GET['status'])) {
                                 <span class="vmenutext">Listing Artikel</span>
                             </a>
                             </li>
-                        <li class="nav-item">
+                        <li class="nav-item" <?php if(!$isPengurus)echo 'style="display:none"';?> >
                             <a href="tambah_artikel.php" class="nav-link">
                                 <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
                             </a>
@@ -242,6 +252,14 @@ foreach ($row as $rowitems) {
  }
  $tanggal_targetf = date("j F Y",strtotime($rowitems->tanggal_target));
 
+
+ if(($my_id_user == $rowitems->id_user) || ($isPengurus)){
+     $idCheck = ' ';
+ }
+ else{
+     $idCheck =' style="display:none" ';
+ }
+
  echo "<li class='list-group-item'>
                                                     <div class='row'>
                                                         <div class='col-md-12 col-12'>
@@ -274,7 +292,7 @@ foreach ($row as $rowitems) {
                                                                                 <i class='fas fa-external-link-square-alt mr-1'
                                                                                     aria-hidden='true'></i>
                                                                                 Lihat Detail
-                                                                            </button></a><a
+                                                                            </button></a><a $idCheck 
                                                                             href='edit_program.php?id_program=$rowitems->id_program'>
                                                                             <button class='btn btndetail'>
                                                                                 <i class='fas fa-pencil-alt mr-1'

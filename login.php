@@ -19,7 +19,7 @@ if ($isLoggedIn) {
   $username = $_POST['tbusername'];
   $pwd      = $_POST['tbpwd'];
 
-  $sql  = 'SELECT username, pwd, id_user, nomor_user FROM tabel_user WHERE username = :username';
+  $sql  = 'SELECT username, pwd, id_user, nomor_user, jabatan FROM tabel_user WHERE username = :username';
   $stmt = $pdo->prepare($sql);
   $stmt->execute(['username' => $username]);
   $row = $stmt->fetch();

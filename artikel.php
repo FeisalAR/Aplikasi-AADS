@@ -176,7 +176,7 @@ $rowarsip = $stmt2->fetchAll();
                         <!-- Form Title -->
                         <div class="col">
                             <h1><?php echo $rowartikel->judul_artikel?></h1>
-                            <span class="tanggalartikel">Publikasi: <?php echo date("j F Y", strtotime($rowartikel->tanggal_artikel)) ?></span>
+                            <span id="tanggalartikel">Publikasi: <?php echo date("j F Y", strtotime($rowartikel->tanggal_artikel)) ?></span>
                         </div>
                     </div>
                     <!-- Form fields -->
