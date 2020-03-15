@@ -230,7 +230,15 @@ if (isset($_GET['status'])) {
 foreach ($rowartikel as $artikel) {
  $statusicon;
  $statusclass;
- $jabatanCheck = 'style="display:none"';
+
+ if(!$isPengurus){
+     $jabatanCheck = 'style="display:none"';
+ }
+ else{
+     $jabatanCheck = ' ';
+ }
+
+
  if ($artikel->status_artikel == 'Published') {  
   $statusicon  = 'fas fa-check';
   $statusclass = 'text-success';
@@ -238,6 +246,7 @@ foreach ($rowartikel as $artikel) {
   $statusicon  = 'fas fa-hourglass-half';
   $statusclass = 'text-warning';
  }
+
  $tanggal_targetf = date("j F Y",strtotime($artikel->tanggal_artikel));
  echo "<li class='list-group-item'>
                                                     <div class='row'>

@@ -189,10 +189,10 @@ $rowarsip = $stmt2->fetchAll();
                                     <div class='row'>
                                         <div class='col col-12'>
                                             <div class='card'>
-                                                <ul class='list-group' id='user-list-profile'>
+                                                <ul class='list-group' id='article-list-content'>
                                                     <li class='list-group-item' id="articlebox">
                                                     <img src="<?php echo $rowartikel->gambar_artikel?>" class="articleimage mx-auto d-block">
-                                                      <?php echo $rowartikel->isi_artikel?>
+                                                      <p class="text-justify" id="artikeltext"><?php echo $rowartikel->isi_artikel?></p>
                                                               
                                                     </li>
                                                 </ul>

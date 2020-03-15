@@ -644,6 +644,10 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 0.8em;
 }
 
+#artikeltext {
+    text-align: justify !important;
+}
+
 //--------------Print formatting--------
 @media print {
     body {

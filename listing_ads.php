@@ -152,16 +152,16 @@ $row = $stmt->fetchAll();
                                 <i class="icon fas fa-chart-line"></i><span class="vmenutext">Laporan Capaian</span>
                             </a>
                         </li>
-                    </ul>
 
-                    <ul class="guestVmenu navbar-nav d-none">
-                        <li class="nav-item">
-                            <a href="listing_ads.php" class="nav-link vactive">
-                                <i class="icon fas fa-list"></i>
-                                <span class="vmenutext">Listing ADS</span>
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                            <a href="standar_perkembangan.php" class="nav-link">
+                                <i class="icon fas fa-chart-line"></i><span class="vmenutext">Standar Perkembangan Anak</span>
                             </a>
+                        </li>
                     </ul>
-
 
                 </nav>
             </div>
