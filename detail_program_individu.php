@@ -374,15 +374,14 @@ if (isset($_POST['submit'])) {
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="col-12 content">
-                                                                                    <p class="tanggalselesai"><?php if ($row[0]->tanggal_selesai == null) {
+                                                                                    <p class="tanggalselesai"><?php if (!isset($row[0]->tanggal_selesai) || empty($row[0]->tanggal_selesai)) {
  echo " - ";
 } else {
  echo date("j F Y",strtotime($row[0]->tanggal_selesai)) ;
 }
-?></p>
+?>
                                                                                 </div>
                                                                             </div>
-
                                                                             <div class="row  m-0">
                                                                                 <div class="col-12 kategoridetail detailcollapser"
                                                                                     data-toggle="collapse"
@@ -413,7 +412,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div
                                                                                     class="col-12 contenttujuan collapse contentall">
-                                                                                    <p class="contentp"><?php echo $row[0]->tujuan_program ?>
+                                                                                    <?php echo $row[0]->tujuan_program ?><p class="contentp">
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
@@ -431,7 +430,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div
                                                                                     class="col-12 contentsasaran  collapse contentall">
-                                                                                    <p class="contentp"><?php echo $row[0]->sasaran_program ?></p>
+                                                                                    <?php echo $row[0]->sasaran_program ?><p class="contentp"></p>
                                                                                 </div>
                                                                             </div>
 
@@ -448,7 +447,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div
                                                                                     class="col-12 contentkeadaan collapse contentall">
-                                                                                    <p class="contentp"><?php echo $row[0]->keadaan_sekarang ?></p>
+                                                                                    <?php echo $row[0]->keadaan_sekarang ?><p class="contentp"></p>
                                                                                 </div>
                                                                             </div>
 
@@ -465,7 +464,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div
                                                                                     class="col-12 contentsumber collapse contentall">
-                                                                                    <p class="contentp"><?php echo $row[0]->sumber_materi ?>
+                                                                                    <?php echo $row[0]->sumber_materi ?><p class="contentp">
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
@@ -483,7 +482,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div
                                                                                     class="col-12 contentcara collapse contentall">
-                                                                                    <p class="contentp"><?php echo $row[0]->cara_pelaksanaan ?></p>
+                                                                                    <?php echo $row[0]->cara_pelaksanaan ?><p class="contentp"></p>
                                                                                 </div>
                                                                             </div>
 

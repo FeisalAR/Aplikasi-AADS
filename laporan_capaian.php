@@ -403,6 +403,14 @@ foreach ($row as $rowitem) {
   $statusclass = 'text-success';
  }
 
+if (!isset($rowitem->tanggal_selesai) || empty($rowitem->tanggal_selesai)) {
+ $tanggalselesaif = " - ";
+} else {
+ $tanggalselesaif = date("j F Y",strtotime($rowitem->tanggal_selesai)) ;
+}
+
+  
+
  echo '<li class="list-group-item">
                                                          <div class="row">
                                                              <div class="col-md-12 col-12">
@@ -436,7 +444,7 @@ foreach ($row as $rowitem) {
                                                                                      class="col-sm-12 col-md-3 ">
                                                                                      <label class="capaianlabel">Tanggal
                                                                                          Selesai : </label><span class="selesaicapaian"
-                                                                                         id="selesaicapaian"> ' . date("j F Y", strtotime($rowitem->tanggal_selesai))  . '</span>
+                                                                                         id="selesaicapaian"> ' . $tanggalselesaif  . '</span>
                                                                                  </div>                                                                                 
 
                                                                                 <div
