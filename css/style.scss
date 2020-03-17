@@ -271,6 +271,15 @@ main {
     }
 }
 
+.one {
+    position: absolute;
+    margin-top: -10px;
+    z-index: 1;
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+}
+
 .card-group {
     @media only screen and (max-width: 812px) {
         flex-flow: column !important;
