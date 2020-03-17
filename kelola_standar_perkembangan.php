@@ -20,7 +20,7 @@ $my_id_user = "guest";
 //Get program data 3
 
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 3;
+WHERE umur_rekomendasi = 3
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
@@ -32,7 +32,7 @@ $row3 = $stmt->fetchAll();
 //Get program data 6
 
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 6;
+WHERE umur_rekomendasi = 6
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
@@ -44,7 +44,7 @@ $row6 = $stmt->fetchAll();
 //Get program data 9
 
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 9;
+WHERE umur_rekomendasi = 9
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
@@ -55,7 +55,7 @@ $row9 = $stmt->fetchAll();
 
 //Get program data 12
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 12;
+WHERE umur_rekomendasi = 12
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
@@ -67,7 +67,7 @@ $row12 = $stmt->fetchAll();
 //Get program data 15
 
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 15;
+WHERE umur_rekomendasi = 15
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
@@ -78,7 +78,7 @@ $row15 = $stmt->fetchAll();
 //Get program data 18
 
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 18;
+WHERE umur_rekomendasi = 18
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
@@ -89,7 +89,7 @@ $row18 = $stmt->fetchAll();
 //Get program data 21
 
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 21;
+WHERE umur_rekomendasi = 21
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
@@ -100,7 +100,7 @@ $row21 = $stmt->fetchAll();
 //Get program data 24
 
 $sqlprogram = 'SELECT * FROM tabel_rekomendasi
-WHERE umur_rekomendasi = 24;
+WHERE umur_rekomendasi = 24
 ORDER BY nomor_rekomendasi DESC';
 
 $stmt = $pdo->prepare($sqlprogram);
