@@ -4,10 +4,10 @@ session_start();
 
 $action = $_GET['action'];
 
-if(!isset($action)){
+if(empty($action)){
     header('Location: listing_ads.php');
 }
-else if ($action == 'deleterekomendasi'){
+elseif ($action == 'deleterekomendasi'){
     $sqlrekomendasi = 'DELETE FROM tabel_rekomendasi
     WHERE nomor_rekomendasi = :nomor_rekomendasi';
     

@@ -367,13 +367,12 @@ foreach ($row3 as $rowitems) {
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>                                                                        
                                                                            
-                                                                               <a
+                                                                               <a class='btn btndetail mt-3'
                                                                             href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail mt-2'>
+                                                                            
                                                                                 <i class='fas fa-trash mr-1'
                                                                                     aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>                                                                             
+                                                                                Hapus</a>                                                                             
                                                                                                                                                     
                                                                                 
                                                                     </div>
@@ -447,8 +446,7 @@ foreach ($row6 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
+                                                                        <a href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
                                                                             <button class='btn btndetail'>
                                                                                 <i class='fas fa-trash mr-1'
                                                                                     aria-hidden='true'></i>
