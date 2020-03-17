@@ -164,6 +164,11 @@ if (isset($_GET['status'])) {
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
+                        <li class="nav-item" <?php if(!$isPengurus)echo 'style="display:none"';?> >
+                            <a href="kelola_standar_perkembangan.php" class="nav-link">
+                                <i class="icon fas fa-chart-bar"></i><span class="vmenutext">Kelola Standar Perkembangan</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="listing_artikel.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>

@@ -260,14 +260,14 @@ if (isset($_POST['submit'])) {
                                 <i class="icon fas fa-chart-line"></i><span class="vmenutext">Laporan Capaian</span>
                             </a>
                         </li>
-                        <!-- <li class="nav-item" <?php if (!$isLoggedIn) {
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
  echo 'style="display: none !important"';
 }
 ?>>
                             <a href="standar_perkembangan.php" class="nav-link">
-                                <i class="icon fas fa-chart-line"></i><span class="vmenutext">Standar Perkembangan Anak</span>
+                                <i class="icon fas fa-chart-bar"></i><span class="vmenutext">Standar Perkembangan Anak</span>
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
 
                 </nav>

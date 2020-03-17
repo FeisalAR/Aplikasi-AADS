@@ -153,6 +153,12 @@ $row = $stmt->fetchAll();
                             </a>
                         </li>
 
+                        <li class="nav-item" >
+                            <a href="standar_perkembangan.php" class="nav-link">
+                                <i class="icon fas fa-chart-bar"></i><span class="vmenutext">Standar Perkembangan Anak</span>
+                            </a>
+                        </li>
+
                         <!-- <li class="nav-item" <?php if (!$isLoggedIn) {
  echo 'style="display: none !important"';
 }

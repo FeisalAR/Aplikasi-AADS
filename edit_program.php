@@ -391,8 +391,7 @@ if (strpos($row->kategori_program, "Sosial-Emosional") > -1) {
                                             </div>
                                         </div>
 
-                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Simpan"> <button
-                                            type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Simpan"> 
                                     </form>
 
             </div> <!-- Main Container end -->

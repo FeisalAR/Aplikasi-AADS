@@ -109,48 +109,7 @@ $row24 = $stmt->fetchAll();
 
 //-------End get program data 24
 
-//insert rekomendasi
 
-if(isset($_POST['submit'])){
-    if($_POST['submit'] == 'Tambahkan'){
-        $nama_rekomendasi = $_POST['nama_rekomendasi'];
-        $deskripsi_rekomendasi = $_POST['deskripsi_rekomendasi'];
-        $umur_rekomendasi = $_POST['umur_rekomendasi'];
-
-        $sqltambah = 'INSERT INTO tabel_rekomendasi (nama_rekomendasi, deskripsi_rekomendasi, umur_rekomendasi)
-                      VALUES (:nr, :dr, :ur)';
-        $stmt = $pdo->prepare($sqltambah);
-        $stmt->execute(['nr' => $nama_rekomendasi, 'dr' => $deskripsi_rekomendasi, 'ur' => $umur_rekomendasi]);
-        header('Location: kelola_standar_perkembangan.php?status=addsuccess');
-    }
-}
-
-
-
-//------------end insert rekomendasi
-
-
-
-$msg = "";
-
-if (isset($_GET['status'])) {
- if ($_GET['status'] == 'addsuccess') {
-  $msg = "<div class='alert alert-success' role='alert'>
-        <strong>Tambah Rekomendasi Program Individu Berhasil.</strong>
-        </div>";
- } else if ($_GET['status'] == 'updatesuccess') {
-  $msg = "<div class='alert alert-success' role='alert'>
-        <strong>Edit Rekomendasi Program Individu Berhasil.</strong>
-        </div>";
- }
- else if ($_GET['status'] == 'deletesuccess') {
-  $msg = "<div class='alert alert-success' role='alert'>
-        <strong>Hapus Rekomendasi Program Individu Berhasil.</strong>
-        </div>";
- }
- 
-
-}
 
 ?>
 
@@ -208,10 +167,10 @@ if (isset($_GET['status'])) {
                             <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
                         <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
-                            <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                            <a class="nav-link  hactive" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
                         <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
-                            <a class="nav-link hactive" href="listing_program.php"><i
+                            <a class="nav-link" href="listing_program.php"><i
                                     class="icon fas fa-tasks"></i>Kelola Program</a>
                         </li>
                     </ul>
@@ -249,30 +208,33 @@ if (isset($_GET['status'])) {
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
                     <ul class="programVmenu navbar-nav">
-                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
-                            <a href="listing_program.php" class="nav-link">
-                                <i class="icon fas fa-list"></i>
-                                <span class="vmenutext">Listing Program</span>
-                            </a>
-                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
-                            <a href="tambah_program.php" class="nav-link">
-                                <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
+                        <li class='nav-item'>
+                            <a href='listing_ads.php' class='nav-link'>
+                                <i class='icon fas fa-list'></i><span class='vmenutext'>Listing ADS</span>
                             </a>
                         </li>
-                        <li class="nav-item" <?php if(!$isPengurus)echo 'style="display:none"';?> >
-                            <a href="kelola_standar_perkembangan.php" class="nav-link vactive">
-                                <i class="icon fas fa-chart-bar"></i><span class="vmenutext">Kelola Standar Perkembangan</span>
+                        <li class='nav-item' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                            <a href='profil_ads.php' class='nav-link'>
+                                <i class='icon far fa-address-card'></i><span class='vmenutext'>Profil & Program
+                                    Individu Saya</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="listing_artikel.php" class="nav-link">
-                                <i class="icon fas fa-list"></i>
-                                <span class="vmenutext">Listing Artikel</span>
+
+                        <li class='nav-item' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                            <a href='laporan_capaian.php' class='nav-link'>
+                                <i class='icon fas fa-chart-line'></i><span class='vmenutext'>Laporan Capaian</span>
                             </a>
-                            </li>
-                        <li class="nav-item" <?php if(!$isPengurus)echo 'style="display:none"';?> >
-                            <a href="tambah_artikel.php" class="nav-link">
-                                <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
+                        </li>
+
+                        <li class="nav-item" >
+                            <a href="standar_perkembangan.php" class="nav-link vactive">
+                                <i class="icon fas fa-chart-bar"></i><span class="vmenutext">Standar Perkembangan Anak</span>
                             </a>
                         </li>
                         
@@ -289,8 +251,8 @@ if (isset($_GET['status'])) {
                     <div class="row">
                         <!-- Form Title -->
                         <div class="col">
-                            <?php echo $msg ?>
-                            <h1>Kelola Standar Perkembangan Anak</h1>
+                            <h1>Standar Perkembangan Anak</h1>
+                            <h5 class="small">Berikut adalah rekomendasi program individu sebagai referensi berdasarkan umur anak</h5>
                         </div>
                     </div>
 
@@ -317,12 +279,8 @@ if (isset($_GET['status'])) {
     <div class="col-12 m-auto">
       <form class="multisteps-form__form">
         <!--single form panel-->
-        <div class="multisteps-form__panel bg-none js-active" data-animation="scaleIn">
-          <div class=""><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+        <div class="multisteps-form__panel bg-none js-active" data-animation="">
+
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -367,14 +325,7 @@ foreach ($row3 as $rowitems) {
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>                                                                        
                                                                            
-                                                                               <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail mt-2'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>                                                                             
-                                                                                                                                                    
+                                                                                                                             
                                                                                 
                                                                     </div>
                                                                 </div>
@@ -399,11 +350,7 @@ foreach ($row3 as $rowitems) {
         </div>
         <!--single form panel-->
         <div class="multisteps-form__panel bg-none" data-animation="scaleIn">
-          <div class="multisteps-form__title"><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+          <div class="multisteps-form__title"></div>
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -447,13 +394,7 @@ foreach ($row6 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>               
+                                                                                 
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -477,11 +418,7 @@ foreach ($row6 as $rowitems) {
         </div>
         <!--single form panel-->
         <div class="multisteps-form__panel bg-none" data-animation="scaleIn">
-          <div class="multisteps-form__title"><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+          <div class="multisteps-form__title"></div>
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -526,13 +463,7 @@ foreach ($row9 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>               
+                                                                                  
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -556,11 +487,7 @@ foreach ($row9 as $rowitems) {
         </div>
         <!--single form panel-->
         <div class="multisteps-form__panel bg-none" data-animation="scaleIn">
-          <div class="multisteps-form__title"><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+          <div class="multisteps-form__title"></div>
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -605,13 +532,7 @@ foreach ($row12 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>               
+                                                                                      
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -635,11 +556,7 @@ foreach ($row12 as $rowitems) {
         </div>
         <!--single form panel-->
         <div class="multisteps-form__panel bg-none" data-animation="scaleIn">
-          <div class="multisteps-form__title"><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+          <div class="multisteps-form__title"></div>
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -684,13 +601,7 @@ foreach ($row15 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>               
+                                                                                    
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -714,11 +625,7 @@ foreach ($row15 as $rowitems) {
         </div>
         <!--single form panel-->
         <div class="multisteps-form__panel bg-none" data-animation="scaleIn">
-          <div class="multisteps-form__title"><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+          <div class="multisteps-form__title"></div>
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -763,13 +670,7 @@ foreach ($row18 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>               
+                                                                                   
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -793,11 +694,7 @@ foreach ($row18 as $rowitems) {
         </div>
         <!--single form panel-->
         <div class="multisteps-form__panel bg-none" data-animation="scaleIn">
-          <div class="multisteps-form__title"><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+          <div class="multisteps-form__title"></div>
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -842,13 +739,7 @@ foreach ($row21 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>               
+                                                                                 
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -872,11 +763,7 @@ foreach ($row21 as $rowitems) {
         </div>
         <!--single form panel-->
         <div class="multisteps-form__panel bg-none" data-animation="scaleIn">
-          <div class="multisteps-form__title"><a href="#"         class="btn text-white"               data-toggle="modal"
-                                                                                data-target="#tambahcatatanmodal"
-                                                                                data-backdrop="static"><i
-                                                                                    class="icon fas fa-plus"></i>Tambah
-                                                                                Rekomendasi Program</a></div>
+          <div class="multisteps-form__title"></div>
           <div class="multisteps-form__content">
             <!-- Form fields -->
                     <div class="row">
@@ -921,13 +808,7 @@ foreach ($row24 as $rowitems) {
                                                                     </h5>
                                                                     <div class='user-detail'>                                                                                                                                                                                                                                                                                       
                                                                         <p class='m-0'>$rowitems->deskripsi_rekomendasi</p>
-                                                                        <a
-                                                                            href='hapus.php?action=deleterekomendasi&nomor_rekomendasi=$rowitems->nomor_rekomendasi'>
-                                                                            <button class='btn btndetail'>
-                                                                                <i class='fas fa-trash mr-1'
-                                                                                    aria-hidden='true'></i>
-                                                                                Hapus
-                                                                            </button></a>               
+                                                                                  
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -957,44 +838,7 @@ foreach ($row24 as $rowitems) {
 
 
 
-                    <div class="modal fade" id="tambahcatatanmodal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">                                
-                                <div class="modal-body">
-                                    <form method="POST" action="">
-                                        <div class="form-group">
-                                            <label for="tanggaltarget">Nama Program Rekomendasi:</label>
-                                            <input type="text" class="form-control" id="tanggaltargets" required
-                                                aria-required="true" name="nama_rekomendasi">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pelaksanaanprogram">Deskripsi Program:</label>
-                                            <textarea class="form-control" id="pelaksanaanprogram" rows="4" name="deskripsi_rekomendasi"
-                                                required></textarea>
-                                                
-                                        </div>
-                                        <div class="form-group">
-                            <label for="umur_rekomendasi">Umur minimum:</label><h5>(Rekomendasi hanya akan muncul jika anak sudah mencapai umur berikut):</h5>
-                            <select class="form-control" id="umur_rekomendasi"  name="umur_rekomendasi" >
-                                <option value="3">3 bulan</option>
-                                <option value="6">6 bulan</option>
-                                <option value="9">9 bulan</option>
-                                <option value="12">12 bulan</option>
-                                <option value="15">15 bulan</option>
-                                <option value="18">18 bulan</option>
-                                <option value="21">21 bulan</option>
-                                <option value="24">24+ bulan</option>
-                                
-                            </select>
-                        </div>
-                                        <input type="submit" class="btn btn-primary mr-2" name="submit" value="Tambahkan"><button
-                                            type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                 </main>
             </div>

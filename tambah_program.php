@@ -147,6 +147,11 @@ if (isset($_POST['submit'])) {
                                 <i class="icon far fa-plus-square"></i><span class="vmenutext">Tambah Program</span>
                             </a>
                         </li>
+                        <li class="nav-item" <?php if(!$isPengurus)echo 'style="display:none"';?> >
+                            <a href="kelola_standar_perkembangan.php" class="nav-link">
+                                <i class="icon fas fa-chart-bar"></i><span class="vmenutext">Kelola Standar Perkembangan</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="listing_artikel.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
@@ -286,7 +291,7 @@ if (isset($_POST['submit'])) {
                                         </div>
 
                                         <input type="submit" class="btn btn-primary" name="submit" value="Tambah Program">
-                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Batal</button>
+                                            
                                     </form>
 
             </div> <!-- Main Container end -->
