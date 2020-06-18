@@ -195,12 +195,12 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
 
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true" pattern="^(?=.{4,60}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" title="Minimum 4 karakter">
+                            <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true" pattern="^(?=.{5,60}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" title="Minimum 5 karakter">
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="password" name="tbpwd"  required aria-required="true">
+                            <input type="password" class="form-control" id="password" name="tbpwd"  required aria-required="true" minlength="6">
                         </div>
 
                         <div class="form-group">
