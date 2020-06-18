@@ -701,8 +701,8 @@ foreach ($row as $rowitems) {
                                         <div class='form-group'>
                                             <label for='jeniskelamin'>Jenis Kelamin:</label>
                                             <select class='form-control' id='jeniskelamin' name='jenis_kelamin' value="<?php echo $rowuser->jenis_kelamin ?>">
-                                                <option>Laki-laki</option>
-                                                <option>Perempuan</option>
+                                                <option <?php if ($rowuser->jenis_kelamin == 'Laki-laki') echo 'selected'; ?>>Laki-laki</option>
+                                                <option <?php if ($rowuser->jenis_kelamin == 'Perempuan') echo 'selected'; ?>>Perempuan</option>
                                             </select>
                                         </div>
 
