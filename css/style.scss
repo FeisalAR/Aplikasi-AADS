@@ -1,659 +1,696 @@
-            @font-face {
-            font-family: MontserratRegular;
-            src: url(../webfonts/Montserrat-Regular.ttf);
+@font-face {
+    font-family: MontserratRegular;
+    src: url(../webfonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: MontserratLight;
+    src: url(../webfonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: MontserratSemiBold;
+    src: url(../webfonts/Montserrat-SemiBold.ttf);
+}
+
+$navbarColour: linear-gradient(124deg, rgba(56, 74, 186, 1) 0%, rgba(100, 93, 196, 1) 49%, rgba(161, 255, 250, 1) 100%);
+$verticalNavColour: rgba(31, 36, 50, 0.7);
+$formColour: #EEECF1;
+$btnColour: rgb(68, 51, 123);
+$h1Colour: rgb(70, 50, 111);
+$h2Colour: rgb(105, 90, 133);
+$activelinkcolour: rgb(220, 208, 243);
+html {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: MontserratLight;
+    font-size: 1.1em;
+    background: $navbarColour no-repeat;
+    min-height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    text-decoration: none;
+    @media only screen and (max-width: 1024px) {
+        font-size: 1em;
+    }
+}
+
+.btn {
+    background-color: $btnColour;
+    border: none;
+}
+
+i {
+    margin-right: 5px;
+}
+
+.dnapic {
+    position: fixed;
+    z-index: -1;
+    width: 30%;
+    min-width: 400px;
+}
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+
+// ----------------Horizontal Navigation Bar------------------------
+.navbar li a {
+    color: rgb(250, 250, 251);
+}
+
+.nav-wrapper {
+    padding-bottom: 0;
+    i {
+        color: white;
+    }
+    .nav-item {
+        padding-right: 15px;
+    }
+}
+
+.togglebutton i {
+    padding-top: 5px !important;
+    font-size: 1.3em;
+}
+
+.togglebutton {
+    @media only screen and (min-width: 992px) {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.navbar-nav {
+    vertical-align: middle;
+}
+
+.navbar {
+    background-color: rgba(#fff, 0);
+    padding-top: 10px;
+    padding-left: 40px;
+    img {
+        width: 150px;
+    }
+    @media only screen and (max-width: 1200px) {
+        font-size: 0.9em;
+    }
+    @media only screen and (max-width: 1080px) {
+        font-size: 0.8em;
+    }
+    .hactive {
+        border-bottom: 5px solid $activelinkcolour;
+        font-weight: 800;
+    }
+    .userHmenu,
+    .guestHmenu {
+        margin-left: 6%;
+        text-align: center;
+        @media only screen and (max-width: 576px) {
+            margin-left: 0;
         }
-        
-        @font-face {
-            font-family: MontserratLight;
-            src: url(../webfonts/Montserrat-Light.ttf);
+    }
+    .guestlogin {
+        padding-left: 40px;
+        align-items: center;
+        @media only screen and (max-width: 576px) {
+            padding-left: 0;
         }
-        
-        @font-face {
-            font-family: MontserratSemiBold;
-            src: url(../webfonts/Montserrat-SemiBold.ttf);
-        }
-        
-        $navbarColour: linear-gradient(124deg, rgba(56, 74, 186, 1) 0%, rgba(100, 93, 196, 1) 49%, rgba(161, 255, 250, 1) 100%);
-        $verticalNavColour: rgba(31, 36, 50, 0.7);
-        $formColour: #EEECF1;
-        $btnColour: rgb(68, 51, 123);
-        $h1Colour: rgb(70, 50, 111);
-        $h2Colour: rgb(105, 90, 133);
-        $activelinkcolour: rgb(220, 208, 243);
-        html {
-            min-height: 100%;
-            overflow-x: hidden;
-        }
-        
-        body {
-            font-family: MontserratLight;
-            font-size: 1.1em;
-            background: $navbarColour no-repeat;
-            min-height: 100%;
-            margin: 0;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            overflow-x: hidden;
-            text-decoration: none;
-            @media only screen and (max-width: 1024px) {
-                font-size: 1em;
-            }
-        }
-        
+    }
+    .mr-sm-2,
+    .mx-sm-2 {
+        margin: 0 !important;
+    }
+    .form-control {
+        font-style: italic;
+        border-top-right-radius: 1px;
+        border-bottom-right-radius: 1px;
+        background-color: $formColour;
+    }
+    .mr-3,
+    .mx-3 {
+        margin-right: 0 !important;
         .btn {
             background-color: $btnColour;
+            border: 0;
+            border-top-left-radius: 1px;
+            border-bottom-left-radius: 1px;
+        }
+        .icon {
+            margin-right: 7px;
+        }
+    }
+}
+
+// ----------------Vertical Navigation Bar------------------------
+.vertical-nav-wrapper {
+    background-color: $verticalNavColour;
+    border-radius: 6px;
+    font-size: 0.8em;
+    li {
+        @media only screen and (max-width: 1280px) {
+            font-size: 1.2em;
+        }
+        @media only screen and (max-width: 1024px) {
+            font-size: 2em;
+        }
+        @media only screen and (max-width: 768px) {
+            font-size: 1.3em;
+            align-items: center;
+            text-align: center;
+        }
+    }
+    .vactive {
+        border-right: 5px solid $activelinkcolour;
+        font-weight: 800;
+        background-color: rgba(16, 19, 27, 0.7);
+    }
+    .navbar {
+        padding: 0;
+    }
+    .nav-link {
+        padding: 20px;
+        @media only screen and (min-width: 1024px) {
+            padding-left: 40px;
+        }
+        @media only screen and (max-width: 950px) {
+            //text-align: center;
+            font-size: 0.9em;
+        }
+        @media only screen and (max-width: 576px) {
+            padding: 0;
+            padding-left: 14px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+            i {
+                font-size: 1.8em;
+                text-align: center;
+                padding-left: 5px;
+            }
+        }
+    }
+    .navbar-nav {
+        width: 100%;
+    }
+}
+
+.col-2 {
+    padding: 0;
+}
+
+.vmenutext {
+    font-size: 1.3em;
+    @media only screen and (max-width: 1440px) {
+        font-size: 1.2em;
+    }
+    @media only screen and (max-width: 1280px) {
+        font-size: 1.1em;
+    }
+    @media only screen and (max-width: 1024px) {
+        font-size: 0.7em;
+    }
+    @media only screen and (max-width: 768px) {
+        font-size: 1em;
+    }
+    @media only screen and (max-width: 640px) {
+        display: block;
+    }
+    @media only screen and (max-width: 576px) {
+        font-size: 0.5em;
+        display: block;
+    }
+}
+
+// ----------------Main Content----------------------------------
+.col {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 1.4em;
+    font-weight: 800;
+    font-variant-caps: all-petite-caps;
+    font-family: MontserratSemiBold;
+    color: $h1Colour;
+    @media only screen and (max-width: 640px) {
+        text-align: center;
+        font-size: 1.2em;
+    }
+}
+
+h2 {
+    font-size: 1.1em;
+    font-weight: 300;
+    font-variant-caps: all-petite-caps;
+    font-family: MontserratSemiBold;
+    color: $h2Colour;
+    @media only screen and (max-width: 640px) {
+        text-align: center;
+        font-size: 1.0em;
+    }
+}
+
+.centerfix {
+    text-align: left !important;
+}
+
+main {
+    background-color: $formColour;
+    padding: 50px;
+    padding-top: 20px;
+    margin-right: 3%;
+    margin-left: 1%;
+    border-radius: 6px;
+    @media only screen and (max-width: 576px) {
+        padding: 30px;
+    }
+}
+
+.one {
+    position: absolute;
+    margin-top: -10px;
+    z-index: 1;
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+}
+
+.card-group {
+    @media only screen and (max-width: 812px) {
+        flex-flow: column !important;
+    }
+}
+
+.artikelcard {
+    font-size: 0.9em;
+    border-bottom: none;
+    .card-body {
+        padding-bottom: 20px;
+        h2 {
+            text-align: left;
+        }
+        // @media only screen and (max-width: 640px) {
+        //     text-align: center;          
+        // }
+    }
+    .btn {
+        background-color: $btnColour;
+        font-size: 0.9em;
+        @media only screen and (max-width: 700px) {
+            font-size: 0.8em;
+        }
+        @media only screen and (max-width: 649px) {
+            font-size: 0.7em;
+        }
+        @media only screen and (max-width: 576px) {
+            font-size: 1em;
+        }
+    }
+    img {
+        height: 10vw;
+        object-fit: cover;
+        @media only screen and (max-width: 950px) {
+            height: 10vw;
+        }
+        @media only screen and (max-width: 812px) {
+            height: 12vw;
+        }
+        @media only screen and (max-width: 600px) {
+            height: 30vw;
+        }
+    }
+}
+
+#listingcards {
+    .card {
+        background-color: rgba( #fff, 0);
+        border: none;
+    }
+    .list-group-item {
+        padding: 5px 20px;
+    }
+    .list-group-item:hover {
+        background: #f1f1f1;
+    }
+    .user-img img {
+        height: 120px;
+        width: 120px;
+        @media only screen and (max-width: 640px) {
+            height: 90px;
+            width: 90px;
+            margin-bottom: 10px;
+        }
+    }
+    .card-header h4 {
+        display: inline-block;
+        padding: 12px 15px 8px 15px;
+    }
+    .card-header ul {
+        list-style: none;
+    }
+    .search-div {
+        display: none;
+    }
+    .user-detail {
+        font-size: 0.6em;
+    }
+    h5 {
+        font-size: 0.9em;
+    }
+    #user-list-profile {
+        @media only screen and (max-width: 640px) {
+            text-align: center;
+        }
+        p {
+            padding: 3px;
+        }
+        @media only screen and (min-width: 768px) {
+            font-size: 1.3em;
+        }
+    }
+    #program-list {
+        .list-group-item {
+            @media only screen and (max-width: 640px) {
+                padding: 15px;
+            }
+        }
+    }
+}
+
+.programfilters {
+    @media only screen and (max-width: 640px) {
+        text-align: center;
+    }
+    .btn {
+        font-size: 0.8em;
+    }
+}
+
+.btndetail {
+    font-size: 0.8em;
+    color: #fff;
+    padding: 4px;
+}
+
+.btndetail:hover {
+    color: #fff;
+}
+
+.statusfilterlabel {
+    font-size: 0.9em;
+}
+
+.search-div {
+    display: block;
+     ::placeholder {
+        font-size: 0.9em;
+        font-style: italic;
+    }
+}
+
+#user-list {
+    i {
+        margin-right: 8px !important;
+    }
+}
+
+.backtoprofile {
+    font-size: 0.6em;
+}
+
+#detailprogram {
+    h5 {
+        padding: 15px;
+        font-size: 0.9em;
+        font-family: montserratsemibold;
+    }
+    font-size: 1.4em;
+    p {
+        margin-bottom: 8px;
+    }
+    .fielddetail {
+        margin: 8px;
+    }
+    .list-group-item:hover {
+        background-color: #fff;
+    }
+    .detailcollapser {
+        margin-bottom: 5px;
+        border-radius: 6px;
+        background-color: rgb(230, 230, 255);
+    }
+    .contentp {
+        margin-top: 5px;
+        margin-bottom: 30px;
+    }
+    .editlink {
+        padding: 15px;
+        .editbutton {
+            font-size: 0.5em;
+            color: #fff;
+        }
+    }
+}
+
+#catatanharian {
+    @extend #detailprogram;
+    .catatanentry {
+        border: 1px solid rgb(214, 214, 214);
+        border-radius: 5px;
+        padding: 5px;
+    }
+}
+
+.arsiptitle {
+    margin-top: 10px;
+}
+
+.arsip {
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 0.8em;
+    a {
+        display: block;
+        padding: 10px;
+        padding-left: 20px;
+    }
+}
+
+form {
+    label {
+        @extend h2;
+    }
+    .form-group {
+        margin-bottom: 1.3em;
+    }
+}
+
+.tanggal {
+    width: 40%;
+    @media only screen and (max-width: 812px) {
+        width: 40%;
+    }
+    @media only screen and (max-width: 576px) {
+        width: 60%;
+    }
+    @media only screen and (max-width: 450px) {
+        width: 80%;
+    }
+    @media only screen and (max-width: 320px) {
+        width: 100%;
+    }
+}
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.periodefilter {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .form-control {
+        display: inline;
+    }
+}
+
+.cetaklaporanbtn {
+    font-size: 1.0em !important;
+    float: right;
+    @media only screen and (max-width: 812px) {
+        float: initial;
+        font-size: 0.8em !important;
+    }
+}
+
+.capaianlabel {
+    font-weight: bold;
+}
+
+.catatanentrycontainer {
+    // border-radius: 6px;
+    // border: 1px rgb(214, 214, 214) solid;
+    margin-left: 20px;
+}
+
+.catatanentry {
+    p {
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+}
+
+//--------Custom checkbox----------
+.kategori {
+    background-color: rgb(255, 254, 254);
+    border-radius: 6px;
+    border: 1px rgb(214, 214, 214) solid;
+    padding: 20px;
+    .form-check-label {
+        font-size: 0.9em;
+        font-family: MontserratRegular;
+    }
+    .form-check-inline {
+        @media only screen and (max-width: 576px) {
+            display: block;
+        }
+    }
+}
+
+//End custom checkbox
+//---Custom Radio field---
+.statusprogram {
+    background-color: rgb(250, 250, 250);
+    border-radius: 6px;
+    border: 1px rgb(214, 214, 214) solid;
+    padding: 5px;
+    width: 25%;
+    @media only screen and (max-width: 812px) {
+        width: 100%;
+    }
+    .radio-inline {
+        font-size: 0.9em;
+        font-family: MontserratRegular;
+        margin-left: 15px;
+        &::first-child {
+            @media only screen and (max-width: 576px) {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.tanggalselesaitoggle {
+    display: none;
+}
+
+//---End of Custom Radio field---
+#fotoprofil {
+    padding: 20px;
+    background-color: rgb(250, 250, 250);
+    border-radius: 6px;
+    border: 1px rgb(214, 214, 214) solid;
+    ol {
+        padding-left: 0;
+    }
+    li,
+    div>p {
+        margin-bottom: 10px;
+        list-style-type: none;
+    }
+    img {
+        height: 64px;
+    }
+    p {
+        padding-left: 10px;
+    }
+    label,
+    button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        background-color: $btnColour;
+        color: #fff;
+    }
+}
+
+.suggestdaftar {
+    margin: 20px;
+    margin-left: 0;
+    a {
+        color: lighten($btnColour, 20%);
+    }
+}
+
+.trumbowyg-editor {
+    background-color: white !important;
+}
+
+#articlebox {
+    font-size: 0.4em;
+    padding: 20px !important;
+    .articleimage {
+        margin: 10px;
+        height: 300px;
+    }
+}
+
+.list-group #articlebox:hover {
+    background-color: #fff;
+}
+
+.tanggalartikel {
+    font-size: 0.8em;
+}
+
+#artikeltext {
+    text-align: justify !important;
+}
+
+//--------------Print formatting--------
+@media print {
+    body {
+        margin: 0;
+        font-size: 1.5em;
+    }
+    form {
+        width: 100% !important;
+    }
+    main {
+        margin: 0;
+    }
+    .col-2 {
+        flex: none;
+        max-width: 100%;
+    }
+    .periodefilter {
+        display: inline;
+        .form-control {
+            display: inline;
             border: none;
         }
-        
-        i {
-            margin-right: 5px;
+        .tanggal {
+            width: 19% !important;
         }
-        
-        .dnapic {
-            position: fixed;
-            z-index: -1;
-            width: 30%;
-            min-width: 400px;
-        }
-        
-        .container-fluid {
-            margin: 0;
-            padding: 0;
-        }
-        
-        // ----------------Horizontal Navigation Bar------------------------
-        .navbar li a {
-            color: rgb(250, 250, 251);
-        }
-        
-        .nav-wrapper {
-            padding-bottom: 0;
-            i {
-                color: white;
-            }
-            .nav-item {
-                padding-right: 15px;
-            }
-        }
-        
-        .togglebutton i {
-            padding-top: 5px !important;
-            font-size: 1.3em;
-        }
-        
-        .togglebutton {
-            @media only screen and (min-width: 992px) {
-                display: none;
-                visibility: hidden;
-            }
-        }
-        
-        .navbar-nav {
-            vertical-align: middle;
-        }
-        
-        .navbar {
-            background-color: rgba(#fff, 0);
-            padding-top: 10px;
-            padding-left: 40px;
-            img {
-                width: 150px;
-            }
-            @media only screen and (max-width: 1200px) {
-                font-size: 0.9em;
-            }
-            @media only screen and (max-width: 1080px) {
-                font-size: 0.8em;
-            }
-            .hactive {
-                border-bottom: 5px solid $activelinkcolour;
-                font-weight: 800;
-            }
-            .userHmenu,
-            .guestHmenu {
-                margin-left: 6%;
-                text-align: center;
-                @media only screen and (max-width: 576px) {
-                    margin-left: 0;
-                }
-            }
-            .guestlogin {
-                padding-left: 40px;
-                align-items: center;
-                @media only screen and (max-width: 576px) {
-                    padding-left: 0;
-                }
-            }
-            .mr-sm-2,
-            .mx-sm-2 {
-                margin: 0 !important;
-            }
-            .form-control {
-                font-style: italic;
-                border-top-right-radius: 1px;
-                border-bottom-right-radius: 1px;
-                background-color: $formColour;
-            }
-            .mr-3,
-            .mx-3 {
-                margin-right: 0 !important;
-                .btn {
-                    background-color: $btnColour;
-                    border: 0;
-                    border-top-left-radius: 1px;
-                    border-bottom-left-radius: 1px;
-                }
-                .icon {
-                    margin-right: 7px;
-                }
-            }
-        }
-        
-        // ----------------Vertical Navigation Bar------------------------
-        .vertical-nav-wrapper {
-            background-color: $verticalNavColour;
-            border-radius: 6px;
-            font-size: 0.8em;
-            li {
-                @media only screen and (max-width: 1280px) {
-                    font-size: 1.2em;
-                }
-                @media only screen and (max-width: 1024px) {
-                    font-size: 2em;
-                }
-                @media only screen and (max-width: 768px) {
-                    font-size: 1.3em;
-                    align-items: center;
-                    text-align: center;
-                }
-            }
-            .vactive {
-                border-right: 5px solid $activelinkcolour;
-                font-weight: 800;
-                background-color: rgba(16, 19, 27, 0.7);
-            }
-            .navbar {
-                padding: 0;
-            }
-            .nav-link {
-                padding: 20px;
-                @media only screen and (min-width: 1024px) {
-                    padding-left: 40px;
-                }
-                @media only screen and (max-width: 950px) {
-                    //text-align: center;
-                    font-size: 0.9em;
-                }
-                @media only screen and (max-width: 576px) {
-                    padding: 0;
-                    padding-left: 14px;
-                    padding-top: 5px;
-                    padding-bottom: 10px;
-                    margin-top: 10px;
-                    i {
-                        font-size: 1.8em;
-                        text-align: center;
-                        padding-left: 5px;
-                    }
-                }
-            }
-            .navbar-nav {
-                width: 100%;
-            }
-        }
-        
-        .col-2 {
-            padding: 0;
-        }
-        
-        .vmenutext {
-            font-size: 1.3em;
-            @media only screen and (max-width: 1440px) {
-                font-size: 1.2em;
-            }
-            @media only screen and (max-width: 1280px) {
-                font-size: 1.1em;
-            }
-            @media only screen and (max-width: 1024px) {
-                font-size: 0.7em;
-            }
-            @media only screen and (max-width: 768px) {
-                font-size: 1em;
-            }
-            @media only screen and (max-width: 640px) {
-                display: block;
-            }
-            @media only screen and (max-width: 576px) {
-                font-size: 0.5em;
-                display: block;
-            }
-        }
-        
-        // ----------------Main Content----------------------------------
-        .col {
-            padding: 0;
-            margin: 0;
-        }
-        
-        h1 {
-            font-size: 1.4em;
-            font-weight: 800;
-            font-variant-caps: all-petite-caps;
-            font-family: MontserratSemiBold;
-            color: $h1Colour;
-            @media only screen and (max-width: 640px) {
-                text-align: center;
-                font-size: 1.2em;
-            }
-        }
-        
-        h2 {
-            font-size: 1.1em;
-            font-weight: 300;
-            font-variant-caps: all-petite-caps;
-            font-family: MontserratSemiBold;
-            color: $h2Colour;
-            @media only screen and (max-width: 640px) {
-                text-align: center;
-                font-size: 1.0em;
-            }
-            .centerfix {
-                text-align: left !important;
-            }
-            main {
-                background-color: $formColour;
-                padding: 50px;
-                padding-top: 20px;
-                margin-right: 3%;
-                margin-left: 1%;
-                border-radius: 6px;
-                @media only screen and (max-width: 576px) {
-                    padding: 30px;
-                }
-            }
-            .one {
-                position: absolute;
-                margin-top: -10px;
-                z-index: 1;
-                height: 40px;
-                width: 40px;
-                border-radius: 25px;
-            }
-            .card-group {
-                @media only screen and (max-width: 812px) {
-                    flex-flow: column !important;
-                }
-            }
-            .artikelcard {
-                font-size: 0.9em;
-                border-bottom: none;
-                .card-body {
-                    padding-bottom: 20px;
-                    h2 {
-                        text-align: left;
-                    }
-                    // @media only screen and (max-width: 640px) {
-                    //     text-align: center;          
-                    // }
-                }
-                .btn {
-                    background-color: $btnColour;
-                    font-size: 0.9em;
-                    @media only screen and (max-width: 700px) {
-                        font-size: 0.8em;
-                    }
-                    @media only screen and (max-width: 649px) {
-                        font-size: 0.7em;
-                    }
-                    @media only screen and (max-width: 576px) {
-                        font-size: 1em;
-                    }
-                }
-                img {
-                    height: 10vw;
-                    object-fit: cover;
-                    @media only screen and (max-width: 950px) {
-                        height: 10vw;
-                    }
-                    @media only screen and (max-width: 812px) {
-                        height: 12vw;
-                    }
-                    @media only screen and (max-width: 600px) {
-                        height: 30vw;
-                    }
-                }
-            }
-            #listingcards {
-                .card {
-                    background-color: rgba( #fff, 0);
-                    border: none;
-                }
-                .list-group-item {
-                    padding: 5px 20px;
-                }
-                .list-group-item:hover {
-                    background: #f1f1f1;
-                }
-                .user-img img {
-                    height: 120px;
-                    width: 120px;
-                    @media only screen and (max-width: 640px) {
-                        height: 90px;
-                        width: 90px;
-                        margin-bottom: 10px;
-                    }
-                }
-                .card-header h4 {
-                    display: inline-block;
-                    padding: 12px 15px 8px 15px;
-                }
-                .card-header ul {
-                    list-style: none;
-                }
-                .search-div {
-                    display: none;
-                }
-                .user-detail {
-                    font-size: 0.6em;
-                }
-                h5 {
-                    font-size: 0.9em;
-                }
-                #user-list-profile {
-                    @media only screen and (max-width: 640px) {
-                        text-align: center;
-                    }
-                    p {
-                        padding: 3px;
-                    }
-                    @media only screen and (min-width: 768px) {
-                        font-size: 1.3em;
-                    }
-                }
-                #program-list {
-                    .list-group-item {
-                        @media only screen and (max-width: 640px) {
-                            padding: 15px;
-                        }
-                    }
-                }
-            }
-            .programfilters {
-                @media only screen and (max-width: 640px) {
-                    text-align: center;
-                }
-                .btn {
-                    font-size: 0.8em;
-                }
-            }
-            .btndetail {
-                font-size: 0.8em;
-                color: #fff;
-                padding: 4px;
-            }
-            .btndetail:hover {
-                color: #fff;
-            }
-            .statusfilterlabel {
-                font-size: 0.9em;
-            }
-            .search-div {
-                display: block;
-                 ::placeholder {
-                    font-size: 0.9em;
-                    font-style: italic;
-                }
-            }
-            #user-list {
-                i {
-                    margin-right: 8px !important;
-                }
-            }
-            .backtoprofile {
-                font-size: 0.6em;
-            }
-            #detailprogram {
-                h5 {
-                    padding: 15px;
-                    font-size: 0.9em;
-                    font-family: montserratsemibold;
-                }
-                font-size: 1.4em;
-                p {
-                    margin-bottom: 8px;
-                }
-                .fielddetail {
-                    margin: 8px;
-                }
-                .list-group-item:hover {
-                    background-color: #fff;
-                }
-                .detailcollapser {
-                    margin-bottom: 5px;
-                    border-radius: 6px;
-                    background-color: rgb(230, 230, 255);
-                }
-                .contentp {
-                    margin-top: 5px;
-                    margin-bottom: 30px;
-                }
-                .editlink {
-                    padding: 15px;
-                    .editbutton {
-                        font-size: 0.5em;
-                        color: #fff;
-                    }
-                }
-            }
-            #catatanharian {
-                @extend #detailprogram;
-                .catatanentry {
-                    border: 1px solid rgb(214, 214, 214);
-                    border-radius: 5px;
-                    padding: 5px;
-                }
-            }
-            .arsiptitle {
-                margin-top: 10px;
-            }
-            .arsip {
-                background-color: #fff;
-                border-radius: 6px;
-                font-size: 0.8em;
-                a {
-                    display: block;
-                    padding: 10px;
-                    padding-left: 20px;
-                }
-            }
-            form {
-                label {
-                    @extend h2;
-                }
-                .form-group {
-                    margin-bottom: 1.3em;
-                }
-            }
-            .tanggal {
-                width: 40%;
-                @media only screen and (max-width: 812px) {
-                    width: 40%;
-                }
-                @media only screen and (max-width: 576px) {
-                    width: 60%;
-                }
-                @media only screen and (max-width: 450px) {
-                    width: 80%;
-                }
-                @media only screen and (max-width: 320px) {
-                    width: 100%;
-                }
-            }
-            input[type=date]::-webkit-inner-spin-button,
-            input[type=date]::-webkit-outer-spin-button,
-            input[type=number]::-webkit-inner-spin-button,
-            input[type=number]::-webkit-outer-spin-button {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                margin: 0;
-            }
-            .periodefilter {
-                margin-top: 10px;
-                margin-bottom: 10px;
-                .form-control {
-                    display: inline;
-                }
-            }
-            .cetaklaporanbtn {
-                font-size: 1.0em !important;
-                float: right;
-                @media only screen and (max-width: 812px) {
-                    float: initial;
-                    font-size: 0.8em !important;
-                }
-            }
-            .capaianlabel {
-                font-weight: bold;
-            }
-            .catatanentrycontainer {
-                // border-radius: 6px;
-                // border: 1px rgb(214, 214, 214) solid;
-                margin-left: 20px;
-            }
-            .catatanentry {
-                p {
-                    margin-top: 1px;
-                    margin-bottom: 1px;
-                }
-            }
-            //--------Custom checkbox----------
-            .kategori {
-                background-color: rgb(255, 254, 254);
-                border-radius: 6px;
-                border: 1px rgb(214, 214, 214) solid;
-                padding: 20px;
-                .form-check-label {
-                    font-size: 0.9em;
-                    font-family: MontserratRegular;
-                }
-                .form-check-inline {
-                    @media only screen and (max-width: 576px) {
-                        display: block;
-                    }
-                }
-            }
-            //End custom checkbox
-            //---Custom Radio field---
-            .statusprogram {
-                background-color: rgb(250, 250, 250);
-                border-radius: 6px;
-                border: 1px rgb(214, 214, 214) solid;
-                padding: 5px;
-                width: 25%;
-                @media only screen and (max-width: 812px) {
-                    width: 100%;
-                }
-                .radio-inline {
-                    font-size: 0.9em;
-                    font-family: MontserratRegular;
-                    margin-left: 15px;
-                    &::first-child {
-                        @media only screen and (max-width: 576px) {
-                            margin-left: 0;
-                        }
-                    }
-                }
-            }
-            .tanggalselesaitoggle {
-                display: none;
-            }
-            //---End of Custom Radio field---
-            #fotoprofil {
-                padding: 20px;
-                background-color: rgb(250, 250, 250);
-                border-radius: 6px;
-                border: 1px rgb(214, 214, 214) solid;
-                ol {
-                    padding-left: 0;
-                }
-                li,
-                div>p {
-                    margin-bottom: 10px;
-                    list-style-type: none;
-                }
-                img {
-                    height: 64px;
-                }
-                p {
-                    padding-left: 10px;
-                }
-                label,
-                button {
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    font-size: 0.8rem;
-                    background-color: $btnColour;
-                    color: #fff;
-                }
-            }
-            .suggestdaftar {
-                margin: 20px;
-                margin-left: 0;
-                a {
-                    color: lighten($btnColour, 20%);
-                }
-            }
-            .trumbowyg-editor {
-                background-color: white !important;
-            }
-            #articlebox {
-                font-size: 0.4em;
-                padding: 20px !important;
-                .articleimage {
-                    margin: 10px;
-                    height: 300px;
-                }
-            }
-            .list-group #articlebox:hover {
-                background-color: #fff;
-            }
-            .tanggalartikel {
-                font-size: 0.8em;
-            }
-            #artikeltext {
-                text-align: justify !important;
-            }
-            //--------------Print formatting--------
-            @media print {
-                body {
-                    margin: 0;
-                    font-size: 1.5em;
-                }
-                form {
-                    width: 100% !important;
-                }
-                main {
-                    margin: 0;
-                }
-                .col-2 {
-                    flex: none;
-                    max-width: 100%;
-                }
-                .periodefilter {
-                    display: inline;
-                    .form-control {
-                        display: inline;
-                        border: none;
-                    }
-                    .tanggal {
-                        width: 19% !important;
-                    }
-                }
-                .collapse {
-                    display: block !important;
-                }
-                .list-group-item {
-                    margin-bottom: 10px;
-                }
-            }
+    }
+    .collapse {
+        display: block !important;
+    }
+    .list-group-item {
+        margin-bottom: 10px;
+    }
+}

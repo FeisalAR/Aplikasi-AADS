@@ -325,6 +325,10 @@ h2, form label {
   }
 }
 
+.centerfix {
+  text-align: left !important;
+}
+
 main {
   background-color: #EEECF1;
   padding: 50px;
@@ -609,10 +613,6 @@ main {
 
 form .form-group {
   margin-bottom: 1.3em;
-}
-
-.centerfix {
-  text-align: left !important;
 }
 
 .tanggal {
