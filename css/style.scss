@@ -123,6 +123,15 @@ i {
         @media only screen and (max-width: 576px) {
             padding-left: 0;
         }
+        @media only screen and (min-width: 1280px) {
+            margin-left: 25%;
+        }
+        @media only screen and (min-width: 1440px) {
+            margin-left: 30%;
+        }
+        @media only screen and (min-width: 1920px) {
+            margin-left: 40%;
+        }
     }
     .mr-sm-2,
     .mx-sm-2 {

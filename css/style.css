@@ -142,6 +142,24 @@ i {
   }
 }
 
+@media only screen and (min-width: 1280px) {
+  .navbar .guestlogin {
+    margin-left: 25%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .navbar .guestlogin {
+    margin-left: 30%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .navbar .guestlogin {
+    margin-left: 40%;
+  }
+}
+
 .navbar .mr-sm-2,
 .navbar .mx-sm-2 {
   margin: 0 !important;

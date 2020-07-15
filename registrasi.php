@@ -108,6 +108,17 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                         </li>
                     </ul>
 
+                    
+                    <ul class="guestlogin navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hactive" href="registrasi.php"><i
+                                    class="icon fas fa-user-plus"></i>Registrasi</a>
+                        </li>
+                    </ul>
+
                     <!-- Search form -->
                     <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
                         <div class="input-group md-form form-sm form-2 pl-0">
@@ -119,16 +130,9 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                             </div>
                         </div>
                     </form>
-                    <ul class="guestlogin navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link hactive" href="registrasi.php"><i
-                                    class="icon fas fa-user-plus"></i>Registrasi</a>
-                        </li>
-                    </ul>
                 </div>
+
+                
 
 
             </nav>
