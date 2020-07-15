@@ -175,6 +175,13 @@ $row24 = $stmt->fetchAll();
                         </li>
                     </ul>
 
+                    
+
+                    <ul class="userlogout navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
+                        </li>
+                    </ul>
                     <!-- Search form -->
                     <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
                         <div class="input-group md-form form-sm form-2 pl-0">
@@ -186,12 +193,6 @@ $row24 = $stmt->fetchAll();
                             </div>
                         </div>
                     </form>
-
-                    <ul class="userlogout navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
-                        </li>
-                    </ul>
 
 
                 </div>

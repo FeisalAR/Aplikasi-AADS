@@ -84,17 +84,7 @@ $rowarsip = $stmt2->fetchAll();
                         </li>
                     </ul>
 
-                    <!-- Search form -->
-                    <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
-                        <div class="input-group md-form form-sm form-2 pl-0">
-                            <input class="form-control my-0 py-1 red-border" type="text" placeholder="Cari ADS..."
-                                aria-label="Search" name="query" required>
-                            <div class="input-group-append">
-                                <button class="btn btn-success" type="submit"><i class="fas fa-search text-grey"
-                                        aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </form>
+                    
 
                     <ul class="userlogin navbar-nav navbar-collapse" <?php if ($isLoggedIn) {
  echo 'style="display: none !important"';
@@ -118,6 +108,18 @@ $rowarsip = $stmt2->fetchAll();
                             <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>
                     </ul>
+
+                    <!-- Search form -->
+                    <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
+                        <div class="input-group md-form form-sm form-2 pl-0">
+                            <input class="form-control my-0 py-1 red-border" type="text" placeholder="Cari ADS..."
+                                aria-label="Search" name="query" required>
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit"><i class="fas fa-search text-grey"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
 
                 </div>
 

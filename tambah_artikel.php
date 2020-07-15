@@ -117,7 +117,13 @@ if (isset($_POST['submit'])) {
                         </li>
                     </ul> -->
 
-                    <!-- Search form -->
+                   
+                    <ul class="userlogout navbar-nav navbar-collapse">
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
+                        </li>
+                    </ul>
+                     <!-- Search form -->
                     <form method="GET" class="form-inline ml-auto navbar-nav navbar-collapse" action="pencarian.php">
                         <div class="input-group md-form form-sm form-2 pl-0">
                             <input class="form-control my-0 py-1 red-border" type="text" placeholder="Cari ADS..."
@@ -128,11 +134,6 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
                     </form>
-                    <ul class="userlogout navbar-nav navbar-collapse">
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
-                        </li>
-                    </ul>
 
 
                 </div>
