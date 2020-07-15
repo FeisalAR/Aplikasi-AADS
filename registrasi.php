@@ -194,12 +194,12 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Username:</label>
+                            <label for="username">Username (Minimum 5 karakter):</label>
                             <input type="text" class="form-control" id="username" name="tbusername"  required aria-required="true" pattern="^(?=.{5,60}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" title="Minimum 5 karakter">
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Password:</label>
+                            <label for="password">Password (Minimum 6 karakter):</label>
                             <input type="password" class="form-control" id="password" name="tbpwd"  required aria-required="true" minlength="6">
                         </div>
 
