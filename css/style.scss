@@ -90,7 +90,16 @@ i {
 
 #brand-logo {
     @media only screen and (max-width: 640px) {
-        margin-left: 100%;
+        margin-left: 50%;
+    }
+}
+
+#potads-logo {
+    width: 50px;
+    margin-top: -5px;
+    @media only screen and (max-width: 640px) {
+        width: 40px;
+        padding-top: 3px;
     }
 }
 
@@ -101,7 +110,7 @@ i {
 .navbar {
     background-color: rgba(#fff, 0);
     padding-top: 10px;
-    padding-left: 40px;
+    padding-left: 30px;
     img {
         width: 150px;
     }

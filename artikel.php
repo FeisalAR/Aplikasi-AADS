@@ -45,12 +45,21 @@ $rowarsip = $stmt2->fetchAll();
         <!-- Horizontal Navbar -->
         <div class="nav-wrapper">
             <nav class="navbar navbar-expand-lg navbar-toggleable-lg hnavbar">
+                <div class="row">
+                <div class="col-1-sm">
+                        <!-- Brand -->
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
+                            <img id="potads-logo" src="images/potadslogotrspctrst.png" alt="Logo">
+                        </a>
+                    </div>
                 <div class="col-1-sm">
                         <!-- Brand -->
                         <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
                             <img id="brand-logo" src="images/logo.png" alt="Logo">
                         </a>
                     </div>
+                </div>
+                
                 <div class="row buttonlogo">
                     <div class="col togglebutton">
                         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
