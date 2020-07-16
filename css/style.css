@@ -85,6 +85,12 @@ i {
   }
 }
 
+@media only screen and (max-width: 640px) {
+  #brand-logo {
+    margin-left: 100%;
+  }
+}
+
 .navbar-nav {
   vertical-align: middle;
 }
@@ -190,10 +196,53 @@ i {
   margin-right: 7px;
 }
 
+@media only screen and (min-width: 720px) {
+  .userlogin {
+    margin-left: 20%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .userlogin {
+    margin-left: 32%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .userlogin {
+    margin-left: 52%;
+  }
+}
+
 .vertical-nav-wrapper {
   background-color: rgba(31, 36, 50, 0.7);
   border-radius: 6px;
   font-size: 0.8em;
+}
+
+@media only screen and (max-width: 420px) {
+  .vertical-nav-wrapper {
+    background-color: transparent;
+  }
+  .vertical-nav-wrapper li {
+    margin: 0;
+    background-color: rgba(31, 36, 50, 0.7);
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .vertical-nav-wrapper .Vmenu {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
 }
 
 @media only screen and (max-width: 1280px) {
@@ -215,6 +264,15 @@ i {
         -ms-flex-align: center;
             align-items: center;
     text-align: center;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .vertical-nav-wrapper .navitem {
+    padding: 0;
   }
 }
 
@@ -222,6 +280,12 @@ i {
   border-right: 5px solid #dcd0f3;
   font-weight: 800;
   background-color: rgba(16, 19, 27, 0.7);
+}
+
+@media only screen and (max-width: 420px) {
+  .vertical-nav-wrapper .vactive {
+    padding: 0;
+  }
 }
 
 .vertical-nav-wrapper .navbar {
@@ -247,10 +311,9 @@ i {
 @media only screen and (max-width: 576px) {
   .vertical-nav-wrapper .nav-link {
     padding: 0;
-    padding-left: 14px;
-    padding-top: 5px;
+    padding-left: 5px;
+    padding-top: 15px;
     padding-bottom: 10px;
-    margin-top: 10px;
   }
   .vertical-nav-wrapper .nav-link i {
     font-size: 1.8em;
@@ -803,6 +866,12 @@ input[type=number]::-webkit-outer-spin-button {
 #articlebox {
   font-size: 1em;
   padding: 20px !important;
+}
+
+@media only screen and (max-width: 576px) {
+  #articlebox {
+    padding-left: 8% !important;
+  }
 }
 
 #articlebox .articleimage {

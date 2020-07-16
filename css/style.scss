@@ -88,6 +88,12 @@ i {
     }
 }
 
+#brand-logo {
+    @media only screen and (max-width: 640px) {
+        margin-left: 100%;
+    }
+}
+
 .navbar-nav {
     vertical-align: middle;
 }
@@ -158,8 +164,34 @@ i {
     }
 }
 
+.userlogin {
+    @media only screen and (min-width: 720px) {
+        margin-left: 20%;
+    }
+    @media only screen and (min-width: 1280px) {
+        margin-left: 32%;
+    }
+    @media only screen and (min-width: 1920px) {
+        margin-left: 52%;
+    }
+}
+
 // ----------------Vertical Navigation Bar------------------------
 .vertical-nav-wrapper {
+    @media only screen and (max-width: 420px) {
+        background-color: transparent;
+        li {
+            margin: 0;
+            background-color: $verticalNavColour;
+            flex: 1;
+        }
+    }
+    .Vmenu {
+        @media only screen and (max-width: 640px) {
+            flex-direction: row;
+            flex: 1;
+        }
+    }
     background-color: $verticalNavColour;
     border-radius: 6px;
     font-size: 0.8em;
@@ -174,12 +206,21 @@ i {
             font-size: 1.3em;
             align-items: center;
             text-align: center;
+            flex: 1;
+        }
+    }
+    .navitem {
+        @media only screen and (max-width: 420px) {
+            padding: 0;
         }
     }
     .vactive {
         border-right: 5px solid $activelinkcolour;
         font-weight: 800;
         background-color: rgba(16, 19, 27, 0.7);
+        @media only screen and (max-width: 420px) {
+            padding: 0;
+        }
     }
     .navbar {
         padding: 0;
@@ -195,10 +236,9 @@ i {
         }
         @media only screen and (max-width: 576px) {
             padding: 0;
-            padding-left: 14px;
-            padding-top: 5px;
+            padding-left: 5px;
+            padding-top: 15px;
             padding-bottom: 10px;
-            margin-top: 10px;
             i {
                 font-size: 1.8em;
                 text-align: center;
@@ -210,6 +250,8 @@ i {
         width: 100%;
     }
 }
+
+.vertical-nav-wrapper {}
 
 .col-2 {
     padding: 0;
@@ -652,6 +694,9 @@ input[type=number]::-webkit-outer-spin-button {
 #articlebox {
     font-size: 1em;
     padding: 20px !important;
+    @media only screen and (max-width: 576px) {
+        padding-left: 8% !important;
+    }
     .articleimage {
         margin: 10px;
         height: 300px;

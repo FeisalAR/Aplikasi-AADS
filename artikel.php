@@ -45,6 +45,12 @@ $rowarsip = $stmt2->fetchAll();
         <!-- Horizontal Navbar -->
         <div class="nav-wrapper">
             <nav class="navbar navbar-expand-lg navbar-toggleable-lg hnavbar">
+                <div class="col-1-sm">
+                        <!-- Brand -->
+                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
+                            <img id="brand-logo" src="images/logo.png" alt="Logo">
+                        </a>
+                    </div>
                 <div class="row buttonlogo">
                     <div class="col togglebutton">
                         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -52,16 +58,8 @@ $rowarsip = $stmt2->fetchAll();
                             <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                         </button>
                     </div>
-                    <div class="col-6">
-                        <!-- Brand -->
-                        <a class="navbar-brand navbar-nav navbar-collapse" href="index.php">
-                            <img src="images/logo.png" alt="Logo">
-                        </a>
-                    </div>
-
-
+                    
                 </div>
-
 
                 <div class="collapse navbar-collapse" id="HnavbarToggler">
                     <!-- Links -->
@@ -123,18 +121,18 @@ $rowarsip = $stmt2->fetchAll();
 
                 </div>
 
-
+                
             </nav>
         </div>
     </div>
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav d-none">
+                    <ul class="userVmenu Vmenu navbar-nav d-none">
                         <li class="nav-item">
                             <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
@@ -142,9 +140,9 @@ $rowarsip = $stmt2->fetchAll();
                         </li>
                     </ul>
 
-                    <ul class="guestVmenu navbar-nav">
+                    <ul class="guestVmenu Vmenu navbar-nav">
                         <li class="nav-item">
-                            <a href="listing_ads.php" class="nav-link">
+                            <a href="listing_ads.php" class="nav-link vactive">
                                 <i class="icon fas fa-list-ul"></i>
                                 <span class="vmenutext">Listing ADS</span>
                             </a>
