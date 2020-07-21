@@ -87,13 +87,19 @@ i {
 
 @media only screen and (max-width: 640px) {
   #brand-logo {
-    margin-left: 50%;
+    margin-left: 80%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #brand-logo {
+    margin-left: 35%;
   }
 }
 
 #potads-logo {
-  width: 50px;
-  margin-top: -5px;
+  width: 55px;
+  margin-top: -10px;
 }
 
 @media only screen and (max-width: 640px) {

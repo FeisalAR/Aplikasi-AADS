@@ -26,6 +26,22 @@ $rowarsip = $stmt2->fetchAll();
 <html lang="en">
 
 <head>
+
+<script type="application/javascript">
+  window.tiledeskSettings = 
+    {
+   	projectid: "5f129c049cf1b2001204ae6e"
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://widget.tiledesk.com/v4/launch.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'tiledesk-jssdk'));
+</script>
+
+
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/popper.js"></script>
