@@ -11,7 +11,13 @@ else{
 }
 
 //Artikel query
-$sqlartikel = 'SELECT * FROM tabel_artikel ORDER BY nomor_artikel DESC ';
+if($isPengurus){
+    $sqlartikel = 'SELECT * FROM tabel_artikel ORDER BY nomor_artikel DESC';
+}
+else{
+    $sqlartikel = 'SELECT * FROM tabel_artikel WHERE NOT status_artikel = "Redacted" ORDER BY nomor_artikel DESC';
+}
+
 
 $stmt = $pdo->prepare($sqlartikel);
 $stmt->execute();
@@ -227,7 +233,7 @@ s0.parentNode.insertBefore(s1,s0);
                                                 </div>
                                                 <div class="row programfilters">
 
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-8" style="<?php if(!$isPengurus){echo 'display:none';}?>">
                                                         <label class="font-weight-bold">Status:</label>
                                                         <div class="form-group filterstatusprogram mb-0">
                                                             <label class="radio-inline mr-2"><input type="radio"

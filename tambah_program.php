@@ -220,7 +220,7 @@ s0.parentNode.insertBefore(s1,s0);
                                         <div class='form-group'>
                                             <label for='namaprogram'>Nama Program Individu:</label>
                                             <input type='text' class='form-control' id='namaprogram' name='namaprogram' required
-                                                aria-required='true'>
+                                                aria-required='true' autofocus>
                                         </div>
 
                                         <div class='form-group'>
