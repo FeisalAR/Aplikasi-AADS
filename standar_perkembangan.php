@@ -137,6 +137,21 @@ $row24 = $stmt->fetchAll();
 
 <body>
 
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5f17f079a45e787d128be688/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
     <img class="dnapic" src="images/dnabg.png" alt="dnapic">
     <div class="container-fluid listingprogrampage">
         <!-- Horizontal Navbar -->
@@ -174,18 +189,40 @@ $row24 = $stmt->fetchAll();
                         <li class="nav-item">
                             <a class="nav-link" href="index.php"><i class="icon fas fa-home"></i>Beranda</a>
                         </li>
-                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
-                            <a class="nav-link  hactive" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                            <a class="nav-link hactive" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola
+                                ADS</a>
                         </li>
-                        <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
-                            <a class="nav-link" href="listing_program.php"><i
-                                    class="icon fas fa-tasks"></i>Kelola Program</a>
+                        <li class="nav-item" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                            <a class="nav-link" href="listing_program.php"><i class="icon fas fa-tasks"></i>Kelola
+                                Program</a>
                         </li>
                     </ul>
 
                     
 
-                    <ul class="userlogout navbar-nav navbar-collapse">
+                    <ul class="userlogin navbar-nav navbar-collapse" <?php if ($isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.php"><i class="icon fas fa-sign-in-alt"></i>Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registrasi.php"><i
+                                    class="icon fas fa-user-plus"></i>Registrasi</a>
+                        </li>
+                    </ul>
+                    <ul class="userlogout navbar-nav navbar-collapse" <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php"><i class="icon fas fa-sign-out-alt"></i>Log Out</a>
                         </li>

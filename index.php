@@ -27,19 +27,19 @@ $rowarsip = $stmt2->fetchAll();
 
 <head>
 
-<script type="application/javascript">
-  window.tiledeskSettings = 
-    {
-   	projectid: "5f129c049cf1b2001204ae6e"
-    };
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "https://widget.tiledesk.com/v4/launch.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'tiledesk-jssdk'));
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5f17f079a45e787d128be688/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
+<!--End of Tawk.to Script-->
 
 
     <script src="js/jquery-3.4.1.js"></script>
@@ -58,6 +58,23 @@ $rowarsip = $stmt2->fetchAll();
 </head>
 
 <body>
+
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5f17f079a45e787d128be688/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
 
     <img class="dnapic" src="images/dnabg.png" alt="dnapic">
     <div class="container-fluid">
