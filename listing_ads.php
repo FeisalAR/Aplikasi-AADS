@@ -8,7 +8,7 @@ if ($isLoggedIn) {
 }
 
 //User & Program data query
-$sql = 'SELECT nama_user, jenis_kelamin, nama_orang_tua, id_user, foto_profil, tanggal_lahir FROM tabel_user';
+$sql = 'SELECT nama_user, jenis_kelamin, nama_orang_tua, id_user, foto_profil, tanggal_lahir FROM tabel_user WHERE jabatan = 1';
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
