@@ -67,9 +67,9 @@ if (isset($_POST['submit'])) {
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
-   echo "HAHAHAAHA INSERT FAILED !";
+   //echo "HAHAHAAHA INSERT FAILED !";
   } else {
-   echo "HAHAHAAHA GREAT SUCCESSS !";
+   //echo "HAHAHAAHA GREAT SUCCESSS !";
    header("Location: profil_ads.php?status=addsuccess");
   }
 
@@ -109,7 +109,7 @@ WHERE `tabel_user`.`nomor_user` = :nomor_user";
   if ($affectedrows == '0') {
    echo "";
   } else {
-   echo "HAHAHAAHA GREAT SUCCESSS !";
+   //echo "HAHAHAAHA GREAT SUCCESSS !";
    header("Location: profil_ads.php?status=editsuccess");
   }
 

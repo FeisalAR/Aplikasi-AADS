@@ -106,9 +106,9 @@ if (isset($_POST['submit'])) {
   $stmt->execute(['id_program' => $id_program, 'tanggal_catatan' => $tanggal_catatan, 'kegiatan' => $kegiatan]);
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
-   echo "HAHAHAAHA INSERT FAILED !";
+   //echo "HAHAHAAHA INSERT FAILED !";
   } else {
-   echo "HAHAHAAHA GREAT SUCCESSS !";
+  //echo "HAHAHAAHA GREAT SUCCESSS !";
    header("Location: detail_program_individu.php?id_program=$id_program&status=addsuccess");
   }
 
