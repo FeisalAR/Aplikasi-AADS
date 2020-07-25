@@ -150,7 +150,11 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-    
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 
     <img class="dnapic" src="images/dnabg.png" alt="dnapic">
     <div class="container-fluid">

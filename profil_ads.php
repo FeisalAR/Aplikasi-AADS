@@ -85,6 +85,9 @@ if (isset($_POST['submit'])) {
    move_uploaded_file($_FILES["image_uploads"]["tmp_name"], $target_file);
 
   }
+  else if($_FILES["file"]["error"] == 4) {
+      $target_file = "images/pfdefault.png";
+  }
 
   //---image upload end
 
@@ -166,7 +169,11 @@ function ageCalculator($dob){
 
 <body>
 
-    
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 
 
     <img class='dnapic' src='images/dnabg.png' alt='dnapic'>
@@ -352,7 +359,7 @@ echo $msg;
                                                                     <div
                                                                         class='col-sm-12 col-md-3 user-img text-center pt-1'>
                                                                         <img src='<?php echo $rowuser->foto_profil ?>'
-                                                                            alt='Seth Frazier'
+                                                                            alt='Foto Profil'
                                                                             class='img-responsive img-circle rounded-circle' />
                                                                     </div>
                                                                     <div class='col-sm-6 col-md-4'>

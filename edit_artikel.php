@@ -228,12 +228,12 @@ if (isset($_POST['submit'])) {
                                         <div class="form-group">
                                             <label for="judul_artikel">Judul Artikel:</label>
                                             <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" required
-                                                aria-required="true" value=<?php echo $rowartikel->judul_artikel ?>>
+                                                aria-required="true" value='<?php echo $rowartikel->judul_artikel; ?>'>
                                         </div>
                                         <div class="form-group">
                                             <label for="ringkasan_artikel">Ringkasan Artikel:</label>
                                             <input type="text" class="form-control" id="ringkasan_artikel" name="ringkasan_artikel" required
-                                                aria-required="true" value=<?php echo $rowartikel->ringkasan_artikel ?>>
+                                                aria-required="true" value='<?php echo $rowartikel->ringkasan_artikel ?>'>
                                         </div>
                                         <div class="form-group">
                                             <label for="isi_artikel">Isi Artikel:</label>
