@@ -141,6 +141,24 @@ function ageCalculator($dob){
         
 }
 
+function ageCompletedCalculator($dob, $tanggalselesai){
+        $birthdate = new DateTime($dob);
+        $today   = new DateTime($tanggalselesai);
+        $ag = $birthdate->diff($today)->y;
+        $mn = $birthdate->diff($today)->m;
+        $dy = $birthdate->diff($today)->d;
+        if ($ag == 0)
+        {
+            return "$mn Bulan";            
+        }
+        else
+        {
+            return "$ag Tahun $mn Bulan";
+        }        
+    }
+
+
+
 ?>
 
 
@@ -497,13 +515,29 @@ echo $msg;
 foreach ($row as $rowitems) {
  $statusicon;
  $statusclass;
+
+
+if(!empty($tanggalselesai)){
+     
+}
+ 
+
+$tanggalselesaif = date("j F Y",strtotime($rowitems->tanggal_selesai));
+
  if ($rowitems->status_program == 'Pending') {
-  $statusicon  = 'fas fa-hourglass-half';
-  $statusclass = 'text-warning';
+    $statusicon  = 'fas fa-hourglass-half';
+    $statusclass = 'text-warning';
+    $tanggalselisih = "";
+    $tanggalselesai = "";
  } else {
   $statusicon  = 'fas fa-check';
   $statusclass = 'text-success';
+  $tanggalselesai = $rowitems->tanggal_selesai;    
+    $umurselesai = ageCompletedCalculator($rowitems->tanggal_lahir, $tanggalselesai);
+  $tanggalselisih = "Pada: $tanggalselesaif (Umur $umurselesai)
+                                          ";
  }
+ 
 
  $tanggaltargetf = date("j F Y",strtotime($rowitems->tanggal_target));
 
@@ -522,12 +556,21 @@ foreach ($row as $rowitems) {
                                                                                 aria-hidden='true'></i>
                                                                             <b>$rowitems->status_program</b>
                                                                         </p>
+                                                                        $tanggalselisih
                                                                         <p class='m-0'><i
                                                                                 class='fas fa-calendar mr-1'
-                                                                                aria-hidden='true'></i><span class='targetdate'>$tanggaltargetf</span>
+                                                                                aria-hidden='true'></i><span class='targetdate'>Target: $tanggaltargetf</span>
                                                                         </p>
-                                                                        <p class='m-0'><i
-                                                                                class='fa fa-bullseye mr-1 sasaran'></i>$rowitems->sasaran_program</p>
+                                                                        <div class='row'>
+                                                                            <div class='col-1 pr-0'>
+                                                                                    <i
+                                                                                class='fa fa-bullseye sasaran'></i>Sasaran: 
+                                                                            </div>
+                                                                            <div class='col'>
+                                                                                <p class='m-0'>$rowitems->sasaran_program</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        
 
                                                                         <p class='m-0 kodeprogram'><i
                                                                                 class='fas fa-key mr-1'></i>$rowitems->id_program

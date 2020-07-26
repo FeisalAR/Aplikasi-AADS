@@ -53,6 +53,22 @@ $stmt->execute(['id_program' => $id_program]);
 $rowCatatan = $stmt->fetchAll();
 
 //-----Catatan harian query end
+
+function ageCompletedCalculator($dob, $tanggalselesai){
+        $birthdate = new DateTime($dob);
+        $today   = new DateTime($tanggalselesai);
+        $ag = $birthdate->diff($today)->y;
+        $mn = $birthdate->diff($today)->m;
+        $dy = $birthdate->diff($today)->d;
+        if ($ag == 0)
+        {
+            return "$mn Bulan";            
+        }
+        else
+        {
+            return "$ag Tahun $mn Bulan";
+        }        
+    }
 ?>
 
 
@@ -314,7 +330,8 @@ $rowCatatan = $stmt->fetchAll();
                                                                                     <p><?php if ($row[0]->tanggal_selesai == null) {
  echo " - ";
 } else {
- echo date("j F Y",strtotime($row[0]->tanggal_selesai));
+    $umurselesai = ageCompletedCalculator($row[0]->tanggal_lahir, $row[0]->tanggal_selesai);
+    echo date("j F Y",strtotime($row[0]->tanggal_selesai)). "( Umur ".$umurselesai.")";
 }
 ?></p>
                                                                                 </div>
