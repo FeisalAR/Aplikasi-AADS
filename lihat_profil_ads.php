@@ -251,8 +251,8 @@ function ageCalculator($dob){
                                                                     <div
                                                                         class='col-sm-12 col-md-3 user-img text-center pt-1'>
                                                                         <img src='<?php echo $rowuser->foto_profil ?>'
-                                                                            alt='Seth Frazier'
-                                                                            class='img-responsive img-circle rounded-circle' />
+                                                                            alt='Foto Profil'
+                                                                            class='img-responsive img-circle rounded-circle' onerror="this.src='images/pfdefault.png';"/>
                                                                     </div>
                                                                     <div class='col-sm-6 col-md-4'>
                                                                         <h5 class='font-weight-bold mb-1 namaads'>
