@@ -265,6 +265,37 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
+<!-- Footer -->
+<footer class="page-footer font-small footeraads">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">
+    <a href="https://www.instagram.com/pikpotadsjabar/"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+  
+    <br>
+    © <?php echo date("Y"); ?> Copyright
+    <a href="https://potadsjabar.or.id/"> POTADS Jawa Barat</a>
+    <br>
+    
+   Jumlah pengunjung: <!-- Default Statcounter code for AADS POTADS Jawa Barat http://aads.potadsjabar.or.id -->
+<script type="text/javascript">
+var sc_project=12365769;
+var sc_invisible=0;
+var sc_security="58b76b60";
+var sc_text=2;
+var sc_https=1;
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy - StatCounter" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12365769/0/58b76b60/0/" alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
+<!-- End of Statcounter Code -->
+    
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </body>
 
 </html>
