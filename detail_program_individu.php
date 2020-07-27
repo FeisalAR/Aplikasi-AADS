@@ -63,13 +63,13 @@ function ageCompletedCalculator($dob, $tanggalselesai){
         $mn = $birthdate->diff($today)->m;
         $dy = $birthdate->diff($today)->d;
         if ($ag == 0)
-        {
-            return "$mn Bulan";            
+       {
+            return "$mn Bulan  $dy Hari";            
         }
         else
         {
-            return "$ag Tahun $mn Bulan";
-        }        
+            return "$ag Tahun $mn Bulan $dy Hari";
+        }         
     }
 ?>
 
