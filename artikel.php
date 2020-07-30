@@ -190,7 +190,7 @@ $rowarsip = $stmt2->fetchAll();
                         </div>
                     </div>
                     <!-- Form fields -->
-                    <div class='col btntambahprogram mb-2'>
+                    
                     <!-- Form fields -->
                     <div class='row'>
                         <div class='col'>

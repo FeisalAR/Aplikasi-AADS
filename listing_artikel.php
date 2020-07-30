@@ -179,6 +179,11 @@ if (isset($_GET['status'])) {
                                 <span class="vmenutext">Listing Artikel</span>
                             </a>
                             </li>
+                            <li class="nav-item">
+                            <a href="listing_ads.php" class="nav-link">
+                                <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
+                            </a>
+                        </li>
                         <li class="nav-item" <?php if(!$isPengurus || !$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="tambah_artikel.php" class="nav-link">
                                 <i class="icon fas fa-plus"></i><span class="vmenutext">Tambah Artikel</span>
