@@ -564,7 +564,7 @@ $tanggalselesaif = date("j F Y",strtotime($rowitems->tanggal_selesai));
                                                                         <div class='row'>
                                                                             <div class='col-1 pr-0'>
                                                                                     <i
-                                                                                class='fa fa-bullseye sasaran'></i>Sasaran: 
+                                                                                class='fa fa-bullseye sasaran'></i>
                                                                             </div>
                                                                             <div class='col'>
                                                                                 <p class='m-0'>$rowitems->sasaran_program</p>
