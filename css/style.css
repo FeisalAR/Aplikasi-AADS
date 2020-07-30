@@ -890,12 +890,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 #articlebox {
   font-size: 1em;
-  padding: 20px !important;
+  padding: 6% !important;
+  text-align: justify;
 }
 
 @media only screen and (max-width: 576px) {
   #articlebox {
-    padding-left: 8% !important;
+    padding: 10% !important;
+    font-size: 0.8em !important;
   }
 }
 
