@@ -714,11 +714,16 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: justify;
     @media only screen and (max-width: 576px) {
         padding: 10% !important;
-        font-size: 0.8em !important;
+        font-size: 1em !important;
     }
     .articleimage {
         margin: 10px;
-        height: 300px;
+        width: 35%;
+        height: auto;
+        @media only screen and (max-width: 576px) {
+            height: auto;
+            width: 100%;
+        }
     }
 }
 
