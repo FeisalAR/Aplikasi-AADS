@@ -237,11 +237,11 @@ $row24 = $stmt->fetchAll();
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="programVmenu navbar-nav">
+                    <ul class="programVmenu Vmenu navbar-nav">
                         <li class='nav-item'>
                             <a href='listing_ads.php' class='nav-link'>
                                 <i class='icon fas fa-list'></i><span class='vmenutext'>Listing ADS</span>

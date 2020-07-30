@@ -177,11 +177,11 @@ function ageCalculator($dob){
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav">
+                    <ul class="userVmenu Vmenu navbar-nav">
                         <li class="nav-item">
                             <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
@@ -464,13 +464,7 @@ if (!isset($rowitem->tanggal_selesai) || empty($rowitem->tanggal_selesai)) {
                                                                                  </div>
                                                                              </div>
                                                                              <div class="row sasarancapaianrow">
-                                                                                 <div class="col-sm-12 col-md-2 label">
-                                                                                     <label
-                                                                                         class="capaianlabel">Sasaran:</label>
-                                                                                 </div>
-                                                                                 <div class="col-sm-12 col-md-9 content">
-                                                                                     <span id="sasarancontent"> ' . $rowitem->sasaran_program . '</span>
-                                                                                 </div>
+                                                                                
                                                                              </div>
                                                                              <div class="row kondisicapaianrow">
                                                                                  <div class="col-sm-12 col-md-2 label">

@@ -239,6 +239,7 @@ i {
     }
     .nav-link {
         padding: 20px;
+        height: 100%;
         @media only screen and (min-width: 1024px) {
             padding-left: 40px;
         }
@@ -441,7 +442,7 @@ main {
     #program-list {
         .list-group-item {
             @media only screen and (max-width: 640px) {
-                padding: 15px;
+                padding: 15px 35px;
             }
         }
     }
@@ -612,6 +613,12 @@ input[type=number]::-webkit-outer-spin-button {
     p {
         margin-top: 1px;
         margin-bottom: 1px;
+    }
+}
+
+.btntambahprogram {
+    @media only screen and (max-width: 458px) {
+        text-align: center;
     }
 }
 

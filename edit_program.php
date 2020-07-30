@@ -38,18 +38,18 @@ if (isset($_POST['submit'])) {
 
   $tujuanprogram      = $_POST['tujuan_program'];
   $keadaansekarang    = $_POST['keadaan_sekarang'];
-  $sasaranprogram     = $_POST['sasaran_program'];
+  //$sasaranprogram     = $_POST['sasaran_program'];
   $sumbermateri       = $_POST['sumber_materi'];
   $pelaksanaanprogram = $_POST['cara_pelaksanaan'];
   $tanggaltarget      = $_POST['tanggal_target'];
   $kategoricheck      = implode(", ", $_POST['kategoricheck']);
 
   $sql3 = "UPDATE tabel_program
-            SET nama_program = :np, status_program = :stp, tanggal_selesai = :ts, tujuan_program = :tp, keadaan_sekarang = :ks, sasaran_program = :sp, sumber_materi = :sm, cara_pelaksanaan = :cp, tanggal_target = :tt, kategori_program = :kp
+            SET nama_program = :np, status_program = :stp, tanggal_selesai = :ts, tujuan_program = :tp, keadaan_sekarang = :ks, sumber_materi = :sm, cara_pelaksanaan = :cp, tanggal_target = :tt, kategori_program = :kp
             WHERE id_program = :id_program";
 
   $stmt = $pdo->prepare($sql3);
-  $stmt->execute(['np' => $namaprogram, 'stp' => $status_program, 'ts' => $tanggal_selesai, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sp' => $sasaranprogram, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck, 'id_program' => $id_program]);
+  $stmt->execute(['np' => $namaprogram, 'stp' => $status_program, 'ts' => $tanggal_selesai, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck, 'id_program' => $id_program]);
   header("Location: listing_program.php?status=updatesuccess");
  }
 }
@@ -309,7 +309,7 @@ if (isset($_POST['submit'])) {
                                                 });
                                                 </script>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="sasaranprogram">Sasaran:</label>
                                             <textarea class="form-control" id="sasaranprogram" rows="3" name="sasaran_program"
                                                 required><?php echo $row->sasaran_program ?></textarea>
@@ -319,7 +319,7 @@ if (isset($_POST['submit'])) {
                                                 ['horizontalRule']]
                                                 });
                                                 </script>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label for="sumberprogram">Sumber Materi / Alat Peraga:</label>
                                             <textarea class="form-control" id="sumbermateri" rows="3" name="sumber_materi"

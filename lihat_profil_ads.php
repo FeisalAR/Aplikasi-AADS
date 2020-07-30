@@ -193,11 +193,11 @@ function ageCompletedCalculator($dob, $tanggalselesai){
     <!-- End of Horizontal Navbar -->
 
     <div class='vnavcontent row'>
-        <div class='col-2'>
+        <div class='col-sm-12 col-md-2'>
             <!-- Vertical navbar -->
             <div class='vertical-nav-wrapper'>
                 <nav class='navbar'>
-                    <ul class='userVmenu navbar-nav'>
+                    <ul class='userVmenu Vmenu navbar-nav'>
                         <li class='nav-item'>
                             <a href='listing_ads.php' class='nav-link'>
                                 <i class='icon fas fa-list'></i><span class='vmenutext'>Listing ADS</span>
@@ -250,7 +250,7 @@ function ageCompletedCalculator($dob, $tanggalselesai){
                         </div>
                     </div>
 
-                    <div class='col btntambahprogram mb-2'>
+                    
                     <!-- Form fields -->
                     <div class='row'>
                         <div class='col'>
@@ -275,7 +275,10 @@ function ageCompletedCalculator($dob, $tanggalselesai){
                                                                             <?php echo $rowuser->nama_user; ?>
                                                                         </h5>
                                                                         <div class='user-detail'>
-                                                                            <p class='m-0  kodeads'><i
+                                                                            <p class='m-0  kodeads' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>><i
                                                                                     class='fas fa-key mr-1'></i><?php echo $rowuser->id_user; ?>
 
                                                                             </p>
@@ -315,23 +318,38 @@ function ageCompletedCalculator($dob, $tanggalselesai){
 
                                                                     <div class='col-sm-6 col-md-4'>
                                                                         <div class='user-detail'>
-                                                                            <p class='m-0  alamatads'><i
+                                                                            <p class='m-0  alamatads' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>><i
                                                                                     class='fas fa-home mr-1'></i><?php echo $rowuser->alamat; ?>
 
                                                                             </p>
-                                                                            <p class='m-0  kecamatan'><i
+                                                                            <p class='m-0  kecamatan' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>><i
                                                                                     class='fas fa-landmark mr-1'></i><?php echo $rowuser->kecamatan . ', ' . $rowuser->kota; ?>
 
                                                                             </p>
-                                                                            <p class='m-0  kodepos'><i
+                                                                            <p class='m-0  kodepos' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>><i
                                                                                     class='fas fa-envelope mr-1'></i><?php echo $rowuser->kode_pos; ?>
 
                                                                             </p>
-                                                                            <p class='m-0  emailads'><i
+                                                                            <p class='m-0  emailads' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>><i
                                                                                     class='fas fa-at mr-1'></i><?php echo $rowuser->email; ?>
 
                                                                             </p>
-                                                                            <p class='m-0  teleponads'><i
+                                                                            <p class='m-0  teleponads' <?php if (!$isLoggedIn) {
+ echo 'style="display: none !important"';
+}
+?>><i
                                                                                     class='fas fa-phone mr-1'></i><?php echo $rowuser->nomor_telepon; ?>
 
                                                                             </p>
@@ -451,7 +469,7 @@ $tanggalselesaif = date("j F Y",strtotime($rowitems->tanggal_selesai));
                                                                                 class='fa fa-bullseye sasaran'></i>
                                                                             </div>
                                                                             <div class='col'>
-                                                                                <p class='m-0'>$rowitems->sasaran_program</p>
+                                                                                <p class='m-0'>Tujuan: $rowitems->tujuan_program</p>
                                                                             </div>
                                                                         </div>
 

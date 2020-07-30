@@ -152,11 +152,11 @@ VALUES (:username, :pwd, :email, :nama_user, :tanggal_lahir, :jenis_kelamin, :na
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav ">
+                    <ul class="userVmenu Vmenu navbar-nav ">
                         <li class="nav-item">
                             <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list-ul"></i><span class="vmenutext">Listing ADS</span>

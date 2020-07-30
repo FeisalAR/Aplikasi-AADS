@@ -87,18 +87,17 @@ if (isset($_POST['submit'])) {
 
   $tujuanprogram      = $_POST['tujuan_program'];
   $keadaansekarang    = $_POST['keadaan_sekarang'];
-  $sasaranprogram     = $_POST['sasaran_program'];
   $sumbermateri       = $_POST['sumber_materi'];
   $pelaksanaanprogram = $_POST['cara_pelaksanaan'];
   $tanggaltarget      = $_POST['tanggal_target'];
   $kategoricheck      = implode(", ", $_POST['kategoricheck']);
 
   $sql3 = "UPDATE tabel_program
-            SET nomor_user = :nu, nama_program = :np, status_program = :stp, tanggal_selesai = :ts, tujuan_program = :tp, keadaan_sekarang = :ks, sasaran_program = :sp, sumber_materi = :sm, cara_pelaksanaan = :cp, tanggal_target = :tt, kategori_program = :kp
+            SET nomor_user = :nu, nama_program = :np, status_program = :stp, tanggal_selesai = :ts, tujuan_program = :tp, keadaan_sekarang = :ks, sumber_materi = :sm, cara_pelaksanaan = :cp, tanggal_target = :tt, kategori_program = :kp
             WHERE id_program = :id_program";
 
   $stmt = $pdo->prepare($sql3);
-  $stmt->execute(['nu' => $nomor_user, 'np' => $namaprogram, 'stp' => $status_program, 'ts' => $tanggal_selesai, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sp' => $sasaranprogram, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck, 'id_program' => $id_program]);
+  $stmt->execute(['nu' => $nomor_user, 'np' => $namaprogram, 'stp' => $status_program, 'ts' => $tanggal_selesai, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang,  'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck, 'id_program' => $id_program]);
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
@@ -272,11 +271,11 @@ if (isset($_POST['submit'])) {
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav">
+                    <ul class="userVmenu Vmenu navbar-nav">
                         <li class="nav-item">
                             <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
@@ -452,7 +451,7 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="row  m-0">
+                                                                            <!-- <div class="row  m-0">
                                                                                 <div class="col-12 sasaran detailcollapser"
                                                                                     data-toggle="collapse"
                                                                                     data-target=".contentsasaran, .contentall">
@@ -465,9 +464,9 @@ if (isset($_POST['submit'])) {
                                                                                 </div>
                                                                                 <div
                                                                                     class="col-12 contentsasaran  collapse contentall">
-                                                                                    <?php echo $row[0]->sasaran_program ?><p class="contentp"></p>
+                                                                                    //<?php echo $row[0]->sasaran_program ?><p class="contentp"></p>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> -->
 
                                                                             <div class="row  m-0">
                                                                                 <div class="col-12 keadaan detailcollapser"
@@ -675,7 +674,7 @@ $tanggal_catatanf = date("j F Y",strtotime($rowitems->tanggal_catatan));
                                                 });
                                                 </script>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="sasaranprogram">Sasaran:</label>
                                             <textarea class="form-control" id="sasaranprogram" rows="3" name="sasaran_program"
                                                 required><?php echo $row[0]->sasaran_program ?></textarea>
@@ -685,7 +684,7 @@ $tanggal_catatanf = date("j F Y",strtotime($rowitems->tanggal_catatan));
                                                 ['horizontalRule']]
                                                 });
                                                 </script>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label for="sumberprogram">Sumber Materi / Alat Peraga:</label>
                                             <textarea class="form-control" id="sumbermateri" rows="3" name="sumber_materi"

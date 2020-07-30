@@ -21,18 +21,18 @@ if (isset($_POST['submit'])) {
   $namaprogram        = $_POST['namaprogram'];
   $tujuanprogram      = $_POST['tujuanprogram'];
   $keadaansekarang    = $_POST['keadaansekarang'];
-  $sasaranprogram     = $_POST['sasaranprogram'];
+  //$sasaranprogram     = $_POST['sasaranprogram'];
   $sumbermateri       = $_POST['sumbermateri'];
   $pelaksanaanprogram = $_POST['pelaksanaanprogram'];
   $tanggaltarget      = $_POST['tanggaltarget'];
   $kategoricheck      = implode(", ", $_POST['kategoricheck']);
 
   $sql3 = "INSERT INTO tabel_program
-                (id_user, nomor_user,  nama_program, tujuan_program, keadaan_sekarang, sasaran_program, sumber_materi, cara_pelaksanaan, tanggal_target, kategori_program)
-                VALUES (:iu, :nu, :np, :tp, :ks, :sp, :sm, :cp, :tt, :kp)";
+                (id_user, nomor_user,  nama_program, tujuan_program, keadaan_sekarang, sumber_materi, cara_pelaksanaan, tanggal_target, kategori_program)
+                VALUES (:iu, :nu, :np, :tp, :ks, :sm, :cp, :tt, :kp)";
 
   $stmt = $pdo->prepare($sql3);
-  $stmt->execute(['iu' => $id_user, 'nu' => $rownomor->nomor_user, 'np' => $namaprogram, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sp' => $sasaranprogram, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck]);
+  $stmt->execute(['iu' => $id_user, 'nu' => $rownomor->nomor_user, 'np' => $namaprogram, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck]);
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
@@ -144,11 +144,11 @@ if (isset($_POST['submit'])) {
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="programVmenu navbar-nav">
+                    <ul class="programVmenu Vmenu navbar-nav">
                         <li class="nav-item">
                             <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>
@@ -233,7 +233,7 @@ if (isset($_POST['submit'])) {
                                                 });
                                         </script>
                                         </div>
-                                        <div class='form-group'>
+                                        <!-- <div class='form-group'>
                                             <label for='sasaranprogram'>Sasaran:</label>
                                             <textarea class='form-control' id='sasaranprogram' name='sasaranprogram' rows='3'
                                                 required></textarea>
@@ -243,7 +243,7 @@ if (isset($_POST['submit'])) {
                                                 ['horizontalRule']]
                                                 });
                                         </script>
-                                        </div>
+                                        </div> -->
                                         <div class='form-group'>
                                             <label for='sumbermateri'>Sumber Materi / Alat Peraga:</label>
                                             <textarea class='form-control' id='sumbermateri' name='sumbermateri' rows='3'

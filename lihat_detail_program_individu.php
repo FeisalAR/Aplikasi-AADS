@@ -193,11 +193,11 @@ function ageCompletedCalculator($dob, $tanggalselesai){
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav">
+                    <ul class="userVmenu Vmenu navbar-nav">
                         <li class="nav-item">
                             <a href="listing_ads.php" class="nav-link">
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
@@ -372,7 +372,7 @@ function ageCompletedCalculator($dob, $tanggalselesai){
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="row  m-0">
+                                                                            <!-- <div class="row  m-0">
                                                                                 <div class="col-12 sasaran detailcollapser"
                                                                                     data-toggle="collapse"
                                                                                     data-target=".contentsasaran, .contentall">
@@ -387,7 +387,7 @@ function ageCompletedCalculator($dob, $tanggalselesai){
                                                                                     class="col-12 contentsasaran  collapse contentall">
                                                                                     <p class="contentp"><?php echo $row[0]->sasaran_program ?></p>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> -->
 
                                                                             <div class="row  m-0">
                                                                                 <div class="col-12 keadaan detailcollapser"

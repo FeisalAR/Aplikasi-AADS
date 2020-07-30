@@ -70,7 +70,6 @@ function ageCompletedCalculator($dob, $tanggalselesai){
 <head>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/popper.js"></script>
     <link rel="stylesheet" type="text/css" href='css/bootstrap.css' />
     <link rel="stylesheet" type="text/css" href='css/style.css' />
     <link rel="stylesheet" href='css/all.css' />
@@ -178,11 +177,11 @@ function ageCompletedCalculator($dob, $tanggalselesai){
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="programVmenu navbar-nav">
+                    <ul class="programVmenu Vmenu navbar-nav">
                         <li class="nav-item" <?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="listing_program.php" class="nav-link vactive">
                                 <i class="icon fas fa-list"></i>
@@ -337,8 +336,7 @@ $tanggalselesaif = date("j F Y",strtotime($rowitems->tanggal_selesai));
                                                                         <p class='m-0 namaads'><i
                                                                                 class='fas fa-user mr-1 '></i>$rowitems->nama_user | $rowitems->id_user</p>
                                                                        
-                                                                        <p class='m-0'><i
-                                                                                class='fa fa-bullseye mr-1 sasaran'></i>Sasaran: $rowitems->sasaran_program</p>
+                                                                        
                                                                         <a
                                                                             href='lihat_detail_program_individu.php?id_program=$rowitems->id_program&id_user=$rowitems->id_user'>
                                                                             <button class='btn btndetail'>

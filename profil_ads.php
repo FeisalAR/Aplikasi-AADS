@@ -52,18 +52,18 @@ if (isset($_POST['submit'])) {
   $namaprogram        = $_POST['namaprogram'];
   $tujuanprogram      = $_POST['tujuanprogram'];
   $keadaansekarang    = $_POST['keadaansekarang'];
-  $sasaranprogram     = $_POST['sasaranprogram'];
+  //$sasaranprogram     = $_POST['sasaranprogram'];
   $sumbermateri       = $_POST['sumbermateri'];
   $pelaksanaanprogram = $_POST['pelaksanaanprogram'];
   $tanggaltarget      = $_POST['tanggaltarget'];
   $kategoricheck      = implode(", ", $_POST['kategoricheck']);
 
   $sql3 = "INSERT INTO tabel_program
-                (nomor_user, nama_program, tujuan_program, keadaan_sekarang, sasaran_program, sumber_materi, cara_pelaksanaan, tanggal_target, kategori_program)
-                VALUES (:nu, :np, :tp, :ks, :sp, :sm, :cp, :tt, :kp)";
+                (nomor_user, nama_program, tujuan_program, keadaan_sekarang, sumber_materi, cara_pelaksanaan, tanggal_target, kategori_program)
+                VALUES (:nu, :np, :tp, :ks, :sm, :cp, :tt, :kp)";
 
   $stmt = $pdo->prepare($sql3);
-  $stmt->execute(['nu' => $nomor_user, 'np' => $namaprogram, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sp' => $sasaranprogram, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck]);
+  $stmt->execute(['nu' => $nomor_user, 'np' => $namaprogram, 'tp' => $tujuanprogram, 'ks' => $keadaansekarang, 'sm' => $sumbermateri, 'cp' => $pelaksanaanprogram, 'tt' => $tanggaltarget, 'kp' => $kategoricheck]);
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
@@ -291,11 +291,11 @@ function ageCompletedCalculator($dob, $tanggalselesai){
     <!-- End of Horizontal Navbar -->
 
     <div class='vnavcontent row'>
-        <div class='col-2'>
+        <div class='col-sm-12 col-md-2'>
             <!-- Vertical navbar -->
             <div class='vertical-nav-wrapper'>
                 <nav class='navbar'>
-                    <ul class='userVmenu navbar-nav'>
+                    <ul class='userVmenu Vmenu navbar-nav'>
                         <li class='nav-item'>
                             <a href='listing_ads.php' class='nav-link'>
                                 <i class='icon fas fa-list'></i><span class='vmenutext'>Listing ADS</span>
@@ -560,20 +560,14 @@ $tanggalselesaif = date("j F Y",strtotime($rowitems->tanggal_selesai));
                                                                         <p class='m-0'><i
                                                                                 class='fas fa-calendar mr-1'
                                                                                 aria-hidden='true'></i><span class='targetdate'>Target: $tanggaltargetf</span>
-                                                                        </p>
-                                                                        <div class='row'>
-                                                                            <div class='col-1 pr-0'>
-                                                                                    <i
-                                                                                class='fa fa-bullseye sasaran'></i>
-                                                                            </div>
-                                                                            <div class='col'>
-                                                                                <p class='m-0'>$rowitems->sasaran_program</p>
-                                                                            </div>
-                                                                        </div>
+                                                                        </p>                                                                    
                                                                         
 
                                                                         <p class='m-0 kodeprogram'><i
                                                                                 class='fas fa-key mr-1'></i>$rowitems->id_program
+                                                                        </p>
+                                                                        <p class='m-0 kodeprogram'><i
+                                                                                class='fas fa-bullseye mr-1'></i>Tujuan: $rowitems->tujuan_program
                                                                         </p>
                                                                         <a
                                                                             href='detail_program_individu.php?id_program=$rowitems->id_program'>
@@ -646,7 +640,7 @@ $tanggalselesaif = date("j F Y",strtotime($rowitems->tanggal_selesai));
                                                 });
                                         </script>
                                         </div>
-                                        <div class='form-group'>
+                                        <!-- <div class='form-group'>
                                             <label for='sasaranprogram'>Sasaran:</label>
                                             <textarea class='form-control' id='sasaranprogram' name='sasaranprogram' rows='3'
                                                 required></textarea>
@@ -656,7 +650,7 @@ $tanggalselesaif = date("j F Y",strtotime($rowitems->tanggal_selesai));
                                                 ['horizontalRule']]
                                                 });
                                         </script>
-                                        </div>
+                                        </div> -->
                                         <div class='form-group'>
                                             <label for='sumbermateri'>Sumber Materi / Alat Peraga:</label>
                                             <textarea class='form-control' id='sumbermateri' name='sumbermateri' rows='3'

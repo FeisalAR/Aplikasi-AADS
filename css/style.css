@@ -312,6 +312,7 @@ i {
 
 .vertical-nav-wrapper .nav-link {
   padding: 20px;
+  height: 100%;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -586,7 +587,7 @@ main {
 
 @media only screen and (max-width: 640px) {
   #listingcards #program-list .list-group-item {
-    padding: 15px;
+    padding: 15px 35px;
   }
 }
 
@@ -784,6 +785,12 @@ input[type=number]::-webkit-outer-spin-button {
 .catatanentry p {
   margin-top: 1px;
   margin-bottom: 1px;
+}
+
+@media only screen and (max-width: 458px) {
+  .btntambahprogram {
+    text-align: center;
+  }
 }
 
 .kategori {

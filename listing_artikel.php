@@ -49,7 +49,6 @@ if (isset($_GET['status'])) {
 <head>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/popper.js"></script>
     <link rel="stylesheet" type="text/css" href='css/bootstrap.css' />
     <link rel="stylesheet" type="text/css" href='css/style.css' />
     <link rel="stylesheet" href='css/all.css' />
@@ -153,11 +152,11 @@ if (isset($_GET['status'])) {
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="programVmenu navbar-nav">
+                    <ul class="programVmenu Vmenu navbar-nav">
                         <li class="nav-item"<?php if(!$isLoggedIn)echo 'style="display:none"';?>>
                             <a href="listing_program.php" class="nav-link">
                                 <i class="icon fas fa-list"></i>

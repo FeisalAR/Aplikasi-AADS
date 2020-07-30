@@ -21,7 +21,6 @@ $row = $stmt->fetchAll();
 <head>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/popper.js"></script>
     <link rel="stylesheet" type="text/css" href='css/bootstrap.css' />
     <link rel="stylesheet" type="text/css" href='css/style.css' />
     <link rel="stylesheet" href='css/all.css' />
@@ -136,11 +135,11 @@ $row = $stmt->fetchAll();
     <!-- End of Horizontal Navbar -->
 
     <div class="vnavcontent row">
-        <div class="col-2">
+        <div class="col-sm-12 col-md-2">
             <!-- Vertical navbar -->
             <div class="vertical-nav-wrapper">
                 <nav class="navbar">
-                    <ul class="userVmenu navbar-nav">
+                    <ul class="userVmenu Vmenu navbar-nav">
                         <li class="nav-item">
                             <a href="listing_ads.php" class="nav-link vactive">
                                 <i class="icon fas fa-list"></i><span class="vmenutext">Listing ADS</span>
@@ -226,6 +225,10 @@ $row = $stmt->fetchAll();
                                                 </div>
                                                 <ul class="list-group" id="user-list">
 
+
+<!-- <p class="m-0  kodeads"><i
+                                                                                    class="fas fa-key mr-1"></i>' . $rowitem->id_user . '
+                                                                            </p> -->
 <?php
 foreach ($row as $rowitem) {
  
@@ -259,9 +262,7 @@ foreach ($row as $rowitem) {
                                                                                 '. $rowitem->jenis_kelamin.'</p>
                                                                             <p class="m-0"><i
                                                                                     class="fa fa-user-friends mr-1 ortuads"></i>' . $rowitem->nama_orang_tua . '</p>
-                                                                            <p class="m-0  kodeads"><i
-                                                                                    class="fas fa-key mr-1"></i>' . $rowitem->id_user . '
-                                                                            </p>
+                                                                            
                                                                             <a href="lihat_profil_ads.php?id_user=' . $rowitem->id_user . '">
                                                                                 <button
                                                                                     class="btn btndetail text-white">
