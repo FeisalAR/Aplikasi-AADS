@@ -88,7 +88,7 @@ $rowarsip = $stmt2->fetchAll();
  echo 'style="display: none !important"';
 }
 ?>>
-                            <a class="nav-link" href="listing_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
+                            <a class="nav-link" href="profil_ads.php"><i class="icon fas fa-child"></i>Kelola ADS</a>
                         </li>
                         <li class="nav-item" <?php if (!$isLoggedIn) {
  echo 'style="display: none !important"';
