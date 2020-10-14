@@ -101,9 +101,8 @@ if (isset($_POST['submit'])) {
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
-   //echo "HAHAHAAHA UPDATE FAILED !";
+   //echo "Update sukses";
   } else {
-   //echo "HAHAHAAHA GREAT SUCCESSS !";
    header("Location: detail_program_individu.php?id_program=$id_program&status=updatesuccess");
   }
 
@@ -121,9 +120,8 @@ if (isset($_POST['submit'])) {
   $stmt->execute(['id_program' => $id_program, 'tanggal_catatan' => $tanggal_catatan, 'kegiatan' => $kegiatan]);
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
-   //echo "HAHAHAAHA INSERT FAILED !";
+   //echo "Insert sukses";
   } else {
-  //echo "HAHAHAAHA GREAT SUCCESSS !";
    header("Location: detail_program_individu.php?id_program=$id_program&status=addsuccess");
   }
 
@@ -789,7 +787,7 @@ if (strpos($row[0]->kategori_program, "Sosial-Emosional") > -1) {
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="detail_program_individu.php?id_program=<?php echo $id_program ?>&status=updatesuccess">
+                                    <form method="POST" action="detail_program_individu.php?id_program=<?php echo $id_program ?>&status=addsuccess">
                                         <div class="form-group">
                                             <label for="tanggaltarget">Tanggal Kegiatan:</label>
                                             <input type="date" class="form-control tanggal" id="tanggaltarget" required

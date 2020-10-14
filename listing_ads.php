@@ -226,9 +226,7 @@ $row = $stmt->fetchAll();
                                                 <ul class="list-group" id="user-list">
 
 
-<!-- <p class="m-0  kodeads"><i
-                                                                                    class="fas fa-key mr-1"></i>' . $rowitem->id_user . '
-                                                                            </p> -->
+
 <?php
 foreach ($row as $rowitem) {
  
@@ -262,7 +260,9 @@ foreach ($row as $rowitem) {
                                                                                 '. $rowitem->jenis_kelamin.'</p>
                                                                             <p class="m-0"><i
                                                                                     class="fa fa-user-friends mr-1 ortuads"></i>' . $rowitem->nama_orang_tua . '</p>
-                                                                            
+                                                                            <p class="m-0  kodeads d-none"><i
+                                                                                    class="fas fa-key mr-1"></i>' . $rowitem->id_user . '
+                                                                            </p>
                                                                             <a href="lihat_profil_ads.php?id_user=' . $rowitem->id_user . '">
                                                                                 <button
                                                                                     class="btn btndetail text-white">

@@ -279,8 +279,14 @@ foreach ($rowartikel as $artikel) {
                                                     <div class='row'>
                                                         <div class='col-md-12 col-12'>
                                                             <div class='row'>
+                                                            <div
+                                                                        class='col-md-4 col-4 user-img text-center pt-1'>
+                                                                        <img src='" . $artikel->gambar_artikel . "'
+                                                                            alt='Foto Profil'
+                                                                            class='img-responsive' />
+                                                                    </div>
 
-                                                                <div class='col-md-12 col-12'>
+                                                                <div class='col-md-8 col-8'>
                                                                     <h5 class='font-weight-bold mb-1 namaprogram'>
                                                                         $artikel->judul_artikel
                                                                     </h5>

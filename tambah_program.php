@@ -36,9 +36,8 @@ if (isset($_POST['submit'])) {
 
   $affectedrows = $stmt->rowCount();
   if ($affectedrows == '0') {
-   //echo "HAHAHAAHA INSERT FAILED !";
+   //echo "Insert Gagal";
   } else {
-   //echo "HAHAHAAHA GREAT SUCCESSS !";
    header("Location: listing_program.php?status=addsuccess");
   }
  }
